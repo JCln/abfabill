@@ -1,0 +1,123 @@
+$clr: #062C68;
+$white: #fff;
+
+$size: 3rem;
+$font-size: 1rem;
+$font_size_title: 2rem;
+
+$img-size: 12rem;
+
+section {
+  width: 100vw;
+
+  .header_icon {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: $img-size;
+      height: calc(#{$img-size} - 1rem);
+    }
+  }
+
+  .header_title {
+    display: flex;
+    justify-content: center;
+
+    .title {
+      font-size: $font_size_title;
+      color: $clr;
+    }
+  }
+}
+
+section main .form {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  height: $size;
+  width: $size;
+  overflow: hidden;
+  width: 93%;
+  margin: .3rem auto;
+  border-radius: 3em;
+  padding: 3px;
+
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1;
+    flex-grow: 1;
+  }
+
+  .form-input,
+  .form-button {
+    font-family: inherit;
+    border-radius: inherit;
+    // text-transform: uppercase;
+    font-weight: 600;
+    // letter-spacing: 1px;
+    border: 0;
+  }
+
+  .form-input {
+    padding: 1.3em;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .form-input::placeholder {
+    opacity: 0.35;
+  }
+
+  .form-input:focus::placeholder {
+    color: $clr;
+    opacity: .85;
+  }
+
+  .form-button {
+    background: $clr;
+    font-size: $font-size;
+    // width: calc(#{$size} - 10px);
+    // height: calc(#{$size} - 10px);
+    margin-left: auto;
+    color: $white;
+    min-width: 7rem;
+    padding: 0;
+  }
+
+}
+
+.div1 {
+  position: relative;
+  height: 100%;
+  width: 7rem;
+  border-radius: 0 20px 20px 0;
+  padding: 10px;
+  background: $clr;
+
+  p {
+    flex-direction: column;
+    position: absolute;
+    color: $white;
+    line-height: 2;
+    width: 86%;
+    margin: 0;
+    transform: translate(2px, -5px);
+    text-align: right;
+  }
+}
+
+.div2 {
+  padding: 15px;
+  height: 10px;
+  width: 10px;
+  border-radius: 0 25px;
+  background: $white;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 21% -55%;
+  transform-origin: 25% -55%;
+}

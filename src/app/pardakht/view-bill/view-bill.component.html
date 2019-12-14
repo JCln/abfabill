@@ -1,0 +1,32 @@
+<section>
+  <div class="header_icon">
+    <img src="../../../assets/imgs/logo.png" alt="">
+  </div>
+  <div class="header_title">
+    <h3 class="title">
+      مشاهده قبض
+    </h3>
+  </div>
+
+</section>
+<section>
+  <main>
+    <form class="form" *ngFor="let viewBill of viewBill | async">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+          placeholder="{{viewBill.value}}" [(ngModel)]="viewBill.value">
+      </div>
+      <!-- <button class="form-button">{{viewBill.type}}</button> -->
+      <div class="div1">
+        <p>{{viewBill.type}}</p>
+        <div class="div2">
+        </div>
+      </div>
+    </form>
+  </main>
+</section>
+
+<section>
+  <footer>
+  </footer>
+</section>
