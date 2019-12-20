@@ -2,12 +2,6 @@ $clr: #00368c;
 $border-radius: #0198f1;
 $white: #fff;
 
-$size: 3rem;
-$font-size: 1rem;
-$font_size_title: 2rem;
-
-$img-size: 12rem;
-
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
 $firstBackground_color_border: rgba(153, 230, 255, 1);
@@ -24,6 +18,16 @@ $blue_backgroud_border: rgba(26, 163, 255, 1);
 $blue_backgroud: rgba(26, 163, 255, 0.11);
 $footer_background: rgba(0, 230, 0, 1);
 $footer_button: rgba(0, 26, 0, 1);
+
+$size: 3rem;
+$font-size: 1rem;
+$font_size_title: 2rem;
+
+$img-size: 12rem;
+
+@mixin text_align($text_align) {
+  text-align: $text_align;
+}
 
 section {
   width: 100vw;
@@ -51,9 +55,13 @@ section {
 
 section {
   .main {
-    .text_align {
-      text-align: right;
+    .text_align_right {
+      @include text_align(right);
     }
+    .text_align_center {
+      @include text_align(center);
+    }
+
     background: rgba(179, 179, 179, 0.3);
     border-radius: 30px;
     padding: 0.5rem;
