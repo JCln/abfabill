@@ -14,6 +14,7 @@
 
   <main class="main">
     <div class="background first_background">
+      <h3 class="text_align_center">متن آزمایشی</h3>
       <div *ngFor="let ww of viewBill | async; let first_back = index;">
         <div class="form" *ngIf="first_back < 4">
           <div class="form-item">
@@ -29,7 +30,8 @@
       </div>
     </div>
 
-    <div class="orange_background">
+    <div class="first_background orange_background">
+      <h3 class="text_align_center">متن آزمایشی</h3>
       <div *ngFor="let ww of viewBill | async; let orange_back = index">
         <div class="form" *ngIf="orange_back > 3 && 8 > orange_back">
           <div class="form-item">
@@ -45,7 +47,8 @@
       </div>
     </div>
 
-    <div class="background blue_background">
+    <div class="first_background blue_background">
+      <h3 class="text_align_center">متن آزمایشی</h3>
       <div *ngFor="let ww of viewBill | async; let blue_back = index">
         <div class="form" *ngIf="blue_back > 7 && 10 > blue_back">
           <div class="form-item">
@@ -60,7 +63,8 @@
         </div>
       </div>
     </div>
-    <div class="background second_background">
+    <div class="first_background second_background">
+      <h3 class="text_align_center">متن آزمایشی</h3>
       <div *ngFor="let ww of viewBill | async; let second_back = index">
         <div class="form" *ngIf="second_back > 9 && 12 > second_back">
           <div class="form-item">
@@ -76,7 +80,8 @@
       </div>
     </div>
 
-    <div class="background lightblue_background">
+    <div class="first_background lightblue_background">
+      <h3 class="text_align_center">متن آزمایشی</h3>
       <div *ngFor="let ww of viewBill | async; let lightblue_back = index">
         <div class="form" *ngIf="2 > lightblue_back">
           <div class="form-item">
@@ -92,7 +97,7 @@
       </div>
     </div>
 
-    <div class="background purple_background">
+    <div class="first_background purple_background">
       <div *ngFor="let ww of viewBill | async; let purple_back = index">
         <div class="form" *ngIf="2 > purple_back">
           <div class="form-item">
@@ -108,7 +113,7 @@
       </div>
     </div>
 
-    <div class="background darkgreen_background">
+    <div class="first_background darkgreen_background">
       <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
         <div class="form" *ngIf="5 > darkgreen_back">
           <div class="form-item">
