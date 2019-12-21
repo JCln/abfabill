@@ -48,7 +48,11 @@ section {
     }
   }
 }
-
+@mixin background {
+  border-radius: inherit;
+  margin: 0.9rem 0;
+  padding: 2rem 0;
+}
 section {
   .main {
     background: lightgray;
@@ -56,13 +60,16 @@ section {
     padding: 0.5rem;
     margin: 0 0.5rem;
 
-    .first_background {
-      border-radius: inherit;
-      margin: 0.9rem 0;
-      padding: 2rem 0;
+    // .background {
+    //   border-radius: inherit;
+    //   margin: 0.9rem 0;
+    //   padding: 2rem 0;
+    // }
 
+    .first_background {
+      @include background();
       .form-input {
-        border: 2px solid $firstBackground_color_border;
+        border: 2px solid $firstBackground_color_border !important;
       }
     }
     .orange_background {
