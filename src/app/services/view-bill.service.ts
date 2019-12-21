@@ -17,6 +17,11 @@ export class ViewBillService {
     { id: 2, value: 34634, type: 'تاریخ قرائت فعلی' },
     { id: 3, value: 34634, type: 'شماره کنتور پیشین' },
     { id: 4, value: 454534, type: 'شماره کنتور فعلی' },
+    { id: 5, value: 9879, type: 'قطر انشعاب' },
+    { id: 1, value: 23434, type: 'قرائت1' },
+    { id: 2, value: 34634, type: 'قرائت 2' },
+    { id: 3, value: 34634, type: 'قرائت 3' },
+    { id: 4, value: 454534, type: 'قرائت 4' },
     { id: 5, value: 9879, type: 'قطر انشعاب' }
   ];
 

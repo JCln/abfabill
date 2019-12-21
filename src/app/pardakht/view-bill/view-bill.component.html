@@ -11,18 +11,116 @@
 </section>
 <section>
   <main class="main">
-    <form class="form" *ngFor="let viewBill of viewBill | async">
-      <div class="form-item">
-        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-          placeholder="{{viewBill.value}}" [(ngModel)]="viewBill.value">
-      </div>
-      <!-- <button class="form-button">{{viewBill.type}}</button> -->
-      <div class="div1">
-        <p>{{viewBill.type}}</p>
-        <div class="div2">
+    <div class="first_background">
+      <div *ngFor="let ww of viewBill | async; let first_back = index;">
+        <div class="form" *ngIf="first_back > 5">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
         </div>
       </div>
-    </form>
+    </div>
+
+    <div class="first_background orange_background">
+      <div *ngFor="let ww of viewBill | async; let orange_back = index">
+        <div class="form" *ngIf="5 > orange_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="first_background blue_background">
+      <div *ngFor="let ww of viewBill | async; let blue_back = index">
+        <div class="form" *ngIf="4 > blue_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background second_background">
+      <div *ngFor="let ww of viewBill | async; let second_back = index">
+        <div class="form" *ngIf="2 > second_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="first_background lightblue_background">
+      <div *ngFor="let ww of viewBill | async; let lightblue_back = index">
+        <div class="form" *ngIf="2 > lightblue_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="first_background purple_background">
+      <div *ngFor="let ww of viewBill | async; let purple_back = index">
+        <div class="form" *ngIf="2 > purple_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="first_background darkgreen_background">
+      <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
+        <div class="form" *ngIf="5 > darkgreen_back">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="ww.value">
+          </div>
+          <div class="div1">
+            <p>{{ww.type}}</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </section>
 
