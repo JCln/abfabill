@@ -10,6 +10,8 @@
 
 </section>
 <section>
+
+
   <main class="main">
     <div class="background first_background">
       <div *ngFor="let ww of viewBill | async; let first_back = index;">
@@ -122,9 +124,11 @@
       </div>
     </div>
   </main>
+
 </section>
 
 <section>
   <footer>
+    <button [routerLink]="[ '/banks' ]">انتخاب بانک موردنظر</button>
   </footer>
 </section>
