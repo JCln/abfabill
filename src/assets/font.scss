@@ -1,0 +1,12 @@
+@font-face {
+  font-family: blutos;
+  font-style: normal;
+  font-display: swap;
+  src: 'assets/fonts/BLotus.eot';
+  src: 'assets/fonts/BLotus.eot' format('embedded-opentype'),
+  url('assets/fonts/BLotus.woff') format(woff)
+
+}
+body {
+  font-family: blutos;
+}

@@ -1,14 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/font.scss";
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 body,
 html {
   padding: 0;
   margin: 0;
+  font-family: blutos, sans-serif;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: 'b lotus';
 }

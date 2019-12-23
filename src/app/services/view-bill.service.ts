@@ -17,7 +17,7 @@ export class ViewBillService {
     { id: 2, value: 34634, type: 'تاریخ قرائت فعلی' },
     { id: 3, value: 34634, type: 'شماره کنتور پیشین' },
     { id: 4, value: 454534, type: 'شماره کنتور فعلی' },
-    { id: 5, value: 9879, type: '1' },
+    { id: 5, value: 1234567890333, type: '1' },
     { id: 1, value: 23434, type: '2' },
     { id: 2, value: 34634, type: '3' },
     { id: 3, value: 34634, type: '4' },

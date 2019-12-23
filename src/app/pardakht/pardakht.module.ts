@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ViewBillService } from './../services/view-bill.service';
 import { PardakhtRoutingModule } from './pardakht-routing.module';
 import { ViewBillComponent } from './view-bill/view-bill.component';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ViewBillComponent } from './view-bill/view-bill.component';
   imports: [
     CommonModule,
     FormsModule,
+    NgxBarcodeModule,
     PardakhtRoutingModule
   ],
   providers: [ViewBillService]
