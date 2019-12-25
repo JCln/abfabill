@@ -16,7 +16,12 @@ export class ViewBillComponent implements OnInit {
 
   viewBill: Observable<IViewBill[]>;
   bankIcons = bankIcons;
-  value = 5;
+  value = '00000100183150000017012345';
+  height = 50;
+  width = 1.5;
+  displayValue = false;
+
+  showMoreButton = false;
 
   constructor(private viewBillService: ViewBillService) { }
 
@@ -28,5 +33,9 @@ export class ViewBillComponent implements OnInit {
     this.chooseBank["name"] = bankName;
     this.chooseBank["linkToSite"] = bankurl;
   }
+  showMoreClicked = (): void => {
+    this.showMoreButton = !this.showMoreButton;
+  }
+
 
 }

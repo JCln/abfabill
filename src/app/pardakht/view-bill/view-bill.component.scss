@@ -1,6 +1,4 @@
-$clr: #00368c;
-$border-radius: #0198f1;
-$white: #fff;
+@import "../../../assets/main.scss";
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
@@ -32,30 +30,10 @@ $img-size: 12rem;
   display: flex;
   justify-content: center;
 }
-section {
-  width: 100vw;
-
-  .header_icon {
-    @include justify-center();
-    img {
-      width: $img-size;
-      height: calc(#{$img-size} - 1rem);
-    }
-  }
-
-  .header_title {
-    @include justify-center();
-
-    .title {
-      font-size: $font_size_title;
-      color: $clr;
-    }
-  }
-}
 @mixin background {
   border-radius: inherit;
-  margin: 0.9rem 0;
-  padding: 2rem 0;
+  margin: $margin_top_sections;
+  padding: 1rem 0;
 }
 section {
   .main {
@@ -72,13 +50,7 @@ section {
     margin: 0 0.5rem;
 
     .first_background {
-      border-radius: inherit;
-      margin: 0.9rem 0;
-      padding: 2rem 0;
-
-      .form-input {
-        border: 2px solid $firstBackground_color_border;
-      }
+     @include background();
     }
     .orange_background {
       background: $orange_background;
@@ -233,7 +205,7 @@ section {
 
 .pay_section {
   min-height: 10rem;
-  margin: 2rem 0;
+  margin: $margin_top_sections;
   .banks {
     display: flex;
     .bank_icons {
@@ -264,11 +236,11 @@ section {
       border-radius: 30px;
       background-color: #116fff;
       box-shadow: 0 0 10px rgba(17, 111, 255, 0.5);
-      margin: 8px 0;
+      margin-bottom: $margin_bottom_sections;
     }
   }
 }
-
-section footer {
+.barcode {
   @include justify-center();
+  margin: $margin_top_sections;
 }

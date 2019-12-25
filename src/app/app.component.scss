@@ -1,3 +1,5 @@
+$size: 3rem;
+$font-size: 1rem;
 
 .content {
   box-sizing: border-box;
@@ -9,19 +11,13 @@
   justify-content: center;
   font-family: blutos;
 }
-// ::ng-deep {
-//   .content {
-//     font-family: "b lotus";
-//   }
-// }
-
 // @font-face {"b lotus", "../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf", 700 }
 // @font-face {"b nazanin", "../../fonts/B_NAZANIN/B-NAZANIN.TTF" }
 
 // @font-face{
 //   font-family: "$blotus-ttf";
-  // src: url("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
-  // src: local("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
+// src: url("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
+// src: local("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
 // }
 
 // @font-face{

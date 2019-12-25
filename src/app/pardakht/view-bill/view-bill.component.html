@@ -1,162 +1,155 @@
 <section>
-  <div class="header_icon">
-    <img src="../../../assets/imgs/logo.png" alt="">
-  </div>
-  <div class="header_title">
-    <h3 class="title">
-      مشاهده قبض
-    </h3>
-  </div>
-
-</section>
-<section>
-
-
-  <main class="main">
-    <div class="background first_background">
-      <h3 class="text_align_center">
-        <i class="fab fa-angular"></i>
-        متن آزمایشی</h3>
-
-      <div *ngFor="let ww of viewBill | async; let first_back = index;">
-        <div class="form" *ngIf="first_back < 4">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="first_background orange_background">
-      <h3 class="text_align_center">
-        <i class="fab fa-android"></i>
-        متن آزمایشی</h3>
-      <div *ngFor="let ww of viewBill | async; let orange_back = index">
-        <div class="form" *ngIf="orange_back > 3 && 8 > orange_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="first_background blue_background">
-      <h3 class="text_align_center">متن آزمایشی</h3>
-      <div *ngFor="let ww of viewBill | async; let blue_back = index">
-        <div class="form" *ngIf="blue_back > 7 && 10 > blue_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="first_background second_background">
-      <h3 class="text_align_center">متن آزمایشی</h3>
-      <div *ngFor="let ww of viewBill | async; let second_back = index">
-        <div class="form" *ngIf="second_back > 9 && 12 > second_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="first_background lightblue_background">
-      <h3 class="text_align_center">متن آزمایشی</h3>
-      <div *ngFor="let ww of viewBill | async; let lightblue_back = index">
-        <div class="form" *ngIf="2 > lightblue_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="first_background purple_background">
-      <div *ngFor="let ww of viewBill | async; let purple_back = index">
-        <div class="form" *ngIf="2 > purple_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="first_background darkgreen_background">
-      <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
-        <div class="form" *ngIf="5 > darkgreen_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
+  <button (click)="showMoreClicked()">show more</button>
 </section>
 
-<section class="pay_section">
-  <div class="pay_button">
-    <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer'>
-      <button>
-        پرداخت {{chooseBank.name}}
-      </button>
-    </a>
-  </div>
-  <div class="banks">
-    <div class="bank_icons" (click)="changeBankForPay(banks.name , banks.linkToSite)" *ngFor="let banks of bankIcons">
-      <img src="{{banks.imgUrl}}">
-      <h3>
-        {{banks.name}}
-      </h3>
-    </div>
-  </div>
-</section>
+<div *ngIf="showMoreButton">
+  <section>
+    <main class="main">
+      <div class="background first_background">
+        <h3 class="text_align_center">
+          <i class="fab fa-angular"></i>
+          متن آزمایشی</h3>
 
-<section>
-  <footer>
-    <ngx-barcode [bc-value]="value" [bc-display-value]="true"></ngx-barcode>
-  </footer>
-</section>
+        <div *ngFor="let ww of viewBill | async; let first_back = index;">
+          <div class="form" *ngIf="first_back < 4">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="first_background orange_background">
+        <h3 class="text_align_center">
+          <i class="fab fa-android"></i>
+          متن آزمایشی</h3>
+        <div *ngFor="let ww of viewBill | async; let orange_back = index">
+          <div class="form" *ngIf="orange_back > 3 && 8 > orange_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="first_background blue_background">
+        <h3 class="text_align_center">متن آزمایشی</h3>
+        <div *ngFor="let ww of viewBill | async; let blue_back = index">
+          <div class="form" *ngIf="blue_back > 7 && 10 > blue_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="first_background second_background">
+        <h3 class="text_align_center">متن آزمایشی</h3>
+        <div *ngFor="let ww of viewBill | async; let second_back = index">
+          <div class="form" *ngIf="second_back > 9 && 12 > second_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="first_background lightblue_background">
+        <h3 class="text_align_center">متن آزمایشی</h3>
+        <div *ngFor="let ww of viewBill | async; let lightblue_back = index">
+          <div class="form" *ngIf="2 > lightblue_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="first_background purple_background">
+        <div *ngFor="let ww of viewBill | async; let purple_back = index">
+          <div class="form" *ngIf="2 > purple_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="first_background darkgreen_background">
+        <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
+          <div class="form" *ngIf="5 > darkgreen_back">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </section>
+
+  <section class="barcode">
+    <ngx-barcode [bc-value]="value" [bc-width]="width" [bc-display-value]="displayValue" [bc-height]="height"
+      [bc-display-value]="true"></ngx-barcode>
+  </section>
+
+  <section class="pay_section">
+    <div class="pay_button">
+      <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer'>
+        <button>
+          پرداخت {{chooseBank.name}}
+        </button>
+      </a>
+    </div>
+
+    <div class="banks">
+      <div class="bank_icons" (click)="changeBankForPay(banks.name , banks.linkToSite)" *ngFor="let banks of bankIcons">
+        <img src="{{banks.imgUrl}}">
+        <h3>
+          {{banks.name}}
+        </h3>
+      </div>
+    </div>
+  </section>
+</div>
