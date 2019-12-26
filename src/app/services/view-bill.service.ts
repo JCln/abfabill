@@ -13,26 +13,37 @@ export class ViewBillService {
   constructor() { }
   viewBill: IViewBill;
   viewbill: IViewBill[] = [
-    { id: 1, value: 23434, type: 'تاریخ قرائت پیشین' },
-    { id: 2, value: 34634, type: 'تاریخ قرائت فعلی' },
-    { id: 3, value: 34634, type: 'شماره کنتور پیشین' },
-    { id: 4, value: 454534, type: 'شماره کنتور فعلی' },
-    { id: 5, value: 1234567890333, type: '1' },
-    { id: 1, value: 23434, type: '2' },
-    { id: 2, value: 34634, type: '3' },
-    { id: 3, value: 34634, type: '4' },
-    { id: 4, value: 454534, type: '5' },
-    { id: 5, value: 9879, type: '6' },
-    { id: 5, value: 9879, type: '7' },
-    { id: 1, value: 23434, type: '8' },
-    { id: 2, value: 34634, type: '9' },
-    { id: 3, value: 34634, type: '10' },
-    { id: 4, value: 454534, type: '11' },
-    { id: 5, value: 9879, type: '12' }
+    { id: 4, value: 454534, type: 'مشترک گرامی' },
+    { id: 1, value: 23434, type: 'شناسه قبض' },
+    { id: 2, value: 34634, type: 'شناسه پرداخت' },
+    { id: 3, value: 34634, type: 'مبلغ قابل پرداخت' },
+    { id: 1, value: 23434, type: 'مهلت پرداخت' },
+    { id: 5, value: 1234567890333, type: 'کاربری' },
+    { id: 1, value: 23434, type: 'تعداد واحد' },
+    { id: 2, value: 34634, type: 'ظرفیت قراردادی' },
+    { id: 3, value: 34634, type: 'سریال کنتور' },
+    { id: 4, value: 454534, type: 'کد تعرفه' },
+    { id: 5, value: 9879, type: 'قطر انشعاب' },
+    { id: 5, value: 9879, type: 'قطر سیفون' },
+    { id: 1, value: 23434, type: 'وضعیت کنتور' },
+    { id: 9, value: 34634, type: 'تاریخ قرائت پیشین' },
+    { id: 9, value: 34634, type: 'تاریخ قرائت کنونی' },
+    { id: 4, value: 454534, type: 'تعداد روز' },
+    { id: 5, value: 9879, type: 'شماره کنتور پیشین' },
+    { id: 9, value: 34634, type: 'شماره کنتور کنونی' },
+    { id: 9, value: 34634, type: 'مصرف به متر مکعب' },
+    { id: 4, value: 454534, type: 'مصرف به لیتر' },
+    { id: 5, value: 9879, type: 'متوسط مصرف' },
+    { id: 11, value: 34634, type: 'بهای مصرفی آب بها' },
+    { id: 9, value: 34634, type: 'بهای دفع فاضلاب' },
+    { id: 4, value: 454534, type: 'مالیات و عوارض' },
+    { id: 5, value: 9879, type: 'تکلیف قانون بودجه' },
+    { id: 4, value: 454534, type: 'جمع' },
+    { id: 5, value: 9879, type: 'بدهی بستانکاری' }
   ];
 
   getViewBill = (): Observable<IViewBill[]> => {
-      return of(this.viewbill);
+    return of(this.viewbill);
     // this.mainService.GET().subscribe((data: IViewBill) => this.viewBill = {...data});
 
   }

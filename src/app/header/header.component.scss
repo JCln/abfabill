@@ -1,7 +1,4 @@
-$img-size: 12rem;
-$font_size_title: 2rem;
-
-$clr: #00368c;
+@import "../../assets/main.scss";
 
 @mixin justify-center {
   display: flex;
@@ -105,7 +102,7 @@ section {
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: $clr;
 }
 
 /*
@@ -129,12 +126,12 @@ section {
  */
 #menu {
   position: absolute;
-  width: 300px;
+  width: 100vw;
   margin: -100px 0 0 -50px;
   padding: 50px;
-  padding-top: 125px;
-  height: 68vh;
-  border-radius: 0 50px 0;
+  padding-top: 110px;
+  height: 40vh;
+  border-radius: 0 95px 0 50px;
   background: lightgray;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -148,13 +145,20 @@ section {
 
 #menu li {
   padding: 10px 0;
-  font-size: 22px;
+  border-radius: 30px;
+  font-size: $font_medium_size;
+  text-align: center;
+  min-width: 15rem;
+  margin: .5rem;
+  min-height: 3rem;
+  background: $medium_slate_blue;
 }
 
 /*
  * And let's slide it in from the left
  */
 #menuToggle input:checked ~ ul {
+  background: $pale_levender;
   transform: none;
   text-align: right;
 }
