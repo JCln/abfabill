@@ -1,7 +1,8 @@
 @import "../../assets/main.scss";
 
 footer {
-  background: $pale_levender;
+  background: $clr_border;
+  border-radius: 0 65px 0 50px;
   ul {
     text-align: center;
     list-style-type: none;
@@ -18,12 +19,12 @@ footer {
       }
       .text_style {
         width: 77%;
-        color: $medium_slate_blue;
-        font-weight: 800;
+        color: $white;
+        font-weight: 600;
       }
       i {
         font-size: 2.3rem;
-        color: $medium_slate_blue;
+        color: $white;
       }
     }
   }

@@ -8,12 +8,15 @@
 
 section {
   width: 100vw;
+  min-height: 12rem;
 
   .header_icon {
     @include justify-center();
     img {
       width: $img-size;
       height: calc(#{$img-size} - 1rem);
+      
+      transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     }
   }
 
@@ -33,7 +36,7 @@ section {
   width: 40px;
   top: 50px;
   left: 50px;
-  z-index: 1;
+  z-index: 2;
 
   -webkit-user-select: none;
   user-select: none;
@@ -148,9 +151,11 @@ section {
   border-radius: 30px;
   font-size: $font_medium_size;
   text-align: center;
-  min-width: 15rem;
+  min-width: 13rem;
   margin: .5rem;
   min-height: 3rem;
+  font-weight: 600;
+  color: white;
   background: $medium_slate_blue;
 }
 
@@ -158,7 +163,12 @@ section {
  * And let's slide it in from the left
  */
 #menuToggle input:checked ~ ul {
-  background: $pale_levender;
+  background: $clr_border;
   transform: none;
   text-align: right;
+}
+.toggleImg {
+  z-index: 2;
+  width: 3rem !important;
+  height: 3rem !important;
 }
