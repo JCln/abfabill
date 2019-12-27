@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { PardakhtModule } from './pardakht/pardakht.module';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,10 +18,9 @@ import { ErrorHandlerService } from './services/error-handler.service';
   imports: [
     BrowserModule,
     PardakhtModule,
-    ToastModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [ErrorHandlerService , ErrorHandler],
+  providers: [ErrorHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

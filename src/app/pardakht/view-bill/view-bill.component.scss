@@ -17,8 +17,8 @@ $blue_backgroud: rgba(26, 163, 255, 0.11);
 $footer_background: rgba(0, 230, 0, 1);
 $footer_button: rgba(0, 26, 0, 1);
 
-$lightgreen_border: #E4572E;
-$lightgreen: #D4DCFF;
+$lightgreen_border: #e4572e;
+$lightgreen: #d4dcff;
 
 $size: 3rem;
 $font-size: 1rem;
@@ -63,6 +63,7 @@ section {
         border: 1px solid $clr;
       }
     }
+
     .orange_background {
       background: $orange_background;
       border: 2px solid $orange_background_border;

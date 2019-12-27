@@ -1,5 +1,5 @@
 export interface IViewBill {
     id: number;
-    value: number;
+    value: string;
     type: string;
 }
