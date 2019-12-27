@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { IViewBill } from './iview-bill';
 import { environment } from 'src/environments/environment';
 import { catchError, retry } from 'rxjs/operators';
+import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class MainService {
   private configUrl: string = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {
     this.getEnvironment();
   }
 
@@ -19,7 +20,8 @@ export class MainService {
     this.configUrl = environment.API_URL;
   }
   GET = (): Observable<Object> => {
-    return this.http.get<IViewBill>(this.configUrl).pipe(retry(2) // retry failed request up to 2
+    return this.http.get<IViewBill>(this.configUrl).pipe(retry(2), // retry failed request up to 2
+      catchError(err => this.errorHandler.handleError)
     );
   }
 }

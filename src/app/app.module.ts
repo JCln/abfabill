@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { PardakhtModule } from './pardakht/pardakht.module';
-import { QRCodeModule } from 'angularx-qrcode';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,10 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     BrowserModule,
     PardakhtModule,
-    QRCodeModule,
+    ToastModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ErrorHandlerService , ErrorHandler],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
