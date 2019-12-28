@@ -1,4 +1,3 @@
-
 <section>
   <main class="main">
     <div class="background first_background">
@@ -6,11 +5,11 @@
         <i class="fab fa-angular"></i>
         متن آزمایشی</h3>
 
-      <div *ngFor="let ww of viewBill | async; let first_back = index;">
+      <div *ngFor="let ww of viewBill | async; let first_back = index; let first = first">
         <div class="form" *ngIf="first_back < 5">
           <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
+            <input type="text" readonly name="viewBill.value" class="form-input" [ngClass]="{'text_align_right': first}"
+              aria-label="first name" [(ngModel)]="ww.value">
           </div>
           <div class="div1">
             <p>{{ww.type}}</p>
@@ -24,14 +23,14 @@
       <button (click)="showMoreClicked()"> {{showMoreButton? 'نمایش کمتر جزئیات': 'مشاهده جزئیات بیشتر قبض'}}<i
           class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i></button>
     </section>
-    
+
     <div *ngIf="showMoreButton" class="aa">
 
       <div class="background purple_background">
         <h3 class="text_align_center">
           <i class="fab fa-android"></i>
           متن آزمایشی</h3>
-        <div *ngFor="let ww of viewBill | async; let purple_back = index">
+        <div *ngFor="let ww of viewBill | async; let purple_back = index;">
           <div class="form" *ngIf="purple_back > 4 && 13 > purple_back">
             <div class="form-item">
               <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
