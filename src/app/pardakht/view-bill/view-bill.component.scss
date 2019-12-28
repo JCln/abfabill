@@ -219,7 +219,9 @@ section {
   @include justify-center();
   button {
     @extend %button_first;
-    background: $medium_slate_blue;
+    color: $medium_slate_blue;
+    border: 2px solid $medium_slate_blue;
+    background: $white;
     justify-content: space-around;
     display: flex;
     align-items: center;
@@ -245,8 +247,8 @@ section {
       margin: 0.3rem;
       padding: 0.77rem;
       img {
-        width: 4rem;
-        height: 4rem;
+        width: 5rem;
+        height: 5rem;
       }
     }
   }
