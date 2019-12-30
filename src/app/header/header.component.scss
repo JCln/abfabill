@@ -5,7 +5,6 @@
   justify-content: center;
 }
 
-
 section {
   width: 100vw;
   min-height: 12rem;
@@ -15,7 +14,7 @@ section {
     img {
       width: $img-size;
       height: calc(#{$img-size} - 1rem);
-      
+
       transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     }
   }
@@ -133,8 +132,8 @@ section {
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 110px;
-  height: 40vh;
-  border-radius: 0 95px 0 50px;
+  max-height: 16rem;
+  border-radius: 0 0 30% 30%;
   background: lightgray;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -152,18 +151,21 @@ section {
   font-size: $font_medium_size;
   text-align: center;
   min-width: 13rem;
-  margin: .5rem;
+  margin: 0.5rem;
   min-height: 3rem;
   font-weight: 600;
-  color: white;
-  background: $medium_slate_blue;
+  box-shadow: 4px 4px 5px;
+  color: $medium_slate_blue;
+  background: $white;
 }
 
 /*
  * And let's slide it in from the left
  */
 #menuToggle input:checked ~ ul {
-  background: $clr_border;
+  // background: $clr_border;
+  background: linear-gradient(#00368c, rgba(0, 98, 255, 0.88));
+  box-shadow: 2px -1px 6px 10px $pale_levender;
   transform: none;
   text-align: right;
 }

@@ -19,9 +19,10 @@ export class MainService {
   private getEnvironment = (): void => {
     this.configUrl = environment.API_URL;
   }
-  GET = (): Observable<Object> => {
-    return this.http.get<IViewBill>(this.configUrl).pipe(retry(2), // retry failed request up to 2
+  GET = (ID: number, URL: string): Observable<IViewBill> => {
+    return this.http.get<IViewBill>(this.configUrl + '/' + URL + '/' + ID).pipe(retry(2), // retry failed request up to 2
       catchError(err => this.errorHandler.handleError)
     );
   }
+  // this.http.get<any>(environment.API_URL + '/' + URL + '/' + ID);
 }
