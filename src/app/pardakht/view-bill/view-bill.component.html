@@ -4,14 +4,14 @@
       <h3 class="text_align_center">
         <i class="fa fa-water"></i>
         خلاصه قبض</h3>
-      <div *ngFor="let ww of viewBill | async; let first_back = index; let first = first">
-        <div class="form" *ngIf="first_back <= 4">
+      <div *ngFor="let ww of viewbillArray | keyvalue  | slice:0:5; let first_back = index; let first = first">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" [ngClass]="{'text_align_right': first}"
               aria-label="first name" [(ngModel)]="ww.value">
           </div>
           <div class="div1">
-            <p>{{ww.type}}</p>
+            <p>{{ww.key}}</p>
             <div class="div2">
             </div>
           </div>
@@ -29,8 +29,8 @@
         <h3 class="text_align_center">
           <i class="fa fa-user"></i>
           اطلاعات انشعاب</h3>
-        <div *ngFor="let ww of viewBill | async; let purple_back = index;">
-          <div class="form" *ngIf="purple_back > 4 && 14 >= purple_back">
+        <div *ngFor="let ww of viewbillArray | keyvalue | slice:4:14; let purple_back = index;">
+          <div class="form">
             <div class="form-item">
               <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
                 [(ngModel)]="ww.value">
@@ -47,26 +47,8 @@
       <div class="background orange_background">
         <h3 class="text_align_center">
           <i class="fa fa-list-alt"></i>اطلاعات قرائت</h3>
-        <div *ngFor="let ww of viewBill | async; let orange_back = index">
-          <div class="form" *ngIf="orange_back > 12 && 20 > orange_back">
-            <div class="form-item">
-              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                [(ngModel)]="ww.value">
-            </div>
-            <div class="div1">
-              <p>{{ww.type}}</p>
-              <div class="div2">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="background darkgreen_background">
-        <h3 class="text_align_center">
-          <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
-        <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
-          <div class="form" *ngIf="darkgreen_back > 19 && 22 >= darkgreen_back">
+        <div *ngFor="let ww of viewbillArray | keyvalue | slice:12:20; let orange_back = index">
+          <div class="form">
             <div class="form-item">
               <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
                 [(ngModel)]="ww.value">
@@ -82,10 +64,28 @@
 
       <div class="background darkgreen_background">
         <h3 class="text_align_center">
+          <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
+        <div *ngFor="let ww of viewbillArray | keyvalue| slice:20:23; let darkgreen_back = index">
+          <div class="form">
+            <div class="form-item">
+              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                [(ngModel)]="ww.value">
+            </div>
+            <div class="div1">
+              <p>{{ww.type}}</p>
+              <div class="div2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="background orangegray_background">
+        <h3 class="text_align_center">
           <i class="fa fa-square-root-alt"></i>
           شرح اقلام</h3>
-        <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
-          <div class="form" *ngIf="darkgreen_back > 22 && 27 > darkgreen_back">
+        <div *ngFor="let ww of viewbillArray | keyvalue| slice:23:28; let darkgreen_back = index">
+          <div class="form">
             <div class="form-item">
               <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
                 [(ngModel)]="ww.value">

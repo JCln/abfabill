@@ -5,10 +5,10 @@ $secondBackground_color: rgba(255, 0, 0, 0.33);
 $firstBackground_color_border: rgba(153, 230, 255, 1);
 $red_background_color: rgba(255, 0, 0, 0.11);
 $orange_background: rgba(255, 191, 128, 0.5);
-$orange_background_border: rgba(204, 105, 0, 1);
+$orange_background_border: rgba(125, 73, 8, 1);
 $purple_backgruond_border: rgba(102, 0, 51, 1);
 $purple_backgruond: rgba(255, 204, 230, 0.1);
-$darkgreen_background_border: rgba(0, 102, 34, 1);
+$darkgreen_background_border: rgba(34, 162, 78, 1);
 $darkgreen_background: rgba(0, 102, 34, 0.11);
 $lightblue_background_border: rgba(0, 153, 255, 1);
 $lightblue_background: rgba(204, 235, 255, 0.11);
@@ -18,7 +18,7 @@ $footer_background: rgba(0, 230, 0, 1);
 $footer_button: rgba(0, 26, 0, 1);
 
 $lightgreen_border: #e4572e;
-$lightgreen: #d4dcff;
+$lightgreen: rgba(179, 179, 179, 0.3);
 
 $size: 3rem;
 $font-size: 1rem;
@@ -38,6 +38,10 @@ $img-size: 12rem;
   border-radius: $__border_radius;
   margin: $margin_top_sections;
   padding: 1rem 0;
+  i {
+    color: $orange_color;
+    width: $font_size_title;
+  }
 }
 section {
   .main {
@@ -74,36 +78,37 @@ section {
         background: $orange_background_border;
       }
     }
-    .blue_background {
-      background: rgba(125, 131, 255, 0.4);
-      border: 2px solid #7d83ff;
-      .form-input {
-        border: 1px solid #7d83ff;
-      }
-      .div1 {
-        background: #7d83ff;
-      }
-    }
-    .second_background {
-      background: $red_background_color;
-      border: 2px solid red;
-      .form-input {
-        border: 1px solid red;
-      }
-      .div1 {
-        background: red;
-      }
-    }
-    .lightblue_background {
-      background: $lightblue_background;
-      border: 2px solid $lightblue_background_border;
-      .form-input {
-        border: 1px solid $lightblue_background_border;
-      }
-      .div1 {
-        background: $lightblue_background_border;
-      }
-    }
+    
+    // .blue_background {
+    //   background: rgba(125, 131, 255, 0.4);
+    //   border: 2px solid #7d83ff;
+    //   .form-input {
+    //     border: 1px solid #7d83ff;
+    //   }
+    //   .div1 {
+    //     background: #7d83ff;
+    //   }
+    // }
+    // .second_background {
+    //   background: $red_background_color;
+    //   border: 2px solid red;
+    //   .form-input {
+    //     border: 1px solid red;
+    //   }
+    //   .div1 {
+    //     background: red;
+    //   }
+    // }
+    // .lightblue_background {
+    //   background: $lightblue_background;
+    //   border: 2px solid $lightblue_background_border;
+    //   .form-input {
+    //     border: 1px solid $lightblue_background_border;
+    //   }
+    //   .div1 {
+    //     background: $lightblue_background_border;
+    //   }
+    // }
     .purple_background {
       background: $purple_backgruond;
       border: 2px solid $purple_backgruond_border;
@@ -114,7 +119,7 @@ section {
         background: $purple_backgruond_border;
       }
     }
-    .darkgreen_background {
+    .orangegray_background {
       background: $lightgreen;
       border: 2px solid $lightgreen_border;
       .form-input {
@@ -122,6 +127,16 @@ section {
       }
       .div1 {
         background: $lightgreen_border;
+      }
+    }
+    .darkgreen_background {
+      background: $darkgreen_background;
+      border: 2px solid $darkgreen_background_border;
+      .form-input {
+        border: 1px solid $darkgreen_background_border;
+      }
+      .div1 {
+        background: $darkgreen_background_border;
       }
     }
     .form {
