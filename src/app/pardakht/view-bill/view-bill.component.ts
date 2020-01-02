@@ -19,124 +19,45 @@ export interface ITestObject {
   styleUrls: ['./view-bill.component.scss']
 })
 export class ViewBillComponent implements OnInit {
-  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
+  AbBaha: number;
+  AhadMaskooni: number;
+  AhadNonMaskooni: number;
+  BarCode: number;
+  Barge: number;
+  BillId: number;
+  Budget: number;
+  CounterStateId: number;
+  CurrentCounterNumber: number;
+  CurrentCounterReadingDate: string;
+  DeadLine: number;
+  Eshterak: number;
+  FullName: number;
+  Id: number;
+  Jam: number;
+  KarbariTitle: number;
+  KarmozdFazelab: number;
+  LavazemKahande: number;
+  Maliat: number;
+  Masraf: number;
+  MasrafAverage: number;
+  MasrafLiter: number;
+  PayBank: number;
+  PayDate: number;
+  PayId: number;
+  Payable: number;
+  PreBedOrBes: number;
+  PreCounterNumber: number;
+  PreCounterReadingDate: number;
+  Qotr: number;
+  QotrSifoon: number;
+  Radif: number;
+  Taxfif: number;
+  ZarfiatQarardadi: number;
+  ZoneTitle: number;
 
-  // viewBill: Observable<IViewBill>;
-  viewbillArray: any = [];
-  testForPersianKeys: any[] = [
-    '     مشترک گرامی',
-    '    مشترک گرامی',
-    '   مشترک گرامی',
-    '   مشترک گرامی',
-    'مشترک گرامی',
-    ' شناسه قبض',
-    ' شناسه پرداخت',
-    ' مبلغ قابل پرداخت',
-    ' مهلت پرداخت',
-    ' کاربری',
-    'تعداد واحد مسکونی',
-    'تعدادواحدغیرمسکونی',
-    ' ظرفیت قراردادی',
-    'قطر انشعاب',
-    'قطر سیفون',
-    ' وضعیت کنتور',
-    'شماره ردیف',
-    'شمراه برگه',
-    'شماره اشتراک',
-    'تاریخ قرائت پیشین',
-    'تاریخ قرائت کنونی',
-    'تعداد روز',
-    ' شماره کنتور پیشین',
-    ' شماره کنتور کنونی',
-    ' مصرف به متر مکعب',
-    ' مصرف به لیتر',
-    ' متوسط مصرف',
-    'بهای مصرفی آب بها',
-    ' بهای دفع فاضلاب',
-    '  مالیات و عوارض',
-    '  تکلیف قانون بودجه',
-    'لوازم کاهنده',
-    'جمع',
-    'تخفیف',
-    ' بدهی بستانکاری'
-  ];
-  testObject2: any[] = [
-    { value: 'sdfsdf', type: 'مشترک گرامی' },
-    { value: 'sdf', type: 'مشترک گرامی' },
-    { value: 'sdf', type: 'مشترک گرامی' },
-    { value: 'sdf', type: 'مشترک گرامی' },
-    { value: 'تست تستیان', type: 'مشترک گرامی' },
-    { value: '23434', type: 'شناسه قبض' },
-    { value: '34634', type: 'شناسه پرداخت' },
-    { value: '34634', type: 'مبلغ قابل پرداخت' },
-    { value: '23434', type: 'مهلت پرداخت' },
-    { value: '1234567890333', type: 'کاربری' },
-    { value: ' 23434', type: 'تعداد واحد مسکونی' },
-    { value: ' 23434', type: 'تعدادواحدغیرمسکونی' },
-    { value: '34634', type: 'ظرفیت قراردادی' },
-    { value: ' 9879', type: 'قطر انشعاب' },
-    { value: '9879', type: 'قطر سیفون' },
-    { value: '23434', type: 'وضعیت کنتور' },
-    { value: ' 34634', type: 'شماره ردیف' },
-    { value: '454534', type: 'شمراه برگه' },
-    { value: ' 34634', type: 'شماره اشتراک' },
-    { value: '34634', type: 'تاریخ قرائت پیشین' },
-    { value: ' 34634', type: 'تاریخ قرائت کنونی' },
-    { value: '454534', type: 'تعداد روز' },
-    { value: '9879', type: 'شماره کنتور پیشین' },
-    { value: '34634', type: 'شماره کنتور کنونی' },
-    { value: '34634', type: 'مصرف به متر مکعب' },
-    { value: '454534', type: 'مصرف به لیتر' },
-    { value: '9879', type: 'متوسط مصرف' },
-    { value: ' 34634', type: 'بهای مصرفی آب بها' },
-    { value: '34634', type: 'بهای دفع فاضلاب' },
-    { value: '454534', type: 'مالیات و عوارض' },
-    { value: '9879', type: 'تکلیف قانون بودجه' },
-    { value: ' 34634', type: 'لوازم کاهنده' },
-    { value: ' 454534', type: 'جمع' },
-    { value: ' 34634', type: 'تخفیف' },
-    { value: 'sdf', type: 'بدهی بستانکاری' }
-  ];
-  testObject: any[] = [
-    { AbBaha: 1, type: 'مشترک گرامی' },
-    { AhadMaskoonivalue: 1, type: 'مشترک گرامی' },
-    { AhadNonMaskoonivalue: 1, type: 'مشترک گرامی' },
-    { BarCodevalue: 1, type: 'مشترک گرامی' },
-    { Barge: 4, value: 'تست تستیان', type: 'مشترک گرامی' },
-    { BillId: 1, value: '23434', type: 'شناسه قبض' },
-    { Budget: 2, value: '34634', type: 'شناسه پرداخت' },
-    { CounterStateId: 3, value: '34634', type: 'مبلغ قابل پرداخت' },
-    { CurrentCounterNumber: 1, value: '23434', type: 'مهلت پرداخت' },
-    { CurrentCounterReadingDate: 5, value: '1234567890333', type: 'کاربری' },
-    { DeadLine: 1, value: ' 23434', type: 'تعداد واحد مسکونی' },
-    { Eshterak: 1, value: ' 23434', type: 'تعدادواحدغیرمسکونی' },
-    { FullName: 2, value: '34634', type: 'ظرفیت قراردادی' },
-    { Id: 5, value: ' 9879', type: 'قطر انشعاب' },
-    { Jam: 5, value: '9879', type: 'قطر سیفون' },
-    { KarbariTitle: 1, value: '23434', type: 'وضعیت کنتور' },
-    { KarmozdFazelab: 3, value: ' 34634', type: 'شماره ردیف' },
-    { LavazemKahande: 4, value: '454534', type: 'شمراه برگه' },
-    { Maliat: 3, value: ' 34634', type: 'شماره اشتراک' },
-    { Masraf: 9, value: '34634', type: 'تاریخ قرائت پیشین' },
-    { MasrafAverage: 9, value: ' 34634', type: 'تاریخ قرائت کنونی' },
-    { MasrafLiter: 4, value: '454534', type: 'تعداد روز' },
-    { PayBank: 5, value: '9879', type: 'شماره کنتور پیشین' },
-    { PayDate: 9, value: '34634', type: 'شماره کنتور کنونی' },
-    { PayId: 9, value: '34634', type: 'مصرف به متر مکعب' },
-    { Payable: 4, value: '454534', type: 'مصرف به لیتر' },
-    { PreBedOrBes: 5, value: '9879', type: 'متوسط مصرف' },
-    { PreCounterNumber: 11, value: ' 34634', type: 'بهای مصرفی آب بها' },
-    { PreCounterReadingDate: 9, value: '34634', type: 'بهای دفع فاضلاب' },
-    { Qotr: 4, value: '454534', type: 'مالیات و عوارض' },
-    { QotrSifoon: 5, value: '9879', type: 'تکلیف قانون بودجه' },
-    { Radif: 3, value: ' 34634', type: 'لوازم کاهنده' },
-    { Taxfif: 4, value: ' 454534', type: 'جمع' },
-    { ZarfiatQarardadi: 3, value: ' 34634', type: 'تخفیف' },
-    { ZoneTitle: 5, type: 'بدهی بستانکاری' }
-  ]
-  // viewbillKeys: IViewBill = [
-  //   {Abbaha: ''}
-  // ];
+  // isPayedIs_true: boolean;
+
+  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   viewBillTypeOnly = [];
 
   bankIcons = bankIcons;
@@ -149,35 +70,95 @@ export class ViewBillComponent implements OnInit {
 
   constructor(private viewBillService: ViewBillService) { }
 
-  valueAfterRes = (res: object) => {
-    // this.testObject.AbBaha = res.AbBaha;
-  }
+  valueAfterRes = (row: object[]) => {
 
-  insertValues = () => {
-    this.viewBillService.getViewBill().subscribe(res => {
-      // this.testObject = res;
-      this.testObject2 = Object.keys(res);
-      // console.log(this.testObject);
-      // let value = Object.keys(res);
-      // value = Object.keys(this.testObject);
-      // console.log(value);
+    let member = {
+      AbBaha: Object.values(row)[17],
+      AhadMaskooni: Object.values(row)[8], AhadNonMaskooni: Object.values(row)[17],
+      BarCode: Object.values(row)[8], Barge: Object.values(row)[17],
+      BillId: Object.values(row)[8], Budget: Object.values(row)[17],
+      CounterStateId: Object.values(row)[8], CurrentCounterNumber: Object.values(row)[17],
+      CurrentCounterReadingDate: Object.values(row)[8], DeadLine: Object.values(row)[17],
+      Eshterak: Object.values(row)[8], FullName: Object.values(row)[17],
 
-      this.viewbillArray = res;
-      this.valueAfterRes(res);
-    });
-  }
 
-  ngOnInit() {
-    this.insertValues();
-  }
-  changeBankForPay = (bankName: string, bankurl: string) => {
-    this.chooseBank["name"] = bankName;
-    this.chooseBank["linkToSite"] = bankurl;
-  }
-  showMoreClicked = (): void => {
-    this.showMoreButton = !this.showMoreButton;
-    scroll(0, 5000);
-  }
+      Jam: Object.values(row)[20], KarbariTitle: Object.values(row)[11],
+      KarmozdFazelab: Object.values(row)[1], LavazemKahande: Object.values(row)[4],
+      Maliat: Object.values(row)[16], Masraf: Object.values(row)[2],
+      MasrafAverage: Object.values(row)[18], MasrafLiter: Object.values(row)[22],
+      PayBank: Object.values(row)[12],
+      PayDate: Object.values(row)[9],
+      PayId: Object.values(row)[10], Payable: Object.values(row)[21],
+      PreBedOrBes: Object.values(row)[14], PreCounterNumber: Object.values(row)[15],
+      PreCounterReadingDate: Object.values(row)[13], Qotr: Object.values(row)[0],
+      QotrSifoon: Object.values(row)[3], Radif: Object.values(row)[19],
+      Taxfif: Object.values(row)[6], ZarfiatQarardadi: Object.values(row)[6],
+      ZoneTitle: Object.values(row)[5]
+    };
+
+    return Object.values(member);
+}
+
+setVals(qabzData: Object[]) {
+  var row = this.valueAfterRes(qabzData);
+
+  this.AbBaha = row[0];
+  this.AhadMaskooni = row[1];
+  this.AhadNonMaskooni = row[2];
+  this.BarCode = row[5];
+  this.Barge = row[6];
+  this.BillId = row[7];
+  this.Budget = row[8];
+  this.CounterStateId = row[9];
+  this.CurrentCounterNumber = row[37];
+  this.CurrentCounterReadingDate = row[10];
+  this.DeadLine = row[11];
+  this.Eshterak = row[12];
+  this.FullName = row[13];
+  this.Id = row[14];
+  this.Jam = row[15];
+  this.KarbariTitle = row[16];
+  this.KarmozdFazelab = row[17];
+  this.LavazemKahande = row[18];
+  this.Maliat = row[19];
+  this.Masraf = row[20];
+  this.MasrafAverage = row[21];
+  this.MasrafLiter = row[22];
+  this.PayBank = row[23];
+  this.PayDate = row[24];
+  this.PayId = row[26];
+  this.Payable = row[27];
+  this.PreBedOrBes = row[28];
+  this.PreCounterNumber = row[29];
+  this.PreCounterReadingDate = row[30];
+  this.Qotr = row[31];
+  this.QotrSifoon = row[32];
+  this.Radif = row[33];
+  this.Taxfif = row[34];
+  this.ZarfiatQarardadi = row[35];
+  this.ZoneTitle = row[36];
+
+}
+
+
+insertValues = () => {
+  this.viewBillService.getViewBill().subscribe((res:Object[]) => {
+    
+  });
+
+}
+
+ngOnInit() {
+  this.insertValues();
+}
+changeBankForPay = (bankName: string, bankurl: string) => {
+  this.chooseBank["name"] = bankName;
+  this.chooseBank["linkToSite"] = bankurl;
+}
+showMoreClicked = (): void => {
+  this.showMoreButton = !this.showMoreButton;
+  scroll(0, 5000);
+}
 
 
 }

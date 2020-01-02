@@ -1,130 +1,371 @@
+
 <section>
+
+
   <main class="main">
-    <div class="background first_background">
-      <h3 class="text_align_center">
-        <i class="fa fa-water"></i>
-        خلاصه قبض</h3>
-      <div *ngFor="let ww of viewbillArray | keyvalue  | slice:0:5; let first_back = index; let first = first">
-        <div class="form">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" [ngClass]="{'text_align_right': first}"
-              aria-label="first name" [(ngModel)]="ww.value">
+    <h3 class="text_align_center">متن آزمایشی </h3>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
+          value="{{}}">
+      </div>
+      <div class="div1">
+        <p>مشترک گرامی</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
+      value="{{}}">
+      </div>
+      <div class="div1">
+        <p>آدرس</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
+          value="12345">
+      </div>
+      <div class="div1">
+        <p>کاربری</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name" value="12345">
+      </div>
+      <div class="div1">
+        <p>شماره ردیف</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name" value="12345">
+      </div>
+      <div class="div1">
+        <p>شماره اشتراک</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-item">
+        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name" value="12345">
+      </div>
+      <div class="div1">
+        <p>کد پستی</p>
+        <div class="div2">
+        </div>
+      </div>
+    </div>
+    <div class="first_background blue_background">
+      <h3 class="text_align_center">متن آزمایشی </h3>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>تاریخ قرائت پیشین</p>
+          <div class="div2">
           </div>
-          <div class="div1">
-            <p>{{ww.key}}</p>
-            <div class="div2">
-            </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>تاریخ قرائت کنونی</p>
+          <div class="div2">
           </div>
         </div>
       </div>
     </div>
-    <section class="check_moreinfo">
-      <button (click)="showMoreClicked()"> {{showMoreButton? 'نمایش کمتر جزئیات': 'مشاهده جزئیات بیشتر قبض'}}<i
-          class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i></button>
-    </section>
-
-    <div *ngIf="showMoreButton">
-
-      <div class="background purple_background">
-        <h3 class="text_align_center">
-          <i class="fa fa-user"></i>
-          اطلاعات انشعاب</h3>
-        <div *ngFor="let ww of viewbillArray | keyvalue | slice:4:14; let purple_back = index;">
-          <div class="form">
-            <div class="form-item">
-              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                [(ngModel)]="ww.value">
-            </div>
-            <div class="div1">
-              <p>{{ww.type}}</p>
-              <div class="div2">
-              </div>
-            </div>
+    <div class="first_background blue_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>شماره کنتور پیشین</p>
+          <div class="div2">
           </div>
         </div>
       </div>
-
-      <div class="background orange_background">
-        <h3 class="text_align_center">
-          <i class="fa fa-list-alt"></i>اطلاعات قرائت</h3>
-        <div *ngFor="let ww of viewbillArray | keyvalue | slice:12:20; let orange_back = index">
-          <div class="form">
-            <div class="form-item">
-              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                [(ngModel)]="ww.value">
-            </div>
-            <div class="div1">
-              <p>{{ww.type}}</p>
-              <div class="div2">
-              </div>
-            </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>شماره کنتور کنونی</p>
+          <div class="div2">
           </div>
         </div>
       </div>
-
-      <div class="background darkgreen_background">
-        <h3 class="text_align_center">
-          <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
-        <div *ngFor="let ww of viewbillArray | keyvalue| slice:20:23; let darkgreen_back = index">
-          <div class="form">
-            <div class="form-item">
-              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                [(ngModel)]="ww.value">
-            </div>
-            <div class="div1">
-              <p>{{ww.type}}</p>
-              <div class="div2">
-              </div>
-            </div>
+    </div>
+    <div class="first_background orange_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>مصرف به مترمکعب</p>
+          <div class="div2">
           </div>
         </div>
       </div>
-
-      <div class="background orangegray_background">
-        <h3 class="text_align_center">
-          <i class="fa fa-square-root-alt"></i>
-          شرح اقلام</h3>
-        <div *ngFor="let ww of viewbillArray | keyvalue| slice:23:28; let darkgreen_back = index">
-          <div class="form">
-            <div class="form-item">
-              <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                [(ngModel)]="ww.value">
-            </div>
-            <div class="div1">
-              <p>{{ww.type}}</p>
-              <div class="div2">
-              </div>
-            </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>مصرف به لیتر</p>
+          <div class="div2">
           </div>
         </div>
       </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>متوسط مصرف</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background purple_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر انشعاب</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر سیفون</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>وضیعت کنتور</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background darkgreen_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>بهای مصرفی اب بها</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>بهای دفع فاضلاب</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p> مالیات و عوارض</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>کلیف قانون بودجه</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>بدهی یا بستانکاری</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>جمع</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background lightblue_background">
 
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر انشعاب</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر سیفون</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>وضیعت کنتور</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background lightblue_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر انشعاب</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر سیفون</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>وضیعت کنتور</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="first_background lightblue_background">
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر انشعاب</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>قطر سیفون</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="5678932348">
+        </div>
+        <div class="div1">
+          <p>وضیعت کنتور</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
 </section>
 
-<section class="barcode">
-  <ngx-barcode [bc-value]="value" [bc-width]="width" [bc-display-value]="displayValue" [bc-height]="height"
-    [bc-display-value]="true"></ngx-barcode>
-</section>
-
-<section class="pay_section">
-  <div class="pay_button">
-    <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer'>
-      <!--  [disabled]="viewbillArray.IsPayed === false" -->
-      <button>
-        پرداخت با {{chooseBank.name}}
-      </button>
-    </a>
-  </div>
-
-  <div class="banks">
-    <div class="bank_icons" (click)="changeBankForPay(banks.name , banks.linkToSite)" *ngFor="let banks of bankIcons">
-      <img src="{{banks.imgUrl}}">
-      <!-- <h3>
-        {{banks.name}}
-      </h3> -->
-    </div>
-  </div>
+<section>
+  <footer>
+    <button [routerLink]="[ '/banks' ]">انتخاب بانک موردنظر</button>
+  </footer>
 </section>
