@@ -19,42 +19,6 @@ export interface ITestObject {
   styleUrls: ['./view-bill.component.scss']
 })
 export class ViewBillComponent implements OnInit {
-  AbBaha: number;
-  AhadMaskooni: number;
-  AhadNonMaskooni: number;
-  BarCode: number;
-  Barge: number;
-  BillId: number;
-  Budget: number;
-  CounterStateId: number;
-  CurrentCounterNumber: number;
-  CurrentCounterReadingDate: string;
-  DeadLine: number;
-  Eshterak: number;
-  FullName: number;
-  Id: number;
-  Jam: number;
-  KarbariTitle: number;
-  KarmozdFazelab: number;
-  LavazemKahande: number;
-  Maliat: number;
-  Masraf: number;
-  MasrafAverage: number;
-  MasrafLiter: number;
-  PayBank: number;
-  PayDate: number;
-  PayId: number;
-  Payable: number;
-  PreBedOrBes: number;
-  PreCounterNumber: number;
-  PreCounterReadingDate: number;
-  Qotr: number;
-  QotrSifoon: number;
-  Radif: number;
-  Taxfif: number;
-  ZarfiatQarardadi: number;
-  ZoneTitle: number;
-
   // isPayedIs_true: boolean;
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
@@ -97,7 +61,7 @@ export class ViewBillComponent implements OnInit {
       Radif: Object.values(row)[30],
       Taxfif: Object.values(row)[31], ZarfiatQarardadi: Object.values(row)[32],
       ZoneTitle: Object.values(row)[33],
-       zoneId: Object.values(row)[34], karbariId: Object.values(35),
+      zoneId: Object.values(row)[34], karbariId: Object.values(35),
       QoqotrSifoonId: Object.values(row)[36],
       payTypeId: Object.values(row)[37],
       payBankId: Object.values(row)[38]
@@ -110,7 +74,7 @@ export class ViewBillComponent implements OnInit {
 
   insertValues = () => {
     this.viewBillService.getViewBill().subscribe((res: any) => {
-      
+
       this.viewBillTypeOnly = this.valueAfterRes(res);
       console.log(this.viewBillTypeOnly);
 
