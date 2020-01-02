@@ -27,8 +27,8 @@ export class MainService {
     this.getEnvironment();
   }
 
-  GET = (ID: string, URL: string): Observable<IViewBill> => {
-    return this.http.get<IViewBill>(this.configUrl + '/' + URL + '/' + ID)
+  GET = (ID: string, URL: string, base64: string): Observable<IViewBill> => {
+    return this.http.get<IViewBill>(this.configUrl + '/' + URL + '/' + base64 + '/' + ID)
       .pipe(
         retry(2), // retry failed request up to 2
         catchError(err => this.errorHandler.handleError)

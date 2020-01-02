@@ -59,6 +59,7 @@ export class ViewBillComponent implements OnInit {
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   viewBillTypeOnly = [];
+  testObject: any = {}
 
   bankIcons = bankIcons;
   value = '00000100183150000017012345';
@@ -70,95 +71,64 @@ export class ViewBillComponent implements OnInit {
 
   constructor(private viewBillService: ViewBillService) { }
 
-  valueAfterRes = (row: object[]) => {
+  valueAfterRes = (row: object[]): Object[] => {
 
     let member = {
-      AbBaha: Object.values(row)[17],
-      AhadMaskooni: Object.values(row)[8], AhadNonMaskooni: Object.values(row)[17],
-      BarCode: Object.values(row)[8], Barge: Object.values(row)[17],
-      BillId: Object.values(row)[8], Budget: Object.values(row)[17],
-      CounterStateId: Object.values(row)[8], CurrentCounterNumber: Object.values(row)[17],
-      CurrentCounterReadingDate: Object.values(row)[8], DeadLine: Object.values(row)[17],
-      Eshterak: Object.values(row)[8], FullName: Object.values(row)[17],
+      Id: Object.values(row)[0],
+
+      AhadMaskooni: Object.values(row)[1], AhadNonMaskooni: Object.values(row)[2],
+      BarCode: Object.values(row)[3], Barge: Object.values(row)[4],
+      BillId: Object.values(row)[5], Budget: Object.values(row)[6],
+      CounterStateId: Object.values(row)[7], CurrentCounterNumber: Object.values(row)[8],
+      CurrentCounterReadingDate: Object.values(row)[9], DeadLine: Object.values(row)[10],
+      Eshterak: Object.values(row)[11], FullName: Object.values(row)[12],
 
 
-      Jam: Object.values(row)[20], KarbariTitle: Object.values(row)[11],
-      KarmozdFazelab: Object.values(row)[1], LavazemKahande: Object.values(row)[4],
-      Maliat: Object.values(row)[16], Masraf: Object.values(row)[2],
-      MasrafAverage: Object.values(row)[18], MasrafLiter: Object.values(row)[22],
-      PayBank: Object.values(row)[12],
-      PayDate: Object.values(row)[9],
-      PayId: Object.values(row)[10], Payable: Object.values(row)[21],
-      PreBedOrBes: Object.values(row)[14], PreCounterNumber: Object.values(row)[15],
-      PreCounterReadingDate: Object.values(row)[13], Qotr: Object.values(row)[0],
-      QotrSifoon: Object.values(row)[3], Radif: Object.values(row)[19],
-      Taxfif: Object.values(row)[6], ZarfiatQarardadi: Object.values(row)[6],
-      ZoneTitle: Object.values(row)[5]
+      Jam: Object.values(row)[13], KarbariTitle: Object.values(row)[14],
+      KarmozdFazelab: Object.values(row)[15], LavazemKahande: Object.values(row)[16],
+      Maliat: Object.values(row)[17], Masraf: Object.values(row)[18],
+      MasrafAverage: Object.values(row)[19], MasrafLiter: Object.values(row)[20],
+      PayBank: Object.values(row)[21],
+      PayDate: Object.values(row)[22],
+      PayId: Object.values(row)[23], Payable: Object.values(row)[24],
+      PreBedOrBes: Object.values(row)[25], PreCounterNumber: Object.values(row)[26],
+      PreCounterReadingDate: Object.values(row)[27], Qotr: Object.values(row)[28],
+      QotrSifoon: Object.values(row)[29],
+      Radif: Object.values(row)[30],
+      Taxfif: Object.values(row)[31], ZarfiatQarardadi: Object.values(row)[32],
+      ZoneTitle: Object.values(row)[33],
+       zoneId: Object.values(row)[34], karbariId: Object.values(35),
+      QoqotrSifoonId: Object.values(row)[36],
+      payTypeId: Object.values(row)[37],
+      payBankId: Object.values(row)[38]
+
     };
 
     return Object.values(member);
-}
-
-setVals(qabzData: Object[]) {
-  var row = this.valueAfterRes(qabzData);
-
-  this.AbBaha = row[0];
-  this.AhadMaskooni = row[1];
-  this.AhadNonMaskooni = row[2];
-  this.BarCode = row[5];
-  this.Barge = row[6];
-  this.BillId = row[7];
-  this.Budget = row[8];
-  this.CounterStateId = row[9];
-  this.CurrentCounterNumber = row[37];
-  this.CurrentCounterReadingDate = row[10];
-  this.DeadLine = row[11];
-  this.Eshterak = row[12];
-  this.FullName = row[13];
-  this.Id = row[14];
-  this.Jam = row[15];
-  this.KarbariTitle = row[16];
-  this.KarmozdFazelab = row[17];
-  this.LavazemKahande = row[18];
-  this.Maliat = row[19];
-  this.Masraf = row[20];
-  this.MasrafAverage = row[21];
-  this.MasrafLiter = row[22];
-  this.PayBank = row[23];
-  this.PayDate = row[24];
-  this.PayId = row[26];
-  this.Payable = row[27];
-  this.PreBedOrBes = row[28];
-  this.PreCounterNumber = row[29];
-  this.PreCounterReadingDate = row[30];
-  this.Qotr = row[31];
-  this.QotrSifoon = row[32];
-  this.Radif = row[33];
-  this.Taxfif = row[34];
-  this.ZarfiatQarardadi = row[35];
-  this.ZoneTitle = row[36];
-
-}
+  }
 
 
-insertValues = () => {
-  this.viewBillService.getViewBill().subscribe((res:Object[]) => {
-    
-  });
+  insertValues = () => {
+    this.viewBillService.getViewBill().subscribe((res: any) => {
+      
+      this.viewBillTypeOnly = this.valueAfterRes(res);
+      console.log(this.viewBillTypeOnly);
 
-}
+    });
 
-ngOnInit() {
-  this.insertValues();
-}
-changeBankForPay = (bankName: string, bankurl: string) => {
-  this.chooseBank["name"] = bankName;
-  this.chooseBank["linkToSite"] = bankurl;
-}
-showMoreClicked = (): void => {
-  this.showMoreButton = !this.showMoreButton;
-  scroll(0, 5000);
-}
+  }
+
+  ngOnInit() {
+    this.insertValues();
+  }
+  changeBankForPay = (bankName: string, bankurl: string) => {
+    this.chooseBank["name"] = bankName;
+    this.chooseBank["linkToSite"] = bankurl;
+  }
+  showMoreClicked = (): void => {
+    this.showMoreButton = !this.showMoreButton;
+    scroll(0, 5000);
+  }
 
 
 }
