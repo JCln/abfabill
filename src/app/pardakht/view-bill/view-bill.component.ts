@@ -19,8 +19,7 @@ export interface ITestObject {
   styleUrls: ['./view-bill.component.scss']
 })
 export class ViewBillComponent implements OnInit {
-  // isPayedIs_true: boolean;
-
+  spinner_boolean = true;
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   viewBillTypeOnly = [];
   testObject: any = {}
@@ -74,9 +73,10 @@ export class ViewBillComponent implements OnInit {
 
   insertValues = () => {
     this.viewBillService.getViewBill().subscribe((res: any) => {
-
-      this.viewBillTypeOnly = this.valueAfterRes(res);
-      console.log(this.viewBillTypeOnly);
+      if (res) {
+        this.spinner_boolean = false;
+        this.viewBillTypeOnly = this.valueAfterRes(res);
+      }
 
     });
 

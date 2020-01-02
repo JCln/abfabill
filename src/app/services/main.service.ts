@@ -34,5 +34,4 @@ export class MainService {
         catchError(err => this.errorHandler.handleError)
       );
   }
-  // this.http.get<any>(environment.API_URL + '/' + URL + '/' + ID);
 }

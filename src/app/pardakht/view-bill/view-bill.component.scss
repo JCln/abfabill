@@ -21,7 +21,7 @@ $lightgreen_border: #e4572e;
 $lightgreen: rgba(179, 179, 179, 0.3);
 
 $size: 3rem;
-$font-size: 1rem;
+$small_font_size: 1rem;
 $font_bigger_size: 1.5rem;
 $font_size_title: 2rem;
 
@@ -78,7 +78,7 @@ section {
         background: $orange_background_border;
       }
     }
-    
+
     // .blue_background {
     //   background: rgba(125, 131, 255, 0.4);
     //   border: 2px solid #7d83ff;
@@ -179,7 +179,7 @@ section {
 
       .form-button {
         background: $clr;
-        font-size: $font-size;
+        font-size: $small_font_size;
         // width: calc(#{$size} - 10px);
         // height: calc(#{$size} - 10px);
         margin-left: auto;
@@ -265,10 +265,24 @@ section {
       }
     }
   }
-  .pay_button {
+  .pay_button_section {
     @include justify-center();
     & button {
       @extend %button_first;
+    }
+    .pay_button {
+      a.disabled {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: $orange_color;
+        font-size: 1.26rem;
+        font-weight: bolder;
+      }
+      a.enabled {
+        font-size: $font_bigger_size;
+        text-decoration: none;
+      }
     }
   }
 }
