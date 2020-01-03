@@ -11,7 +11,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
-            value="{{viewBillTypeOnly[3]}}">
+            value="{{testObject.fullName}}">
         </div>
         <div class="div1">
           <p>مشترک گرامی</p>
@@ -22,7 +22,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{viewBillTypeOnly[34]}}">
+            value="{{testObject.billId}}">
         </div>
         <div class="div1">
           <p>شناسه قبض</p>
@@ -33,7 +33,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{viewBillTypeOnly[13]}}">
+            value="{{testObject.payId}}">
         </div>
         <div class="div1">
           <p>شناسه پرداخت</p>
@@ -44,7 +44,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{viewBillTypeOnly[32]}}">
+            value="{{testObject.payable}}">
         </div>
         <div class="div1">
           <p>مبلغ قابل پرداخت</p>
@@ -55,7 +55,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{viewBillTypeOnly[33]}}">
+            [(ngModel)]="testObject.id">
         </div>
         <div class="div1">
           <p>مهلت پرداخت</p>
@@ -63,6 +63,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
 
@@ -80,7 +81,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-              aria-label="first name" value="{{viewBillTypeOnly[5]}}">
+              aria-label="first name" [(ngModel)]="testObject.karbariTitle">
           </div>
           <div class="div1">
             <p>کاربری</p>
@@ -92,7 +93,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[6]}}">
+              [(ngModel)]="testObject.ahadMaskooni">
           </div>
           <div class="div1">
             <p>آحاد مسکونی</p>
@@ -103,7 +104,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[7]}}">
+              [(ngModel)]="testObject.ahadNonMaskooni">
           </div>
           <div class="div1">
             <p>آحاد غیر مسکونی</p>
@@ -115,7 +116,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[8]}}">
+              [(ngModel)]="testObject.zarfiatQarardadi">
           </div>
           <div class="div1">
             <p>ظرفیت قراردادی</p>
@@ -126,7 +127,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[9]}}">
+              [(ngModel)]="testObject.qotr">
           </div>
           <div class="div1">
             <p>قطرانشعاب</p>
@@ -137,9 +138,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[12]}}">
+              [(ngModel)]="testObject.qotrSifoon">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>قطر سیفون</p>
             <div class="div2">
             </div>
@@ -150,9 +151,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[11]}}">
+              [(ngModel)]="testObject.id">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>وضعیت کنتور</p>
             <div class="div2">
             </div>
@@ -167,9 +168,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[14]}}">
+              [(ngModel)]="testObject.radif">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>شماره ردیف</p>
             <div class="div2">
             </div>
@@ -179,9 +180,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[16]}}">
+              [(ngModel)]="testObject.barge">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>شماره برگه</p>
             <div class="div2">
             </div>
@@ -190,9 +191,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[15]}}">
+              [(ngModel)]="testObject.eshterak">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>شماره اشتراک</p>
             <div class="div2">
             </div>
@@ -201,9 +202,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[17]}}">
+              [(ngModel)]="testObject.preCounterReadingDate">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>تاریخ قرائت پیشین</p>
             <div class="div2">
             </div>
@@ -213,9 +214,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[18]}}">
+              [(ngModel)]="testObject.currentCounterReadingDate">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
             <div class="div2">
             </div>
@@ -224,9 +225,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[10]}}">
+              [(ngModel)]="testObject.id">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>تعداد روز</p>
             <div class="div2">
             </div>
@@ -235,9 +236,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[20]}}">
+              [(ngModel)]="testObject.preCounterNumber">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p> شماره کنتور پیشین</p>
             <div class="div2">
             </div>
@@ -246,9 +247,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[19]}}">
+              [(ngModel)]="testObject.currentCounterNumber">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>شماره کنتور کنونی</p>
             <div class="div2">
             </div>
@@ -262,9 +263,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[21]}}">
+              [(ngModel)]="testObject.masraf">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>مصرف به مترمکعب</p>
             <div class="div2">
             </div>
@@ -273,9 +274,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[22]}}">
+              [(ngModel)]="testObject.masrafLiter">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>مصرف به لیتر</p>
             <div class="div2">
             </div>
@@ -284,9 +285,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[23]}}">
+              [(ngModel)]="testObject.masrafAverage">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>متوسط مصرف</p>
             <div class="div2">
             </div>
@@ -303,9 +304,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[24]}}">
+              [(ngModel)]="testObject.abBaha">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>بهای آب مصرفی</p>
             <div class="div2">
             </div>
@@ -314,9 +315,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[25]}}">
+              [(ngModel)]="testObject.karmozdFazelab">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>بهای دفع فاضلاب</p>
             <div class="div2">
             </div>
@@ -325,9 +326,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[26]}}">
+              [(ngModel)]="testObject.maliat">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>مالیات و عوارض</p>
             <div class="div2">
             </div>
@@ -336,9 +337,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[27]}}">
+              [(ngModel)]="testObject.budget">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>تکلیف قانون بودجه</p>
             <div class="div2">
             </div>
@@ -347,7 +348,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[1]}}">
+              [(ngModel)]="testObject.lavazemKahande">
           </div>
           <div class="div1">
             <p>لوازم کاهنده</p>
@@ -358,9 +359,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[29]}}">
+              [(ngModel)]="testObject.jam">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>جمع</p>
             <div class="div2">
             </div>
@@ -369,9 +370,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[28]}}">
+              [(ngModel)]="testObject.taxfif">
           </div>
-          <div class="div1">
+          <div class=" div1">
             <p>تخفیف</p>
             <div class="div2">
             </div>
@@ -380,20 +381,9 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[30]}}">
+              [(ngModel)]="testObject.preBedOrBes">
           </div>
-          <div class="div1">
-            <p>بدهی بستانکاری</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-        <div class="form">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{viewBillTypeOnly[31]}}">
-          </div>
-          <div class="div1">
+          <div class=" div1">
             <p>بدهی بستانکاری</p>
             <div class="div2">
             </div>
@@ -408,19 +398,19 @@
 </section>
 
 <section class="barcode">
-  <ngx-barcode [bc-value]="viewBillTypeOnly[36]" [bc-width]="width" [bc-display-value]="displayValue"
-    [bc-height]="height" [bc-display-value]="true"></ngx-barcode>
+  <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="width" [bc-display-value]="displayValue" [bc-height]="height"
+    [bc-display-value]="true"></ngx-barcode>
 </section>
 
 <section class="pay_section">
   <div class="pay_button_section">
 
-    <button class="pay_button" [disabled]="viewBillTypeOnly[37] == true">
+    <button class="pay_button" [disabled]="testObject.isPayed == true">
       <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer' [ngClass]="{
-        'disabled':viewBillTypeOnly[37] === true,
-        'enabled':viewBillTypeOnly[37] === false
+        'disabled':testObject.isPayed === true ,
+        'enabled':testObject.isPayed === false
       }">
-        {{viewBillTypeOnly[37] == true ? 'مشترک گرامی این قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
+        {{testObject.isPayed == true ? 'مشترک گرامی این قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
       </a>
     </button>
   </div>
