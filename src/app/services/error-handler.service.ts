@@ -7,40 +7,45 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
-  static readonly DEFAULT_ERROR_TITLE: string = "ارتباط شما به اینترنت برقرار نیست.";
+  static readonly DEFAULT_ERROR_TITLE: string = "شما به شبکه دسترسی ندارید";
 
   constructor(private router: Router, private toasterService: ToastrService) { }
 
-  private showError(message: string) {
-    console.log(message);
-
+  toasterError = (message: string) => {
+    this.toasterService.error(message, 'خطا', {
+      timeOut: 5000,
+      easeTime: '800',
+      easing: 'ease-in-out',
+      progressBar: true,
+      progressAnimation: 'increasing'
+    });
   }
 
   public handleError(error: any) {
     switch (error) {
       case 400:
-        this.toasterService.error('درخواست بدرستی ارسال نشده است');
+        this.toasterError('درخواست بدرستی ارسال نشده است');
         break;
       case 401:
-        this.toasterService.error('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با 1522 تماس حاصل فرمایید ');
+        this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با 1522 تماس حاصل فرمایید ');
         break;
       case 403:
-        this.toasterService.error('دسترسی شما ممکن نیست');
+        this.toasterError('دسترسی شما ممکن نیست');
         break;
       case 408:
-        this.toasterService.error('زمان ارسال به پایان رسید، احتمالا سرعت اینترنت شما کم است');
+        this.toasterError('زمان ارسال به پایان رسید، احتمالا سرعت اینترنت شما کم است');
         break;
       case 404:
-        this.toasterService.error('اطلاعات قبضی پیدا نشد');
+        this.toasterError('اطلاعات قبضی پیدا نشد');
         break;
       case 0:
-        this.toasterService.error('ارتباط با شرکت آبفا برقرار نشد، لطفا بعدا امتحان فرمایید');
+        this.toasterError('ارتباط با شرکت آبفا برقرار نشد، لطفا بعدا امتحان فرمایید');
         break;
       case 500:
-        this.toasterService.error('مشکلی از شرکت آب رخ داد، لطفا با 1522 تماس حاصل فرمایید');
+        this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا با 1522 تماس حاصل فرمایید');
         break;
       default:
-        this.toasterService.error(ErrorHandlerService.DEFAULT_ERROR_TITLE);
+        this.toasterError('شما به شبکه دسترسی ندارید');
     }
   }
   errorHandler(error) {

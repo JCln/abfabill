@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
 import { bankIcons } from '../bank-icons';
-import { IbankIcons } from '../ibank-icons';
+import { IbankIcons, IBarcode } from '../ibank-icons';
 
 // export interface ITestObject {
 //   type: string;
@@ -22,11 +22,7 @@ export class ViewBillComponent implements OnInit {
   testObject: any = [];
   bankIcons = bankIcons;
 
-  value = '00000100183150000017012345';
-  height = 50;
-  width = 1.5;
-  displayValue = false;
-
+  barcode: IBarcode = { barcode_height: 50, barcode_width: 1.5, displayValue: false }
 
   constructor(private viewBillService: ViewBillService) { }
 
@@ -37,11 +33,16 @@ export class ViewBillComponent implements OnInit {
       }
     }
   }
+  removeLoaderAfterResponse = () => {
+    // document.querySelectorAll('.loader');
+    document.querySelector('.loader').classList.remove();
 
+  }
   insertValues = () => {
     this.viewBillService.getViewBill().subscribe((res: any) => {
       if (res) {
-        // this.spinner_boolean = false;
+        this.spinner_boolean = false;
+        this.removeLoaderAfterResponse();
         this.insertValToVar(res);
       }
     });
