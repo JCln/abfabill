@@ -30,8 +30,8 @@ export class MainService {
   GET = (ID: string, URL: string, base64: string): Observable<IViewBill> => {
     return this.http.get<IViewBill>(this.configUrl + '/' + URL + '/' + base64 + '/' + ID)
       .pipe(
-        retry(2), // retry failed request up to 2
-        catchError(err => this.errorHandler.handleError)
+        catchError(err => this.errorHandler.errorHandler(err)),
+        retry(1), // retry failed request up to 3
       );
   }
 }

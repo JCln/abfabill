@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject, BehaviorSubject, observable } from 'rxjs';
-
 import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
 import { bankIcons } from '../bank-icons';
 import { IbankIcons } from '../ibank-icons';
-import { MainService } from 'src/app/services/main.service';
-import { map } from 'rxjs/operators';
 
 // export interface ITestObject {
 //   type: string;
@@ -16,7 +12,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-view-bill',
   templateUrl: './view-bill.component.html',
-  styleUrls: ['./view-bill.component.scss']
+  styleUrls: ['./view-bill.component.scss', './spinner_loader.scss']
 })
 export class ViewBillComponent implements OnInit {
   spinner_boolean = true;
@@ -25,7 +21,7 @@ export class ViewBillComponent implements OnInit {
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   testObject: any = [];
   bankIcons = bankIcons;
-  
+
   value = '00000100183150000017012345';
   height = 50;
   width = 1.5;
@@ -47,7 +43,6 @@ export class ViewBillComponent implements OnInit {
       if (res) {
         // this.spinner_boolean = false;
         this.insertValToVar(res);
-
       }
     });
 

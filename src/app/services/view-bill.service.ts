@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { MainService } from './main.service';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,10 @@ export class ViewBillService {
   private base64: string;
   constructor(private mainService: MainService, private route: ActivatedRoute) {
     const billId = this.route.snapshot.paramMap.get('id');
-    this.idValues(billId);
+    // this.idValues(billId);
     // this.idValues('10018315');
     // this.idValues('2249797116314');
-    // this.idValues('3374422516318');
+    this.idValues('3374422516318');
     // this.idValues('2242803016314');
   }
 

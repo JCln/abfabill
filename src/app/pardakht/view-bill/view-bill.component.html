@@ -423,5 +423,16 @@
 </section>
 
 <ng-template *ngIf="spinner_boolean">
-  <p>wooow</p>
+  <div class="container">
+    <div class="text">
+      This spinner is componed by three animations. Two spinning overlapped halfcircles spinning at the same speed
+      slightly out of phase and their parent element slowly spinning to avoid a monotonous animation.
+    </div>
+    <div class="inputcontainer">
+      <input type="text" placeholder="type me" />
+      <div class="icon-container">
+        <i class="loader"></i>
+      </div>
+    </div>
+  </div>
 </ng-template>
