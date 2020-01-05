@@ -8,10 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'pardakht';
-  id = 234;
+  id = "10018315";
   
   constructor(private router: Router) {
-    this.router.navigate(['pardakht', this.id ]);
+    this.router.navigate(['pardakht', this.id]);
   }
   ngOnInit() {
   }

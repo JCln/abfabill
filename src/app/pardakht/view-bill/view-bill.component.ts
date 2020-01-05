@@ -21,12 +21,14 @@ export class ViewBillComponent implements OnInit {
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   testObject: any = [];
+  dataIdFromRoute: any = [];
   bankIcons = bankIcons;
 
   barcode: IBarcode = { barcode_height: 50, barcode_width: 1.5, displayValue: false }
 
   constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
-    // viewBillService.idValues('3374422516318');
+    this.getDataFromRoute();
+    this.viewBillService.id = this.dataIdFromRoute;
   }
 
   insertValToVar = (res: IViewBill) => {
@@ -49,6 +51,18 @@ export class ViewBillComponent implements OnInit {
         this.insertValToVar(res);
       }
     });
+
+  }
+  getDataFromRoute = () => {
+    this.route.params.subscribe((params: Object) => {
+      for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+          this.dataIdFromRoute = (params[key]);
+        }
+      }
+    });
+  }
+  passDataToService = () => {
 
   }
   ngOnInit() {

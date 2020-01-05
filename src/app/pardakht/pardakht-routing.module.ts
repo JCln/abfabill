@@ -8,12 +8,7 @@ const routes: Routes = [
   // { path: '', redirectTo: 'pardakht', pathMatch: 'full' },
   {
     path: 'pardakht/:id', component: ViewBillComponent
-  },
-    
-    // , children: [
-    //   { path: ':id', component: ViewBillComponent }
-    // ]
-
+  }
 ];
 
 @NgModule({
