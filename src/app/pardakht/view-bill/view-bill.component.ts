@@ -3,6 +3,7 @@ import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
 import { bankIcons } from '../bank-icons';
 import { IbankIcons, IBarcode } from '../ibank-icons';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // export interface ITestObject {
 //   type: string;
@@ -24,7 +25,9 @@ export class ViewBillComponent implements OnInit {
 
   barcode: IBarcode = { barcode_height: 50, barcode_width: 1.5, displayValue: false }
 
-  constructor(private viewBillService: ViewBillService) { }
+  constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
+    // viewBillService.idValues('3374422516318');
+  }
 
   insertValToVar = (res: IViewBill) => {
     for (const key in res) {
@@ -48,10 +51,10 @@ export class ViewBillComponent implements OnInit {
     });
 
   }
-
   ngOnInit() {
     this.insertValues();
   }
+
   changeBankForPay = (bankName: string, bankurl: string) => {
     this.chooseBank["name"] = bankName;
     this.chooseBank["linkToSite"] = bankurl;

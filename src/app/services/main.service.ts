@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IViewBill } from './iview-bill';
 import { environment } from 'src/environments/environment';
@@ -10,28 +10,28 @@ import { ErrorHandlerService } from './error-handler.service';
   providedIn: 'root'
 })
 export class MainService {
-  private configUrl: string = '';
+  private mainConfigUrl: string = '';
+  private auxiliaryConfigUrl: string = '';
 
-  headers = [{
-    'Access-Control-Allow-Credentials': true,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Headers': 'application/json',
-  }];
 
   private getEnvironment = (): void => {
-    this.configUrl = environment.API_URL;
+    this.mainConfigUrl = environment.API_URL;
+    this.auxiliaryConfigUrl = environment.API_URL2;
   }
 
   constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {
     this.getEnvironment();
   }
 
-  GET = (ID: string, URL: string, base64: string): Observable<IViewBill> => {
-    return this.http.get<IViewBill>(this.configUrl + '/' + URL + '/' + base64 + '/' + ID)
-      .pipe(
-        catchError(err => this.errorHandler.errorHandler(err)),
-        retry(1), // retry failed request up to 3
-      );
+  GET = (ID: number, URL: string, base64: string): Observable<IViewBill[]> => {
+    let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
+      catchError(err => this.errorHandler.errorHandler(err)),
+      retry(1) // retry failed request up to 1
+    );
+    let res2 = this.http.get<IViewBill>(this.auxiliaryConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
+      catchError(err => this.errorHandler.errorHandler(err)),
+      retry(1) // retry failed request up to 1
+    );
+    return forkJoin([res1, res2]);
   }
 }
