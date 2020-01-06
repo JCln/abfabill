@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
-import { bankIcons } from '../bank-icons';
+// import { bankIcons } from '../bank-icons';
 import { IbankIcons, IBarcode } from '../ibank-icons';
 import { ActivatedRoute, Router } from '@angular/router';
 
-// export interface ITestObject {
-//   type: string;
-//   value: string;
-// }
-
+const bankIcons: IbankIcons[] = [
+  {
+    imgUrl: '../../../pardakht/assets/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'http://bmi.ir'
+  },
+  {
+    imgUrl: '../../../pardakht/assets/bankIcons/bpm.png', name: 'به پرداخت ملت', linkToSite: '#'
+  }
+];
 @Component({
   selector: 'app-view-bill',
   templateUrl: './view-bill.component.html',
@@ -28,7 +31,7 @@ export class ViewBillComponent implements OnInit {
 
   constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
     this.getDataFromRoute();
-    this.viewBillService.id = this.dataIdFromRoute;
+    this.viewBillService.setId(this.dataIdFromRoute);
   }
 
   insertValToVar = (res: IViewBill) => {

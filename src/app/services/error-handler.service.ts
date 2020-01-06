@@ -22,6 +22,8 @@ export class ErrorHandlerService implements ErrorHandler {
   }
 
   public handleError(error: any) {
+    console.log(error);
+    console.log(error.number);
     switch (error) {
       case 400:
         this.toasterError('درخواست بدرستی ارسال نشده است');
@@ -53,9 +55,12 @@ export class ErrorHandlerService implements ErrorHandler {
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
+      console.log(errorMessage);
+      
     } else {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      console.log(errorMessage);
     }
     this.handleError(errorMessage);
     return throwError(errorMessage);

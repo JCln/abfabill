@@ -8,11 +8,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'pardakht';
-  id = "10018315";
-  
-  constructor(private router: Router) {
-    this.router.navigate(['pardakht', this.id]);
+  idRoutePart = '123';
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.getRouteIdValue();
+  }
+  getRouteIdValue = () => {
+    this.idRoutePart = window.location.href.split("/").pop();
   }
   ngOnInit() {
+    this.router.navigate(['', this.idRoutePart]);
   }
 }

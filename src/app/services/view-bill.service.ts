@@ -6,10 +6,15 @@ import { MainService } from './main.service';
   providedIn: 'root'
 })
 export class ViewBillService {
-  id: string;
+  private id: string;
   private base64: string;
 
   constructor(private mainService: MainService) {
+  }
+
+  // 2242803016314
+  setId = (id: string) => {
+    this.id = id;
     this.idValues(this.id);
   }
 

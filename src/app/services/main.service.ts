@@ -16,7 +16,7 @@ export class MainService {
 
   private getEnvironment = (): void => {
     this.mainConfigUrl = environment.API_URL;
-    this.auxiliaryConfigUrl = environment.API_URL2;
+    this.auxiliaryConfigUrl = environment.API_URL_auxiliary;
   }
 
   constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) {
