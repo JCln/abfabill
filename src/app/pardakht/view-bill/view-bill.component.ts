@@ -42,14 +42,11 @@ export class ViewBillComponent implements OnInit {
     }
   }
   removeLoaderAfterResponse = () => {
-    // document.querySelectorAll('.loader');
-    document.querySelector('.loader').classList.remove();
-
+    this.spinner_boolean = false;
   }
   insertValues = () => {
     this.viewBillService.getViewBill().subscribe((res: any) => {
       if (res) {
-        this.spinner_boolean = false;
         this.removeLoaderAfterResponse();
         this.insertValToVar(res);
       }

@@ -23,15 +23,20 @@ export class MainService {
     this.getEnvironment();
   }
 
-  GET = (ID: string, URL: string, base64: string): Observable<IViewBill[]> => {
-    let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
+  GET = (ID: string, URL: string, base64: string): Observable<IViewBill> => {
+    return this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
       catchError(err => this.errorHandler.errorHandler(err)),
       retry(1) // retry failed request up to 1
     );
-    let res2 = this.http.get<IViewBill>(this.auxiliaryConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-      catchError(err => this.errorHandler.errorHandler(err)),
-      retry(1) // retry failed request up to 1
-    );
-    return forkJoin([res1, res2]);
+
+    // let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
+    //   catchError(err => this.errorHandler.errorHandler(err)),
+    //   retry(1) // retry failed request up to 1
+    // );
+    // let res2 = this.http.get<IViewBill>(this.auxiliaryConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
+    //   catchError(err => this.errorHandler.errorHandler(err)),
+    //   retry(1) // retry failed request up to 1
+    // );
+    // return forkJoin([res1, res2]);
   }
 }

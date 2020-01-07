@@ -12,7 +12,7 @@
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
             value="{{testObject.fullName}}">
-          <i class="loader"></i>
+          <i *ngIf="spinner_boolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مشترک گرامی</p>
@@ -24,7 +24,7 @@
         <div class="form-item inputcontainer">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
             value="{{testObject.billId}}">
-          <i class="loader"></i>
+          <i *ngIf="spinner_boolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه قبض</p>
@@ -36,7 +36,7 @@
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
             value="{{testObject.payId}}">
-          <i class="loader"></i>
+          <i *ngIf="spinner_boolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه پرداخت</p>
@@ -48,7 +48,7 @@
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
             value="{{testObject.payable}}">
-          <i class="loader"></i>
+          <i *ngIf="spinner_boolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مبلغ قابل پرداخت</p>
@@ -60,7 +60,7 @@
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
             [(ngModel)]="testObject.id">
-          <i class="loader"></i>
+          <i *ngIf="spinner_boolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مهلت پرداخت</p>
@@ -87,7 +87,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
               aria-label="first name" [(ngModel)]="testObject.karbariTitle">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>کاربری</p>
@@ -100,7 +100,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.ahadMaskooni">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آحاد مسکونی</p>
@@ -112,7 +112,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.ahadNonMaskooni">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آحاد غیر مسکونی</p>
@@ -125,7 +125,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.zarfiatQarardadi">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>ظرفیت قراردادی</p>
@@ -137,7 +137,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.qotr">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>قطرانشعاب</p>
@@ -149,7 +149,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.qotrSifoon">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>قطر سیفون</p>
@@ -163,7 +163,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.id">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>وضعیت کنتور</p>
@@ -181,7 +181,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.radif">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره ردیف</p>
@@ -194,7 +194,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.barge">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره برگه</p>
@@ -206,7 +206,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.eshterak">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره اشتراک</p>
@@ -218,7 +218,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.preCounterReadingDate">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت پیشین</p>
@@ -231,7 +231,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.currentCounterReadingDate">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
@@ -243,7 +243,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.id">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تعداد روز</p>
@@ -255,7 +255,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.preCounterNumber">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p> شماره کنتور پیشین</p>
@@ -267,7 +267,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.currentCounterNumber">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره کنتور کنونی</p>
@@ -284,7 +284,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.masraf">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به مترمکعب</p>
@@ -296,7 +296,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.masrafLiter">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به لیتر</p>
@@ -308,7 +308,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.masrafAverage">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>متوسط مصرف</p>
@@ -328,7 +328,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.abBaha">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای آب مصرفی</p>
@@ -340,7 +340,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.karmozdFazelab">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای دفع فاضلاب</p>
@@ -352,7 +352,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.maliat">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مالیات و عوارض</p>
@@ -364,7 +364,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.budget">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تکلیف قانون بودجه</p>
@@ -376,7 +376,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.lavazemKahande">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>لوازم کاهنده</p>
@@ -388,7 +388,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.jam">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>جمع</p>
@@ -400,7 +400,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.taxfif">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تخفیف</p>
@@ -412,7 +412,7 @@
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.preBedOrBes">
-            <i class="loader"></i>
+            <i *ngIf="spinner_boolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بدهی بستانکاری</p>
