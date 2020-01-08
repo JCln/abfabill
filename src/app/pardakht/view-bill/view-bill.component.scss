@@ -154,7 +154,8 @@ section {
         @include justify-center();
         flex-direction: column;
         width: 52%;
-        height: 3.5rem;
+        // height: 3.5rem;
+        height: auto;
         flex-grow: 1;
         background: lightgray;
       }

@@ -4,6 +4,7 @@ import { ViewBillService } from './../../services/view-bill.service';
 // import { bankIcons } from '../bank-icons';
 import { IbankIcons, IBarcode } from '../ibank-icons';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 const bankIcons: IbankIcons[] = [
   {
@@ -55,11 +56,7 @@ export class ViewBillComponent implements OnInit {
   }
   getDataFromRoute = () => {
     this.route.params.subscribe((params: Object) => {
-      for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-          this.dataIdFromRoute = (params[key]);
-        }
-      }
+      this.dataIdFromRoute = Object.values(params);
     });
   }
   passDataToService = () => {
