@@ -437,12 +437,12 @@
 <section class="pay_section">
   <div class="pay_button_section">
 
-    <button class="pay_button" [disabled]="testObject.isPayed == true">
+    <button class="pay_button" [disabled]="testObject.isPayed === true || spinner_boolean">
       <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer' [ngClass]="{
-        'disabled':testObject.isPayed === true ,
+        'disabled':testObject.isPayed === true || spinner_boolean ,
         'enabled':testObject.isPayed === false
       }">
-        {{testObject.isPayed == true ? 'مشترک گرامی این قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
+        {{testObject.isPayed === true || spinner_boolean ? 'مشترک گرامی این قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
       </a>
     </button>
   </div>
