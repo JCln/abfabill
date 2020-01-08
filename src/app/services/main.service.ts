@@ -25,8 +25,8 @@ export class MainService {
 
   GET = (ID: string, URL: string, base64: string): Observable<IViewBill> => {
     return this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-      catchError(err => this.errorHandler.errorHandler(err)),
-      retry(1) // retry failed request up to 1
+      retry(1), // retry failed request up to 1
+      catchError(err => this.errorHandler.errorHandler(err))
     );
 
     // let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(

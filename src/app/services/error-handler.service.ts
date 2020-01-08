@@ -2,6 +2,7 @@ import { Injectable, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,7 @@ export class ErrorHandlerService implements ErrorHandler {
     });
   }
 
-  public handleError(error: any) {
-    console.log(error);
-    console.log(error.number);
+  public handleError(error: number) {
     switch (error) {
       case 400:
         this.toasterError('درخواست بدرستی ارسال نشده است');
@@ -50,19 +49,11 @@ export class ErrorHandlerService implements ErrorHandler {
         this.toasterError('شما به شبکه دسترسی ندارید');
     }
   }
-  errorHandler(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-      console.log(errorMessage);
-      
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-      console.log(errorMessage);
+  errorHandler(error: HttpErrorResponse) {
+    if (error instanceof HttpErrorResponse) {
+      this.handleError(error.status);
     }
-    this.handleError(errorMessage);
+    const errorMessage = '';
     return throwError(errorMessage);
   }
 }
