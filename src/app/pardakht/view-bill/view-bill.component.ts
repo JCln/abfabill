@@ -25,55 +25,53 @@ export class ViewBillComponent implements OnInit {
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
   testObject: any = [];
-  dataIdFromRoute: any = [];
+  getedDataIdFromRoute: any = [];
   bankIcons = bankIcons;
 
-  barcode: IBarcode = { barcode_height: 50, barcode_width: 1.5, displayValue: false }
+  barcode: IBarcode = { height: 50, width: 1.5, displayValue: false }
 
   constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
     this.getDataFromRoute();
-    this.viewBillService.setId(this.dataIdFromRoute);
+    this.viewBillService.setId(this.getedDataIdFromRoute);
   }
 
-  insertValToVar = (res: IViewBill) => {
+
+  removeLoaderAfterResponse = () => this.spinner_boolean = false;
+
+  insertValToVar = (res: IViewBill, callback: () => void) => {
     for (const key in res) {
       if (res.hasOwnProperty(key)) {
         this.testObject[key] = (res[key]);
       }
     }
+    callback();
   }
-  removeLoaderAfterResponse = () => {
-    this.spinner_boolean = false;
-  }
-  insertValues = () => {
+  connectToServer = () => {
     this.viewBillService.getViewBill().subscribe((res: any) => {
       if (res) {
-        this.removeLoaderAfterResponse();
-        this.insertValToVar(res);
+        this.insertValToVar(res, this.removeLoaderAfterResponse);
       }
     });
-
   }
+
   getDataFromRoute = () => {
     this.route.params.subscribe((params: Object) => {
-      this.dataIdFromRoute = Object.values(params);
+      this.getedDataIdFromRoute = Object.values(params);
     });
+    return this;
   }
-  passDataToService = () => {
 
-  }
   ngOnInit() {
-    this.insertValues();
+    this.connectToServer();
   }
 
   changeBankForPay = (bankName: string, bankurl: string) => {
     this.chooseBank["name"] = bankName;
     this.chooseBank["linkToSite"] = bankurl;
   }
-  showMoreClicked = (): void => {
+  showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 5000);
   }
-
 
 }
