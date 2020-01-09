@@ -5,6 +5,6 @@ export interface IbankIcons {
 }
 export interface IBarcode {
     displayValue: boolean;
-    barcode_width: number;
-    barcode_height: number;
+    width: number;
+    height: number;
 }
