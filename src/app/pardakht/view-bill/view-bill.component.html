@@ -1,5 +1,11 @@
 <section>
 
+  <div class="header_title">
+    <h3 class="title">
+      مشاهده قبض
+    </h3>
+  </div>
+
 
   <main class="main">
 
@@ -429,8 +435,8 @@
 </section>
 
 <section class="barcode">
-  <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="barcode.width"
-    [bc-display-value]="barcode.displayValue" [bc-height]="barcode.height" [bc-display-value]="true">
+  <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
+    [bc-height]="barcode.height" [bc-display-value]="true">
   </ngx-barcode>
 </section>
 
@@ -442,7 +448,7 @@
         'disabled':testObject.isPayed === true || spinner_boolean ,
         'enabled':testObject.isPayed === false
       }">
-        {{testObject.isPayed === true || spinner_boolean ? 'مشترک گرامی این قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
+        {{testObject.isPayed === true || spinner_boolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
       </a>
     </button>
   </div>

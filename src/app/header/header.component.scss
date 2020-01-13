@@ -18,15 +18,6 @@ section {
       transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     }
   }
-
-  .header_title {
-    @include justify-center();
-
-    .title {
-      font-size: $font_size_title;
-      color: $clr;
-    }
-  }
 }
 
 #menuToggle {

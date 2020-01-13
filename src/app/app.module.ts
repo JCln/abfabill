@@ -14,12 +14,14 @@ import { HeaderComponent } from './header/header.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,

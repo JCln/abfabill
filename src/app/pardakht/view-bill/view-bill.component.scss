@@ -271,14 +271,16 @@ section {
     @include justify-center();
     & button {
       @extend %button_first;
+      width: 100%;
+      padding: 0;
     }
     .pay_button {
       a.disabled {
         pointer-events: none;
         cursor: default;
         text-decoration: none;
-        color: $orange_color;
-        font-size: 1.26rem;
+        color: $disable_pay;
+        font-size: 1.38rem;
         font-weight: bolder;
       }
       a.enabled {
@@ -292,4 +294,13 @@ section {
 .barcode {
   @include justify-center();
   margin: $margin_top_sections;
+}
+
+.header_title {
+  @include justify-center();
+
+  .title {
+    font-size: $font_size_title;
+    color: $clr;
+  }
 }

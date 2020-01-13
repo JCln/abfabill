@@ -1,0 +1,29 @@
+@import "../../assets/main.scss";
+
+main {
+  height: 100%;
+  min-height: 55vh;
+  border-radius: 30%;
+  text-align: center;
+  background: $clr;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .img_class {
+    background-size: initial;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .error_inner {
+    padding: 0.2rem;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #fff;
+    }
+  }
+}
