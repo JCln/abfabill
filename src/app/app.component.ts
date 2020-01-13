@@ -11,12 +11,14 @@ export class AppComponent implements OnInit {
   idRoutePart = '1234567890101';
 
   constructor(private router: Router) {
-    this.getRouteIdValue();
+    this.getRouteIdValue(this.navigateToIdRoute);
   }
-  getRouteIdValue = () => {
+  getRouteIdValue = (callback: () => void) => {
     this.idRoutePart = window.location.href.split("/").pop();
+    callback();
   }
+  navigateToIdRoute = () => this.router.navigate([this.idRoutePart]);
+
   ngOnInit() {
-    this.router.navigate([this.idRoutePart]);
   }
 }

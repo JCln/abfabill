@@ -170,7 +170,7 @@ section {
       }
 
       .form-input {
-        padding: 0 0.5em;
+        padding: 0 1rem;
         font-family: inherit;
         outline: none;
         font-size: 1.44rem;
@@ -284,6 +284,7 @@ section {
       a.enabled {
         font-size: $font_bigger_size;
         text-decoration: none;
+        color: #fff;
       }
     }
   }
