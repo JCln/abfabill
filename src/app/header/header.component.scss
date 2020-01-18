@@ -11,6 +11,8 @@ section {
 
   .header_icon {
     @include justify-center();
+    // min-height: 11rem; // may cause slow scrach side effect
+
     img {
       width: $img-size;
       height: calc(#{$img-size} - 1rem);
@@ -62,8 +64,10 @@ section {
 
   cursor: pointer;
 
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
 
   -webkit-touch-callout: none;
 }
@@ -101,7 +105,7 @@ section {
  * Transform all the slices of hamburger
  * into a crossmark.
  */
-#menuToggle input:checked ~ span {
+#menuToggle input:checked~span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: $pale_levender;
@@ -110,7 +114,7 @@ section {
 /*
  * But let's hide the middle one.
  */
-#menuToggle input:checked ~ span:nth-last-child(3) {
+#menuToggle input:checked~span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
@@ -118,7 +122,7 @@ section {
 /*
  * Ohyeah and the last one should go the other direction
  */
-#menuToggle input:checked ~ span:nth-last-child(2) {
+#menuToggle input:checked~span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
@@ -162,13 +166,14 @@ section {
 /*
  * And let's slide it in from the left
  */
-#menuToggle input:checked ~ ul {
+#menuToggle input:checked~ul {
   // background: $clr_border;
   background: linear-gradient(#00368c, rgba(0, 98, 255, 0.88));
   box-shadow: 2px -1px 6px 10px $pale_levender;
   transform: none;
   text-align: right;
 }
+
 .toggleImg {
   z-index: 2;
   width: 3rem !important;

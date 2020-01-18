@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { IbankIcons, IBarcode } from '../ibank-icons';
 import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
-// import { bankIcons } from '../bank-icons';
-import { IbankIcons, IBarcode } from '../ibank-icons';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
+// import { bankIcons } from '../bank-icons';
 const bankIcons: IbankIcons[] = [
   {
     imgUrl: '../../../pardakht/assets/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'http://bmi.ir'
@@ -20,15 +20,15 @@ const bankIcons: IbankIcons[] = [
   styleUrls: ['./view-bill.component.scss', './spinner_loader.scss']
 })
 export class ViewBillComponent implements OnInit {
-  spinner_boolean = true;
+  spinnerBoolean = true;
   showMoreButton = false;
 
-  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' }
+  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' };
   testObject: any = [];
   getedDataIdFromRoute: any = [];
   bankIcons = bankIcons;
 
-  barcode: IBarcode = { height: 50, width: 1.5, displayValue: false }
+  barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
   constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
     this.getDataFromRoute();
@@ -36,7 +36,7 @@ export class ViewBillComponent implements OnInit {
   }
 
 
-  removeLoaderAfterResponse = () => this.spinner_boolean = false;
+  removeLoaderAfterResponse = () => this.spinnerBoolean = false;
 
   insertValToVar = (res: IViewBill, callback: () => void) => {
     for (const key in res) {
@@ -55,7 +55,7 @@ export class ViewBillComponent implements OnInit {
   }
 
   getDataFromRoute = () => {
-    this.route.params.subscribe((params: Object) => {
+    this.route.params.subscribe((params: object) => {
       this.getedDataIdFromRoute = Object.values(params);
     });
     return this;
@@ -66,8 +66,8 @@ export class ViewBillComponent implements OnInit {
   }
 
   changeBankForPay = (bankName: string, bankurl: string) => {
-    this.chooseBank["name"] = bankName;
-    this.chooseBank["linkToSite"] = bankurl;
+    this.chooseBank.name = bankName;
+    this.chooseBank.linkToSite = bankurl;
   }
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;

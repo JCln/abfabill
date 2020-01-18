@@ -30,24 +30,29 @@ $img-size: 12rem;
 @mixin text_align($text_align) {
   text-align: $text_align;
 }
+
 @mixin justify-center {
   display: flex;
   justify-content: center;
 }
-@mixin background {
+
+@mixin background() {
   border-radius: $__border_radius;
   margin: $margin_top_sections;
   padding: 1rem 0;
+  
   i {
     color: $orange_color;
     width: $font_size_title;
   }
 }
+
 section {
   .main {
     .text_align_right {
       @include text_align(right);
     }
+
     .text_align_center {
       @include text_align(center);
     }
@@ -61,8 +66,15 @@ section {
       @include background();
     }
 
+    // water span color
+    .fa-water,
+    .fa-tint {
+      color: $background_color_border_radius !important;
+    }
+
     .first_background {
       border: 2px solid $clr;
+
       .form-input {
         border: 1px solid $clr;
       }
@@ -71,74 +83,55 @@ section {
     .orange_background {
       background: $orange_background;
       border: 2px solid $orange_background_border;
+
       .form-input {
         border: 1px solid $orange_background_border;
       }
+
       .div1 {
         background: $orange_background_border;
       }
     }
 
-    // .blue_background {
-    //   background: rgba(125, 131, 255, 0.4);
-    //   border: 2px solid #7d83ff;
-    //   .form-input {
-    //     border: 1px solid #7d83ff;
-    //   }
-    //   .div1 {
-    //     background: #7d83ff;
-    //   }
-    // }
-    // .second_background {
-    //   background: $red_background_color;
-    //   border: 2px solid red;
-    //   .form-input {
-    //     border: 1px solid red;
-    //   }
-    //   .div1 {
-    //     background: red;
-    //   }
-    // }
-    // .lightblue_background {
-    //   background: $lightblue_background;
-    //   border: 2px solid $lightblue_background_border;
-    //   .form-input {
-    //     border: 1px solid $lightblue_background_border;
-    //   }
-    //   .div1 {
-    //     background: $lightblue_background_border;
-    //   }
-    // }
     .purple_background {
       background: $purple_backgruond;
       border: 2px solid $purple_backgruond_border;
+
       .form-input {
         border: 1px solid $purple_backgruond_border;
       }
+
       .div1 {
         background: $purple_backgruond_border;
       }
     }
+
     .orangegray_background {
       background: $lightgreen;
       border: 2px solid $lightgreen_border;
+
       .form-input {
         border: 1px solid $lightgreen_border;
       }
+
       .div1 {
         background: $lightgreen_border;
       }
     }
+
     .darkgreen_background {
       background: $darkgreen_background;
       border: 2px solid $darkgreen_background_border;
+
       .form-input {
         border: 1px solid $darkgreen_background_border;
       }
+
       .div1 {
         background: $darkgreen_background_border;
       }
     }
+
     .form {
       display: flex;
       flex-direction: row;
@@ -173,8 +166,10 @@ section {
         padding: 0 0.5em;
         font-family: inherit;
         outline: none;
+        text-align: right;
         font-size: 1.44rem;
-        height: 3rem;
+        // height: 3rem;
+        height: 10rem;
         border-radius: $__border_radius;
         z-index: 1;
       }
@@ -209,7 +204,6 @@ section {
         margin: auto;
         -webkit-transform: translate(2px, -5px);
         transform: translate(2px, -5px);
-        text-align: right;
         font-size: 1.1rem;
         font-weight: 900;
       }
@@ -232,6 +226,7 @@ section {
 
 .check_moreinfo {
   @include justify-center();
+
   button {
     @extend %button_first;
     color: $medium_slate_blue;
@@ -243,17 +238,21 @@ section {
     flex-direction: row-reverse;
   }
 }
+
 // transition not working now !!!!!!!!!!!
 .show {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   display: block;
 }
+
 .pay_section {
   min-height: 10rem;
   margin: $margin_top_sections;
+
   .banks {
     display: flex;
+
     .bank_icons {
       text-align: center;
       width: 50%;
@@ -261,17 +260,21 @@ section {
       border-radius: 4rem;
       margin: 0.3rem;
       padding: 0.77rem;
+
       img {
         width: 7rem;
         height: 6rem;
       }
     }
   }
+
   .pay_button_section {
     @include justify-center();
+
     & button {
       @extend %button_first;
     }
+
     .pay_button {
       a.disabled {
         pointer-events: none;
@@ -281,13 +284,16 @@ section {
         font-size: 1.26rem;
         font-weight: bolder;
       }
+
       a.enabled {
         font-size: $font_bigger_size;
         text-decoration: none;
+        color: $white;
       }
     }
   }
 }
+
 .barcode {
   @include justify-center();
   margin: $margin_top_sections;

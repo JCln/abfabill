@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     this.getRouteIdValue();
   }
   getRouteIdValue = () => {
-    this.idRoutePart = window.location.href.split("/").pop();
+    this.idRoutePart = window.location.href.split('/').pop();
   }
   ngOnInit() {
     this.router.navigate([this.idRoutePart]);

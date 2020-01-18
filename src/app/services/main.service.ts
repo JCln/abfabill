@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IViewBill } from './iview-bill';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { catchError, retry, map } from 'rxjs/operators';
+
 import { ErrorHandlerService } from './error-handler.service';
+import { IViewBill } from './iview-bill';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  private mainConfigUrl: string = '';
-  private auxiliaryConfigUrl: string = '';
+  private mainConfigUrl = '';
+  private auxiliaryConfigUrl = '';
 
 
   private getEnvironment = (): void => {
