@@ -1,25 +1,40 @@
-import { Injectable, ErrorHandler } from '@angular/core';
-import { Router } from '@angular/router';
-import { throwError, Observable } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorHandler, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
-  static readonly DEFAULT_ERROR_TITLE: string = "شما به شبکه دسترسی ندارید";
+  private urlToExternal = 'https://www.abfaesfahan.ir/';
 
   constructor(private router: Router, private toasterService: ToastrService) { }
 
-  toasterError = (message: string) => {
-    this.toasterService.error(message, 'خطا', {
-      timeOut: 5000,
-      easeTime: '800',
-      easing: 'ease-in-out',
-      progressBar: true,
-      progressAnimation: 'increasing'
-    });
+  toasterError = (message: string, info?: string) => {
+    if (info) {
+      this.toasterService.info(message, '', {
+        timeOut: 5000,
+        easeTime: '800',
+        easing: 'ease-in-out',
+        progressBar: true
+      });
+    } else {
+      this.toasterService.error(message, 'خطا', {
+        timeOut: 5000,
+        easeTime: '800',
+        easing: 'ease-in-out',
+        progressBar: true
+      });
+    }
+  }
+
+  private timeoutNavigationToAbfa = () => {
+    this.toasterError('شما به سایت آبفا متصل میشوید', 'info');
+    setTimeout(() => {
+      window.open(this.urlToExternal, '_self');
+    }, 6000);
   }
 
   public handleError(error: number) {
@@ -48,6 +63,7 @@ export class ErrorHandlerService implements ErrorHandler {
       default:
         this.toasterError('شما به شبکه دسترسی ندارید');
     }
+    this.timeoutNavigationToAbfa();
   }
   errorHandler(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {

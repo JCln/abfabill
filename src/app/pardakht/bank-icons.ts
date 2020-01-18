@@ -1,4 +1,4 @@
-import { IbankIcons } from "./ibank-icons";
+import { IbankIcons } from './ibank-icons';
 
 export const bankIcons: IbankIcons[] = [
     {

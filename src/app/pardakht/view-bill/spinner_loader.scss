@@ -2,43 +2,17 @@
 
 .loader {
   position: relative;
-  height: 9px;
-  width: 20px;
-  display: inline-block;
-  animation: around2 2s infinite;
+  height: 1rem;
+  width: 2rem;
+  display: block;
   z-index: 1;
-  border-radius: 20px;
+  border-radius: 30%;
   left: 25px;
-  bottom: 28px;
+  bottom: 25px;
   background: $medium_slate_blue;
+  animation: around2 2s infinite;
 }
 
-.loader::after,
-.loader::before {
-  content: "";
-  background: $medium_slate_blue;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  top: 0;
-  left: 0;
-  animation: around 2s ease-in-out infinite;
-}
-
-.loader::after {
-  animation: around 2s ease-in-out 2s infinite;
-  background: transparent;
-}
-
-@keyframes around {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @keyframes around2 {
   0% {
     transform: rotate(360deg);
