@@ -309,3 +309,15 @@ section {
     color: $clr;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .form-input {
+    padding: 0 0.5rem !important;
+    font-size: 1.4rem !important;
+  }
+  .pay_button{
+    a.disabled , a.enabled {
+      font-size: $small_font_size !important;
+    }
+  }
+}
