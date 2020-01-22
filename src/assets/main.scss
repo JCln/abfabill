@@ -15,3 +15,8 @@
   box-shadow: 0 0 10px rgba(17, 111, 255, 0.5);
   margin-bottom: $margin_bottom_sections;
 }
+@media screen and (max-width: 414px) {
+  %button_first {
+    font-size: $font-size;
+  }
+}
