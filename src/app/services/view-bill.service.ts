@@ -22,7 +22,13 @@ export class ViewBillService {
     this.base64 = btoa(id);
   }
 
-  getViewBill = (): any => {
-    return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
-  }
+//   checkValidRoute = () => {
+//   const val = Object.values(params).toString();
+//   if (!val || val === 'pageNotFound') {
+//     return;
+//   }
+// }
+getViewBill = (): any => {
+  return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
+}
 }

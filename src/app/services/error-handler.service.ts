@@ -30,11 +30,13 @@ export class ErrorHandlerService implements ErrorHandler {
     }
   }
 
-  private timeoutNavigationToAbfa = () => {
-    this.toasterError('شما به سایت آبفا متصل میشوید', 'info');
-    setTimeout(() => {
-      window.open(this.urlToExternal, '_self');
-    }, 6000);
+  customToaster = (timeout: number, message?: string, info?: string) => {
+    this.toasterService.error(info, message, {
+      timeOut: timeout,
+      easeTime: '800',
+      easing: 'ease-in-out',
+      progressBar: false
+    });
   }
 
   public handleError(error: number) {
@@ -52,7 +54,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.toasterError('زمان ارسال به پایان رسید، احتمالا سرعت اینترنت شما کم است');
         break;
       case 404:
-        this.toasterError('اطلاعات قبضی پیدا نشد');
+        this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
       case 0:
         this.toasterError('ارتباط با شرکت آبفا برقرار نشد، لطفا بعدا امتحان فرمایید');
@@ -63,7 +65,7 @@ export class ErrorHandlerService implements ErrorHandler {
       default:
         this.toasterError('شما به شبکه دسترسی ندارید');
     }
-    this.timeoutNavigationToAbfa();
+    this.router.navigate(['/pageNotFound']);
   }
   errorHandler(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {

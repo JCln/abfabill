@@ -1,4 +1,5 @@
 @import "../../../assets/main.scss";
+@import "../../../assets/input.scss";
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
@@ -20,27 +21,11 @@ $footer_button: rgba(0, 26, 0, 1);
 $lightgreen_border: #e4572e;
 $lightgreen: rgba(179, 179, 179, 0.3);
 
-$size: 3rem;
-$small_font_size: 1rem;
-$font_bigger_size: 1.5rem;
-$font_size_title: 2rem;
-
-$img-size: 12rem;
-
-@mixin text_align($text_align) {
-  text-align: $text_align;
-}
-
-@mixin justify-center {
-  display: flex;
-  justify-content: center;
-}
-
-@mixin background() {
+@mixin background {
   border-radius: $__border_radius;
   margin: $margin_top_sections;
   padding: 1rem 0;
-  
+
   i {
     color: $orange_color;
     width: $font_size_title;
@@ -49,21 +34,13 @@ $img-size: 12rem;
 
 section {
   .main {
-    .text_align_right {
-      @include text_align(right);
-    }
-
-    .text_align_center {
-      @include text_align(center);
-    }
-
     background: rgba(179, 179, 179, 0.3);
     border-radius: $__border_radius;
     padding: 0.5rem;
     margin: 0 0.5rem;
 
     .background {
-      @include background();
+      @include background;
     }
 
     // water span color
@@ -132,100 +109,11 @@ section {
       }
     }
 
-    .form {
-      display: flex;
-      flex-direction: row;
-      box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
-      height: 3rem;
-      width: 3rem;
-      overflow: hidden;
-      width: 95%;
-      margin: 0.3rem auto;
-      border-radius: 3em;
-
-      .form-item {
-        @include justify-center();
-        flex-direction: column;
-        width: 52%;
-        // height: 3.5rem;
-        height: auto;
-        flex-grow: 1;
-        background: lightgray;
-      }
-
-      .form-input,
-      .form-button {
-        font-family: inherit;
-        border-radius: inherit;
-        // text-transform: uppercase;
-        font-weight: 600;
-        // letter-spacing: 1px;
-      }
-
-      .form-input {
-        padding: 0 1rem;
-        font-family: inherit;
-        outline: none;
-        text-align: right;
-        font-size: 1.44rem;
-        // height: 3rem;
-        height: 10rem;
-        border-radius: $__border_radius;
-        z-index: 1;
-      }
-
-      .form-button {
-        background: $clr;
-        font-size: $small_font_size;
-        // width: calc(#{$size} - 10px);
-        // height: calc(#{$size} - 10px);
-        margin-left: auto;
-        color: $white;
-        border: 0;
-        min-width: 7rem;
-        padding: 0;
-      }
-    }
-
-    .div1 {
-      position: relative;
-      height: 100%;
-      border-radius: 0 $__border_radius $__border_radius 0;
-      padding: 10px;
-      background: $clr_border;
-      width: 48%;
-
-      p {
-        flex-direction: row;
-        position: absolute;
-        color: $white;
-        line-height: 2;
-        width: 86%;
-        margin: auto;
-        -webkit-transform: translate(2px, -5px);
-        transform: translate(2px, -5px);
-        font-size: 1.1rem;
-        font-weight: 900;
-      }
-    }
-
-    .div2 {
-      padding: 19px;
-      height: 8px;
-      width: 8px;
-      border-radius: 0 $__border_radius_bigger;
-      background: lightgray;
-      position: absolute;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-      -webkit-transform-origin: 21% -55%;
-      transform-origin: 21% -55%;
-    }
   }
 }
 
 .check_moreinfo {
-  @include justify-center();
+  @include justify-center;
 
   button {
     @extend %button_first;
@@ -269,7 +157,7 @@ section {
   }
 
   .pay_button_section {
-    @include justify-center();
+    @include justify-center;
 
     & button {
       @extend %button_first;
@@ -288,7 +176,7 @@ section {
       }
 
       a.enabled {
-        font-size: $font_bigger_size;
+        font-size: $font_large_size;
         text-decoration: none;
         color: $white;
       }
@@ -297,12 +185,12 @@ section {
 }
 
 .barcode {
-  @include justify-center();
+  @include justify-center;
   margin: $margin_top_sections;
 }
 
 .header_title {
-  @include justify-center();
+  @include justify-center;
 
   .title {
     font-size: $font_size_title;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { IbankIcons, IBarcode } from '../ibank-icons';
 import { IViewBill } from './../../services/iview-bill';
@@ -30,9 +30,9 @@ export class ViewBillComponent implements OnInit {
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
-  constructor(private viewBillService: ViewBillService, private route: ActivatedRoute, private router: Router) {
+  constructor(private viewBillService: ViewBillService, private route: ActivatedRoute) {
     this.getDataFromRoute();
-    this.viewBillService.setId(this.getedDataIdFromRoute);
+    // this.viewBillService.setId(this.getedDataIdFromRoute);
   }
 
 
@@ -54,15 +54,33 @@ export class ViewBillComponent implements OnInit {
     });
   }
 
+  // getDataFromRoute = () => {
+  //   this.route.params.subscribe((params: object) => {
+  //     this.getedDataIdFromRoute = Object.values(params);
+  //   });
+  //   return this;
+  // }
+
   getDataFromRoute = () => {
+    console.log('enter to route func');
+    
     this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = Object.values(params);
+      // this.getedDataIdFromRoute = Object.values(params);
+      return new Promise(resolve => {
+        resolve(Object.values(params));
+      });
     });
-    return this;
+  }
+
+  async nestingLevel() {
+    const trueFalseRouteParameter = await this.getDataFromRoute();
+    this.viewBillService.setId(this.getedDataIdFromRoute);
+    this.connectToServer();
   }
 
   ngOnInit() {
-    this.connectToServer();
+    this.nestingLevel();
+    // this.connectToServer();
   }
 
   changeBankForPay = (bankName: string, bankurl: string) => {
