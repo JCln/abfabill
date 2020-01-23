@@ -199,13 +199,30 @@ section {
 }
 
 @media screen and (max-width: 414px) {
-  .form-input {
-    padding: 0 0.5rem !important;
-    font-size: 1.4rem !important;
-  }
-  .pay_button{
-    a.disabled , a.enabled {
-      font-size: $small_font_size !important;
+  .main {
+    padding: 5px;
+    margin: 0;
+
+    .form {
+      width: 99%;
+
+      .div1 {
+        width: 43%;
+      }
+
+      .form-input {
+        padding: 0 0.5rem;
+        font-size: 1.4rem;
+      }
+
+      .pay_button {
+
+        a.disabled,
+        a.enabled {
+          font-size: $small_font_size;
+        }
+      }
+
     }
   }
 }

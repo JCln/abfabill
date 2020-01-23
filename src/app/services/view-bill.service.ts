@@ -12,7 +12,9 @@ export class ViewBillService {
   constructor(private mainService: MainService) {
   }
 
-  // 2242803016314
+  getId = () => {
+    return this.id;
+  }
   setId = (id: string) => {
     this.id = id;
     this.idValues(this.id);
@@ -22,13 +24,13 @@ export class ViewBillService {
     this.base64 = btoa(id);
   }
 
-//   checkValidRoute = () => {
-//   const val = Object.values(params).toString();
-//   if (!val || val === 'pageNotFound') {
-//     return;
-//   }
-// }
-getViewBill = (): any => {
-  return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
-}
+  checkValidRoute = (val: string): boolean => {
+    if (val === 'pageNotFound' || val === undefined || val === null || Object.values(val)[0]) {
+      return false;
+    }
+    return true;
+  }
+  getViewBill = (): any => {
+    return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
+  }
 }

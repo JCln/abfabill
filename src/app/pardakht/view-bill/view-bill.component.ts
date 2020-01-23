@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 import { IbankIcons, IBarcode } from '../ibank-icons';
 import { IViewBill } from './../../services/iview-bill';
@@ -30,9 +31,12 @@ export class ViewBillComponent implements OnInit {
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
-  constructor(private viewBillService: ViewBillService, private route: ActivatedRoute) {
-    this.getDataFromRoute();
-    // this.viewBillService.setId(this.getedDataIdFromRoute);
+  constructor(
+    private viewBillService: ViewBillService,
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService,
+    private router: Router) {
+    this.nestingLevel().catch(x => console.log(x.message));
   }
 
 
@@ -54,34 +58,26 @@ export class ViewBillComponent implements OnInit {
     });
   }
 
-  // getDataFromRoute = () => {
-  //   this.route.params.subscribe((params: object) => {
-  //     this.getedDataIdFromRoute = Object.values(params);
-  //   });
-  //   return this;
-  // }
-
-  getDataFromRoute = () => {
-    console.log('enter to route func');
-    
+  getDataFromRoute = (): Promise<string> => {
     this.route.params.subscribe((params: object) => {
-      // this.getedDataIdFromRoute = Object.values(params);
-      return new Promise(resolve => {
-        resolve(Object.values(params));
-      });
+      this.getedDataIdFromRoute = Object.values(params);
+    });
+    return new Promise(resolve => {
+      resolve(this.getedDataIdFromRoute);
     });
   }
 
-  async nestingLevel() {
-    const trueFalseRouteParameter = await this.getDataFromRoute();
-    this.viewBillService.setId(this.getedDataIdFromRoute);
-    this.connectToServer();
+  nestingLevel = async () => {
+    this.viewBillService.setId(await this.getDataFromRoute());
+    console.log(this.viewBillService.checkValidRoute(this.viewBillService.getViewBill()));
+    if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
+      this.connectToServer();
+    } else {
+      this.errorHandler.handleError(404);
+    }
   }
 
-  ngOnInit() {
-    this.nestingLevel();
-    // this.connectToServer();
-  }
+  ngOnInit() { }
 
   changeBankForPay = (bankName: string, bankurl: string) => {
     this.chooseBank.name = bankName;
