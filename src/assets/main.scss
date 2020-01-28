@@ -21,3 +21,9 @@
     font-size: $font_medium_size;
   }
 }
+
+// unique shape on hover and focus
+a:hover,
+a:focus {
+  outline: none;
+}

@@ -69,7 +69,6 @@ export class ViewBillComponent implements OnInit {
 
   nestingLevel = async () => {
     this.viewBillService.setId(await this.getDataFromRoute());
-    console.log(this.viewBillService.checkValidRoute(this.viewBillService.getViewBill()));
     if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
       this.connectToServer();
     } else {

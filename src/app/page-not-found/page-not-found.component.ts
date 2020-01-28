@@ -9,7 +9,7 @@ import { IViewBill } from './../services/iview-bill';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
-  protected input: number;
+  input: number;
 
   constructor(private router: Router) { }
 

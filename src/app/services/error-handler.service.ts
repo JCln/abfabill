@@ -8,13 +8,12 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
-  private urlToExternal = 'https://www.abfaesfahan.ir/';
 
   constructor(private router: Router, private toasterService: ToastrService) { }
 
   toasterError = (message: string, info?: string) => {
     if (info) {
-      this.toasterService.info(message, '', {
+      this.toasterService.info(message, info, {
         timeOut: 5000,
         easeTime: '800',
         easing: 'ease-in-out',
@@ -39,6 +38,12 @@ export class ErrorHandlerService implements ErrorHandler {
     });
   }
 
+  private setTimeOutBeforeRoute = () => {
+    setTimeout(() => {
+      this.router.navigate(['/pageNotFound']);
+    }, 2000);
+  }
+
   public handleError(error: number) {
     switch (error) {
       case 400:
@@ -51,27 +56,29 @@ export class ErrorHandlerService implements ErrorHandler {
         this.toasterError('دسترسی شما ممکن نیست');
         break;
       case 408:
-        this.toasterError('زمان ارسال به پایان رسید، احتمالا سرعت اینترنت شما کم است');
+        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است');
         break;
       case 404:
         this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
       case 0:
-        this.toasterError('ارتباط با شرکت آبفا برقرار نشد، لطفا بعدا امتحان فرمایید');
+        this.customToaster(8000, 'باعرض پوزش', 'ارتباط با شرکت آبفا برقرار نشد، لطفا بعدا امتحان فرمایید');
         break;
       case 500:
         this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا با 1522 تماس حاصل فرمایید');
         break;
+      case 504:
+        this.customToaster(11000, 'باعرض پوزش', 'مشکلی از طرف شرکت آبفا رخ داده است، لطفا بعدا مراجعه نمایید');
+        break;
       default:
         this.toasterError('شما به شبکه دسترسی ندارید');
     }
-    this.router.navigate(['/pageNotFound']);
+    this.setTimeOutBeforeRoute();
   }
   errorHandler(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {
       this.handleError(error.status);
     }
-    const errorMessage = '';
-    return throwError(errorMessage);
+    return throwError(error);
   }
 }

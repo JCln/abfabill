@@ -25,7 +25,7 @@ footer {
         color: $pale_levender;
         font-weight: 600;
       }
-      :hover {
+      :hover, :focus {
         text-decoration: overline;
       }
     }
