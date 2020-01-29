@@ -1,0 +1,42 @@
+$margin_top_sections: 0.9rem 0;
+$margin_bottom_sections: 0.9rem;
+
+$font-size: 1rem;
+$small_font_size: 1rem;
+$font_medium_size: 1.3rem;
+$font_large_size: 1.5rem;
+$big_size: 3rem;
+
+$font_size_title: 2rem;
+
+$img-size: 12rem;
+
+$__border_radius: 30px;
+$__border_radius_bigger: 50px;
+
+$clr: #00368c;
+$clr_border: #004ecc;
+$white: #fff;
+$disable_pay: #660033;
+$orange_color: #e4572e;
+$pale_levender: #d4dcff;
+$bright_torouse: #1affd5;
+$medium_slate_blue: #7d83ff;
+$background_color_border_radius: #0198f1;
+
+@mixin text_align($text_align) {
+  text-align: $text_align;
+}
+
+@mixin justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.text_align_right {
+  @include text_align(right);
+}
+
+.text_align_center {
+  @include text_align(center);
+}

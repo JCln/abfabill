@@ -1,40 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
-import { IViewBill } from './iview-bill';
 import { MainService } from './main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewBillService {
+  private id: string;
+  private base64: string;
 
-  // constructor(private mainService: MainService) { }
-  constructor() { }
-  viewBill: IViewBill;
-  viewbill: IViewBill[] = [
-    { id: 1, value: 23434, type: 'تاریخ قرائت پیشین' },
-    { id: 2, value: 34634, type: 'تاریخ قرائت فعلی' },
-    { id: 3, value: 34634, type: 'شماره کنتور پیشین' },
-    { id: 4, value: 454534, type: 'شماره کنتور فعلی' },
-    { id: 5, value: 9879, type: '1' },
-    { id: 1, value: 23434, type: '2' },
-    { id: 2, value: 34634, type: '3' },
-    { id: 3, value: 34634, type: '4' },
-    { id: 4, value: 454534, type: '5' },
-    { id: 5, value: 9879, type: '6' },
-    { id: 5, value: 9879, type: '7' },
-    { id: 1, value: 23434, type: '8' },
-    { id: 2, value: 34634, type: '9' },
-    { id: 3, value: 34634, type: '10' },
-    { id: 4, value: 454534, type: '11' },
-    { id: 5, value: 9879, type: '12' }
-  ];
-
-  getViewBill = (): Observable<IViewBill[]> => {
-      return of(this.viewbill);
-    // this.mainService.GET().subscribe((data: IViewBill) => this.viewBill = {...data});
-
+  constructor(private mainService: MainService) {
   }
 
+  getId = () => {
+    return this.id;
+  }
+  setId = (id: string) => {
+    this.id = id;
+    this.idValues(this.id);
+  }
+
+  idValues = (id: string) => {
+    this.base64 = btoa(id);
+  }
+
+  checkValidRoute = (val: string): boolean => {
+    if (val === 'pageNotFound' || val === undefined || val === null || Object.values(val)[0]) {
+      return false;
+    }
+    return true;
+  }
+  getViewBill = (): any => {
+    return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
+  }
 }

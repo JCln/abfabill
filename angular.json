@@ -24,11 +24,13 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
+              { "glob": "**/*", "input": "src/assets/", "output": "/pardakht/assets/" },
               "src/favicon.ico",
-              "src/assets"
+              "src/web.config"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": []
           },
@@ -119,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "pardakht"
 }

@@ -1,0 +1,23 @@
+@import "../../../assets/main.scss";
+
+.loader {
+  position: relative;
+  height: 1rem;
+  width: 2rem;
+  display: block;
+  z-index: 1;
+  border-radius: 30%;
+  left: 25px;
+  bottom: 25px;
+  background: $medium_slate_blue;
+  animation: around2 2s infinite;
+}
+
+@keyframes around2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

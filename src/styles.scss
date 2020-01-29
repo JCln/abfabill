@@ -1,14 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/ngx-toastr/toastr.css";
+
+@font-face {
+  font-family: BLotus;
+  src: url(/pardakht/assets/fonts/BLotus.woff) format("woff2"), url(/pardakht/assets/fonts/BLotus) format("truetype"), url(/pardakht/assets/fonts/BLotus) format("eot");
+}
 
 body,
 html {
   padding: 0;
   margin: 0;
+  font-family: BLotus, "Blotus", tahoma, Sans-Serif;
+  scroll-behavior: smooth;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: 'b lotus';
 }

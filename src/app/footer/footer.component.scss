@@ -1,0 +1,33 @@
+@import "../../assets/main.scss";
+
+footer {
+  $footer_background: rgba(0, 98, 255, 0.88);
+  
+  background: linear-gradient($footer_background, $clr);
+  margin-top: $margin_bottom_sections;
+  border-radius: 30% 30% 0 0%;
+  ul {
+    text-align: right;
+    list-style-type: disc;
+    padding: 1rem 0.1rem;
+    margin: 0px 3.3rem;
+    direction: rtl;
+    color: $white;
+
+    li,
+    a {
+      font-size: 1.4rem;
+      margin-bottom: 0.41rem;
+
+      .text_style {
+        text-decoration: none;
+        width: 77%;
+        color: $pale_levender;
+        font-weight: 600;
+      }
+      :hover, :focus {
+        text-decoration: overline;
+      }
+    }
+  }
+}

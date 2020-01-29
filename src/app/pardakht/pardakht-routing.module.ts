@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { ViewBillComponent } from './view-bill/view-bill.component';
 
 const routes: Routes = [
-  { path: '', component: ViewBillComponent },
-  { path: 'viewBill', component: ViewBillComponent }
+  {
+    path: 'id', component: ViewBillComponent,
+  },
+
+  { path: 'pageNotFound', component: PageNotFoundComponent },
 ];
 
 @NgModule({

@@ -1,25 +1,10 @@
+$size: 3rem;
+$font-size: 1rem;
+
 .content {
   box-sizing: border-box;
   min-width: 100vw;
-  min-height: 100vh;
+  min-height: 50vh;
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  font-family: "b Lotus, b Nazanin";
+  padding: 0 .4rem;
 }
-
-// @font-face {"b lotus", "../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf", 700 }
-// @font-face {"b nazanin", "../../fonts/B_NAZANIN/B-NAZANIN.TTF" }
-
-// @font-face{
-//   font-family: "b_lotus";
-//   src: url("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
-//   src: local("../../fonts/B-Lotus/B\ Lotus\ Bold_0.ttf");
-// }
-
-// @font-face{
-//   font-family: "b_nazanin";
-//   src: url("../../fonts/B_NAZANIN/B-NAZANIN.TTF");
-//   src: local("../../fonts/B_NAZANIN/B-NAZANIN.TTF");
-// }

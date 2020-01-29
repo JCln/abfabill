@@ -1,19 +1,15 @@
-$clr: #00368c;
-$border-radius: #0198f1;
-$white: #fff;
-$main-background: #EFEFEF;
-// $div2-rectangle: #DFDFDF;
-$div2-rectangle: #E1E1E1;
+@import "../../../assets/main.scss";
+@import "../../../assets/input.scss";
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
 $firstBackground_color_border: rgba(153, 230, 255, 1);
 $red_background_color: rgba(255, 0, 0, 0.11);
 $orange_background: rgba(255, 191, 128, 0.5);
-$orange_background_border: rgba(204, 105, 0, 1);
+$orange_background_border: rgba(125, 73, 8, 1);
 $purple_backgruond_border: rgba(102, 0, 51, 1);
 $purple_backgruond: rgba(255, 204, 230, 0.1);
-$darkgreen_background_border: rgba(0, 102, 34, 1);
+$darkgreen_background_border: rgba(34, 162, 78, 1);
 $darkgreen_background: rgba(0, 102, 34, 0.11);
 $lightblue_background_border: rgba(0, 153, 255, 1);
 $lightblue_background: rgba(204, 235, 255, 0.11);
@@ -22,209 +18,211 @@ $blue_backgroud: rgba(26, 163, 255, 0.11);
 $footer_background: rgba(0, 230, 0, 1);
 $footer_button: rgba(0, 26, 0, 1);
 
-$size: 3rem;
-$font-size: 1rem;
-$font_size_title: 2rem;
+$lightgreen_border: #e4572e;
+$lightgreen: rgba(179, 179, 179, 0.3);
 
-$img-size: 12rem;
-
-section {
-  width: 100vw;
-
-  .header_icon {
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: $img-size;
-      height: calc(#{$img-size} - 1rem);
-    }
-  }
-
-  .header_title {
-    display: flex;
-    justify-content: center;
-
-    .title {
-      font-size: $font_size_title;
-      color: $clr;
-    }
-  }
-}
 @mixin background {
-  border-radius: inherit;
-  margin: 0.9rem 0;
-  padding: 2rem 0;
+  border-radius: $__border_radius;
+  margin: $margin_top_sections;
+  padding: 1rem 0;
+
+  i {
+    color: $orange_color;
+    width: $font_size_title;
+  }
 }
+
 section {
   .main {
-    background: lightgray;
-    border-radius: 30px;
+    background: rgba(179, 179, 179, 0.3);
+    border-radius: $__border_radius;
     padding: 0.5rem;
     margin: 0 0.5rem;
 
-    // .background {
-    //   border-radius: inherit;
-    //   margin: 0.9rem 0;
-    //   padding: 2rem 0;
-    // }
+    .background {
+      @include background;
+    }
+
+    // water span color
+    .fa-water,
+    .fa-tint {
+      color: $background_color_border_radius !important;
+    }
 
     .first_background {
-      @include background();
+      border: 2px solid $clr;
+
       .form-input {
-        border: 2px solid $firstBackground_color_border !important;
+        border: 1px solid $clr;
       }
     }
+
     .orange_background {
       background: $orange_background;
       border: 2px solid $orange_background_border;
+
       .form-input {
         border: 1px solid $orange_background_border;
       }
+
       .div1 {
         background: $orange_background_border;
       }
     }
-    .blue_background {
-      background: $blue_backgroud;
-      border: 2px solid $blue_backgroud_border;
-      .form-input {
-        border: 1px solid $blue_backgroud_border;
-      }
-      .div1 {
-        background: $blue_backgroud_border;
-      }
-    }
-    .second_background {
-      background: $red_background_color;
-      border: 2px solid red;
-      .form-input {
-        border: 1px solid red;
-      }
-      .div1 {
-        background: red;
-      }
-    }
-    .lightblue_background {
-      background: $lightblue_background;
-      border: 2px solid $lightblue_background_border;
-      .form-input {
-        border: 1px solid $lightblue_background_border;
-      }
-      .div1 {
-        background: $lightblue_background_border;
-      }
-    }
+
     .purple_background {
       background: $purple_backgruond;
       border: 2px solid $purple_backgruond_border;
+
       .form-input {
         border: 1px solid $purple_backgruond_border;
       }
+
       .div1 {
         background: $purple_backgruond_border;
       }
     }
+
+    .orangegray_background {
+      background: $lightgreen;
+      border: 2px solid $lightgreen_border;
+
+      .form-input {
+        border: 1px solid $lightgreen_border;
+      }
+
+      .div1 {
+        background: $lightgreen_border;
+      }
+    }
+
     .darkgreen_background {
       background: $darkgreen_background;
       border: 2px solid $darkgreen_background_border;
+
       .form-input {
         border: 1px solid $darkgreen_background_border;
       }
+
       .div1 {
         background: $darkgreen_background_border;
       }
     }
 
-    .form {
-      display: flex;
-      flex-direction: row;
-      box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
-      height: 3rem;
-      width: 3rem;
-      overflow: hidden;
-      width: 95%;
-      margin: 0.3rem auto;
-      border-radius: 3em;
+  }
+}
 
-      .form-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 52%;
-        flex-grow: 1;
+.check_moreinfo {
+  @include justify-center;
+
+  button {
+    @extend %button_first;
+    color: $medium_slate_blue;
+    border: 2px solid $medium_slate_blue;
+    background: $white;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+}
+
+// transition not working now !!!!!!!!!!!
+.show {
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  display: block;
+}
+
+.pay_section {
+  min-height: 10rem;
+  margin: $margin_top_sections;
+
+  .banks {
+    display: flex;
+
+    .bank_icons {
+      text-align: center;
+      width: 50%;
+      border: 2px solid $clr;
+      border-radius: 4rem;
+      margin: 0.3rem;
+      padding: 0.77rem;
+
+      img {
+        width: 7rem;
+        height: 6rem;
+      }
+    }
+  }
+
+  .pay_button_section {
+    @include justify-center;
+
+    & button {
+      @extend %button_first;
+      width: 100%;
+      padding: 0;
+    }
+
+    .pay_button {
+      a.disabled {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: $disable_pay;
+        font-size: 1.38rem;
+        font-weight: bolder;
       }
 
-      .form-input,
-      .form-button {
-        font-family: inherit;
-        border-radius: inherit;
-        // text-transform: uppercase;
-        font-weight: 600;
-        // letter-spacing: 1px;
-        border: 0;
+      a.enabled {
+        font-size: $font_large_size;
+        text-decoration: none;
+        color: $white;
+      }
+    }
+  }
+}
+
+.barcode {
+  @include justify-center;
+  margin: $margin_top_sections;
+}
+
+.header_title {
+  @include justify-center;
+
+  .title {
+    font-size: $font_size_title;
+    color: $clr;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .main {
+    padding: 5px;
+    margin: 0;
+
+    .form {
+      width: 99%;
+
+      .div1 {
+        width: 43%;
       }
 
       .form-input {
-        padding: 0 0.5em;
-        font-family: inherit;
-        outline: none;
-        font-size: 1.58rem;
-        height: 3rem;
-        border-radius: 30px;
-        z-index: 1;
+        padding: 0 0.5rem;
+        font-size: 1.4rem;
       }
 
-      .form-input::placeholder {
-        opacity: 0.35;
+      .pay_button {
+
+        a.disabled,
+        a.enabled {
+          font-size: $small_font_size;
+        }
       }
 
-      .form-button {
-        background: $clr;
-        font-size: $font-size;
-        // width: calc(#{$size} - 10px);
-        // height: calc(#{$size} - 10px);
-        margin-left: auto;
-        color: $white;
-        min-width: 7rem;
-        padding: 0;
-      }
-    }
-
-    .div1 {
-      position: relative;
-      height: 100%;
-      border-radius: 0 30px 30px 0;
-      padding: 10px;
-      background: $clr;
-      width: 48%;
-
-      p {
-        flex-direction: row;
-        position: absolute;
-        color: $white;
-        line-height: 2;
-        width: 86%;
-        margin: auto;
-        -webkit-transform: translate(2px, -5px);
-        transform: translate(2px, -5px);
-        text-align: right;
-        font-size: 1.1rem;
-        font-weight: 900;
-      }
-    }
-
-    .div2 {
-      padding: 19px;
-      height: 8px;
-      width: 8px;
-      border-radius: 0 50px;
-      background: lightgray;
-      position: absolute;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-      -webkit-transform-origin: 21% -55%;
-      transform-origin: 21% -55%;
     }
   }
 }

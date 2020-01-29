@@ -1,130 +1,461 @@
 <section>
-  <div class="header_icon">
-    <img src="../../../assets/imgs/logo.png" alt="">
-  </div>
+
   <div class="header_title">
     <h3 class="title">
       مشاهده قبض
     </h3>
   </div>
 
-</section>
-<section>
+
   <main class="main">
+
     <div class="background first_background">
-      <div *ngFor="let ww of viewBill | async; let first_back = index;">
-        <div class="form" *ngIf="first_back < 4">
+      <h3 class="text_align_center">
+        <i class="fa fa-water"></i>
+        خلاصه قبض</h3>
+
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input marquee text_align_right"
+            aria-label="first name" value="{{testObject.fullName}}">
+          <i *ngIf="spinnerBoolean" class="loader"></i>
+        </div>
+        <div class="div1">
+          <p>مشترک گرامی</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item inputcontainer">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="{{testObject.billId}}">
+          <i *ngIf="spinnerBoolean" class="loader"></i>
+        </div>
+        <div class="div1">
+          <p>شناسه قبض</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="{{testObject.payId}}">
+          <i *ngIf="spinnerBoolean" class="loader"></i>
+        </div>
+        <div class="div1">
+          <p>شناسه پرداخت</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            value="{{testObject.payable}}">
+          <i *ngIf="spinnerBoolean" class="loader"></i>
+        </div>
+        <div class="div1">
+          <p>مبلغ قابل پرداخت</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-item">
+          <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+            [(ngModel)]="testObject.id">
+          <i *ngIf="spinnerBoolean" class="loader"></i>
+        </div>
+        <div class="div1">
+          <p>مهلت پرداخت</p>
+          <div class="div2">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <section class="check_moreinfo">
+      <button (click)="showMoreButtonClicked()"> {{showMoreButton? 'نمایش کمتر جزئیات': 'مشاهده جزئیات بیشتر قبض'}}
+        <i class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i></button>
+    </section>
+
+    <div *ngIf="showMoreButton">
+
+      <div class="background purple_background">
+        <h3 class="text_align_center">
+          <i class="fa fa-user"></i>
+          اطلاعات انشعاب</h3>
+        <div class="form">
           <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
+            <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+              aria-label="first name" [(ngModel)]="testObject.karbariTitle">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
-            <p>{{ww.type}}</p>
+            <p>کاربری</p>
             <div class="div2">
             </div>
           </div>
         </div>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.ahadMaskooni">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class="div1">
+            <p>آحاد مسکونی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.ahadNonMaskooni">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class="div1">
+            <p>آحاد غیر مسکونی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.zarfiatQarardadi">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class="div1">
+            <p>ظرفیت قراردادی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.qotr">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class="div1">
+            <p>قطرانشعاب</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.qotrSifoon">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>قطر سیفون</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.id">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>وضعیت کنتور</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="background orange_background">
+        <h3 class="text_align_center">
+          <i class="fa fa-list-alt"></i>اطلاعات قرائت</h3>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.radif">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>شماره ردیف</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.barge">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>شماره برگه</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.eshterak">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>شماره اشتراک</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.preCounterReadingDate">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>تاریخ قرائت پیشین</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.currentCounterReadingDate">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>تاریخ قرائت کنونی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.id">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>تعداد روز</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.preCounterNumber">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p> شماره کنتور پیشین</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.currentCounterNumber">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>شماره کنتور کنونی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="background darkgreen_background">
+
+        <h3 class="text_align_center">
+          <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.masraf">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>مصرف به مترمکعب</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.masrafLiter">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>مصرف به لیتر</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.masrafAverage">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>متوسط مصرف</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="background orangegray_background">
+
+        <h3 class="text_align_center">
+          <i class="fa fa-square-root-alt"></i>
+          شرح اقلام</h3>
+
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.abBaha">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>بهای آب مصرفی</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.karmozdFazelab">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>بهای دفع فاضلاب</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.maliat">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>مالیات و عوارض</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.budget">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>تکلیف قانون بودجه</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.lavazemKahande">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class="div1">
+            <p>لوازم کاهنده</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.jam">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>جمع</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.taxfif">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>تخفیف</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+        <div class="form">
+          <div class="form-item">
+            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+              [(ngModel)]="testObject.preBedOrBes">
+            <i *ngIf="spinnerBoolean" class="loader"></i>
+          </div>
+          <div class=" div1">
+            <p>بدهی بستانکاری</p>
+            <div class="div2">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="orange_background">
-      <div *ngFor="let ww of viewBill | async; let orange_back = index">
-        <div class="form" *ngIf="orange_back > 3 && 8 > orange_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="background blue_background">
-      <div *ngFor="let ww of viewBill | async; let blue_back = index">
-        <div class="form" *ngIf="blue_back > 7 && 10 > blue_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="background second_background">
-      <div *ngFor="let ww of viewBill | async; let second_back = index">
-        <div class="form" *ngIf="second_back > 9 && 12 > second_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="background lightblue_background">
-      <div *ngFor="let ww of viewBill | async; let lightblue_back = index">
-        <div class="form" *ngIf="2 > lightblue_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="background purple_background">
-      <div *ngFor="let ww of viewBill | async; let purple_back = index">
-        <div class="form" *ngIf="2 > purple_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="background darkgreen_background">
-      <div *ngFor="let ww of viewBill | async; let darkgreen_back = index">
-        <div class="form" *ngIf="5 > darkgreen_back">
-          <div class="form-item">
-            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="ww.value">
-          </div>
-          <div class="div1">
-            <p>{{ww.type}}</p>
-            <div class="div2">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
+
 </section>
 
-<section>
-  <footer>
-  </footer>
+<section class="barcode">
+  <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
+    [bc-height]="barcode.height" [bc-display-value]="true">
+  </ngx-barcode>
+</section>
+
+<section class="pay_section">
+  <div class="pay_button_section">
+
+    <button class="pay_button" [disabled]="testObject.isPayed === true || spinnerBoolean">
+      <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer' [ngClass]="{
+        'disabled':testObject.isPayed === true || spinnerBoolean ,
+        'enabled':testObject.isPayed === false
+      }">
+        {{testObject.isPayed === true || spinnerBoolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
+      </a>
+    </button>
+  </div>
+
+  <div class="banks">
+    <div class="bank_icons" (click)="changeBankForPay(banks.name , banks.linkToSite)" *ngFor="let banks of bankIcons">
+      <img src="{{banks.imgUrl}}">
+    </div>
+  </div>
 </section>
