@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
 
 const routes: Routes = [
   {

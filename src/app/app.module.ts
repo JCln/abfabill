@@ -13,13 +13,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PardakhtModule } from './pardakht/pardakht.module';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { SharedModule } from './shared/shared.module';
+import { FailedComponent } from './response/failed/failed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FailedComponent
   ],
   imports: [
     HttpClientModule,
