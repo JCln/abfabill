@@ -84,7 +84,7 @@ export class ViewBillComponent implements OnInit {
   }
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
-    scroll(0, 5000);
+    scroll(0, 700);
   }
 
 }

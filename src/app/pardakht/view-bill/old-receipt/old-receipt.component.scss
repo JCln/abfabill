@@ -1,0 +1,68 @@
+$__border_radius: 30px;
+$__border_radius_bigger: 50px;
+
+$disable_pay: #660033;
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  direction: rtl;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+  text-align: right;
+
+  .borders {
+    border: .1rem solid;
+    border-radius: $__border_radius;
+    height: auto;
+    min-height: 3rem;
+    width: 30%;
+    padding: .5rem;
+    margin: .2rem;
+
+    .abfa {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+
+      article {
+        color: #569bc4;
+
+      }
+
+    }
+
+    .second_article {
+      color: #b3377f;
+    }
+  }
+
+  .non_border {
+    border: none;
+  }
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+
+  height: 100%;
+}
+
+.pay_section {
+  background-color: rgba($color: $disable_pay, $alpha: .5);
+  border: $disable_pay;
+}
+p {
+  width: 50%;
+}
