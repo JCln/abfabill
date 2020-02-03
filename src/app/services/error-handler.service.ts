@@ -40,7 +40,7 @@ export class ErrorHandlerService implements ErrorHandler {
 
   private setTimeOutBeforeRoute = () => {
     setTimeout(() => {
-      this.router.navigate(['/pageNotFound']);
+      // this.router.navigate(['/pageNotFound']);
     }, 2000);
   }
 
@@ -62,7 +62,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
       case 0:
-        this.customToaster(8000, 'باعرض پوزش', 'ارتباط با شرکت آبفا برقرار نشد، احتمالا به شبکه متصل نیستید');
+        this.customToaster(8000, 'خطا', 'ارتباط با شرکت آبفا برقرار نشد،شما احتمالا به شبکه متصل نیستید');
         break;
       case 500:
         this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا ساعتی دیگر مراجعه فرمایید');
