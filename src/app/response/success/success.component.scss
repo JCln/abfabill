@@ -37,8 +37,8 @@ section {
     width: 80%;
     height: 13rem;
 
-    border-top: .5rem solid $orange_color;
-    border-bottom: .5rem solid $orange_color;
+    border-top: .5rem solid $bright_torouse;
+    border-bottom: .5rem solid $bright_torouse;
     border-radius: $__small_border_radius;
 
     .message {
@@ -53,7 +53,7 @@ section {
         align-items: center;
 
         position: absolute;
-        background-color: $orange_color;
+        background-color: $bright_torouse;
         width: 5rem;
         height: 5rem;
         border-radius: 50%;
@@ -68,13 +68,13 @@ section {
 
       h1 {
         margin-top: $font_large_size;
-        color: $orange_color;
+        color: $bright_torouse;
       }
 
       .back_to_insert_id {
         button {
           @extend %button_first;
-          background-color: $orange_color;
+          background-color: $bright_torouse;
           min-width: 12rem;
           width: auto;
         }

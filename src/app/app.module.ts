@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PardakhtModule } from './pardakht/pardakht.module';
-import { FailedComponent } from './response/failed/failed.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { SharedModule } from './shared/shared.module';
 
@@ -23,11 +22,8 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    FailedComponent,
     NoLayoutComponent,
     LayoutComponent,
-    // SuccessComponent,
-    // OldReceiptComponent
   ],
   imports: [
     HttpClientModule,

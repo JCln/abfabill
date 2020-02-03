@@ -33,6 +33,7 @@ $lightgreen: rgba(179, 179, 179, 0.3);
 }
 
 section {
+
   .main {
     background: rgba(179, 179, 179, 0.3);
     border-radius: $__border_radius;
@@ -168,6 +169,7 @@ section {
 
     .pay_button {
       font-family: inherit;
+
       a.disabled {
         pointer-events: none;
         cursor: default;
