@@ -25,19 +25,19 @@
                     <div class="borders">
                         <div class="details">
                             <div class="text_part">شهر</div>
-                            <div class="dynamic_details">{{childEl.zoneTitle}} </div>
+                            <div class="dynamic_details"> </div>
                         </div>
                         <div class="details">
                             <div class="text_part">مشترک گرامی</div>
-                            <div class="dynamic_details">{{childEl.fullName}}</div>
+                            <!-- <div class="dynamic_details">{{childEl.fullName}}</div> -->
                         </div>
                         <div class="details">
                             <div class="text_part">آدرس???</div>
-                            <div class="dynamic_details">{{childEl.address}}</div>
+                            <!-- <div class="dynamic_details">{{childEl.address}}</div> -->
                         </div>
                         <div class="details">
                             <div class="text_part">کد پستی?????</div>
-                            <div class="dynamic_details">{{childEl.postalcode}}</div>
+                            <!-- <div class="dynamic_details">{{childEl.postalcode}}</div> -->
                         </div>
                     </div>
                     <div class="borders">
@@ -47,19 +47,7 @@
                         </div>
                         <div class="details">
                             <div class="text_part">تعداد واحد:?????</div>
-                            <div class="dynamic_details">{{childEl.fullName}}</div>
-                        </div>
-                        <div class="details">
-                            <div class="text_part">مسکونی</div>
-                            <div class="dynamic_details">{{childEl.ahadMaskooni}}</div>
-                        </div>
-                        <div class="details">
-                            <div class="text_part">تجاری</div>
-                            <div class="dynamic_details">{{childEl.ahadNonMaskooni}}</div>
-                        </div>
-                        <div class="details">
-                            <div class="text_part">سایر</div>
-                            <div class="dynamic_details">--------</div>
+                            <div class="dynamic_details">-----</div>
                         </div>
                         <div class="details">
                             <div class="text_part">ظرفیت قراردادی </div>
@@ -69,7 +57,7 @@
                     <div class="borders">
                         <div class="details">
                             <div class="text_part">کد تعرفه??</div>
-                            <div class="dynamic_details">{{childEl.fullName}} </div>
+                            <!-- <div class="dynamic_details">{{childEl.fullName}} </div> -->
                         </div>
                         <div class="details">
                             <div class="text_part">قطر کنتور???</div>
@@ -100,13 +88,15 @@
                         <div class="inner_div">
                             تاریخ قرائت
                         </div>
-                        <div class="details">
-                            <div class="text_part">پیشین</div>
-                            <div class="dynamic_details">{{childEl.preCounterReadingDate}} </div>
-                        </div>
-                        <div class="details">
-                            <div class="text_part">کنونی</div>
-                            <div class="dynamic_details">{{childEl.currentCounterReadingDate}} </div>
+                        <div class="outer_div">
+                            <div class="details">
+                                <div class="text_part">پیشین</div>
+                                <div class="dynamic_details">{{childEl.preCounterReadingDate}} </div>
+                            </div>
+                            <div class="details">
+                                <div class="text_part">کنونی</div>
+                                <div class="dynamic_details">{{childEl.currentCounterReadingDate}} </div>
+                            </div>
                         </div>
                     </div>
                     <div class="borders">
@@ -119,13 +109,15 @@
                         <div class="inner_div">
                             شماره کنتور
                         </div>
-                        <div class="details">
-                            <div class="text_part">پیشین</div>
-                            <div class="dynamic_details"> {{childEl.radif}}</div>
-                        </div>
-                        <div class="details">
-                            <div class="text_part">کنونی:</div>
-                            <div class="dynamic_details">{{childEl.barge}} </div>
+                        <div class="outer_div">
+                            <div class="details">
+                                <div class="text_part">پیشین</div>
+                                <div class="dynamic_details"> {{childEl.radif}}</div>
+                            </div>
+                            <div class="details">
+                                <div class="text_part">کنونی:</div>
+                                <div class="dynamic_details">{{childEl.barge}} </div>
+                            </div>
                         </div>
                     </div>
                     <div class="borders">
@@ -144,7 +136,7 @@
                     </div>
                 </div>
                 <div class="third_chance">
-                    <div class="borders">
+                    <div class="borders first_child">
                         <p> شرح اقلام و مبالغ به ریال</p>
                         <div class="details">
                             <div class="text_part">بهای آب مصرفی </div>
@@ -166,13 +158,12 @@
                             <div class="text_part">بدهکاری قبلی </div>
                             <div class="dynamic_details">{{childEl.preBedOrBes}}</div>
                         </div>
-                    </div>
-                    <div class="borders">
-                        <div class="details">
+                        <div class="details last_child">
                             <div class="text_part">جمع</div>
                             <div class="dynamic_details">{{childEl.jam}}</div>
                         </div>
                     </div>
+
                     <div class="grid_area2">
                         <div class="borders pay_section">
                             <div class="details">
@@ -191,16 +182,18 @@
                     <h3>
                         آب، زندگی بخش است...
                     </h3>
-                    <div class="borders">
-                        <div class="details">
-                            <div class="text_part">شناسه قبض</div>
-                            <div class="dynamic_details">{{childEl.billId}}</div>
+                    <div class="">
+                        <div class="borders">
+                            <div class="details">
+                                <div class="text_part">شناسه قبض</div>
+                                <div class="dynamic_details">{{childEl.billId}}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="borders">
-                        <div class="details">
-                            <div class="text_part">شناسه پرداخت</div>
-                            <div class="dynamic_details">{{childEl.payId}}</div>
+                        <div class="borders">
+                            <div class="details">
+                                <div class="text_part">شناسه پرداخت</div>
+                                <div class="dynamic_details">{{childEl.payId}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
