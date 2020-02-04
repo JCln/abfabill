@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { InteractionService } from './../../../services/interaction.service';
 
@@ -8,21 +8,18 @@ import { InteractionService } from './../../../services/interaction.service';
   styleUrls: ['./old-receipt.component.scss']
 })
 export class OldReceiptComponent implements OnInit {
-  childEl: any;
-  @Input() childEl2: any;
+  childEl: any = [];
   constructor(private receiptService: InteractionService) {
   }
 
+  ngAfterContentChecked(): void {
+    console.log('ngAfterContentChecked');
+    this.receiptService.receipt$.subscribe(res => {
+      console.log(res);
+      this.childEl = res;
+    });
+  }
   ngOnInit() {
-
-    for (let index = 0; index < 10; index++) {
-
-      this.receiptService.receipt$.subscribe(res => {
-        console.log(res);
-        this.childEl = res;
-      })
-
-    }
   }
 
 }
