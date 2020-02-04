@@ -24,8 +24,11 @@ export class ViewBillService {
     this.base64 = btoa(id);
   }
 
-  checkValidRoute = (val: string): boolean => {
-    if (val === 'pageNotFound' || val === undefined || val === null || Object.values(val)[0]) {
+  checkValidRoute = (val: object): boolean => {
+//  myVar instanceof String
+    //   console.log(typeof (Object.values(val)));
+
+    if (typeof (Object.values(val)[0]) === "string") {
       return false;
     }
     return true;

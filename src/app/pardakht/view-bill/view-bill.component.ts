@@ -3,10 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 
 import { IbankIcons, IBarcode } from '../ibank-icons';
+import { InteractionService } from './../../services/interaction.service';
 import { IViewBill } from './../../services/iview-bill';
 import { ViewBillService } from './../../services/view-bill.service';
 
-// import { bankIcons } from '../bank-icons';
 const bankIcons: IbankIcons[] = [
   {
     imgUrl: '../../../pardakht/assets/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'http://bmi.ir'
@@ -33,6 +33,7 @@ export class ViewBillComponent implements OnInit {
 
   constructor(
     private viewBillService: ViewBillService,
+    private receipt: InteractionService,
     private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
     private router: Router) {
@@ -67,6 +68,17 @@ export class ViewBillComponent implements OnInit {
     });
   }
 
+  receiptFuc = (): Promise<any> => {
+    if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
+      this.connectToServer();
+    } else {
+      this.errorHandler.handleError(404);
+    }
+    return new Promise(resolve => {
+      resolve(this.testObject);
+    });
+  }
+
   nestingLevel = async () => {
     this.viewBillService.setId(await this.getDataFromRoute());
     if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
@@ -74,6 +86,8 @@ export class ViewBillComponent implements OnInit {
     } else {
       this.errorHandler.handleError(404);
     }
+    this.receipt.setReceipt(this.testObject);
+    // this.receipt.setReceipt(this.receiptFuc());
   }
 
   ngOnInit() { }

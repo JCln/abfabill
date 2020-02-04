@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { InteractionService } from './../../../services/interaction.service';
 
@@ -9,6 +9,7 @@ import { InteractionService } from './../../../services/interaction.service';
 })
 export class OldReceiptComponent implements OnInit {
   childEl: any;
+  @Input() childEl2: any;
   constructor(private receiptService: InteractionService) {
   }
 

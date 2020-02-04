@@ -21,8 +21,16 @@ export class AppComponent implements OnInit {
   }
   navigateToIdRoute = () => {
     // const isValidToRoute = this.viewBillService.checkValidRoute(this.idRoutePart);
+    // console.log(isValidToRoute);
+    
     // if (isValidToRoute === true) {
+    //   console.log(isValidToRoute);
+      
       this.router.navigate([this.idRoutePart]);
+    //   return;
+    // }
+    // else {
+    //   this.router.navigate(['/pageNotFound']);
     // }
   }
   ngOnInit() {

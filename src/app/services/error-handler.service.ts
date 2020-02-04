@@ -40,7 +40,7 @@ export class ErrorHandlerService implements ErrorHandler {
 
   private setTimeOutBeforeRoute = () => {
     setTimeout(() => {
-      // this.router.navigate(['/pageNotFound']);
+      this.router.navigate(['/pageNotFound']);
     }, 2000);
   }
 
