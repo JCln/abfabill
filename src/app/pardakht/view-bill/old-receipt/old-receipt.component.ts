@@ -20,5 +20,9 @@ export class OldReceiptComponent implements OnInit {
   }
   ngOnInit() {
   }
+  exportAsPrint(): void {
+    window.print();
+    window.close();
+  }
 
 }

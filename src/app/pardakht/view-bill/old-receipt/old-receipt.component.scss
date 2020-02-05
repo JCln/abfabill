@@ -1,29 +1,42 @@
+@import '../../../../assets/main';
+
 $__border_radius: 15px;
 $__border_radius_bigger: 50px;
 
 $disable_pay: #660033;
 $side_bar_color: #8883ab;
 
+
 @mixin borders {
   border: .2rem solid;
   border-radius: $__border_radius;
 }
 
-.grid_area1 {
-  grid-area: main;
 
-  .main {
-    display: flex;
-    flex-direction: row;
-  }
-}
+// .grid_area1 {
+//   grid-area: main;
 
-.grid_area2 {
-  grid-area: pay;
-}
+//   .main {
+//     display: flex;
+//     flex-direction: row;
+//   }
+// }
 
-.grid_area_side {
-  grid-area: side;
+// .grid_area2 {
+//   grid-area: pay;
+// }
+
+// .grid_area_side {
+//   grid-area: side;
+// }
+
+
+
+.main {
+  padding: 4rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 
 section {
@@ -31,51 +44,37 @@ section {
   direction: rtl;
 
   .main_section {
-    display: grid;
-    grid-template-columns: 5% 70% 5%;
-    grid-template-areas:
-      "side main main"
-      "side main main"
-      "pay pay pay";
-    gap: 10px;
+    display: flex;
+    justify-content: center;
     height: 100vh;
-    margin: 7rem;
     border: .1rem solid;
+    padding: 3rem;
 
-    .side {
-      height: 36rem;
-      width: 100%;
-      min-width: 5rem;
-      display: flex;
-      flex-direction: column;
+    .grid_area_side {
+      height: 0;
+      width: 0;
 
       img {
-        width: 100%;
-        height: 4.5rem;
+        position: relative;
+        width: 6rem;
+        height: 6rem;
+        right: 6rem;
+        top: 0rem;
       }
-
-      // .side_bar {
-      //   width: 7rem;
-      //   -webkit-transform: rotate(90deg);
-      //   transform: rotate(90deg);
-      //   height: 3rem;
-      //   top: 50%;
-      //   right: 0%;
-      //   bottom: 50%;
-      //   position: relative;
-      //   left: 50%;
-
-      //   div {
-      //     color: $side_bar_color;
-      //   }
-      // }
     }
 
+    .first_chance,
+    .second_chance,
+    .third_chance,
+    .forth_chance {
+      margin-top: auto;
+    }
 
     .borders {
       @include borders();
       height: auto;
-      padding: .5rem 0;
+      padding: 0.5rem 0.3rem;
+      font-weight: 800;
       margin: .2rem;
       max-width: 22rem;
       width: auto;
@@ -89,7 +88,7 @@ section {
 
         article {
           color: #569bc4;
-
+          font-size: 1.2rem;
         }
 
       }
@@ -146,7 +145,7 @@ section {
 }
 
 .second_chance {
-  margin-top: 6rem;
+  margin-top: 4rem;
   width: 18rem;
 }
 
@@ -154,12 +153,12 @@ section {
   width: 17rem;
 
   .first_child {
-    height: 26.7rem !important;
+    height: 29.5rem !important;
   }
 
   .last_child {
     border-top: .2rem solid;
-    margin-top: 10rem;
+    margin-top: 9rem;
   }
 
   p {
@@ -174,7 +173,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 16rem;
+  width: 14rem;
 
   img {
     height: 16rem;
@@ -243,6 +242,8 @@ h3 {
       height: auto;
       gap: 0;
       margin: 0;
+      padding: 0;
+      font-size: 1.3rem;
 
       .forth_chance>img {
         width: auto;
@@ -269,7 +270,22 @@ h3 {
       .grid_area1 {
         .main {
           flex-wrap: wrap;
+          padding: 0;
 
+          .borders {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .grid_area_side {
+        width: 0rem;
+        height: 0rem;
+
+        img {
+          position: initial;
+          width: 2.5rem;
+          height: 2.5rem;
         }
       }
     }
@@ -277,6 +293,9 @@ h3 {
 }
 
 @media screen and (max-width: 620px) {
+  .main {
+    display: grid;
+  }
 
   .first_chance,
   .second_chance,
@@ -313,11 +332,27 @@ h3 {
       height: auto;
       margin: 0;
       gap: 0;
+      border: 0;
+      // padding: 0;
 
-      .borders {
-        max-width: 100%;
-        padding: .5rem;
+      .main {
+        margin: 0;
+        // padding: 0;
+
+        .borders {
+          max-width: 100%;
+          padding: .5rem;
+        }
+      }
+
+      .grid_area1 {
+        margin-top: 2rem;
       }
     }
   }
+}
+
+button {
+  @extend %button_first;
+  width: 100%;
 }
