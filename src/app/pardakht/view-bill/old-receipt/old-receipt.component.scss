@@ -1,3 +1,5 @@
+@import '../../../../assets/main';
+
 $__border_radius: 15px;
 $__border_radius_bigger: 50px;
 
@@ -9,21 +11,11 @@ $side_bar_color: #8883ab;
   border-radius: $__border_radius;
 }
 
-.grid_area1 {
-  grid-area: main;
-
-  .main {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-.grid_area2 {
-  grid-area: pay;
-}
-
-.grid_area_side {
-  grid-area: side;
+.main {
+  padding: 4rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 
 section {
@@ -31,51 +23,31 @@ section {
   direction: rtl;
 
   .main_section {
-    display: grid;
-    grid-template-columns: 5% 70% 5%;
-    grid-template-areas:
-      "side main main"
-      "side main main"
-      "pay pay pay";
-    gap: 10px;
+    display: flex;
+    justify-content: center;
     height: 100vh;
-    margin: 7rem;
     border: .1rem solid;
+    padding: 3rem;
 
     .side {
       height: 36rem;
       width: 100%;
       min-width: 5rem;
-      display: flex;
+      display: none;
       flex-direction: column;
 
       img {
         width: 100%;
         height: 4.5rem;
       }
-
-      // .side_bar {
-      //   width: 7rem;
-      //   -webkit-transform: rotate(90deg);
-      //   transform: rotate(90deg);
-      //   height: 3rem;
-      //   top: 50%;
-      //   right: 0%;
-      //   bottom: 50%;
-      //   position: relative;
-      //   left: 50%;
-
-      //   div {
-      //     color: $side_bar_color;
-      //   }
-      // }
     }
 
 
     .borders {
       @include borders();
       height: auto;
-      padding: .5rem 0;
+      padding: 0.5rem 0.3rem;
+      font-weight: 800;
       margin: .2rem;
       max-width: 22rem;
       width: auto;
@@ -146,7 +118,7 @@ section {
 }
 
 .second_chance {
-  margin-top: 6rem;
+  margin-top: 4rem;
   width: 18rem;
 }
 
@@ -154,12 +126,12 @@ section {
   width: 17rem;
 
   .first_child {
-    height: 26.7rem !important;
+    height: 29.5rem !important;
   }
 
   .last_child {
     border-top: .2rem solid;
-    margin-top: 10rem;
+    margin-top: 9rem;
   }
 
   p {
@@ -174,7 +146,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 16rem;
+  width: 14rem;
 
   img {
     height: 16rem;
@@ -320,4 +292,9 @@ h3 {
       }
     }
   }
+}
+
+button {
+  @extend %button_first;
+  width: 100%;
 }
