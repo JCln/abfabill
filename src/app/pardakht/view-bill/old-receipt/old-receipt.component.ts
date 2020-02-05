@@ -13,7 +13,6 @@ export class OldReceiptComponent implements OnInit {
   }
 
   ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
     this.receiptService.receipt$.subscribe(res => {
       console.log(res);
       this.childEl = res;

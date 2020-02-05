@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ErrorHandlerService } from '../services/error-handler.service';
 import { IViewBill } from './../services/iview-bill';
 
 @Component({
@@ -9,12 +10,21 @@ import { IViewBill } from './../services/iview-bill';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
+  private maxLength = 13;
   input: number;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private errorHandler: ErrorHandlerService) { }
 
+  @HostListener('document: keyup', ['$event'])
+  onkeyUpHandler(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === 'NumpadEnter') {
+      this.checkValidInput();
+    }
+  }
   checkValidInput = () => {
-    if (isNaN(this.input) || this.input === null) {
+    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength) {
+      this.input = null;
+      this.errorHandler.handleError(404);
       return;
     } else {
       this.billIdValue(this.input);

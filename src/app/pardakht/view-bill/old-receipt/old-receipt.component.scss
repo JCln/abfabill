@@ -54,21 +54,21 @@ section {
         height: 4.5rem;
       }
 
-      .side_bar {
-        width: 7rem;
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-        height: 3rem;
-        top: 50%;
-        right: 0%;
-        bottom: 50%;
-        position: relative;
-        left: 50%;
+      // .side_bar {
+      //   width: 7rem;
+      //   -webkit-transform: rotate(90deg);
+      //   transform: rotate(90deg);
+      //   height: 3rem;
+      //   top: 50%;
+      //   right: 0%;
+      //   bottom: 50%;
+      //   position: relative;
+      //   left: 50%;
 
-        p {
-          color: $side_bar_color;
-        }
-      }
+      //   div {
+      //     color: $side_bar_color;
+      //   }
+      // }
     }
 
 
@@ -249,9 +249,21 @@ h3 {
         height: auto;
       }
 
-      .side>img {
-        width: 3rem;
-        height: 3rem;
+      .side {
+        img {
+          width: 3rem;
+          height: 3rem;
+        }
+
+        // .side_bar {
+        //   position: absolute;
+        //   transform: rotate(0deg);
+        //   width: 100%;
+        //   height: 2rem;
+        //   text-align: center;
+        //   top: 0.5rem;
+        //   left: 0;
+        // }
       }
 
       .grid_area1 {
@@ -278,12 +290,23 @@ h3 {
     margin-top: 2rem;
   }
 
+  .third_chance {
+    p {
+      padding: 1rem;
+    }
+
+    .last_child {
+      margin-top: 6rem;
+    }
+  }
+
   .forth_chance {
     margin-bottom: 3rem;
   }
 
   section {
     .main_section {
+      font-size: 1.3rem;
       grid-template-columns: auto;
       grid-template-areas: "auto";
       justify-content: center;
@@ -293,6 +316,7 @@ h3 {
 
       .borders {
         max-width: 100%;
+        padding: .5rem;
       }
     }
   }
