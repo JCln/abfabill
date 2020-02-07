@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './_layout/layout/layout.component';
 import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
+import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OldReceiptComponent } from './pardakht/view-bill/old-receipt/old-receipt.component';
 import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
     path: '', component: LayoutComponent, children: [
       { path: '', redirectTo: 'pageNotFound', pathMatch: 'full' },
       { path: 'pageNotFound', component: PageNotFoundComponent },
-      { path: ':id', component: ViewBillComponent }
+      { path: ':id', component: ViewBillComponent, canActivate: [AuthGuard] }
     ]
   },
   {

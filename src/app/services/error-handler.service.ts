@@ -61,8 +61,11 @@ export class ErrorHandlerService implements ErrorHandler {
       case 404:
         this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
+      case 406:
+        this.customToaster(8000, '', 'لطفا شناسه را بدقت وارد فرمایید');
+        break;
       case 0:
-        this.customToaster(8000, 'خطا', 'ارتباط با شرکت آبفا برقرار نشد،ممکن است که به شبکه متصل نباشید');
+        this.customToaster(8000, '', 'ارتباط با شرکت آبفا برقرار نشد،ممکن است که به شبکه متصل نباشید');
         break;
       case 500:
         this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا ساعتی دیگر مراجعه فرمایید');
