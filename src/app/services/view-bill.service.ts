@@ -29,6 +29,8 @@ export class ViewBillService {
     //   console.log(typeof (Object.values(val)));
 
     if (typeof (Object.values(val)[0]) === "string") {
+      console.log(typeof (Object.values(val)[0]) === "string");
+      
       return false;
     }
     return true;
