@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ErrorHandlerService } from '../services/error-handler.service';
+import { AuthGuard } from './../auth.guard';
 import { IViewBill } from './../services/iview-bill';
 
 @Component({
@@ -13,7 +14,7 @@ export class PageNotFoundComponent implements OnInit {
   private maxLength = 13;
   input: number;
 
-  constructor(private router: Router, private errorHandler: ErrorHandlerService) { }
+  constructor(private router: Router, private errorHandler: ErrorHandlerService, private authGuard: AuthGuard) { }
 
   @HostListener('document: keyup', ['$event'])
   onkeyUpHandler(event: KeyboardEvent) {
@@ -27,6 +28,7 @@ export class PageNotFoundComponent implements OnInit {
       this.errorHandler.handleError(404);
       return;
     } else {
+      this.authGuard.changeIdRoutePart(this.input.toString());
       this.billIdValue(this.input);
     }
   }
