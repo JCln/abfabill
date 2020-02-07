@@ -7,36 +7,15 @@ $disable_pay: #660033;
 $side_bar_color: #8883ab;
 
 
-@mixin borders {
-  border: .2rem solid;
-  border-radius: $__border_radius;
+h3 {
+  text-align: center;
+  color: #569bc4;
 }
 
 
-// .grid_area1 {
-//   grid-area: main;
-
-//   .main {
-//     display: flex;
-//     flex-direction: row;
-//   }
-// }
-
-// .grid_area2 {
-//   grid-area: pay;
-// }
-
-// .grid_area_side {
-//   grid-area: side;
-// }
-
-
-
-.main {
-  padding: 4rem;
-  margin: 1rem;
-  display: flex;
-  flex-direction: row;
+@mixin borders {
+  border: .2rem solid;
+  border-radius: $__border_radius;
 }
 
 section {
@@ -50,6 +29,7 @@ section {
     border: .1rem solid;
     padding: 3rem;
 
+    // grid area and abfa icon
     .grid_area_side {
       height: 0;
       width: 0;
@@ -63,176 +43,162 @@ section {
       }
     }
 
-    .first_chance,
-    .second_chance,
-    .third_chance,
-    .forth_chance {
-      margin-top: auto;
-    }
+    .main {
+      padding: 4rem;
+      margin: 1rem;
+      display: flex;
+      flex-direction: row;
 
-    .borders {
-      @include borders();
-      height: auto;
-      padding: 0.5rem 0.3rem;
-      font-weight: 800;
-      margin: .2rem;
-      max-width: 22rem;
-      width: auto;
 
-      .abfa {
+      .first_chance {
+        width: 20rem;
+
+        .second_article {
+          color: #b3377f;
+        }
+
+        .non_border {
+          border: none !important;
+        }
+
+        .abfa {
+
+          img {
+            width: 4rem;
+            height: 4rem;
+          }
+
+          article {
+            color: #569bc4;
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .first_chance,
+      .second_chance,
+      .third_chance,
+      .forth_chance {
+        margin-top: auto;
+
+        .borders {
+          @include borders();
+          height: auto;
+          padding: 0.5rem 0.3rem;
+          font-weight: 800;
+          margin: .2rem;
+          max-width: 22rem;
+          width: auto;
+
+          .details {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: .5rem;
+
+            .text_part {
+              text-align: right;
+            }
+
+            .dynamic_details {
+              text-align: left;
+              direction: ltr;
+            }
+
+            .text_part,
+            .dynamic_details {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      .second_chance {
+        margin-top: 4rem;
+        width: 18rem;
+
+        .horizontal_alignment {
+          display: flex;
+          padding: 0 0.5rem !important;
+          align-items: center;
+
+          .inner_div {
+            border-left: .2rem solid;
+            width: 40%;
+            margin-left: 1rem;
+          }
+
+          .outer_div {
+            width: 65%;
+
+            .details {
+              flex-direction: row;
+            }
+          }
+
+          .details {
+            display: flex;
+            flex-direction: column;
+
+            .text_part {
+              width: 100%;
+            }
+          }
+        }
+
+      }
+
+      .third_chance {
+        width: 17rem;
+
+        .first_child {
+          height: 29.5rem !important;
+        }
+
+        .pay_section {
+          border-color: #c5a6b8 !important;
+          background-color: #fcdbf0;
+          color: #ea1919;
+        }
+
+        .last_child {
+          border-top: .2rem solid;
+          margin-top: 9rem;
+        }
+
+        p {
+          padding-bottom: 2rem;
+          border-bottom: .2rem solid;
+          text-align: center;
+          margin: auto;
+        }
+      }
+
+      .forth_chance {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 14rem;
 
         img {
-          width: 4rem;
-          height: 4rem;
+          height: 16rem;
         }
 
-        article {
-          color: #569bc4;
-          font-size: 1.2rem;
+        .borders {
+          border-color: #c6edfe !important;
+          background-color: #c6edfe;
         }
-
       }
 
-      .second_article {
-        color: #b3377f;
-      }
-    }
 
-    .non_border {
-      border: none;
     }
   }
 
-  .test {
 
-    height: 100%;
-  }
-
-  .pay_section {
-    border-color: #c5a6b8 !important;
-    background-color: #fcdbf0;
-    color: #ea1919;
-  }
-
-
-  .details {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: .5rem;
-
-    .text_part {
-      text-align: right;
-    }
-
-    .dynamic_details {
-      text-align: left;
-    }
-
-    .text_part,
-    .dynamic_details {
-      width: 50%;
-    }
-  }
 }
 
-.small_height {
-  height: 7rem !important;
-}
-
-.first_chance {
-  width: 20rem;
-}
-
-.second_chance {
-  margin-top: 4rem;
-  width: 18rem;
-}
-
-.third_chance {
-  width: 17rem;
-
-  .first_child {
-    height: 29.5rem !important;
-  }
-
-  .last_child {
-    border-top: .2rem solid;
-    margin-top: 9rem;
-  }
-
-  p {
-    padding-bottom: 2rem;
-    border-bottom: .2rem solid;
-    text-align: center;
-    margin: auto;
-  }
-}
-
-.forth_chance {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 14rem;
-
-  img {
-    height: 16rem;
-  }
-
-  .borders {
-    border-color: #c6edfe !important;
-    background-color: #c6edfe;
-  }
-}
-
-h3 {
-  text-align: center;
-  color: #569bc4;
-}
-
-.horizontal_alignment {
-  display: flex;
-  padding: 0 0.5rem !important;
-  align-items: center;
-
-  .inner_div {
-    border-left: .2rem solid;
-    width: 40%;
-    margin-left: 1rem;
-  }
-
-  .outer_div {
-    width: 65%;
-
-    .details {
-      flex-direction: row;
-    }
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-
-    .text_part {
-      width: 100%;
-    }
-  }
-}
 
 @media screen and (max-width: 1400px) {
-
-  .first_chance,
-  .second_chance,
-  .third_chance,
-  .forth_chance {
-    width: 50%;
-    margin-top: 2rem;
-  }
-
-  .first_chance,
-  .second_chance {
-    margin-top: 2.2rem;
-  }
 
   section {
 
@@ -250,30 +216,26 @@ h3 {
         height: auto;
       }
 
-      .side {
-        img {
-          width: 3rem;
-          height: 3rem;
-        }
-
-        // .side_bar {
-        //   position: absolute;
-        //   transform: rotate(0deg);
-        //   width: 100%;
-        //   height: 2rem;
-        //   text-align: center;
-        //   top: 0.5rem;
-        //   left: 0;
-        // }
-      }
-
       .grid_area1 {
         .main {
           flex-wrap: wrap;
           padding: 0;
 
-          .borders {
-            max-width: 100%;
+          .first_chance,
+          .second_chance,
+          .third_chance,
+          .forth_chance {
+            width: 50%;
+            margin-top: 2rem;
+
+            .borders {
+              max-width: 100%;
+            }
+          }
+
+          .first_chance,
+          .second_chance {
+            margin-top: 2.2rem;
           }
         }
       }
@@ -293,35 +255,6 @@ h3 {
 }
 
 @media screen and (max-width: 620px) {
-  .main {
-    display: grid;
-  }
-
-  .first_chance,
-  .second_chance,
-  .third_chance,
-  .forth_chance {
-    width: 100%;
-    margin-top: 0;
-  }
-
-  .first_chance {
-    margin-top: 2rem;
-  }
-
-  .third_chance {
-    p {
-      padding: 1rem;
-    }
-
-    .last_child {
-      margin-top: 6rem;
-    }
-  }
-
-  .forth_chance {
-    margin-bottom: 3rem;
-  }
 
   section {
     .main_section {
@@ -333,21 +266,50 @@ h3 {
       margin: 0;
       gap: 0;
       border: 0;
-      // padding: 0;
-
-      .main {
-        margin: 0;
-        // padding: 0;
-
-        .borders {
-          max-width: 100%;
-          padding: .5rem;
-        }
-      }
 
       .grid_area1 {
         margin-top: 2rem;
+
+        .main {
+          margin: 0;
+          display: grid;
+          justify-content: center;
+
+
+          .first_chance,
+          .second_chance,
+          .third_chance,
+          .forth_chance {
+            width: 100%;
+            margin-top: 0;
+
+            .borders {
+              max-width: 100%;
+              padding: .5rem;
+            }
+          }
+
+          .first_chance {
+            margin-top: 2rem;
+          }
+
+          .third_chance {
+            p {
+              padding: 1rem;
+            }
+
+            .last_child {
+              margin-top: 6rem;
+            }
+          }
+
+          .forth_chance {
+            margin-bottom: 3rem;
+          }
+
+        }
       }
+      
     }
   }
 }
