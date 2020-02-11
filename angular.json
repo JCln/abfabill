@@ -24,7 +24,11 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              { "glob": "**/*", "input": "src/assets/", "output": "/assets" },
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets"
+              },
               "src/favicon.ico",
               "src/web.config"
             ],
@@ -123,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "pardakht"
+  "defaultProject": "pardakht",
+  "cli": {
+    "analytics": false
+  }
 }
