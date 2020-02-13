@@ -152,8 +152,8 @@ section {
       padding: 0.77rem;
 
       img {
-        width: 100%;
-        height: 100%;
+        width: 7rem;
+        height: 6rem;
         border-radius: $font_medium_size;
       }
     }
@@ -230,5 +230,10 @@ section {
       }
 
     }
+  }
+
+  .pay_section img {
+    width: 100%;
+    height: 100%;
   }
 }

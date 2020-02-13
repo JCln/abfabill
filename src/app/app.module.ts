@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { AnonyHeaderComponent } from './_layout/anony-header/anony-header.component';
+import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
 import { FooterComponent } from './_layout/footer/footer.component';
 import { HeaderComponent } from './_layout/header/header.component';
 import { LayoutComponent } from './_layout/layout/layout.component';
@@ -13,10 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PardakhtModule } from './pardakht/pardakht.module';
+import { ResponseModule } from './response/response.module';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { SharedModule } from './shared/shared.module';
-import { AnonyHeaderComponent } from './_layout/anony-header/anony-header.component';
-import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.compon
     BrowserModule,
     SharedModule,
     PardakhtModule,
+    ResponseModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule

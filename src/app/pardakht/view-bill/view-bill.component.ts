@@ -9,10 +9,10 @@ import { ViewBillService } from './../../services/view-bill.service';
 
 const bankIcons: IbankIcons[] = [
   {
-    imgUrl: '/assets/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'http://bmi.ir'
+    imgUrl: 'assets/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'http://bmi.ir'
   },
   {
-    imgUrl: '/assets/bankIcons/bpm.png', name: 'به پرداخت ملت', linkToSite: '#'
+    imgUrl: 'assets/bankIcons/bpm.png', name: 'به پرداخت ملت', linkToSite: '#'
   }
 ];
 @Component({

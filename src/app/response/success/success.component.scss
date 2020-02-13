@@ -75,8 +75,7 @@ section {
         button {
           @extend %button_first;
           background-color: $bright_torouse;
-          min-width: 12rem;
-          width: auto;
+          font-size: $font_size;
         }
       }
     }
