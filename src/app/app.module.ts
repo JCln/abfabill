@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PardakhtModule } from './pardakht/pardakht.module';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { SharedModule } from './shared/shared.module';
+import { AnonyHeaderComponent } from './_layout/anony-header/anony-header.component';
+import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { SharedModule } from './shared/shared.module';
     PageNotFoundComponent,
     NoLayoutComponent,
     LayoutComponent,
+    AnonyHeaderComponent,
+    AnonyLayoutComponent,
   ],
   imports: [
     HttpClientModule,
