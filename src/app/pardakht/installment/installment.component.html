@@ -1,0 +1,147 @@
+<section>
+    <main class="main" *ngFor="let i of testObject">
+
+        <div class="background first_background" *ngIf="!i.isPayed">
+            <div class="outer_container">
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+                            aria-label="first name" value="{{i.amount}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مشترک گرامی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item inputcontainer">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            value="{{i.billId}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>شناسه قبض</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            value="{{i.Date}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>شناسه پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            [(ngModel)]="i.deadLine">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مبلغ قابل پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            [(ngModel)]="testObject.deadLine">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مهلت پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="customers">
+                <div class="dynamic_checkbox">
+                    <input type="checkbox">
+                    <label for="checkbox"></label>
+                </div>
+            </div>
+        </div>
+        <div class="background first_background payed" *ngIf="i.isPayed">
+            <div class="outer_container">
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+                            aria-label="first name" value="{{i.amount}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مشترک گرامی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item inputcontainer">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            value="{{i.billId}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>شناسه قبض</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            value="{{i.Date}}">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>شناسه پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            [(ngModel)]="i.deadLine">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مبلغ قابل پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
+                            [(ngModel)]="testObject.deadLine">
+                        <i *ngIf="spinnerBoolean" class="loader"></i>
+                    </div>
+                    <div class="div1">
+                        <p>مهلت پرداخت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="customers">
+                <div class="dynamic_checkbox">
+                    <input type="checkbox" checked>
+                    <label for="checkbox"></label>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>

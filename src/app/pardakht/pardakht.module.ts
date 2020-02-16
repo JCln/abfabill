@@ -7,11 +7,13 @@ import { SharedModule } from './../shared/shared.module';
 import { PardakhtRoutingModule } from './pardakht-routing.module';
 import { OldReceiptComponent } from './view-bill/old-receipt/old-receipt.component';
 import { ViewBillComponent } from './view-bill/view-bill.component';
+import { InstallmentComponent } from './installment/installment.component';
 
 @NgModule({
   declarations: [
     ViewBillComponent,
-    OldReceiptComponent
+    OldReceiptComponent,
+    InstallmentComponent
   ],
   imports: [
     CommonModule,
