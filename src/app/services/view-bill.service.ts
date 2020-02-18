@@ -25,17 +25,20 @@ export class ViewBillService {
   }
 
   checkValidRoute = (val: object): boolean => {
-//  myVar instanceof String
+    //  myVar instanceof String
     //   console.log(typeof (Object.values(val)));
 
     if (typeof (Object.values(val)[0]) === "string") {
       console.log(typeof (Object.values(val)[0]) === "string");
-      
+
       return false;
     }
     return true;
   }
   getViewBill = (): any => {
     return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
+  }
+  getInstallment = (id : string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/Installment/Get');
   }
 }

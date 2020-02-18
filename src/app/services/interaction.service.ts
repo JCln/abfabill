@@ -11,7 +11,13 @@ export class InteractionService {
   private receiptSource = new BehaviorSubject<object>([]);
   receipt$ = this.receiptSource.asObservable();
 
+  private installmentIdSource = new BehaviorSubject<string>('');
+  installmentId$ = this.installmentIdSource.asObservable();
+
   setReceipt = (receipt: object) => {
     this.receiptSource.next(receipt);
+  }
+  setInstallment = (id: string) => {
+    this.installmentIdSource.next(id);
   }
 }

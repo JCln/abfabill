@@ -10,7 +10,7 @@ import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
 const routes: Routes = [
   {
     path: '', component: AnonyLayoutComponent, children: [
-      { path: '', redirectTo: 'pageNotFound', pathMatch: 'full' },
+      { path: '', redirectTo: '/pageNotFound', pathMatch: 'full' },
       { path: 'pageNotFound', component: PageNotFoundComponent }
     ]
   },

@@ -68,16 +68,16 @@ export class ViewBillComponent implements OnInit {
     });
   }
 
-  receiptFuc = (): Promise<any> => {
-    if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
-      this.connectToServer();
-    } else {
-      this.errorHandler.handleError(404);
-    }
-    return new Promise(resolve => {
-      resolve(this.testObject);
-    });
-  }
+  // receiptFuc = (): Promise<any> => {
+    // if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
+    //   this.connectToServer();
+    // } else {
+    //   this.errorHandler.handleError(404);
+    // }
+    // return new Promise(resolve => {
+    //   resolve(this.testObject);
+    // });
+  // }
 
   nestingLevel = async () => {
     this.viewBillService.setId(await this.getDataFromRoute());
@@ -88,6 +88,10 @@ export class ViewBillComponent implements OnInit {
     }
     this.receipt.setReceipt(this.testObject);
     // this.receipt.setReceipt(this.receiptFuc());
+    const a = this.receipt.setInstallment(this.getedDataIdFromRoute);
+    console.log(a);
+    
+    // this.receiptFuc();
   }
 
   ngOnInit() { }

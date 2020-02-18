@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewBillService } from 'src/app/services/view-bill.service';
+
+import { InteractionService } from './../../services/interaction.service';
 
 @Component({
   selector: 'app-installment',
@@ -6,23 +9,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./installment.component.scss']
 })
 export class InstallmentComponent implements OnInit {
-  spinnerBoolean = false;
+  spinnerBoolean = true;
   showMoreButton = false;
+  sumOfInstallments = 0;
+  billId: string = '';
 
-  testObject: any = [
-    { amount: '2990000', billId: '10018315', Date: '98/10/10', deadLine: '98/11/12', isPayed: false },
-    { amount: '983000', billId: '10018315', Date: '98/10/10', deadLine: '98/11/12', isPayed: true },
-    { amount: '983000', billId: '10018315', Date: '98/10/10', deadLine: '98/11/12', isPayed: true },
-    { amount: '983000', billId: '10018315', Date: '98/10/10', deadLine: '98/11/12', isPayed: true }
-  ]
-  constructor() { }
+  testObject: any = [];
+
+  constructor(
+    private getBillId: InteractionService,
+    private viewBillService: ViewBillService) { }
 
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
-    scroll(0, 1000);
+    scroll(0, 1200);
   }
-  
+  CalcInstallmentAmount = (val: number, event: any): void => {
+    if (event.srcElement.checked) {
+      this.sumOfInstallments += val;
+    } else {
+      this.sumOfInstallments -= val;
+    }
+  }
+  insertValToVar = (res: any, callback: () => void) => {
+    for (const key in res) {
+      if (res.hasOwnProperty(key)) {
+        this.testObject[key] = (res[key]);
+      }
+    }
+    callback();
+  }
+
+  removeLoaderAfterResponse = () => this.spinnerBoolean = false;
+  connectToServer = () => {
+    this.viewBillService.getInstallment(this.billId).subscribe((res: any) => { // 7790222118
+      if (res) {
+        console.log(res);
+        
+        this.insertValToVar(res, this.removeLoaderAfterResponse);
+      }
+    });
+  }
+
+  getId = (callback: () => void) => {
+    this.getBillId.installmentId$.subscribe(res => {
+      this.billId = res;
+    });
+    callback();
+  }
+
   ngOnInit() {
+    this.getId(this.connectToServer);
   }
 
 }

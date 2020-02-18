@@ -60,6 +60,7 @@ $payed_color: #F65050;
     height: 100%;
     background-color: #eee;
     border-radius: 50%;
+    border: .1rem solid $customer_border;
   }
 
   .checkmark:after {

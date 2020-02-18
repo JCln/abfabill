@@ -1,12 +1,10 @@
 <section>
-    <main class="main" *ngFor="let i of testObject">
-
-        <div class="background first_background" *ngIf="!i.isPayed">
-            <div class="outer_container">
+    <main class="main" *ngFor="let i of testObject | slice: 1:2">
+        <div class="background first_background">
+            <div class="outer_container general_info">
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-                            aria-label="first name" value="{{i.amount}}">
+                        <input type="text" name="viewBill.value" class="form-input" [(ngModel)]="i.amount" disabled>
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -17,8 +15,7 @@
                 </div>
                 <div class="form">
                     <div class="form-item inputcontainer">
-                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                            value="{{i.billId}}">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.billId">
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -27,10 +24,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </main>
+    <main class="main" *ngFor="let i of testObject">
+
+        <div class="background first_background" *ngIf="!i.isPayed">
+            <div class="outer_container">
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                            value="{{i.Date}}">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.paymentId">
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -41,8 +44,7 @@
                 </div>
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                            [(ngModel)]="i.deadLine">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.amount">
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -53,8 +55,8 @@
                 </div>
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                            [(ngModel)]="testObject.deadLine">
+                        <input type="text" readonly name="viewBill.value" class="form-input"
+                            [(ngModel)]="i.deadlineDate">
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -67,7 +69,7 @@
             </div>
             <div class="customers">
                 <label class="dynamic_checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" (change)="CalcInstallmentAmount(i.amount , $event)">
                     <span class="checkmark"></span>
                 </label>
             </div>
@@ -87,8 +89,7 @@
                 <div class="outer_container">
                     <div class="form">
                         <div class="form-item">
-                            <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-                                aria-label="first name" value="{{i.amount}}">
+                            <input type="text" name="viewBill.value" class="form-input" value="{{i.amount}}" disabled>
                             <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
@@ -99,8 +100,7 @@
                     </div>
                     <div class="form">
                         <div class="form-item inputcontainer">
-                            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                                value="{{i.billId}}">
+                            <input type="text" name="viewBill.value" class="form-input" value="{{i.billId}}" disabled>
                             <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
@@ -109,22 +109,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="form">
-                <div class="form-item">
-                    <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                        value="{{i.Date}}">
-                    <i *ngIf="spinnerBoolean" class="loader"></i>
-                </div>
-                <div class="div1">
-                    <p>شناسه پرداخت</p>
-                    <div class="div2">
-                    </div>
-                </div>
-            </div> -->
                     <div class="form">
                         <div class="form-item">
-                            <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-                                [(ngModel)]="i.deadLine">
+                            <input type="text" name="viewBill.value" class="form-input" [(ngModel)]="i.deadLine"
+                                disabled>
                             <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1 payed_button">
@@ -145,3 +133,12 @@
         </main>
     </div>
 </section>
+
+<footer *ngIf="sumOfInstallments != 0">
+    <div class="pay">
+        {{sumOfInstallments}}
+    </div>
+    <div class="text">
+        پرداخت مبلغ
+    </div>
+</footer>
