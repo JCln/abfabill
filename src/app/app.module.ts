@@ -14,28 +14,26 @@ import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PardakhtModule } from './pardakht/pardakht.module';
-import { ResponseModule } from './response/response.module';
+import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     PageNotFoundComponent,
     NoLayoutComponent,
+    HeaderComponent,
     LayoutComponent,
+    ViewBillComponent,
     AnonyHeaderComponent,
     AnonyLayoutComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     SharedModule,
-    PardakhtModule,
-    ResponseModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule

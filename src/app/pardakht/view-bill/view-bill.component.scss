@@ -21,6 +21,9 @@ $footer_button: rgba(0, 26, 0, 1);
 $lightgreen_border: #e4572e;
 $lightgreen: rgba(179, 179, 179, 0.3);
 
+h3 {
+  color: gray;
+}
 @mixin background {
   border-radius: $__border_radius;
   margin: $margin_top_sections;

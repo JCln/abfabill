@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as AOS from 'aos';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { InteractionService } from './../../services/interaction.service';
@@ -45,7 +46,7 @@ export class InstallmentComponent implements OnInit {
     this.viewBillService.getInstallment(this.billId).subscribe((res: any) => { // 7790222118
       if (res) {
         console.log(res);
-        
+
         this.insertValToVar(res, this.removeLoaderAfterResponse);
       }
     });
@@ -60,6 +61,12 @@ export class InstallmentComponent implements OnInit {
 
   ngOnInit() {
     this.getId(this.connectToServer);
+    AOS.init(
+      {
+        duration: 200,
+        easing: 'ease-in-quad'
+      }
+    );
   }
 
 }

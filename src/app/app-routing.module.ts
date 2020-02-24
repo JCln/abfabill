@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', redirectTo: '/pageNotFound', pathMatch: 'full' },
-      { path: 'pageNotFound', component: PageNotFoundComponent }
+      { path: 'pageNotFound', component: PageNotFoundComponent },
+      { path: 'services', loadChildren: () => import('./service-desk/service-desk.module').then(r => r.ServiceDeskModule) }
     ]
   },
   {
@@ -25,13 +26,7 @@ const routes: Routes = [
   {
     path: 'failed', loadChildren: () => import('./response/response.module').then(r => r.ResponseModule)
   },
-  // {
-  //   path: '', component: NoLayoutComponent, canLoad: [AuthGuard], children: [
-  //     { path: 'success', component: SuccessComponent },
-  //     { path: 'failed', component: FailedComponent },
-  //     { path: 'oldreceipt', component: OldReceiptComponent }
-  //   ],
-  // },
+  
   { path: '**', redirectTo: 'pageNotFound' }
 ];
 
