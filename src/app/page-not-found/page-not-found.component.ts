@@ -12,6 +12,7 @@ import { IViewBill } from './../services/iview-bill';
 })
 export class PageNotFoundComponent implements OnInit {
   private maxLength = 13;
+  private minLength = 4;
   input: number;
 
   constructor(private router: Router, private errorHandler: ErrorHandlerService, private authGuard: AuthGuard) { }
@@ -23,7 +24,7 @@ export class PageNotFoundComponent implements OnInit {
     }
   }
   checkValidInput = () => {
-    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength) {
+    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length <= this.minLength) {
       this.input = null;
       this.errorHandler.handleError(404);
       return;

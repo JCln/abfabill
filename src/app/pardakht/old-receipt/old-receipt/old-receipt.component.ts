@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from 'src/app/services/interaction.service';
 
-import { InteractionService } from './../../../services/interaction.service';
 
 @Component({
   selector: 'app-old-receipt',

@@ -1,0 +1,199 @@
+<section>
+    <div class="main_section">
+        <div class="grid_area_side">
+            <img src="assets/imgs/logo.png" alt="">    
+        </div>
+        <div class="grid_area1">
+            <div class="main">
+                <div class="first_chance">
+                    <div class="borders non_border">
+                        <div class="abfa">
+                            <article>وزارت نیرو- شرکت آب و فاضلاب استان اصفهان</article>
+                        </div>
+                        <article>
+                            <div>تلفن حوادث: 122</div>
+                            <div class="second_article">خدمات غیر حضوری با تلفن 1522</div>
+                        </article>
+                    </div>
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">شهر</div>
+                            <div class="dynamic_details"> </div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">مشترک گرامی</div>
+                            <div class="dynamic_details">{{childEl.fullName}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">آدرس???</div>
+                            <!-- <div class="dynamic_details">{{childEl.address}}</div> -->
+                        </div>
+                        <div class="details">
+                            <div class="text_part">کد پستی?????</div>
+                            <!-- <div class="dynamic_details">{{childEl2.postalcode}}</div> -->
+                        </div>
+                    </div>
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">کاربری</div>
+                            <div class="dynamic_details">{{childEl.karbariTitle}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">تعداد واحد:?????</div>
+                            <div class="dynamic_details">-----</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">ظرفیت قراردادی </div>
+                            <div class="dynamic_details">{{childEl.zarfiatQarardadi}}</div>
+                        </div>
+                    </div>
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">کد تعرفه??</div>
+                            <!-- <div class="dynamic_details">{{childEl.fullName}} </div> -->
+                        </div>
+                        <div class="details">
+                            <div class="text_part">قطر کنتور???</div>
+                            <div class="dynamic_details">{{childEl.qotr}} </div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">وضعیت کنتور</div>
+                            <div class="dynamic_details">{{childEl.counterStateId}} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="second_chance">
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">شماره ردیف</div>
+                            <div class="dynamic_details"> {{childEl.radif}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">شماره اشتراک</div>
+                            <div class="dynamic_details">{{childEl.eshterak}} </div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">شماره برگه:</div>
+                            <div class="dynamic_details">{{childEl.barge}} </div>
+                        </div>
+                    </div>
+                    <div class="borders horizontal_alignment">
+                        <div class="inner_div">
+                            تاریخ قرائت
+                        </div>
+                        <div class="outer_div">
+                            <div class="details">
+                                <div class="text_part">پیشین</div>
+                                <div class="dynamic_details">{{childEl.preCounterReadingDate}} </div>
+                            </div>
+                            <div class="details">
+                                <div class="text_part">کنونی</div>
+                                <div class="dynamic_details">{{childEl.currentCounterReadingDate}} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">تعداد روز</div>
+                            <div class="dynamic_details">{{childEl.days}} </div>
+                        </div>
+                    </div>
+                    <div class="borders horizontal_alignment">
+                        <div class="inner_div">
+                            شماره کنتور
+                        </div>
+                        <div class="outer_div">
+                            <div class="details">
+                                <div class="text_part">پیشین</div>
+                                <div class="dynamic_details"> {{childEl.radif}}</div>
+                            </div>
+                            <div class="details">
+                                <div class="text_part">کنونی:</div>
+                                <div class="dynamic_details">{{childEl.barge}} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="borders">
+                        <div class="details">
+                            <div class="text_part">مصرف به مترمکعب</div>
+                            <div class="dynamic_details">{{childEl.masraf}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">مصرف به لیتر </div>
+                            <div class="dynamic_details">{{childEl.masrafLiter}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">متوسط مصرف ماهانه/ متر مکعب </div>
+                            <div class="dynamic_details">{{childEl.masrafAverage}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="third_chance">
+                    <div class="borders first_child">
+                        <p> شرح اقلام و مبالغ به ریال</p>
+                        <div class="details">
+                            <div class="text_part">بهای آب مصرفی </div>
+                            <div class="dynamic_details">{{childEl.abBaha}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">کارمزد دفع فاضلاب </div>
+                            <div class="dynamic_details">{{childEl.karmozdFazelab}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">مالیات و عوارض</div>
+                            <div class="dynamic_details">{{childEl.maliat}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">قانون بودجه </div>
+                            <div class="dynamic_details">{{childEl.budget}}</div>
+                        </div>
+                        <div class="details">
+                            <div class="text_part">بدهکاری قبلی </div>
+                            <div class="dynamic_details">{{childEl.preBedOrBes}}</div>
+                        </div>
+                        <div class="details last_child">
+                            <div class="text_part">جمع</div>
+                            <div class="dynamic_details">{{childEl.jam}}</div>
+                        </div>
+                    </div>
+
+                    <div class="grid_area2">
+                        <div class="borders pay_section">
+                            <div class="details">
+                                <div class="text_part">مبلغ قابل پرداخت</div>
+                                <div class="dynamic_details">{{childEl.payable}}</div>
+                            </div>
+                            <div class="details">
+                                <div class="text_part">مهلت پرداخت</div>
+                                <div class="dynamic_details">{{childEl.deadLine}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forth_chance">
+                    <img src="assets/imgs/iranFlag.png" alt="">
+                    <h3>
+                        آب، زندگی بخش است...
+                    </h3>
+                    <div class="">
+                        <div class="borders">
+                            <div class="details">
+                                <div class="text_part">شناسه قبض</div>
+                                <div class="dynamic_details">{{childEl.billId}}</div>
+                            </div>
+                        </div>
+                        <div class="borders">
+                            <div class="details">
+                                <div class="text_part">شناسه پرداخت</div>
+                                <div class="dynamic_details">{{childEl.payId}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<button class="pay_button" (click)="exportAsPrint()">پرینت قبض</button>

@@ -16,11 +16,12 @@ import { ErrorHandlerService } from './services/error-handler.service';
 export class AuthGuard implements CanActivate, CanActivateChild {
   private idRoutePart = window.location.href.split('/').pop();
   private maxLength = 13;
+  private minLength = 4;
 
   constructor(private router: Router, private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
 
   private checkValidInput = (): boolean => {
-    if (this.idRoutePart === null || this.idRoutePart.toString().length > this.maxLength)
+    if (this.idRoutePart === null || this.idRoutePart.toString().length > this.maxLength || this.idRoutePart.toString().length <= this.minLength)
       return false;
     return true;
   }
