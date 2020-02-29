@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
-import { InteractionService } from './../../services/interaction.service';
+import { InteractionService } from '../../services/interaction.service';
 
 @Component({
   selector: 'app-installment',
