@@ -22,20 +22,23 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
     NoLayoutComponent,
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
     ViewBillComponent,
     AnonyHeaderComponent,
-    AnonyLayoutComponent
+    AnonyLayoutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     SharedModule,
     PardakhtModule,
+    // should remove for lazy load 
+    // ResponseModule,
+    // -------------
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule

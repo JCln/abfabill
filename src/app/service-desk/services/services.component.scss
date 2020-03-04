@@ -1,0 +1,21 @@
+$tiny_size: .1rem;
+$mediaum_border: .2rem;
+$clr: #00368c;
+$clr_border: #004ecc;
+
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  gap: $tiny_size;
+
+  img {
+    width: 100%;
+
+    &:hover {
+      border-radius: 30px;
+      border: $mediaum_border solid $clr_border;
+    }
+  }
+
+}

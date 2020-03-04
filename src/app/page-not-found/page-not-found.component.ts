@@ -23,6 +23,9 @@ export class PageNotFoundComponent implements OnInit {
       this.checkValidInput();
     }
   }
+  // isNull = (value: any) =>
+  //   typeof value === "undefined" || (typeof value !== "object" || !value)
+
   checkValidInput = () => {
     if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length <= this.minLength) {
       this.input = null;
