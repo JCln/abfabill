@@ -6,7 +6,6 @@ import { LayoutComponent } from './_layout/layout/layout.component';
 import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
 import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ViewBillComponent } from './pardakht/view-bill/view-bill.component';
 
 const routes: Routes = [
   {
@@ -17,8 +16,7 @@ const routes: Routes = [
   },
   {
     path: '', component: LayoutComponent, children: [
-      { path: 'services', loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule) },
-      { path: ':id', component: ViewBillComponent, canActivate: [AuthGuard] }
+      { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule) }
     ]
   },
   {
