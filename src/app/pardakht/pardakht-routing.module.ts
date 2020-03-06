@@ -9,6 +9,13 @@ const routes: Routes = [
       { path: 'receipt', loadChildren: () => import('./old-receipt/old-receipt.module').then(o => o.OldReceiptModule) }
     ]
   },
+  // {
+  //   path: '', component: NoLayoutComponent, children: [
+  //     { path: 'receipt', loadChildren: () => import('./old-receipt/old-receipt.module').then(o => o.OldReceiptModule) }
+  //   ]
+  // },
+  // { path: '', redirectTo: 'pageNotFound', pathMatch: 'full' },
+  // { path: '**', component: PageNotFoundComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
