@@ -2,20 +2,40 @@ $tiny_size: .1rem;
 $mediaum_border: .2rem;
 $clr: #00368c;
 $clr_border: #004ecc;
-
+$transparent_background:rgba(68, 155, 231, .5);
 
 section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  grid-template-columns: repeat(1, 1fr);
+  // grid-template-columns: repeat(2, minmax(48%, 50%));
+  grid-auto-rows: 50%;
+  background: darkblue;
   gap: $tiny_size;
+  min-height: 18rem;
 
-  img {
-    width: 100%;
-
-    &:hover {
-      border-radius: 30px;
-      border: $mediaum_border solid $clr_border;
-    }
+  .top_front {
+    grid-template-columns: repeat(2, minmax(48%, 50%));
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    min-height: 10rem;
+    background: $transparent_background;
+    clip-path: polygon(100% 0, 100% 73%, 87% 97%, 96% 67%, 86% 81%, 93% 54%, 8% 92%, 14% 64%, 0 87%, 0 0);
+    
   }
 
+  .bottom_back {
+    margin: 0 auto;
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    z-index: 1;
+    margin-top: auto;
+    
+    img {
+      // width: 85%;
+      // &:hover {
+      //   border-radius: 30px;
+      //   border: $mediaum_border solid $clr_border;
+      // }
+    }
+  }
 }

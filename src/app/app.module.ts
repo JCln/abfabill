@@ -36,9 +36,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     SharedModule,
     PardakhtModule,
-    // should remove for lazy load 
-    // ResponseModule,
-    // -------------
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule

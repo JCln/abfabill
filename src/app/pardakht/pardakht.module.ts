@@ -11,7 +11,6 @@ import { PardakhtRoutingModule } from './pardakht-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    // OldReceiptModule,
     PardakhtRoutingModule
   ],
   providers: [ViewBillService]
