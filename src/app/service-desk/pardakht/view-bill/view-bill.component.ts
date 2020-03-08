@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
+import { InteractionService } from 'src/app/services/interaction.service';
+import { IViewBill } from 'src/app/services/iview-bill';
+import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { IbankIcons, IBarcode } from '../ibank-icons';
-import { InteractionService } from './../../services/interaction.service';
-import { IViewBill } from './../../services/iview-bill';
-import { ViewBillService } from './../../services/view-bill.service';
 
 const bankIcons: IbankIcons[] = [
   {
@@ -69,14 +69,14 @@ export class ViewBillComponent implements OnInit {
   }
 
   // receiptFuc = (): Promise<any> => {
-    // if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
-    //   this.connectToServer();
-    // } else {
-    //   this.errorHandler.handleError(404);
-    // }
-    // return new Promise(resolve => {
-    //   resolve(this.testObject);
-    // });
+  // if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
+  //   this.connectToServer();
+  // } else {
+  //   this.errorHandler.handleError(404);
+  // }
+  // return new Promise(resolve => {
+  //   resolve(this.testObject);
+  // });
   // }
 
   nestingLevel = async () => {
@@ -90,7 +90,7 @@ export class ViewBillComponent implements OnInit {
     // this.receipt.setReceipt(this.receiptFuc());
     const a = this.receipt.setInstallment(this.getedDataIdFromRoute);
     console.log(a);
-    
+
     // this.receiptFuc();
   }
 
