@@ -28,7 +28,7 @@
         </div>
     </main>
 
-    <main class="main" *ngFor="let i of testObject" data-aos="fade-up">
+    <main class="main" *ngFor="let i of testObject; let indexN = index " data-aos="fade-up">
 
         <div class="background first_background" *ngIf="!i.isPayed">
             <div class="outer_container">

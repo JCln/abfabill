@@ -6,8 +6,9 @@ import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
   { path: '', component: ServicesComponent },
+  { path: 'bill', component: ViewBillComponent },
   { path: 'installment', loadChildren: () => import('./installment/installment.module').then(i => i.InstallmentModule) },
-  { path: 'bill', component: ViewBillComponent }
+  { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule) }
 ];
 
 @NgModule({

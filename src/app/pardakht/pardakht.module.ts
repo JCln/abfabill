@@ -6,8 +6,7 @@ import { SharedModule } from './../shared/shared.module';
 import { PardakhtRoutingModule } from './pardakht-routing.module';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     SharedModule,

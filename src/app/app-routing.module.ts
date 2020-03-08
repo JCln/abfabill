@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
 import { LayoutComponent } from './_layout/layout/layout.component';
 import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
-import { AuthGuard } from './auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +27,6 @@ const routes: Routes = [
     ]
   },
 
-  { path: '', redirectTo: 'pageNotFound', pathMatch: 'full' },
   { path: '**', redirectTo: 'pageNotFound', pathMatch: 'full' }
 ];
 

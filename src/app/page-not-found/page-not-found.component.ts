@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthGuard } from '../services/auth.guard';
 import { ErrorHandlerService } from '../services/error-handler.service';
-import { AuthGuard } from './../auth.guard';
 import { IViewBill } from './../services/iview-bill';
 
 @Component({

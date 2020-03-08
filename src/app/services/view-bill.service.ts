@@ -38,7 +38,7 @@ export class ViewBillService {
   getViewBill = (): any => {
     return this.mainService.GET(this.id, 'moshtarakinapi/bill/getcorrect', this.base64);
   }
-  getInstallment = (id : string): any => {
-    return this.mainService.GET(id, 'moshtarakinapi/Installment/Get');
+  getInstallment = (): any => {
+    return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
   }
 }
