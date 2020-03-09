@@ -6,15 +6,17 @@ $transparent_background:rgba(68, 155, 231, .5);
 
 section:nth-child(odd) {
   .top_front {
-    background: tomato;
+    background: #195EC3;
 
     div {
-      color: rgba(238, 238, 238, .8);
+      color: #c0c0c0;
     }
   }
 }
 
 section:nth-child(even) {
+  background: #e2e2e2;
+
   .top_front {
     background: #eee;
     clip-path: polygon(99% 3%, 100% 72%, 88% 80%, 71% 77%, 51% 82%, 28% 76%, 13% 70%, 2% 71%, 0% 35%, 0 0);
@@ -27,26 +29,25 @@ section {
   grid-template-columns: repeat(1, 1fr);
   // grid-template-columns: repeat(2, minmax(48%, 50%));
   grid-auto-rows: 50%;
-  // background: darkblue;
-  background: #959595;
-  // gap: $tiny_size;
+  background: #2362c7;
   margin-bottom: $mediaum_border;
-  min-height: 18rem;
+  box-shadow: 7px 3px 7px 0px #002a6b;
+  /*376145*/
+  min-height: 15rem;
 
   .top_front {
     grid-template-columns: repeat(2, minmax(48%, 50%));
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     min-height: 10rem;
-    // background: $transparent_background;
     background: rgba(0, 98, 255, 0.5);
     clip-path: polygon(100% 0, 100% 73%, 87% 97%, 96% 67%, 86% 81%, 93% 54%, 8% 92%, 14% 64%, 0 87%, 0 0);
     text-align-last: center;
 
     div {
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 600;
-      padding-top: .2rem;
+      padding-top: 1rem;
     }
   }
 
@@ -65,6 +66,11 @@ section {
       button {
         background: transparent;
         border: none;
+      }
+
+      img {
+        width: 10rem;
+        height: 10rem;
       }
 
       i {

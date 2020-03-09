@@ -3,4 +3,5 @@ export interface IServices {
     desc: string;
     spanClass: string;
     routerLink: string;
+    src?: string;
 }

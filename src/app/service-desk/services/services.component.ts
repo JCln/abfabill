@@ -4,13 +4,13 @@ import { IServices } from './iservices';
 
 const serviceNames: IServices[] = [
   {
-    title: 'نمایش اقساط', desc: '', spanClass: 'fas fa-money-bill', routerLink: 'installment'
+    title: 'نمایش اقساط', desc: '', spanClass: 'fas fa-money-bill', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment2.png'
   },
   {
-    title: 'آخرین قبض', desc: '', spanClass: 'fas fa-receipt', routerLink: 'bill'
+    title: 'آخرین قبض', desc: '', spanClass: 'fas fa-receipt', routerLink: 'bill', src: 'assets/imgs/serviceDesk/p.svg'
   },
   {
-    title: 'خدمات الکترونیکی', desc: 'توضیحات', spanClass: 'fas fa-table', routerLink: 'elcs'
+    title: 'خدمات الکترونیکی', desc: 'توضیحات', spanClass: 'fas fa-table', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/m1.svg'
   }
 ];
 
