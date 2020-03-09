@@ -32,7 +32,6 @@ section {
   background: #2362c7;
   margin-bottom: $mediaum_border;
   box-shadow: 7px 3px 7px 0px #002a6b;
-  /*376145*/
   min-height: 15rem;
 
   .top_front {
@@ -65,6 +64,7 @@ section {
 
       button {
         background: transparent;
+        outline: none;
         border: none;
       }
 

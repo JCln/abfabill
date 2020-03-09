@@ -15,7 +15,8 @@
                 </div>
                 <div class="form">
                     <div class="form-item inputcontainer">
-                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.billId">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.billId"
+                            disabled>
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -31,10 +32,15 @@
     <main class="main" *ngFor="let i of testObject; let indexN = index " data-aos="fade-up">
 
         <div class="background first_background" *ngIf="!i.isPayed">
+            <div class="counts_number">
+                {{indexN+1}}
+            </div>
+
             <div class="outer_container">
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.paymentId">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.paymentId"
+                            disabled>
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -45,7 +51,8 @@
                 </div>
                 <div class="form">
                     <div class="form-item">
-                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.amount">
+                        <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.amount"
+                            disabled>
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">
@@ -57,7 +64,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" readonly name="viewBill.value" class="form-input"
-                            [(ngModel)]="i.deadlineDate">
+                            [(ngModel)]="i.deadlineDate" disabled>
                         <i *ngIf="spinnerBoolean" class="loader"></i>
                     </div>
                     <div class="div1">

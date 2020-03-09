@@ -5,66 +5,85 @@ $gray_border: #707070;
 $payed_installments:#2DC227;
 $payed_installments_border:#24963A;
 $payed_color: #F65050;
+$medium_slate_blue: #7D83FF;
+$white: #fff;
 
+
+.counts_number {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.15rem solid $medium_slate_blue;
+  border-radius: 50%;
+  background: $white;
+  left: 0;
+  top: -1.3rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: $medium_slate_blue;
+}
 
 .dynamic_checkbox {
-    width: 100%;
-    height: 4rem;
-    user-select: none;
-    position: relative;
+  width: 100%;
+  height: 4rem;
+  user-select: none;
+  position: relative;
 
-    input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-    }
-
-    :hover input~.checkmark {
-      background-color: #ccc;
-    }
-
-    // * When the checkbox is checked,add a blue background */ 
-    input:checked~.checkmark {
-      background-color: #2196F3;
-      border: .2rem solid $customer_border;
-    }
-
-    input:checked~.checkmark:after {
-      display: block;
-    }
-
-    .checkmark:after {
-      left: 40%;
-      top: 4%;
-      width: 1rem;
-      height: 2.9rem;
-      border: solid white;
-      border-width: 0 .5rem .5rem 0;
-      -webkit-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-
-    input:checked~.payed_installments {
-      background-color: $payed_installments;
-      border: .2rem solid $payed_installments_border;
-    }
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
   }
 
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #eee;
-    border-radius: 50%;
-    border: .1rem solid $customer_border;
+  :hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  // * When the checkbox is checked,add a blue background */ 
+  input:checked~.checkmark {
+    background-color: #2196F3;
+    border: .2rem solid $customer_border;
+  }
+
+  input:checked~.checkmark:after {
+    display: block;
   }
 
   .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+    left: 40%;
+    top: 4%;
+    width: 1rem;
+    height: 2.9rem;
+    border: solid white;
+    border-width: 0 .5rem .5rem 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
+
+  input:checked~.payed_installments {
+    background-color: $payed_installments;
+    border: .2rem solid $payed_installments_border;
+  }
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  border-radius: 50%;
+  border: .1rem solid $customer_border;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
