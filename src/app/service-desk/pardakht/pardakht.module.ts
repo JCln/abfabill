@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -9,7 +8,6 @@ import { ViewBillComponent } from './view-bill/view-bill.component';
 @NgModule({
   declarations: [ViewBillComponent],
   imports: [
-    CommonModule,
     SharedModule,
     PardakhtRoutingModule
   ],

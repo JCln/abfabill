@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ServiceDeskRoutingModule } from './service-desk-routing.module';
 import { ServicesComponent } from './services/services.component';
@@ -8,8 +7,7 @@ import { ServicesComponent } from './services/services.component';
 @NgModule({
   declarations: [ServicesComponent],
   imports: [
-    CommonModule,
-    FormsModule,
+    SharedModule,
     ServiceDeskRoutingModule
   ]
 })
