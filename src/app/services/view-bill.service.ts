@@ -19,6 +19,9 @@ export class ViewBillService {
     this.id = id;
     this.idValues(this.id);
   }
+  setInstallmentId = (id: string) => {
+    this.id = id;
+  }
 
   idValues = (id: string) => {
     this.base64 = btoa(id);
@@ -27,7 +30,6 @@ export class ViewBillService {
   checkValidRoute = (val: object): boolean => {
     //  myVar instanceof String
     //   console.log(typeof (Object.values(val)));
-
     if (typeof (Object.values(val)[0]) === "string") {
       console.log(typeof (Object.values(val)[0]) === "string");
 

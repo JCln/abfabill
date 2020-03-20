@@ -48,6 +48,7 @@ $white: #fff;
   input:checked~.checkmark {
     background-color: #2196F3;
     border: .2rem solid $customer_border;
+    transition: all cubic-bezier(1,-0.01, 0.77, 0.78) 200ms;
   }
 
   input:checked~.checkmark:after {

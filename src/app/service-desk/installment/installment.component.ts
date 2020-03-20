@@ -6,6 +6,20 @@ import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { InteractionService } from '../../services/interaction.service';
 
+// const a: any[] = [
+//   {
+//     amount: 'ali', billId: 111,
+//     paymentId: 239874,
+//     deadlineDate: '98/12/23',
+//     isPayed: false
+//   },
+//   {
+//     amount: 'ali', billId: 111,
+//     paymentId: 239874,
+//     deadlineDate: '98/12/23',
+//     isPayed: true
+//   }
+// ]
 @Component({
   selector: 'app-installment',
   templateUrl: './installment.component.html',
@@ -17,8 +31,10 @@ export class InstallmentComponent implements OnInit {
   sumOfInstallments = 0;
   billId: string = '';
   getedDataIdFromRoute: any = [];
+  response;
 
   testObject: any = [];
+  // testObject = a;
 
   constructor(
     private getBillId: InteractionService,
@@ -28,6 +44,8 @@ export class InstallmentComponent implements OnInit {
     this.nestingLevel().catch(x => console.log(x.message));
   }
 
+  isNull = (value: any) =>
+    typeof value === "undefined" || (typeof value !== "object" || !value)
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 1200);
@@ -51,6 +69,10 @@ export class InstallmentComponent implements OnInit {
   connectToServer = () => {
     this.viewBillService.getInstallment().subscribe((res: any) => {
       if (res) {
+        // when response is null and means no installment exists
+        if (this.isNull(Object.values(res[0]))) {
+          this.response = true;
+        }
         this.insertValToVar(res, this.removeLoaderAfterResponse);
       }
     });
@@ -73,16 +95,13 @@ export class InstallmentComponent implements OnInit {
   }
 
   nestingLevel = async () => {
-    this.viewBillService.setId(await this.getDataFromRoute());
-    if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
-      this.connectToServer();
-    } else {
-      this.errorHandler.handleError(404);
-    }
+    const a = await this.getDataFromRoute();
+    this.viewBillService.setInstallmentId(a);
+
+    this.connectToServer();
   }
 
   ngOnInit() {
-    this.getId(this.connectToServer);
     AOS.init(
       {
         duration: 200,

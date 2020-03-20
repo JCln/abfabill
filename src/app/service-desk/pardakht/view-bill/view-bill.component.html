@@ -53,7 +53,7 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{testObject.payable}}">
+            value="{{testObject.payable | perCurrencySplitter}}">
           <i *ngIf="spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
@@ -333,7 +333,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.abBaha">
+              value="{{testObject.abBaha| perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
@@ -345,7 +345,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.karmozdFazelab">
+              value="{{testObject.karmozdFazelab| perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
@@ -357,7 +357,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.maliat">
+              value="{{testObject.maliat | perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
@@ -369,10 +369,10 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.budget">
+              value="{{testObject.budget| perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
-          <div class=" div1">
+          <div class="div1">
             <p>تکلیف قانون بودجه</p>
             <div class="div2">
             </div>
@@ -393,7 +393,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.jam">
+              value="{{testObject.jam | perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
@@ -405,7 +405,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.taxfif">
+              value="{{testObject.taxfif| perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
@@ -417,7 +417,7 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.preBedOrBes">
+              value="{{testObject.preBedOrBes | perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">

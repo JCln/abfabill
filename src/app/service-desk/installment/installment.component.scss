@@ -1,6 +1,7 @@
 @import "../../../assets/main.scss";
 @import "../../../assets/input.scss";
 @import "./checkbox.scss";
+// @import "../pardakht/view-bill/spinner_loader";
 
 $background_border_color: #087CDB;
 $background_color: #062C68;
@@ -77,8 +78,12 @@ section {
           background-color: $white;
         }
 
-        .payed_button {
+        .unpayed_button {
           background-color: $payed_color;
+        }
+
+        .payed_button {
+          background-color: #24963A;
         }
 
       }
@@ -91,8 +96,17 @@ section {
         margin: 0.9rem 0;
       }
     }
-
   }
+
+  .no_installment {
+    text-align: center;
+    color: $customer_border;
+    font-size: 2rem;
+  }
+}
+
+.main_content {
+  min-height: 20rem;
 }
 
 footer {
