@@ -8,24 +8,6 @@ $payed_color: #F65050;
 $medium_slate_blue: #7D83FF;
 $white: #fff;
 
-
-.counts_number {
-  position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 0.15rem solid $medium_slate_blue;
-  border-radius: 50%;
-  background: $white;
-  right: 1.2rem;
-  top: 2rem;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: $medium_slate_blue;
-}
-
 .dynamic_checkbox {
   width: 100%;
   height: 4rem;
@@ -48,7 +30,7 @@ $white: #fff;
   input:checked~.checkmark {
     background-color: #2196F3;
     border: .2rem solid $customer_border;
-    transition: all cubic-bezier(1,-0.01, 0.77, 0.78) 200ms;
+    transition: all cubic-bezier(1, -0.01, 0.77, 0.78) 200ms;
   }
 
   input:checked~.checkmark:after {

@@ -1,0 +1,39 @@
+@import "../../../assets/checkbox.scss";
+@import "../../../assets/main.scss";
+@import "../../../assets/input.scss";
+
+$background_border_color: #087CDB;
+$background_color: #062C68;
+$customer_border: #1B6CEE;
+$medium_slate_blue: #7d83ff;
+$white: #fff;
+$light_gray: lightgray;
+
+section {
+  background-color: $background_color;
+  min-height: 20rem;
+
+  .title_content {
+    text-align: center;
+
+    h2 {
+      color: $light_gray;
+    }
+  }
+
+  .button_content {
+    display: flex;
+    text-align: center;
+    button {
+        @extend %button_first;
+        min-width: auto;
+    }
+  }
+
+  .background_content {
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
