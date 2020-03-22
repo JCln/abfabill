@@ -1,11 +1,11 @@
-<section *ngFor="let sn of serviceNames" [routerLink]="[sn.routerLink]">
-    <div class="top_front">
-        <div>
-            {{sn.title}}
+<section>
+    <div *ngFor="let sn of serviceNames" [routerLink]="[sn.routerLink]">
+        <div class="top_front">
+            <div class="title">
+                {{sn.title}}
+            </div>
         </div>
-    </div>
-    <div class="bottom_back">
-        <div class="inner_content">
+        <div class="bottom_back">
             <button>
                 <img src="{{sn.src}}" alt="">
             </button>

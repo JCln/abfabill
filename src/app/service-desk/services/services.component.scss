@@ -1,21 +1,12 @@
 $tiny_size: .1rem;
 $mediaum_border: .2rem;
 $clr: #00368c;
-$clr_border: #004ecc;
+$clr_border: #2362c7;
+$box_shadow: #002a6b;
 $transparent_background:rgba(68, 155, 231, .5);
 $silver_color: silver;
-
-// section div:nth-child(odd) {
-//   clip-path: polygon(100% 0, 100% 73%, 87% 97%, 96% 67%, 86% 81%, 93% 54%, 8% 92%, 14% 64%, 0 87%, 0 0);
-
-//   .title {
-//     background: #195EC3;
-//   }
-
-//   .bottom_back {
-//     color: #c0c0c0;
-//   }
-// }
+$light_back: #e2e2e2;
+$lighter_back: #eee;
 
 section :nth-child(odd) {
   .title {
@@ -30,16 +21,16 @@ section :nth-child(odd) {
 }
 
 section :nth-child(even) {
-  background: #e2e2e2;
+  background: $light_back;
 
   div {
     .title {
       clip-path: polygon(99% 3%, 100% 72%, 88% 80%, 71% 77%, 51% 82%, 28% 76%, 13% 70%, 2% 71%, 0% 35%, 0 0);
-      background: #eee;
+      background: $lighter_back;
     }
 
     .bottom_back {
-      background: #e2e2e2;
+      background: $light_back;
     }
   }
 }
@@ -49,12 +40,11 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-bottom: $mediaum_border;
-  background: #2362c7;
-  box-shadow: 18px 2px 9px 2px #002a6b;
+  background: $clr_border;
+  box-shadow: 18px 2px 9px 2px $box_shadow;
   min-height: 10rem;
 
   .top_front {
-    grid-template-columns: repeat(1, minmax(48%, 50%));
     text-align: center;
 
     .title {
@@ -64,11 +54,9 @@ section {
       height: 6rem;
       margin-bottom: -3rem;
     }
-
   }
 
   .bottom_back {
-    grid-template-columns: repeat(1, minmax(48%, 50%));
     position: relative;
     width: 66%;
     margin: 0 auto;
