@@ -7,9 +7,9 @@
         <button (click)="sevageChoosed(true)">فاضلاب</button>
     </div>
     <div class="background_color">
-        <main>
+        <main *ngIf="sevageSelected">
 
-            <div class="form" *ngFor="let elc of elcService['abfa']">
+            <div class="form" *ngFor="let elc of elcService['sevage']">
                 <div class="form-item">
                     <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
                         aria-label="first name" value="{{elc.name}}">
@@ -19,8 +19,13 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <!-- <div *ngFor="let elc of elcService['sevage']">
-                <div class="form" *ngIf="!sevageSelected">
+
+        </main>
+
+        <main *ngIf="!sevageSelected">
+
+            <div *ngFor="let elc of elcService['abfa']">
+                <div class="form">
                     <div class="form-item">
                         <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
                             aria-label="first name" value="{{elc.name}}">
@@ -30,7 +35,7 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-            </div> -->
+            </div>
 
         </main>
     </div>
