@@ -12,28 +12,59 @@ $light_gray: lightgray;
 section {
   background-color: $background_color;
   min-height: 20rem;
-
+  padding: 1rem .5rem;
+  border-radius: 30px;
+  
   .title_content {
     text-align: center;
 
-    h2 {
+    h1 {
       color: $light_gray;
+      font-size: 2rem;
+      margin: .5em;
     }
   }
 
   .button_content {
     display: flex;
-    text-align: center;
+
     button {
-        @extend %button_first;
-        min-width: auto;
+      @extend %button_first;
+      min-width: auto;
     }
   }
 
-  .background_content {
+  .background_color {
     main {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
+      gap: 0.6rem;
+
+      .form {
+        width: 100%;
+        margin: 0;
+        
+        .form-item {
+          width: 100%;
+          margin: 0 -1rem 0 0;
+          background-color: transparent;
+
+          .form-input {
+            padding: 0 1.2rem 0 0;
+            z-index: 0;
+          }
+        }
+
+        .dynamic_checkbox {
+          width: 3rem;
+          height: 3rem;
+          z-index: 1;
+
+          .checkmark {
+            border: 0.15rem solid $background_border_color;
+          }
+        }
+      }
     }
   }
 }

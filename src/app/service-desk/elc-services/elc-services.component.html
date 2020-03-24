@@ -1,17 +1,37 @@
 <section>
     <div class="title_content">
-        <h2>خدمات الکترونیکی</h2>
+        <h1>خدمات الکترونیکی</h1>
     </div>
     <div class="button_content">
-        <button>آبفا</button>
-        <button>فاضلاب</button>
+        <button (click)="sevageChoosed(false)">آب</button>
+        <button (click)="sevageChoosed(true)">فاضلاب</button>
     </div>
     <div class="background_color">
         <main>
-            <label class="dynamic_checkbox">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
+
+            <div class="form" *ngFor="let elc of elcService['abfa']">
+                <div class="form-item">
+                    <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+                        aria-label="first name" value="{{elc.name}}">
+                </div>
+                <label class="dynamic_checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <!-- <div *ngFor="let elc of elcService['sevage']">
+                <div class="form" *ngIf="!sevageSelected">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+                            aria-label="first name" value="{{elc.name}}">
+                    </div>
+                    <label class="dynamic_checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div> -->
+
         </main>
     </div>
 </section>

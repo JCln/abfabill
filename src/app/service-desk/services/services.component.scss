@@ -14,10 +14,6 @@ section :nth-child(odd) {
     background: #2569cb;
     color: $silver_color;
   }
-
-  .bottom_back {
-    background: #2362c7;
-  }
 }
 
 section :nth-child(even) {
@@ -27,6 +23,7 @@ section :nth-child(even) {
     .title {
       clip-path: polygon(99% 3%, 100% 72%, 88% 80%, 71% 77%, 51% 82%, 28% 76%, 13% 70%, 2% 71%, 0% 35%, 0 0);
       background: $lighter_back;
+      color: #000;
     }
 
     .bottom_back {
@@ -40,9 +37,13 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-bottom: $mediaum_border;
-  background: $clr_border;
-  box-shadow: 18px 2px 9px 2px $box_shadow;
   min-height: 10rem;
+
+  .content {
+    border-radius: 30px;
+    background: #2362c7;
+    box-shadow: 3px 1px 4px 1px $box_shadow;
+  }
 
   .top_front {
     text-align: center;
@@ -51,14 +52,16 @@ section {
       font-size: 1.4rem;
       font-weight: 600;
       padding-top: .7rem;
-      height: 6rem;
+      height: 7rem;
       margin-bottom: -3rem;
+      border-radius: 30px;
     }
   }
 
   .bottom_back {
     position: relative;
-    width: 66%;
+    width: 100%;
+    height: 7rem;
     margin: 0 auto;
     background: transparent;
     padding: .2rem 0;
@@ -76,4 +79,9 @@ section {
 
     }
   }
+
+}
+
+section:hover {
+  transform: scaleZ(1rem);
 }

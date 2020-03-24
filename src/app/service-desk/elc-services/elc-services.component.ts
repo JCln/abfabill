@@ -4,19 +4,33 @@ interface IElcServies {
   name: string;
   checked: boolean;
 }
-export const elcServices: IElcServies[] = [
 
-  { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
-  { name: 'تغییر مکان کنتور', checked: false },
-  { name: 'جمع آوری یا ادغام انشعاب', checked: false },
-  { name: 'آزمایش کنتور ', checked: false },
-  { name: 'قطع موقت و وصل انشعاب', checked: false },
-  { name: 'تعویض کنتور ', checked: false },
-  { name: 'تغییر کاربری انشعاب', checked: false },
-  { name: 'تغییر ظرفیت قراردادی انشعاب', checked: false },
-  { name: 'تغییرقطرانشعاب', checked: false },
-  { name: 'تفکیک کنتور ', checked: false }
-];
+export const elcServices = {
+  'abfa': [
+    { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
+    { name: 'تغییر مکان کنتور', checked: false },
+    { name: 'جمع آوری یا ادغام انشعاب', checked: false },
+    { name: 'آزمایش کنتور ', checked: false },
+    { name: 'قطع موقت و وصل انشعاب', checked: false },
+    { name: 'تعویض کنتور ', checked: false },
+    { name: 'تغییر کاربری انشعاب', checked: false },
+    { name: 'تغییر ظرفیت قراردادی انشعاب', checked: false },
+    { name: 'تغییرقطرانشعاب', checked: false },
+    { name: 'تفکیک کنتور ', checked: false }
+  ],
+  'sevage': [
+    { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
+    { name: 'تغییر مکان کنتور', checked: false },
+    // { name: 'جمع آوری یا ادغام انشعاب', checked: false },
+    // { name: 'آزمایش کنتور ', checked: false },
+    // { name: 'قطع موقت و وصل انشعاب', checked: false },
+    // { name: 'تعویض کنتور ', checked: false },
+    // { name: 'تغییر کاربری انشعاب', checked: false },
+    // { name: 'تغییر ظرفیت قراردادی انشعاب', checked: false },
+    // { name: 'تغییرقطرانشعاب', checked: false },
+    // { name: 'تفکیک کنتور ', checked: false }
+  ]
+}
 @Component({
   selector: 'app-elc-services',
   templateUrl: './elc-services.component.html',
@@ -24,8 +38,13 @@ export const elcServices: IElcServies[] = [
 })
 export class ElcServicesComponent implements OnInit {
   elcService = elcServices;
+  sevageSelected = false;
+
   constructor() { }
 
+  sevageChoosed = (selected: boolean) => {
+    this.sevageSelected = selected;
+  }
   ngOnInit() {
   }
 
