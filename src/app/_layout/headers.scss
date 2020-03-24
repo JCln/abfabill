@@ -163,3 +163,8 @@ section {
   width: 3rem !important;
   height: 3rem !important;
 }
+@media screen and (min-width: 550px ) {
+  #menu {
+    width: auto;
+  }
+}

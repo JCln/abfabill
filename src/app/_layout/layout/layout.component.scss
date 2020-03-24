@@ -5,3 +5,10 @@
   margin: 0;
   // padding: 0 .15rem;
 }
+
+@media screen and (min-width: 550px) {
+  .content {
+    margin: 0 25%;
+    min-width: auto;
+  }
+}
