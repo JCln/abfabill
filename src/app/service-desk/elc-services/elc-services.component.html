@@ -7,28 +7,25 @@
         <button (click)="sevageChoosed(true)">فاضلاب</button>
     </div>
     <div class="background_color">
-        <main *ngIf="sevageSelected">
 
+        <main *ngIf="sevageSelected">
             <div class="form" *ngFor="let elc of elcService['sevage']">
                 <div class="form-item">
                     <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-                        aria-label="first name" value="{{elc.name}}">
+                        value="{{elc.name}}">
                 </div>
                 <label class="dynamic_checkbox">
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
             </div>
-
         </main>
-
         <main *ngIf="!sevageSelected">
-
             <div *ngFor="let elc of elcService['abfa']">
                 <div class="form">
                     <div class="form-item">
                         <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-                            aria-label="first name" value="{{elc.name}}">
+                            value="{{elc.name}}">
                     </div>
                     <label class="dynamic_checkbox">
                         <input type="checkbox">
@@ -36,7 +33,21 @@
                     </label>
                 </div>
             </div>
-
         </main>
+        <main style="margin-top: .6rem;">
+            <div *ngFor="let elc of elcService['both']">
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
+                            value="{{elc.name}}">
+                    </div>
+                    <label class="dynamic_checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </main>
+
     </div>
 </section>

@@ -32,7 +32,6 @@ $lighter_back: #eee;
   }
 }
 
-
 section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -86,6 +85,7 @@ section {
   -webkit-transform: scaleX(1rem);
   z-index: 3;
   box-shadow: 1px 1px 15px 0px $box_shadow;
+  outline: none;
 }
 
 .content:nth-child(even):hover {
