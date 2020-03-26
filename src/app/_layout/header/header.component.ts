@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +14,12 @@ export class HeaderComponent implements OnInit {
     const abfaImg = document.querySelector('.abfa');
     abfaImg.classList.toggle('toggleImg');
   }
-  constructor() { }
+  constructor(private _location: Location) { }
+
+  // back to previous page
+  backClicked = () => {
+    this._location.back();
+  }
 
   ngOnInit() {
   }

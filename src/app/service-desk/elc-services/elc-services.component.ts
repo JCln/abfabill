@@ -19,16 +19,13 @@ export const elcServices = {
     { name: 'تفکیک کنتور ', checked: false }
   ],
   'sevage': [
-    { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
-    { name: 'تغییر مکان کنتور', checked: false },
-    // { name: 'جمع آوری یا ادغام انشعاب', checked: false },
-    // { name: 'آزمایش کنتور ', checked: false },
-    // { name: 'قطع موقت و وصل انشعاب', checked: false },
-    // { name: 'تعویض کنتور ', checked: false },
-    // { name: 'تغییر کاربری انشعاب', checked: false },
-    // { name: 'تغییر ظرفیت قراردادی انشعاب', checked: false },
-    // { name: 'تغییرقطرانشعاب', checked: false },
-    // { name: 'تفکیک کنتور ', checked: false }
+    { name: 'واگذاری انشعاب', checked: false },
+    { name: 'نصب سیفون اضافی', checked: false },
+    { name: 'تغییر قطر سیفون', checked: false }
+  ],
+  'both': [
+    { name: 'تغییر مشخصات مشترکین' },
+    { name: 'تغییر تعداد واحد مسکونی مشترکین' }
   ]
 }
 @Component({
@@ -38,10 +35,9 @@ export const elcServices = {
 })
 export class ElcServicesComponent implements OnInit {
   elcService = elcServices;
-  sevageSelected = false;
+  sevageSelected: boolean;
 
   constructor() { }
-
   sevageChoosed = (selected: boolean) => {
     this.sevageSelected = selected;
   }

@@ -34,13 +34,15 @@ export class InstallmentComponent implements OnInit {
   response;
 
   testObject: any = [];
+  // $asyncPipeTest: any;
   // testObject = a;
 
   constructor(
     private getBillId: InteractionService,
     private route: ActivatedRoute,
     private viewBillService: ViewBillService,
-    private errorHandler: ErrorHandlerService) {
+    private errorHandler: ErrorHandlerService
+  ) {
     this.nestingLevel().catch(x => console.log(x.message));
   }
 
@@ -69,6 +71,9 @@ export class InstallmentComponent implements OnInit {
   connectToServer = () => {
     this.viewBillService.getInstallment().subscribe((res: any) => {
       if (res) {
+        // looking for async pipe make ups
+        // this.$asyncPipeTest = res;
+
         // when response is null and means no installment exists
         if (this.isNull(Object.values(res[0]))) {
           this.response = true;

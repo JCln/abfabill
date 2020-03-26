@@ -37,6 +37,7 @@ section {
   grid-template-columns: repeat(2, 1fr);
   margin-bottom: $mediaum_border;
   min-height: 10rem;
+  gap: .5rem;
 
   .content {
     border-radius: 30px;
