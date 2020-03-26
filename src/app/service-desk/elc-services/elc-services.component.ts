@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 interface IElcServies {
-  name: string;
-  checked: boolean;
+  [index: string]: {
+    name: string;
+    checked: boolean;
+  }[]
 }
 
-export const elcServices = {
+export const elcServices: IElcServies = {
   'abfa': [
     { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
     { name: 'تغییر مکان کنتور', checked: false },
@@ -24,8 +26,8 @@ export const elcServices = {
     { name: 'تغییر قطر سیفون', checked: false }
   ],
   'both': [
-    { name: 'تغییر مشخصات مشترکین' },
-    { name: 'تغییر تعداد واحد مسکونی مشترکین' }
+    { name: 'تغییر مشخصات مشترکین', checked: false },
+    { name: 'تغییر تعداد واحد مسکونی مشترکین', checked: false }
   ]
 }
 @Component({
