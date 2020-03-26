@@ -35,10 +35,11 @@ section {
       width: 0;
 
       img {
+        --size: 6rem;
         position: relative;
-        width: 6rem;
-        height: 6rem;
-        right: 6rem;
+        width: var(--size);
+        height: var(--size);
+        right: var(--size);
         top: 0rem;
       }
     }
@@ -64,8 +65,9 @@ section {
         .abfa {
 
           img {
-            width: 4rem;
-            height: 4rem;
+            $size: 4rem;
+            width: $size;
+            height: $size;
           }
 
           article {
@@ -233,20 +235,23 @@ section {
           }
 
           .forth_chance>img {
-            width: auto;
-            height: auto;
+            --size: auto;
+            width: var(--size);
+            height: var(--size);
           }
         }
       }
 
       .grid_area_side {
-        width: 0rem;
-        height: 0rem;
+        --size: 0rem;
+        width: var(--size);
+        height: var(--size);
 
         img {
+          --size: 2.5rem;
           position: initial;
-          width: 2.5rem;
-          height: 2.5rem;
+          width: var(--size);
+          height: var(--size);
         }
       }
     }
@@ -311,9 +316,10 @@ section {
 
       .grid_area_side {
         img {
+          --size: 50%;
           position: absolute;
-          right: 50%;
-          left: 50%;
+          right: var(--size);
+          left: var(--size);
         }
       }
 
