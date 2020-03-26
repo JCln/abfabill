@@ -5,9 +5,11 @@
   margin: 0;
   padding: 0 .15rem;
 }
-@media screen and (min-width: 550px ) {
+
+@media screen and (min-width: 550px) {
   main {
-    margin: 0 25%;
+    width: 50%;
+    margin: 0 auto;
     min-width: auto;
   }
 }
