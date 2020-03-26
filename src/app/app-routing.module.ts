@@ -10,8 +10,8 @@ import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   {
     path: '', component: AnonyLayoutComponent, children: [
-      { path: '', redirectTo: 'pageNotFound', pathMatch: 'full' },
-      { path: 'pageNotFound', component: PageNotFoundComponent }
+      { path: '', redirectTo: 'pg', pathMatch: 'full' },
+      { path: 'pg', component: PageNotFoundComponent }
     ]
   },
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
     ]
   },
 
-  { path: '**', redirectTo: 'pageNotFound', pathMatch: 'full' }
+  { path: '**', redirectTo: 'pg', pathMatch: 'full' }
 ];
 
 @NgModule({
