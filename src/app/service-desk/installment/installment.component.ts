@@ -32,6 +32,7 @@ export class InstallmentComponent implements OnInit {
   billId: string = '';
   getedDataIdFromRoute: any = [];
   response;
+  respnseIsNull = true;
 
   testObject: any = [];
   // $asyncPipeTest: any;
@@ -48,6 +49,7 @@ export class InstallmentComponent implements OnInit {
 
   isNull = (value: any) =>
     typeof value === "undefined" || (typeof value !== "object" || !value)
+
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 1200);
@@ -73,10 +75,11 @@ export class InstallmentComponent implements OnInit {
       if (res) {
         // looking for async pipe make ups
         // this.$asyncPipeTest = res;
+        this.response = true;
 
         // when response is null and means no installment exists
-        if (this.isNull(Object.values(res[0]))) {
-          this.response = true;
+        if (this.isNull(res[0])) {
+          this.respnseIsNull = false;
         }
         this.insertValToVar(res, this.removeLoaderAfterResponse);
       }

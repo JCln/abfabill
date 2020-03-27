@@ -1,12 +1,11 @@
-<section class="main_content">
-    <div>
+<section class="main_content" *ngIf="response; else spinner">
+    <div *ngIf="respnseIsNull; else noInstallment">
         <main class="main" *ngFor="let i of testObject | slice: 1:2">
             <div class="background first_background">
                 <div class="outer_container general_info">
                     <div class="form">
                         <div class="form-item">
                             <input type="text" name="viewBill.value" class="form-input" [(ngModel)]="i.amount" disabled>
-                            <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
                             <p>مشترک گرامی</p>
@@ -18,7 +17,6 @@
                         <div class="form-item inputcontainer">
                             <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.billId"
                                 disabled>
-                            <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
                             <p>شناسه قبض</p>
@@ -42,7 +40,6 @@
                         <div class="form-item">
                             <input type="text" readonly name="viewBill.value" class="form-input"
                                 [(ngModel)]="i.paymentId" disabled>
-                            <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
                             <p>شناسه پرداخت</p>
@@ -54,7 +51,6 @@
                         <div class="form-item">
                             <input type="text" readonly name="viewBill.value" class="form-input"
                                 value="{{i.amount| perCurrencySplitter}}" disabled>
-                            <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1">
                             <p>مبلغ قابل پرداخت</p>
@@ -66,7 +62,6 @@
                         <div class="form-item">
                             <input type="text" readonly name="viewBill.value" class="form-input"
                                 [(ngModel)]="i.deadlineDate" disabled>
-                            <i *ngIf="spinnerBoolean" class="loader"></i>
                         </div>
                         <div class="div1 unpayed_button">
                             <p>مهلت پرداخت</p>
@@ -86,7 +81,7 @@
 
         </main>
 
-        <section class="check_moreinfo" *ngIf="response">
+        <section class="check_moreinfo">
             <button (click)="showMoreButtonClicked()">
                 {{showMoreButton? 'فقط اقساط پرداخت نشده': 'مشاهده اقساط پرداخت شده'}}
                 <i class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i>
@@ -101,7 +96,6 @@
                             <div class="form-item inputcontainer">
                                 <input type="text" name="viewBill.value" class="form-input" value="{{i.billId}}"
                                     disabled>
-                                <i *ngIf="spinnerBoolean" class="loader"></i>
                             </div>
                             <div class="div1">
                                 <p>شناسه قبض</p>
@@ -113,7 +107,6 @@
                             <div class="form-item">
                                 <input type="text" name="viewBill.value" class="form-input" [(ngModel)]="i.deadLine"
                                     disabled>
-                                <i *ngIf="spinnerBoolean" class="loader"></i>
                             </div>
                             <div class="div1 payed_button">
                                 <p>پرداخت شده</p>
@@ -147,8 +140,13 @@
     </div>
 </footer>
 
-<!-- <ng-template class="template" #noInstallment >
+<ng-template class="template" #noInstallment>
     <div class="no_installment">
         <h1>! شما قسطی ندارید</h1>
     </div>
-</ng-template> -->
+</ng-template>
+<ng-template #spinner>
+    <section class="spinner">
+        <i *ngIf="spinnerBoolean" class="loader"></i>
+    </section>
+</ng-template>
