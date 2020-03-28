@@ -23,11 +23,7 @@ section {
   direction: rtl;
 
   .main_section {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    border: .1rem solid;
-    padding: 3rem;
+    // min-width: 80vw;
 
     // grid area and abfa icon
     .grid_area_side {
@@ -45,13 +41,12 @@ section {
     }
 
     .main {
-      padding: 4rem;
       margin: 1rem;
       display: flex;
       flex-direction: row;
 
 
-      .first_chance {
+      ._first {
         width: 20rem;
 
         .second_article {
@@ -77,10 +72,10 @@ section {
         }
       }
 
-      .first_chance,
-      .second_chance,
-      .third_chance,
-      .forth_chance {
+      ._first,
+      ._second,
+      ._third,
+      ._forth {
         margin-top: auto;
 
         .borders {
@@ -115,7 +110,7 @@ section {
         }
       }
 
-      .second_chance {
+      ._second {
         margin-top: 4rem;
         width: 18rem;
 
@@ -150,7 +145,7 @@ section {
 
       }
 
-      .third_chance {
+      ._third {
         width: 17rem;
 
         .first_child {
@@ -165,7 +160,7 @@ section {
 
         .last_child {
           border-top: .2rem solid;
-          margin-top: 9rem;
+          margin-top: 5rem;
         }
 
         p {
@@ -176,7 +171,7 @@ section {
         }
       }
 
-      .forth_chance {
+      ._forth {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -217,10 +212,10 @@ section {
           flex-wrap: wrap;
           padding: 0;
 
-          .first_chance,
-          .second_chance,
-          .third_chance,
-          .forth_chance {
+          ._first,
+          ._second,
+          ._third,
+          ._forth {
             width: 50%;
             margin-top: 2rem;
 
@@ -229,12 +224,12 @@ section {
             }
           }
 
-          .first_chance,
-          .second_chance {
+          ._first,
+          ._second {
             margin-top: 2.2rem;
           }
 
-          .forth_chance>img {
+          ._forth>img {
             --size: auto;
             width: var(--size);
             height: var(--size);
@@ -280,10 +275,10 @@ section {
           justify-content: center;
 
 
-          .first_chance,
-          .second_chance,
-          .third_chance,
-          .forth_chance {
+          ._first,
+          ._second,
+          ._third,
+          ._forth {
             width: 100%;
             margin-top: 0;
 
@@ -293,11 +288,7 @@ section {
             }
           }
 
-          .first_chance {
-            margin-top: 2rem;
-          }
-
-          .third_chance {
+          ._third {
             p {
               padding: 1rem;
             }
@@ -307,7 +298,7 @@ section {
             }
           }
 
-          .forth_chance {
+          ._forth {
             margin-bottom: 3rem;
           }
 

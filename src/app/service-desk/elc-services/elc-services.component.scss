@@ -9,6 +9,9 @@ $medium_slate_blue: rgba(125, 131, 255, .5);
 $white: #fff;
 $light_gray: lightgray;
 
+$checkbox-height: 3rem;
+$duration: 250ms;
+
 section {
   background-color: $background_color;
   min-height: 20rem;
@@ -57,12 +60,14 @@ section {
         }
 
         .dynamic_checkbox {
-          width: 3rem;
-          height: 3rem;
+          --size: 3rem;
+          width: var(--size);
+          height: var(--size);
           z-index: 1;
 
           .checkmark {
             border: 0.15rem solid $background_border_color;
+            outline: none;
           }
 
           ::after {
@@ -71,9 +76,20 @@ section {
             border-radius: 3px;
             width: 1rem;
             height: 2rem;
+            animation: dothabottomcheck $duration ease 0s;
           }
         }
       }
     }
+  }
+}
+
+@keyframes dothabottomcheck {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: $checkbox-height;
   }
 }

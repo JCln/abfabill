@@ -10,7 +10,7 @@ const serviceNames: IServices[] = [
     title: 'نمایش اقساط', desc: '', spanClass: 'fas fa-money-bill', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment2.png'
   },
   {
-    title: 'خدمات الکترونیکی', desc: 'توضیحات', spanClass: 'fas fa-table', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/m1.svg'
+    title: 'خدمات انشعاب', desc: 'توضیحات', spanClass: 'fas fa-table', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/m1.svg'
   }
 ];
 
