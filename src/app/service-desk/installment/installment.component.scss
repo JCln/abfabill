@@ -148,8 +148,16 @@ footer {
   transform-origin: center;
 
   .loader {
-    height: 6rem;
-    width: 1rem;
+    position: absolute;
+    left: auto;
+    bottom: auto;
+    height: 5rem;
+    width: .8rem;
+  }
+
+  h2 {
+    margin-top: 10rem;
+    color: $pale_levender;
   }
 }
 

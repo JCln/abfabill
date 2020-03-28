@@ -14,7 +14,7 @@ import { ErrorHandlerService } from './error-handler.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  private idRoutePart = window.location.href.split('/').pop();
+  private idRoutePart = window.location.pathname.split('/')[2];
   private maxLength = 13;
   private minLength = 4;
 
@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (this.checkValidInput() && this.checkValidRoute()) {
       return true;
     }
-    this.router.navigate(['/pageNotFound']);
+    this.router.navigate(['/pg']);
     this.errorHandler.handleError(406);
     return false;
   }
