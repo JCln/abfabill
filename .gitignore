@@ -4,7 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/debug.log
 # Only exists if Bazel was run
 /bazel-out
 
@@ -40,6 +39,7 @@ speed-measure-plugin.json
 npm-debug.log
 yarn-error.log
 testem.log
+debug.log
 /typings
 
 # System Files
