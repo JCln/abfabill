@@ -93,3 +93,6 @@ section {
     height: $checkbox-height;
   }
 }
+[hidden] {
+  display: none !important;
+}

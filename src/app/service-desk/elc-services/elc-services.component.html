@@ -8,41 +8,41 @@
     </div>
     <div class="background_color">
 
-        <main *ngIf="sevageSelected">
-            <div class="form" *ngFor="let elc of elcService['sevage']">
+        <main [hidden]="sevageSelected">
+            <div class="form" *ngFor="let elc of elcService[0].abfa">
                 <div class="form-item">
                     <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
                         value="{{elc.name}}">
                 </div>
                 <label class="dynamic_checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" (change)="checkboxChanged($event , elc)">
                     <span class="checkmark"></span>
                 </label>
             </div>
         </main>
-        <main *ngIf="!sevageSelected">
-            <div *ngFor="let elc of elcService['abfa']">
+        <main [hidden]="!sevageSelected">
+            <div *ngFor="let elc of elcService[1].sevage">
                 <div class="form">
                     <div class="form-item">
                         <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
                             value="{{elc.name}}">
                     </div>
                     <label class="dynamic_checkbox">
-                        <input type="checkbox">
+                        <input type="checkbox" (change)="checkboxChanged($event , elc)">
                         <span class="checkmark"></span>
                     </label>
                 </div>
             </div>
         </main>
         <main style="margin-top: .6rem;">
-            <div *ngFor="let elc of elcService['both']">
+            <div *ngFor="let elc of elcService[2].both">
                 <div class="form">
                     <div class="form-item">
                         <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
                             value="{{elc.name}}">
                     </div>
                     <label class="dynamic_checkbox">
-                        <input type="checkbox">
+                        <input type="checkbox" (change)="checkboxChanged($event , elc)">
                         <span class="checkmark"></span>
                     </label>
                 </div>
