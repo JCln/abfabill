@@ -25,6 +25,7 @@
 
 // unique shape on hover and focus
 a:hover,
-a:focus {
+a:focus,
+a:active {
   outline: none;
 }
