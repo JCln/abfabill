@@ -61,7 +61,7 @@ export class ViewBillComponent implements OnInit {
 
   getDataFromRoute = (): Promise<string> => {
     this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = Object.values(params);
+      this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
     });
     return new Promise(resolve => {
       resolve(this.getedDataIdFromRoute);
@@ -81,6 +81,8 @@ export class ViewBillComponent implements OnInit {
 
   nestingLevel = async () => {
     this.viewBillService.setId(await this.getDataFromRoute());
+    console.log(this.getedDataIdFromRoute);
+    
     if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
       this.connectToServer();
     } else {

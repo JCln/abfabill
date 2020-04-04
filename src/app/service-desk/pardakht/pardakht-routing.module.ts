@@ -5,11 +5,7 @@ import { ViewBillComponent } from './view-bill/view-bill.component';
 
 const routes: Routes = [
   { path: '', component: ViewBillComponent },
-  // {
-  //   path: '', component: NoLayoutComponent, children: [
-      { path: 'receipt', loadChildren: () => import('./old-receipt/old-receipt.module').then(o => o.OldReceiptModule) }
-  //   ]
-  // }
+  { path: 'receipt', loadChildren: () => import('./old-receipt/old-receipt.module').then(o => o.OldReceiptModule) }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

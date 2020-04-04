@@ -14,14 +14,14 @@ import { ErrorHandlerService } from './error-handler.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  private idRoutePart = window.location.pathname.split('/')[2];
+  private idRoutePart = window.location.pathname.split('/')[1];
   private maxLength = 13;
   private minLength = 4;
 
   constructor(private router: Router, private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
 
   private checkValidInput = (): boolean => {
-    if (this.idRoutePart === null || this.idRoutePart.toString().length > this.maxLength || this.idRoutePart.toString().length <= this.minLength)
+    if (this.idRoutePart === null || this.idRoutePart.length > this.maxLength || this.idRoutePart.length <= this.minLength)
       return false;
     return true;
   }
