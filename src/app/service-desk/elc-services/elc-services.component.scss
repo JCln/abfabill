@@ -71,12 +71,9 @@ section {
           }
 
           ::after {
-            left: 33%;
-            top: 13%;
-            border-radius: 3px;
-            width: 1rem;
+            left: 15%;
+            top: 20%;
             height: 2rem;
-            animation: dothabottomcheck $duration ease 0s;
           }
         }
       }
@@ -84,15 +81,6 @@ section {
   }
 }
 
-@keyframes dothabottomcheck {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: $checkbox-height;
-  }
-}
 [hidden] {
   display: none !important;
 }
