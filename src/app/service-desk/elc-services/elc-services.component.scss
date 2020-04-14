@@ -78,6 +78,12 @@ section {
         }
       }
     }
+
+    button {
+      @extend %button_first;
+      margin: $font_large_size 0;
+    }
+
   }
 }
 

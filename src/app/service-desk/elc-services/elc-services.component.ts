@@ -10,7 +10,7 @@ export const elcServices = [
   {
     bol: false,
     abfa: [
-      { name: 'پاسخ به استعلام مالکیت انشعاب', checked: false },
+      { name: 'پاسخ به استعلام مالکیت', checked: false },
       { name: 'تغییر مکان کنتور', checked: false },
       { name: 'جمع آوری یا ادغام انشعاب', checked: false },
       { name: 'آزمایش کنتور ', checked: false },
@@ -32,8 +32,8 @@ export const elcServices = [
   },
   {
     both: [
-      { name: 'تغییر مشخصات مشترکین', checked: false },
-      { name: 'تغییر تعداد واحد مسکونی مشترکین', checked: false }
+      { name: 'تغییر نام', checked: false },
+      { name: 'تغییر تعداد واحد ', checked: false }
     ]
   }
 ]
@@ -48,12 +48,14 @@ export class ElcServicesComponent implements OnInit {
   sevageSelected = false;
 
   constructor() { }
+  // switch between options
   sevageChoosed = (selected: boolean) => {
     this.sevageSelected = selected;
   }
 
   checkboxChanged = (e: any, d: any) => {
     d.checked = e.target.checked;
+    // this.elcService.pipe
   }
   ngOnInit() {
   }
