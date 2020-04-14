@@ -2,12 +2,12 @@
 @import "../../../assets/input.scss";
 @import "../../../assets/checkbox.scss";
 @import "./counter.scss";
-@import "../pardakht/view-bill/spinner_loader";
+@import "../spinner_loader";
 
 $background_border_color: #087CDB;
 $background_color: #062C68;
-$customer_border: #1B6CEE;
 $gray_border: #707070;
+$ligt_gray: #cccccc;
 $payed_installments:#2DC227;
 $payed_installments_border:#24963A;
 $payed_color: #F65050;
@@ -90,9 +90,8 @@ section {
       }
 
       .customers {
-        display: flex;
+        @include justify-center;
         align-items: center;
-        justify-content: center;
         width: 20%;
         margin: 0.9rem 0;
       }
@@ -101,8 +100,13 @@ section {
 
   .no_installment {
     text-align: center;
-    color: $customer_border;
+    color: $ligt_gray;
     font-size: 2rem;
+
+    border: 3px solid $medium_slate_blue;
+    border-radius: $__border_radius;
+
+    background: rgba(125, 131, 255, .11);
   }
 }
 
@@ -125,8 +129,7 @@ footer {
   display: flex;
 
   .pay {
-    display: flex;
-    justify-content: center;
+    @include justify-center;
     align-items: center;
     height: inherit;
   }
@@ -140,9 +143,8 @@ footer {
 }
 
 .spinner {
-  display: flex;
+  @include justify-center;
   align-items: center;
-  justify-content: center;
   min-height: 20rem;
   transform: scaleX(1) scaleY(1);
   transform-origin: center;
