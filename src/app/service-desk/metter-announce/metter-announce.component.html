@@ -1,0 +1,42 @@
+<section>
+    <!-- <img src="assets/pagenotfound/waterMeter.png" alt=""> -->
+    <main class="main">
+        <div class="form">
+            <div class="form-item">
+                <input type="number" class="form-input" [(ngModel)]="input" name="metterAnnounce"
+                    title="شماره کنتور خود را وارد کنید" placeholder=" شماره کنتور" required>
+            </div>
+            <div class="div1">
+                <p>شماره کنتور</p>
+                <div class="div2">
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-item">
+                <input type="number" class="form-input" [(ngModel)]="mobileNumber" name="mobileNumber"
+                    title="شماره همراه خود را وارد کنید" placeholder=" تلفن همراه" required>
+            </div>
+            <div class="div1">
+                <p>شماره همراه</p>
+                <div class="div2">
+                </div>
+            </div>
+        </div>
+        <button class="_button" (click)="checkValidInput()">
+            صدور قبض
+            <p class="fa fa-search"></p>
+        </button>
+    </main>
+    <!-- <article *ngIf="errorResponse">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore odio impedit error velit minima quos unde
+            quasi, placeat aliquid provident, iure magni dolor autem. Id earum maiores reprehenderit incidunt autem.</p>
+    </article> -->
+</section>
+<section class="spinner" *ngIf="errorResponse">
+    <i *ngIf="spinnerBoolean" class="loader"></i>
+    <h2>
+        <i class="fas fa-circle-notch fa-spin"></i>
+        لطفا کمی صبر کنید
+    </h2>
+</section>

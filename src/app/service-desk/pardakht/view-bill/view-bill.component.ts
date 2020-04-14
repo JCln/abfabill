@@ -18,7 +18,7 @@ const bankIcons: IbankIcons[] = [
 @Component({
   selector: 'app-view-bill',
   templateUrl: './view-bill.component.html',
-  styleUrls: ['./view-bill.component.scss', './spinner_loader.scss']
+  styleUrls: ['./view-bill.component.scss']
 })
 export class ViewBillComponent implements OnInit {
   spinnerBoolean = true;
@@ -82,7 +82,7 @@ export class ViewBillComponent implements OnInit {
   nestingLevel = async () => {
     this.viewBillService.setId(await this.getDataFromRoute());
     console.log(this.getedDataIdFromRoute);
-    
+
     if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
       this.connectToServer();
     } else {

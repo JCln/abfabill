@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', component: ServicesComponent },
       { path: 'installment', loadChildren: () => import('./installment/installment.module').then(i => i.InstallmentModule) },
-      { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule) }
+      { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule) },
+      { path: 'ma', loadChildren: () => import('./metter-announce/metter-announce.module').then(ma => ma.MetterAnnounceModule) },
     ]
   },
   {
