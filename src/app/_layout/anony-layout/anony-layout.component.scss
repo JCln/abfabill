@@ -3,7 +3,6 @@
   min-width: 100vw;
   min-height: 50vh;
   margin: 0;
-  padding: 0 .15rem;
 }
 
 @media screen and (min-width: 550px) {
@@ -11,5 +10,6 @@
     width: 50%;
     margin: 0 auto;
     min-width: auto;
+    padding: 0 .15rem;
   }
 }
