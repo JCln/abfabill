@@ -1,5 +1,6 @@
 @import "../../../../assets/main.scss";
 @import "../../../../assets/input.scss";
+@import "../../spinner_loader";
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
@@ -24,6 +25,7 @@ $lightgreen: rgba(179, 179, 179, 0.3);
 h3 {
   color: gray;
 }
+
 @mixin background {
   border-radius: $__border_radius;
   margin: $margin_top_sections;
