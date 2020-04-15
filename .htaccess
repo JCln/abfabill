@@ -1,13 +1,17 @@
-Options +FollowSymLinks
-IndexIgnore */*
-RewriteEngine on
+<VirtualHost *:80>
+    ServerName my-app
 
-# if a directory or a file exists, use it directly
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{REQUEST_URI} !/api
+    DocumentRoot /path/to/app
 
-# otherwise forward it to index.html 
-RewriteRule ^.*$ - [NC,L]
-RewriteRule ^app/. /app/index.html [NC,L]
+    <Directory /path/to/app>
+        RewriteEngine on
+
+        # Don't rewrite files or directories
+        RewriteCond %{REQUEST_FILENAME} -f [OR]
+        RewriteCond %{REQUEST_FILENAME} -d
+        RewriteRule ^ - [L]
+
+        # Rewrite everything else to index.html to allow html5 state links
+        RewriteRule ^ index.html [L]
+    </Directory>
+</VirtualHost>

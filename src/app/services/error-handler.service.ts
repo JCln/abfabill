@@ -13,8 +13,8 @@ export class ErrorHandlerService implements ErrorHandler {
 
   toasterError = (message: string, info?: string) => {
     if (info) {
-      this.toasterService.info(message, info, {
-        timeOut: 5000,
+      this.toasterService.success(message, info, {
+        timeOut: 10000,
         easeTime: '800',
         easing: 'ease-in-out',
         progressBar: true
@@ -69,7 +69,7 @@ export class ErrorHandlerService implements ErrorHandler {
         return;
       }
       case 0:
-        this.customToaster(8000, '', 'ارتباط با شرکت آبفا برقرار نشد،ممکن است که به شبکه متصل نباشید');
+        this.customToaster(8000, 'ارتباط با سرویس دهنده برقرار نشد', 'لطفا چند دقیقه دیگر امتحان کنید یا با شماره 1522 تماس بگیرید');
         break;
       case 500:
         this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا ساعتی دیگر مراجعه فرمایید');
