@@ -194,7 +194,7 @@ section {
   }
 }
 
-.barcode {
+section.barcode {
   @include justify-center;
   margin: $margin_top_sections;
 }

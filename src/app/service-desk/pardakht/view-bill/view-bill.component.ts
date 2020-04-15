@@ -61,7 +61,7 @@ export class ViewBillComponent implements OnInit {
 
   getDataFromRoute = (): Promise<string> => {
     this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
+      this.getedDataIdFromRoute = window.location.pathname.split('/')[2]; // 1 is 2 in server
     });
     return new Promise(resolve => {
       resolve(this.getedDataIdFromRoute);

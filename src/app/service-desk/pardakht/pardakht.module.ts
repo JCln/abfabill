@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxBarcodeModule } from 'ngx-barcode';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 import { SharedFooterModule } from 'src/app/shared/shared-footer.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -15,6 +16,7 @@ import { ViewBillComponent } from './view-bill/view-bill.component';
     SharedModule,
     SharedFooterModule,
     CurrencySplitterModule,
+    NgxBarcodeModule,
     PardakhtRoutingModule
   ],
   providers: [ViewBillService]

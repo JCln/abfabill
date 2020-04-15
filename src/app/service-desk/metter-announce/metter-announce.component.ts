@@ -28,7 +28,7 @@ export class MetterAnnounceComponent implements OnInit {
   private mobileLength = mobileLength;
 
   getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[2]; // 1 is 2 in server
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -68,6 +68,7 @@ export class MetterAnnounceComponent implements OnInit {
   connectToServer = () => {
     this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
       this.errorResponse = false;
+      console.log(res);
       if (res) {
         // looking for async pipe make ups
         // this.$asyncPipeTest = res;
