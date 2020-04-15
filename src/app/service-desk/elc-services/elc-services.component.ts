@@ -18,7 +18,7 @@ export const elcServices = [
       { name: 'تعویض کنتور ', checked: false },
       { name: 'تغییر کاربری انشعاب', checked: false },
       { name: 'تغییر ظرفیت قراردادی انشعاب', checked: false },
-      { name: 'تغییرقطرانشعاب', checked: false },
+      { name: 'تغییر قطرانشعاب', checked: false },
       { name: 'تفکیک کنتور ', checked: false }
     ],
   },
@@ -32,7 +32,7 @@ export const elcServices = [
   },
   {
     both: [
-      { name: 'تغییر نام', checked: false },
+      { name: 'تغییر مشخصات', checked: false },
       { name: 'تغییر تعداد واحد ', checked: false }
     ]
   }
