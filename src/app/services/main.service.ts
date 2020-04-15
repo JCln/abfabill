@@ -54,4 +54,10 @@ export class MainService {
     // );
     // return forkJoin([res1, res2]);
   }
+
+  SET = (URL: string, body: object): Observable<any> => {
+    return this.http.post<any>(this.mainConfigUrl + '/' + URL, body, this.httpOptions)
+      .pipe(
+        catchError(err => this.errorHandler.errorHandler(err)));
+  }
 }

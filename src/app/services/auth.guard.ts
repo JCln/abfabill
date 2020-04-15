@@ -14,7 +14,7 @@ import { ErrorHandlerService } from './error-handler.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  private idRoutePart = window.location.pathname.split('/')[1];
+  private idRoutePart = window.location.pathname.split('/')[2]; //1 is 2 in server
   private maxLength = 13;
   private minLength = 4;
 

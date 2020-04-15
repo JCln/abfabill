@@ -44,10 +44,10 @@ export class ErrorHandlerService implements ErrorHandler {
     }, 2000);
   }
 
-  public handleError(error: number) {
+  public handleError(error: number, message?: string) {
     switch (error) {
       case 400:
-        this.toasterError('درخواست بدرستی ارسال نشده است');
+        this.customToaster(10000, message);
         break;
       case 401:
         this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با 1522 تماس حاصل فرمایید ');
@@ -64,6 +64,10 @@ export class ErrorHandlerService implements ErrorHandler {
       case 406:
         this.customToaster(8000, '', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
+      case 416: {
+        this.customToaster(10000, message);
+        return;
+      }
       case 0:
         this.customToaster(8000, '', 'ارتباط با شرکت آبفا برقرار نشد،ممکن است که به شبکه متصل نباشید');
         break;
@@ -80,7 +84,7 @@ export class ErrorHandlerService implements ErrorHandler {
   }
   errorHandler(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {
-      this.handleError(error.status);
+      this.handleError(error.status, error.error.message || 'شناسه قبض را بدرستی وارد کنید');
     }
     return throwError(error);
   }
