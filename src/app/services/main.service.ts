@@ -58,7 +58,7 @@ export class MainService {
   SET = (URL: string, body: object): Observable<any> => {
     return this.http.post<any>(this.mainConfigUrl + '/' + URL, body)
       .pipe(
-        // retry (1)
+        retry(1),
         catchError(err => this.errorHandler.errorHandler(err)));
   }
 }

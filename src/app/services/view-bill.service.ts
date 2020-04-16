@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
+import { IViewBill } from './iview-bill';
 import { MainService } from './main.service';
 
 @Injectable({
@@ -40,7 +42,7 @@ export class ViewBillService {
   getInstallment = (): any => {
     return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
   }
-  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): any => {
+  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<IViewBill> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
 

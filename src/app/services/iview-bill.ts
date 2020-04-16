@@ -28,6 +28,7 @@ export interface IViewBill {
     preBedOrBes: string;
     preCounterNumber: number;
     preCounterReadingDate: string;
+    days: number;
     qotr: string;
     qotrSifoon: string;
     radif: number;

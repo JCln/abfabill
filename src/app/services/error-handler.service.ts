@@ -3,13 +3,14 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
 
-  constructor(private router: Router, private toasterService: ToastrService) { }
+  constructor(private router: Router, private toasterService: ToastrService, private interactionService: InteractionService) { }
 
   toasterError = (message: string, info?: string) => {
     if (info) {
@@ -50,7 +51,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.customToaster(10000, message);
         break;
       case 401:
-        this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با 1522 تماس حاصل فرمایید ');
+        this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با شماره 1522 تماس حاصل فرمایید ');
         break;
       case 403:
         this.toasterError('دسترسی شما ممکن نیست');
@@ -65,7 +66,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.customToaster(8000, '', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
       case 416: {
-        this.customToaster(10000, message);
+        this.interactionService.setmetterAnnounce(message);
         return;
       }
       case 0:

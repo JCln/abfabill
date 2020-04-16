@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
 import { ViewBillService } from './../../services/view-bill.service';
@@ -19,6 +20,9 @@ export class MetterAnnounceComponent implements OnInit {
   // need to have error text to show
   errorResponse: boolean;
   errorResponseText = '';
+  // textError from server
+  $textError: string;
+  showMessage = false;
 
   private allowDataSendToServer = false;
 
@@ -28,7 +32,7 @@ export class MetterAnnounceComponent implements OnInit {
   private mobileLength = mobileLength;
 
   getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[2]; // 1 is 2 in server
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -73,26 +77,30 @@ export class MetterAnnounceComponent implements OnInit {
         // looking for async pipe make ups
         // this.$asyncPipeTest = res;
 
-        // this.response = true;
-        console.log(res);
+        // comunicate between unrelated components
+        // ViewBillComponent.
         this.errorResponse = false;
-        this.errorHandler.customToaster(10000, '', 'عملیات با موفقیت انجام شد');
+        this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
         this.router.navigate([/p/ + `${this.getedDataIdFromRoute}` + '/bill']); // should /p/ + for server
 
-
-        // when response is null and means no installment exists
-        // if (this.isNull(res[0])) {
-        //   this.respnseIsNull = false;
-        // }
-        // this.insertValToVar(res, this.removeLoaderAfterResponse);
       } else {
         this.errorResponse = false;
       }
     });
   }
 
+  ngAfterContentChecked(): void {
+    this.interactionService.metterAnnounceErrorText$.subscribe(res => {
+      if (res) {
+        this.$textError = res;
+        console.log(this.errorResponse);
+        this.errorResponse = false;
+        this.showMessage = true;
+      }
+    });
+  }
 
-  constructor(private errorHandler: ErrorHandlerService, private route: ActivatedRoute, private viewBillService: ViewBillService, private router: Router) { }
+  constructor(private errorHandler: ErrorHandlerService, private route: ActivatedRoute, private viewBillService: ViewBillService, private router: Router, private interactionService: InteractionService) { }
 
   nestingLevel = async () => {
     if (this.allowDataSendToServer) {
@@ -100,7 +108,7 @@ export class MetterAnnounceComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.getDataFromRoute();
+    // this.getDataFromRoute();
   }
 
 }
