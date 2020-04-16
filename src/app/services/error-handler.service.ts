@@ -73,10 +73,10 @@ export class ErrorHandlerService implements ErrorHandler {
         this.customToaster(8000, 'ارتباط با سرویس دهنده برقرار نشد', 'لطفا چند دقیقه دیگر امتحان کنید یا با شماره 1522 تماس بگیرید');
         break;
       case 500:
-        this.toasterError('مشکلی از شرکت آب رخ داده است، لطفا ساعتی دیگر مراجعه فرمایید');
+        this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
         break;
       case 504:
-        this.customToaster(11000, 'باعرض پوزش', 'مشکلی از طرف شرکت آبفا رخ داده است، لطفا بعدا مراجعه نمایید');
+        this.customToaster(11000, 'باعرض پوزش', 'خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
         break;
       default:
         this.toasterError('شما به شبکه دسترسی ندارید');
