@@ -88,7 +88,7 @@ export class InstallmentComponent implements OnInit {
 
   getDataFromRoute = (): Promise<string> => {
     this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = window.location.pathname.split('/')[2];  // 1 is 2 for build
+      this.getedDataIdFromRoute = window.location.pathname.split('/')[1];  // 1 is 2 for build
     });
     return new Promise(resolve => {
       resolve(this.getedDataIdFromRoute);

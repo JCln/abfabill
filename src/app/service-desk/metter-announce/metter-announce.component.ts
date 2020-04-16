@@ -81,7 +81,7 @@ export class MetterAnnounceComponent implements OnInit {
         // ViewBillComponent.
         this.errorResponse = false;
         this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-        this.router.navigate([/p/ + `${this.getedDataIdFromRoute}` + '/bill']); // should /p/ + for server
+        this.router.navigate([`${this.getedDataIdFromRoute}` + '/bill']); // should /p/ + for server
 
       } else {
         this.errorResponse = false;
@@ -100,7 +100,13 @@ export class MetterAnnounceComponent implements OnInit {
     });
   }
 
-  constructor(private errorHandler: ErrorHandlerService, private route: ActivatedRoute, private viewBillService: ViewBillService, private router: Router, private interactionService: InteractionService) { }
+  constructor(
+    private errorHandler: ErrorHandlerService,
+    private route: ActivatedRoute,
+    private viewBillService: ViewBillService,
+    private router: Router,
+    private interactionService: InteractionService
+  ) { }
 
   nestingLevel = async () => {
     if (this.allowDataSendToServer) {
@@ -108,7 +114,7 @@ export class MetterAnnounceComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // this.getDataFromRoute();
+    this.getDataFromRoute();
   }
 
 }
