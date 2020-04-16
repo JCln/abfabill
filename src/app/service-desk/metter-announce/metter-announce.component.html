@@ -28,10 +28,9 @@
             <p class="fa fa-search"></p>
         </button>
     </main>
-    <!-- <article *ngIf="errorResponse">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore odio impedit error velit minima quos unde
-            quasi, placeat aliquid provident, iure magni dolor autem. Id earum maiores reprehenderit incidunt autem.</p>
-    </article> -->
+    <article *ngIf="showMessage">
+        <p>{{$textError}}</p>
+    </article>
 </section>
 <section class="spinner" *ngIf="errorResponse">
     <i *ngIf="spinnerBoolean" class="loader"></i>

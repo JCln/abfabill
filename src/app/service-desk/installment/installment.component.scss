@@ -40,6 +40,7 @@ $payed_color: #F65050;
 section {
   background-color: $background_color;
   padding: 2rem 0;
+  border-radius: $__border_radius;
 
   .main {
     display: flex;
