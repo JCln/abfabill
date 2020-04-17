@@ -8,7 +8,7 @@ export class PerCurrencySplitterPipe implements PipeTransform {
     typeof value === "undefined";
 
   numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    return x.toLocaleString('ar-EG');
   }
 
   transform(value: any, ...args: any[]): any {
