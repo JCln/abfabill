@@ -5,6 +5,7 @@
 $dark_torouse: #2DC227;
 
 $m_size: 0.5rem;
+$b_size: 2rem;
 
 $background_color: #062C68;
 $opacity_background: rgba($color: #2B4C7F, $alpha: 1);
@@ -76,11 +77,14 @@ section {
   }
 
   article {
-    background: rgba($color: #2B4C7F, $alpha: .1);
-    margin: $m_size 0;
+    --dark_background: #091c3b;
+    --border_color: #bd362f;
+
+    background: var(--dark_background);
+    margin: $b_size 0;
     border-radius: $__border_radius;
-    border: 2px solid $medium_slate_blue;
-    min-height: 16rem;
+    border: 3px solid var(--border_color);
+    min-height: 14rem;
 
     p {
       color: $white;
