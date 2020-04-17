@@ -32,7 +32,7 @@ export class MetterAnnounceComponent implements OnInit {
   private mobileLength = mobileLength;
 
   getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
+    this.interactionService.billId$.subscribe(res => this.getedDataIdFromRoute = res);  
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -81,7 +81,7 @@ export class MetterAnnounceComponent implements OnInit {
         // ViewBillComponent.
         this.errorResponse = false;
         this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-        this.router.navigate([`${this.getedDataIdFromRoute}` + '/bill']); // should /p/ + for server
+        this.router.navigate(['r/success']);
 
       } else {
         this.errorResponse = false;

@@ -39,10 +39,10 @@ export class InstallmentComponent implements OnInit {
   // testObject = a;
 
   constructor(
-    private getBillId: InteractionService,
+    private interactionService: InteractionService,
     private route: ActivatedRoute,
     private viewBillService: ViewBillService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
   ) {
     this.nestingLevel().catch(x => console.log(x.message));
   }
@@ -87,17 +87,19 @@ export class InstallmentComponent implements OnInit {
   }
 
   getDataFromRoute = (): Promise<string> => {
-    this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = window.location.pathname.split('/')[1];  // 1 is 2 for build
+    this.interactionService.billId$.subscribe(res => {
+      if (res) this.getedDataIdFromRoute = res;
     });
     return new Promise(resolve => {
       resolve(this.getedDataIdFromRoute);
     });
   }
 
+  // seemed that it is unnessesary
   getId = (callback: () => void) => {
-    this.getBillId.installmentId$.subscribe(res => {
-      this.billId = res;
+    this.interactionService.installmentId$.subscribe(res => {
+      if (res)
+        this.billId = res;
     });
     callback();
   }

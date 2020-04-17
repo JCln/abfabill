@@ -33,10 +33,11 @@ export class ViewBillComponent implements OnInit {
 
   constructor(
     private viewBillService: ViewBillService,
-    private receipt: InteractionService,
     private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
-    private router: Router) {
+    private router: Router,
+    private interactionService: InteractionService
+  ) {
     this.nestingLevel().catch(x => console.log(x.message));
   }
 
@@ -60,14 +61,12 @@ export class ViewBillComponent implements OnInit {
   }
 
   getDataFromRoute = (): Promise<string> => {
-    this.route.params.subscribe((params: object) => {
-      this.getedDataIdFromRoute = window.location.pathname.split('/')[1]; // 1 is 2 in server
-    });
+    this.interactionService.billId$.subscribe(res =>
+      this.getedDataIdFromRoute = res);
     return new Promise(resolve => {
       resolve(this.getedDataIdFromRoute);
     });
   }
-
   // receiptFuc = (): Promise<any> => {
   // if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
   //   this.connectToServer();
@@ -88,9 +87,9 @@ export class ViewBillComponent implements OnInit {
     } else {
       this.errorHandler.handleError(404);
     }
-    this.receipt.setReceipt(this.testObject);
+    this.interactionService.setReceipt(this.testObject);
     // this.receipt.setReceipt(this.receiptFuc());
-    const a = this.receipt.setInstallment(this.getedDataIdFromRoute);
+    const a = this.interactionService.setInstallment(this.getedDataIdFromRoute);
     console.log(a);
 
     // this.receiptFuc();

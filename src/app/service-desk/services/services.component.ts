@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 import { IServices } from './iservices';
 
@@ -29,11 +30,24 @@ export class ServicesComponent implements OnInit, IServices {
   routerLink: string;
   serviceNames: any[];
 
-  constructor() {
-    this.serviceNames = serviceNames;
+  // data get from route
+  getedDataIdFromRoute: string = '';
+
+  getDataFromRoute = () => {
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
   }
 
+  setBillIdToChildrens = () => {
+    this.interactionService.setBillId(this.getedDataIdFromRoute);
+  }
+
+  constructor(private interactionService: InteractionService) {
+    this.serviceNames = serviceNames;
+    this.getDataFromRoute();
+  }
+  
   ngOnInit() {
+    this.setBillIdToChildrens();
   }
 
 }
