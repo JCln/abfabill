@@ -18,9 +18,7 @@ export class SuccessComponent implements OnInit {
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
-        // this.router.navigate([`${this.billId}/bill`]);
-        console.log(this.router.navigate([`${this.billId}/bill`]));
-
+        this.router.navigate([`${this.billId}/bill`]);
       }
     }, 1000)
   }
