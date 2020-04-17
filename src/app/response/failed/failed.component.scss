@@ -56,7 +56,8 @@ section {
         width: 5rem;
         height: 5rem;
         border-radius: 50%;
-        top: -2.5rem;
+        top: -50%;
+        transform: translateY(50%);
 
         .fa-times {
           font-size: 3rem;
