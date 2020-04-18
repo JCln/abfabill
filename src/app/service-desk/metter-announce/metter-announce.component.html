@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <button class="_button" (click)="checkValidInput()">
+        <button #button class="_button" (click)="clickableButton && checkValidInput()" [disabled]="clickableButton === false">
             صدور قبض
             <p class="fa fa-search"></p>
         </button>
@@ -32,8 +32,8 @@
         <p>{{$textError}}</p>
     </article>
 </section>
-<section class="spinner" *ngIf="errorResponse">
-    <i *ngIf="spinnerBoolean" class="loader"></i>
+<section class="spinner" *ngIf="notification">
+    <i class="loader"></i>
     <h2>
         <i class="fas fa-circle-notch fa-spin"></i>
         لطفا کمی صبر کنید

@@ -39,6 +39,12 @@ export class ErrorHandlerService implements ErrorHandler {
     });
   }
 
+  public timeOutBeforeRoute = (routeTo: string) => {
+    setTimeout(() => {
+      this.router.navigate([routeTo]);
+    }, 2000);
+  }
+  
   private setTimeOutBeforeRoute = () => {
     setTimeout(() => {
       this.router.navigate(['/pg']);

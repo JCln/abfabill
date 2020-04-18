@@ -16,13 +16,16 @@ export class MetterAnnounceComponent implements OnInit {
   getedDataIdFromRoute = '';
   mobileNumber = '';
   // spinner
-  spinnerBoolean = true;
+  // spinnerBoolean = true;
   // need to have error text to show
-  errorResponse: boolean;
-  errorResponseText = '';
+  notification: boolean;
+  // notificationText = '';
+
   // textError from server
   $textError: string;
   showMessage = false;
+  // button
+  clickableButton: boolean = true;
 
   private allowDataSendToServer = false;
 
@@ -32,7 +35,7 @@ export class MetterAnnounceComponent implements OnInit {
   private mobileLength = mobileLength;
 
   getDataFromRoute = () => {
-    this.interactionService.billId$.subscribe(res => this.getedDataIdFromRoute = res);  
+    this.interactionService.billId$.subscribe(res => this.getedDataIdFromRoute = res);
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -50,6 +53,10 @@ export class MetterAnnounceComponent implements OnInit {
   }
 
   checkValidInput = () => {
+    // second or more try should hide message
+    this.showMessage = false;
+    this.$textError = '';
+
     if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
       this.errorHandler.customToaster(4000, 'شماره کنتور خود را اشتباه وارد کرده اید');
       return;
@@ -58,34 +65,29 @@ export class MetterAnnounceComponent implements OnInit {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
       return;
     }
-    this.errorResponse = true;
+    this.clickableButton = false;
+    this.notification = true;
     this.allowDataSendToServer = true;
     this.nestingLevel();
   }
 
   @HostListener('document: keyup', ['$event'])
   onkeyUpHandler(event: KeyboardEvent) {
-    if (event.key === 'Enter' || event.key === 'NumpadEnter') {
-      this.checkValidInput();
+    if (this.clickableButton) {
+
+      if (event.key === 'Enter' || event.key === 'NumpadEnter') {
+        this.checkValidInput();
+      }
     }
   }
   connectToServer = () => {
     this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
-      this.errorResponse = false;
-      console.log(res);
       if (res) {
-        // looking for async pipe make ups
-        // this.$asyncPipeTest = res;
-
-        // comunicate between unrelated components
-        // ViewBillComponent.
-        this.errorResponse = false;
         this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-        this.router.navigate(['r/success']);
-
-      } else {
-        this.errorResponse = false;
+        this.errorHandler.timeOutBeforeRoute('r/success');
       }
+      this.notification = false;
+      this.clickableButton = true;
     });
   }
 
@@ -93,9 +95,9 @@ export class MetterAnnounceComponent implements OnInit {
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
-        console.log(this.errorResponse);
-        this.errorResponse = false;
         this.showMessage = true;
+        this.notification = false;
+        this.clickableButton = true;
       }
     });
   }
@@ -108,13 +110,16 @@ export class MetterAnnounceComponent implements OnInit {
     private interactionService: InteractionService
   ) { }
 
-  nestingLevel = async () => {
+  nestingLevel = () => {
     if (this.allowDataSendToServer) {
+      this.allowDataSendToServer = false;
       this.connectToServer();
     }
   }
   ngOnInit(): void {
     this.getDataFromRoute();
+    // hidden showMessage for last changes and user enters
+    // this.showMessage = false;
   }
 
 }

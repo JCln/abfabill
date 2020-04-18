@@ -78,9 +78,11 @@ section {
 
   article {
     --dark_background: #091c3b;
-    --border_color: #bd362f;
+    --border_color: #ff1408;
 
+    width: 97%;
     background: var(--dark_background);
+    box-shadow: 2px 2px 7px 0px var(--border_color);
     margin: $b_size 0;
     border-radius: $__border_radius;
     border: 3px solid var(--border_color);
