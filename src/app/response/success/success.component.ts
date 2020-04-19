@@ -10,18 +10,8 @@ import { InteractionService } from 'src/app/services/interaction.service';
 export class SuccessComponent implements OnInit {
   timeLeft: number = 10;
   interval;
-  // billId: string = '';
-  billId: any;
+  billId: string = '';
 
-  startTimer() {
-    this.interval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
-      } else {
-        this.router.navigate([`${this.billId}/bill`]);
-      }
-    }, 1000)
-  }
   constructor(private interactionService: InteractionService, private router: Router) { }
 
   // absolutely beautiful async could implement
@@ -30,7 +20,6 @@ export class SuccessComponent implements OnInit {
       if (res) {
         this.billId = res;
         console.log(this.billId);
-        this.startTimer();
       }
     });
   }
