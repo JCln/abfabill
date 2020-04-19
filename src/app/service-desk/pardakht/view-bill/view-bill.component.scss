@@ -1,6 +1,7 @@
 @import "../../../../assets/main.scss";
 @import "../../../../assets/input.scss";
-@import "../../spinner_loader";
+@import "../../../../assets/mixins.scss";
+@import "../../../../assets/spinner_loader.scss";
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
