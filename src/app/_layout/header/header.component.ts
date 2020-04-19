@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  previousPage: string;
+
   changeBackImg = () => {
     if (screen.width > 549) {
       return;
@@ -22,6 +24,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.goToHome();
+  }
+  goToHome = () => {
+    this.previousPage = window.location.pathname.split('/')[1];
   }
 
 }
