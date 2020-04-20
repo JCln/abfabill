@@ -38,7 +38,7 @@ export class ViewBillComponent implements OnInit {
     private router: Router,
     private interactionService: InteractionService
   ) {
-    this.nestingLevel().catch(x => console.log(x.message));
+    this.getDataFromRoute();
   }
 
 
@@ -60,27 +60,12 @@ export class ViewBillComponent implements OnInit {
     });
   }
 
-  getDataFromRoute = (): Promise<string> => {
-    this.interactionService.billId$.subscribe(res =>
-      this.getedDataIdFromRoute = res);
-    return new Promise(resolve => {
-      resolve(this.getedDataIdFromRoute);
-    });
+  getDataFromRoute = () => {
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];  
   }
-  // receiptFuc = (): Promise<any> => {
-  // if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
-  //   this.connectToServer();
-  // } else {
-  //   this.errorHandler.handleError(404);
-  // }
-  // return new Promise(resolve => {
-  //   resolve(this.testObject);
-  // });
-  // }
 
-  nestingLevel = async () => {
-    this.viewBillService.setId(await this.getDataFromRoute());
-    console.log(this.getedDataIdFromRoute);
+  nestingLevel = () => {
+    this.viewBillService.setId(this.getedDataIdFromRoute);
 
     if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
       this.connectToServer();
@@ -88,14 +73,12 @@ export class ViewBillComponent implements OnInit {
       this.errorHandler.handleError(404);
     }
     this.interactionService.setReceipt(this.testObject);
-    // this.receipt.setReceipt(this.receiptFuc());
-    const a = this.interactionService.setInstallment(this.getedDataIdFromRoute);
-    console.log(a);
-
-    // this.receiptFuc();
+    this.interactionService.setInstallment(this.getedDataIdFromRoute);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.nestingLevel();
+  }
 
   changeBankForPay = (bankName: string, bankurl: string) => {
     this.chooseBank.name = bankName;

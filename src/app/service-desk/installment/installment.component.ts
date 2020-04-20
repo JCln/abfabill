@@ -1,25 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import * as AOS from 'aos';
-import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { InteractionService } from '../../services/interaction.service';
 
-// const a: any[] = [
-//   {
-//     amount: 'ali', billId: 111,
-//     paymentId: 239874,
-//     deadlineDate: '98/12/23',
-//     isPayed: false
-//   },
-//   {
-//     amount: 'ali', billId: 111,
-//     paymentId: 239874,
-//     deadlineDate: '98/12/23',
-//     isPayed: true
-//   }
-// ]
 @Component({
   selector: 'app-installment',
   templateUrl: './installment.component.html',
@@ -40,11 +24,9 @@ export class InstallmentComponent implements OnInit {
 
   constructor(
     private interactionService: InteractionService,
-    private route: ActivatedRoute,
     private viewBillService: ViewBillService,
-    private errorHandler: ErrorHandlerService,
   ) {
-    this.nestingLevel().catch(x => console.log(x.message));
+    this.getDataFromRoute();
   }
 
   isNull = (value: any) =>
@@ -86,13 +68,8 @@ export class InstallmentComponent implements OnInit {
     });
   }
 
-  getDataFromRoute = (): Promise<string> => {
-    this.interactionService.billId$.subscribe(res => {
-      if (res) this.getedDataIdFromRoute = res;
-    });
-    return new Promise(resolve => {
-      resolve(this.getedDataIdFromRoute);
-    });
+  getDataFromRoute = () => {
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
   }
 
   // seemed that it is unnessesary
@@ -105,13 +82,14 @@ export class InstallmentComponent implements OnInit {
   }
 
   nestingLevel = async () => {
-    const a = await this.getDataFromRoute();
-    this.viewBillService.setInstallmentId(a);
+    this.viewBillService.setInstallmentId(this.getedDataIdFromRoute);
 
     this.connectToServer();
   }
 
   ngOnInit() {
+    this.nestingLevel();
+
     AOS.init(
       {
         duration: 200,
