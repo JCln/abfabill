@@ -1,8 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
+import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { ViewBillService } from './../../services/view-bill.service';
 
 const mobileLength = 11;
@@ -11,14 +11,13 @@ const mobileLength = 11;
   templateUrl: './metter-announce.component.html',
   styleUrls: ['./metter-announce.component.scss']
 })
-export class MetterAnnounceComponent implements OnInit {
+export class MetterAnnounceComponent implements OnInit, OnDestroy {
   input: number;
   getedDataIdFromRoute = '';
   mobileNumber = '';
   // spinner
-  // spinnerBoolean = true;
   // need to have error text to show
-  notification: boolean;
+  notification: boolean = false;
   // notificationText = '';
 
   // textError from server
@@ -26,8 +25,6 @@ export class MetterAnnounceComponent implements OnInit {
   showMessage = false;
   // button
   clickableButton: boolean = true;
-
-  private allowDataSendToServer = false;
 
   private maxLength = 5;
   private minLength = 1;
@@ -52,43 +49,58 @@ export class MetterAnnounceComponent implements OnInit {
     return false;
   }
 
-  checkValidInput = () => {
-    // second or more try should hide message
-    this.showMessage = false;
-    this.$textError = '';
+  checkValidInput = (): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
 
-    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
-      this.errorHandler.customToaster(4000, 'شماره کنتور خود را اشتباه وارد کرده اید');
-      return;
-    }
-    if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
-      this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
-      return;
-    }
-    this.clickableButton = false;
-    this.notification = true;
-    this.allowDataSendToServer = true;
-    this.nestingLevel();
+      if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
+        this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
+        reject(false);
+      }
+      if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
+        this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
+        reject(false);
+      }
+      resolve(true);
+    })
+
   }
 
   @HostListener('document: keyup', ['$event'])
   onkeyUpHandler(event: KeyboardEvent) {
-    if (this.clickableButton) {
-
+    
       if (event.key === 'Enter' || event.key === 'NumpadEnter') {
-        this.checkValidInput();
-      }
+        this.nestingLevel();
     }
   }
-  connectToServer = () => {
-    this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
-      if (res) {
-        this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-        this.errorHandler.timeOutBeforeRoute('r/success');
-      }
-      this.notification = false;
-      this.clickableButton = true;
-    });
+
+  connectToServer = (): Promise<any> => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve(
+          this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
+            if (res) {
+              this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
+              this.errorHandler.timeOutBeforeRoute('r/success');
+            }
+          })
+        )
+      }, 3000)
+    )
+  }
+
+  createSpinner = (val: any) => {
+    this.spinnerWrapper.loadingStatus$.subscribe(status => {
+      this.clickableButton = status;
+      this.notification = status;
+    })
+  }
+
+  spinnerChecker = (bol: boolean): Promise<any> => {
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve(this.spinnerWrapper.loading(bol))
+      }, 100)
+    )
   }
 
   ngAfterContentChecked(): void {
@@ -96,30 +108,33 @@ export class MetterAnnounceComponent implements OnInit {
       if (res) {
         this.$textError = res;
         this.showMessage = true;
-        this.notification = false;
-        this.clickableButton = true;
       }
     });
   }
 
+
+  nestingLevel = async () => {
+    const a = await this.checkValidInput();
+    const b = await this.spinnerChecker(a);
+    const c = await this.createSpinner(b);
+    await this.connectToServer();
+    await this.spinnerChecker(false);
+  }
+
   constructor(
     private errorHandler: ErrorHandlerService,
-    private route: ActivatedRoute,
     private viewBillService: ViewBillService,
-    private router: Router,
-    private interactionService: InteractionService
-  ) { }
-
-  nestingLevel = () => {
-    if (this.allowDataSendToServer) {
-      this.allowDataSendToServer = false;
-      this.connectToServer();
-    }
-  }
-  ngOnInit(): void {
+    private interactionService: InteractionService,
+    private spinnerWrapper: SpinnerWrapperService,
+  ) {
     this.getDataFromRoute();
-    // hidden showMessage for last changes and user enters
-    // this.showMessage = false;
   }
 
+  ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+
+    // this.errorTextSubscription.unsubscribe();
+    // this.notificationSubscribe.unsubscribe();
+  }
 }
