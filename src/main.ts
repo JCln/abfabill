@@ -7,6 +7,8 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
   window.console.log = window.console.warn = window.console.info = window.console.error = function () { };
+  if (window.console)
+    console.clear();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
