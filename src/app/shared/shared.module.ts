@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { SpinnerWrapperComponent } from './../spinner-wrapper/spinner-wrapper.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [SpinnerWrapperComponent],
   imports: [
     CommonModule,
     FormsModule
   ],
-  exports: [FormsModule, CommonModule],
+  exports: [FormsModule, CommonModule , SpinnerWrapperComponent],
 
 })
 export class SharedModule { }
