@@ -1,0 +1,91 @@
+@import "../../../assets/input";
+
+$white: #fff;
+$blue_color: #004ecc;
+$darker_gray: #515151;
+$lightgray: lightgray;
+$darkgray: darkgray;
+
+.main_border {
+  border: 2px solid darkgray;
+  border-radius: 30px;
+  margin: 0 .1rem;
+  margin-bottom: 1.5rem;
+
+  .form {
+    box-shadow: none;
+    background: $white;
+
+    .form-item {
+      background: inherit;
+
+      .form-input {
+        padding: 0 0.5rem 0 .2rem;
+        line-height: 3;
+        color: $lightgray;
+        border: 1px solid $lightgray;
+        transform: translateX(.26rem);
+      }
+
+      .is_bill {
+        color: $darker_gray;
+      }
+
+    }
+
+    .div1 {
+      background: $lightgray;
+
+      p {
+        line-height: 2;
+        color: $darker_gray;
+      }
+
+    }
+
+    .div2 {
+      background: $white;
+    }
+  }
+
+  .first_section {
+    display: flex;
+
+    .form {
+      width: 50%;
+
+      .form-item {
+        width: 65%;
+
+      }
+
+      .div1 {
+        width: 35%;
+      }
+    }
+  }
+}
+
+.sign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: $bright_torouse;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  top: -50%;
+  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+  .fa-check {
+    font-size: 2.2rem;
+    color: $white;
+  }
+
+}

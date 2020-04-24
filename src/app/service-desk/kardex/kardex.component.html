@@ -1,0 +1,47 @@
+<section>
+    <div class="main_border" *ngFor="let kardex of kardex">
+        <div class="first_section">
+            <div class="form">
+                <div class="form-item">
+                    <input type="number" readonly name="kardex.id" class="form-input" aria-label="first name"
+                        value="{{kardex.isBill === false ? '':'kardex.usage'}}">
+
+
+                </div>
+                <div class="div1">
+                    <div class="sign" *ngIf="kardex.isBill === true">
+                        <i class="fa fa-check"></i>
+                    </div>
+
+                    <p *ngIf="kardex.isBill === false">مصرف</p>
+                    <div class="div2">
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <input type="text" readonly name="kardex.id" class="form-input" aria-label="first name"
+                        value="{{kardex.isBill === false ? kardex.creditorDate : kardex.oweDate }}">
+                </div>
+                <div class=" div1">
+                    <p>{{kardex.isBill === false ? 'تاریخ پرداخت' : 'تاریخ صدور'}}</p>
+                    <div class="div2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-item">
+                <input type="number" readonly name="kardex.id" class="form-input"
+                    [ngStyle]="{'color': kardex.isBill === false ? '#515151' : 'lightgray' , 'border': kardex.isBill === false ? '2px solid #f89406' : '1px solid lightgray'}"
+                    aria-label="first name" value="{{kardex.amount}}">
+            </div>
+            <div class="div1" [ngStyle]="{'background': kardex.isBill === false ? '#f89406' : 'lightgray'}">
+                <p>{{kardex.isBill ? 'پرداخت شده': 'نمایش قبض'}}</p>
+                <div class="div2">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-spinner-wrapper></app-spinner-wrapper>
