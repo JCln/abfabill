@@ -8,9 +8,9 @@ describe('MetterAnnounceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MetterAnnounceComponent ]
+      declarations: [MetterAnnounceComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,23 @@ describe('MetterAnnounceComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 });
+// metter componenet main method should work correctly
+
+// describe('metter comnponent', () => {
+//   let srt;
+
+//   beforeEach(() => {
+//     srt = {}
+//   })
+//   describe('main mehtod ', () => {
+//     it('should work correcdtly', () => {
+//       srt.a = false;
+//       srt.a = true;
+//       expect(srt.a).toBe(true);
+//     })
+//   })
+// })
