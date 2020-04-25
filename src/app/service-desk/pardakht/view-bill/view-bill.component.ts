@@ -24,7 +24,7 @@ export class ViewBillComponent implements OnInit {
   spinnerBoolean = true;
   showMoreButton = false;
 
-  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'bmi.ir' };
+  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
   testObject: any = [];
   getedDataIdFromRoute: any = [];
   bankIcons = bankIcons;
