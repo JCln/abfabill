@@ -4,16 +4,16 @@
             <div class="form">
                 <div class="form-item">
                     <input type="number" readonly name="kardex.id" class="form-input" aria-label="first name"
-                        value="{{kardex.isBill === false ? '':'kardex.usage'}}">
+                        value="{{kardex.isBill === false ? '':kardex.usage}}">
 
 
                 </div>
                 <div class="div1">
-                    <div class="sign" *ngIf="kardex.isBill === true">
+                    <div class="sign" *ngIf="kardex.isBill === false">
                         <i class="fa fa-check"></i>
                     </div>
 
-                    <p *ngIf="kardex.isBill === false">مصرف</p>
+                    <p *ngIf="kardex.isBill === true">مصرف</p>
                     <div class="div2">
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     aria-label="first name" value="{{kardex.amount}}">
             </div>
             <div class="div1" [ngStyle]="{'background': kardex.isBill === false ? '#f89406' : 'lightgray'}">
-                <p>{{kardex.isBill ? 'پرداخت شده': 'نمایش قبض'}}</p>
+                <p>{{kardex.isBill ? 'نمایش قبض': 'پرداخت شده'}}</p>
                 <div class="div2">
                 </div>
             </div>

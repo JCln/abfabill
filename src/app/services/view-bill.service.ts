@@ -10,11 +10,6 @@ import { MainService } from './main.service';
 export class ViewBillService {
   private id: string;
   private base64: string;
-
-  // viewbill: any = [
-  //   { message: 'hellow', errorCode: 2 }
-  // ];
-
   constructor(private mainService: MainService) {
   }
 
@@ -51,5 +46,18 @@ export class ViewBillService {
     }
 
     return this.mainService.SET(`MoshtarakinApi/v2/bill/generateBill/${this.base64}`, body);
+  }
+  // sendCriticalOrSuggestions = (): Observable<> => {
+  //   typeId1: 
+  //   typeId2: 
+
+  //   const body = {
+  //     type: Number;
+  //     message: String;      
+  //   }
+  //   return this.mainService.SET('MoshtarakinApi/suggestion/setsuggestion', );
+  // }
+  getKardex = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/bill/getkardex');
   }
 }
