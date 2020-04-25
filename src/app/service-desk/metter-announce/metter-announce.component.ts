@@ -1,4 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
@@ -16,6 +17,9 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   getedDataIdFromRoute = '';
   mobileNumber = '';
   // spinner
+  spinnerSubscriber: Subscription;
+  connectToSrSubscriber: Subscription;
+  testSpinner: boolean = false;
   // need to have error text to show
   notification: boolean = false;
   // notificationText = '';
@@ -67,9 +71,8 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
 
   @HostListener('document: keyup', ['$event'])
   onkeyUpHandler(event: KeyboardEvent) {
-    
-      if (event.key === 'Enter' || event.key === 'NumpadEnter') {
-        this.nestingLevel();
+    if (event.key === 'Enter' || event.key === 'NumpadEnter') {
+      this.nestingLevel();
     }
   }
 
@@ -77,7 +80,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     return new Promise(resolve =>
       setTimeout(() => {
         resolve(
-          this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
+          this.connectToSrSubscriber = this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
               this.errorHandler.timeOutBeforeRoute('r/success');
@@ -89,7 +92,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   }
 
   createSpinner = (val: any) => {
-    this.spinnerWrapper.loadingStatus$.subscribe(status => {
+    this.spinnerSubscriber = this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
       this.notification = status;
     })
@@ -102,23 +105,33 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
       }, 100)
     )
   }
+  changeToDefaultBeforeResponse = () => {
+    this.interactionService.setmetterAnnounce('');
+    this.spinnerChecker(true);
+  }
 
   ngAfterContentChecked(): void {
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
         this.showMessage = true;
+        this.testSpinner = true;
+        if (this.$textError)
+          this.spinnerChecker(false);
       }
     });
   }
 
 
   nestingLevel = async () => {
+    this.changeToDefaultBeforeResponse();
     const a = await this.checkValidInput();
     const b = await this.spinnerChecker(a);
-    const c = await this.createSpinner(b);
-    await this.connectToServer();
-    await this.spinnerChecker(false);
+    this.createSpinner(b);
+    await this.connectToServer().catch(err => console.log(err));
+    // if (this.testSpinner) {
+    //   await this.spinnerChecker(false);
+    // }
   }
 
   constructor(
@@ -133,8 +146,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
   ngOnDestroy(): void {
-
-    // this.errorTextSubscription.unsubscribe();
-    // this.notificationSubscribe.unsubscribe();
+    // this.connectToSrSubscriber.unsubscribe();
+    // this.spinnerSubscriber.unsubscribe();
   }
 }
