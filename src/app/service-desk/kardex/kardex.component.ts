@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
+import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
+
 @Component({
   selector: 'app-kardex',
   templateUrl: './kardex.component.html',
@@ -9,12 +11,12 @@ import { ViewBillService } from 'src/app/services/view-bill.service';
 export class KardexComponent implements OnInit {
   // bool kardex
   kardex: any;
-  isKardex: boolean = false;
   ////////
   billId: string;
 
-  constructor(private interfaceService: ViewBillService) {
+  constructor(private interfaceService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
     this.getDataFromRoute();
+    this.createSpinner();
   }
   getDataFromRoute = () => {
     this.billId = window.location.pathname.split('/')[1];
@@ -23,20 +25,17 @@ export class KardexComponent implements OnInit {
     this.interfaceService.getKardex(this.billId).subscribe((res: any) => {
       if (res) {
         this.kardex = res;
-        this.isKardex = true;
+        this.spinnerWrapper.loading(false);
       }
     })
   }
 
+  createSpinner = () => {
+    this.spinnerWrapper.loading(true);
+  }
+
   ngOnInit(): void {
     this.connectToServer();
-  }
-  getIconIfIsBill = () => {
-    if (this.kardex.isBill === false) {
-      return 'fa fa-check'
-    } else {
-      return '';
-    }
   }
 
 }

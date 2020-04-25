@@ -41,6 +41,8 @@ export class ServicesComponent implements OnInit, IServices {
 
   getDataFromRoute = () => {
     this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
+    // i'll change this to reatable for any changed route by using route.params.subscribe OR 
+    // for angular 4+ => route.snapshot.paramsMap
   }
 
   setBillIdToChildrens = () => {

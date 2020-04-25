@@ -1,3 +1,5 @@
+@import "../../../assets/@media.scss";
+
 $mediaum_border: .2rem;
 $box_shadow: #030303;
 $silver_color: silver;
@@ -29,7 +31,7 @@ $lighter_back: #eee;
 
 section {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(2, 1fr);
   margin-bottom: $mediaum_border;
   min-height: 10rem;
   gap: .5rem;
