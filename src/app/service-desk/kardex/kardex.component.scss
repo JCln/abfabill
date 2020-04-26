@@ -36,7 +36,10 @@ $darkgray: darkgray;
     .div1 {
       background: $lightgray;
 
-      p {
+      .__payed_time {
+        position: absolute;
+        font-size: 1rem;
+        font-weight: 600;
         line-height: 2;
         color: $darker_gray;
       }
@@ -52,7 +55,7 @@ $darkgray: darkgray;
     display: flex;
 
     .form {
-      width: 50%;
+      // width: 50%;
 
       .form-item {
         width: 65%;
@@ -75,6 +78,7 @@ $darkgray: darkgray;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+  right: 0;
   top: -50%;
   transform: translateY(50%);
   display: flex;
@@ -96,9 +100,17 @@ $darkgray: darkgray;
     border: 0 solid darkgray;
     border-bottom: 2px solid darkgray;
 
-
     .form {
-      width: auto;
+      // width: 100%;
+      width: 50%;
+    }
+
+    .first_section {
+      width: 50%;
+
+      .form {
+        width: 100%;        
+      }
     }
   }
 }
