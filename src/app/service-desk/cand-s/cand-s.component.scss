@@ -36,6 +36,7 @@ section {
 
   main {
     display: flex;
+
     textarea {
       color: $dark_gray;
       border-radius: 30px;
@@ -70,6 +71,19 @@ section {
 @media screen and (max-width: 414px) {
   section .button_content button {
     font-size: 1.20rem;
+  }
+}
+
+@media (min-width: 550px) {
+  main {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .text_align_center {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
   }
 }
 
@@ -135,10 +149,10 @@ section {
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
   transform: translateX(-50%) translateY(-50%);
-    top: 50%;
-    left: 50%;
-    width: 40%;
-    height: 40%;
-    background: $white;
-    border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  background: $white;
+  border-radius: 50%;
 }
