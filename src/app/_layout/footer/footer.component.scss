@@ -49,13 +49,15 @@ footer.brand {
   margin-top: 0;
   border-radius: 0;
   background: var(--background);
+
   p {
     font-size: .8rem;
   }
 }
 
 @media screen and (min-width: 550px) {
-  footer {
-    margin: 0.9rem 25% 0;    
+  footer ul {
+    display: flex;
+    justify-content: space-evenly;
   }
 }
