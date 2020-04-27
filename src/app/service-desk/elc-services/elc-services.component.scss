@@ -91,3 +91,13 @@ section {
 [hidden] {
   display: none !important;
 }
+
+@media (min-width: 550px) {
+
+  main,
+  .button_content,
+  .text_align_center {
+    width: 50%;
+    margin: auto;
+  }
+}
