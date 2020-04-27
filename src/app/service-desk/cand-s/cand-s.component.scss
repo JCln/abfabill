@@ -75,15 +75,15 @@ section {
 }
 
 @media (min-width: 550px) {
-  main {
+
+  main,
+  .text_align_center {
     width: 50%;
     margin: 0 auto;
   }
 
   .text_align_center {
     text-align: center;
-    width: 50%;
-    margin: 0 auto;
   }
 }
 
