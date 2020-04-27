@@ -3,6 +3,8 @@
 @import "../../../assets/mixins.scss";
 
 $dark_torouse: #2DC227;
+$light_gray: lightgray;
+$transparent_for_img: #d7d7d7;
 
 $m_size: 0.5rem;
 $b_size: 2rem;
@@ -11,27 +13,39 @@ $background_color: #062C68;
 $opacity_background: rgba($color: #2B4C7F, $alpha: 1);
 
 section {
-  @include justify-center;
+  display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $background_color;
 
   border-radius: $__border_radius;
-  padding: 4rem 0;
-  min-height: 20rem;
+  min-height: 30rem;
+
+  .title_content {
+    text-align: center;
+    text-align: center;
+
+    h1 {
+      color: $light_gray;
+      font-size: 2rem;
+      margin: .5em;
+    }
+  }
 
   main.main {
+    position: absolute;
     width: 97%;
     border-radius: $__border_radius;
-    background: $opacity_background;
     text-align: center;
+    top: 60%;
+    z-index: 1;
 
     .form {
       width: 95%;
       margin: .7rem auto;
 
       .form-item {
-        background: inherit;
+        background: $transparent_for_img;
         width: 70%;
 
         .form-input {
@@ -51,7 +65,7 @@ section {
         }
 
         .div2 {
-          background-color: $opacity_background;
+          background-color: $transparent_for_img;
         }
       }
     }
@@ -73,6 +87,17 @@ section {
         border-radius: 50%;
         padding: .3rem;
       }
+    }
+  }
+
+  .main_img {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -99,12 +124,30 @@ section {
 
 @media screen and (min-width: 550px) {
   section {
+
+    main.main {
+      width: 50%;
+      top: 65%;
+    }
+
     .form {
       width: 90%;
     }
 
+    .main_img {
+      width: 50%;
+
+      img {
+        width: 60%;
+      }
+    }
+
     article {
       min-height: 11rem;
+    }
+
+    .title_content {
+      transform: translateY(0);
     }
   }
 }
