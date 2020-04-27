@@ -8,10 +8,20 @@
 $background_border_color: #087CDB;
 $background_color: #062C68;
 $gray_border: #707070;
-$ligt_gray: #cccccc;
+$light_gray: #cccccc;
 $payed_installments:#2DC227;
 $payed_installments_border:#24963A;
 $payed_color: #F65050;
+
+.title_content {
+  text-align: center;
+
+  h1 {
+    color: $light_gray;
+    font-size: 2rem;
+    margin: .5em;
+  }
+}
 
 .check_moreinfo {
   @include justify-center;
@@ -102,7 +112,7 @@ section {
 
   .no_installment {
     text-align: center;
-    color: $ligt_gray;
+    color: $light_gray;
     font-size: 2rem;
 
     border: 3px solid $medium_slate_blue;
@@ -165,6 +175,11 @@ footer {
   }
 }
 
+// checkbox should have fix width and height
+.dynamic_checkbox {
+  width: 4rem;
+}
+
 @media screen and (max-width: 414px) {
   .main {
     padding: 0;
@@ -190,7 +205,13 @@ footer {
 }
 
 @media screen and (min-width: 550px) {
+  ._content {
+    width: 50%;
+    margin: 0 auto;
+  }
+
   footer {
     width: 50%;
+    transform: translateX(50%);
   }
 }
