@@ -243,3 +243,10 @@ section.barcode {
     height: 100%;
   }
 }
+
+@media (min-width: 550px) {
+  section {
+    width: 50%;
+    margin: auto !important;
+  }
+}

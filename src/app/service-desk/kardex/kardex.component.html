@@ -29,12 +29,15 @@
         <div class="form">
             <div class="form-item">
                 <input type="number" readonly name="kardex.id" class="form-input"
-                    [ngStyle]="{'color': kardex.isBill === false ? '#515151' : 'lightgray' , 'border': kardex.isBill === false ? '2px solid #61e78652' : '1px solid lightgray'}"
+                    [ngStyle]="{'color': kardex.isBill === false ? '#515151' : '#484fde' , 'border': kardex.isBill === false ? '2px solid #61e78652' : '1px solid lightgray'}"
                     aria-label="first name" value="{{kardex.amount}}">
             </div>
-            <div class="div1" [ngStyle]="{'background': kardex.isBill === false ? '#61e78652' : 'lightgray'}">
+            <div class="div1" [ngStyle]="{'background': kardex.isBill === false ? '#61e78652' : '#484fde'}">
                 <div class="sign" *ngIf="kardex.isBill === false">
                     <i class="fa fa-check"></i>
+                </div>
+                <div class="view_bill" *ngIf="kardex.isBill === true">
+                    <i class="fa fa-arrow-alt-circle-left"></i>
                 </div>
                 <p [ngStyle]="{'color': kardex.isBill === false ? '#515151' : ''}">
                     {{kardex.isBill ? 'نمایش قبض': 'پرداخت شده'}}

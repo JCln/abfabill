@@ -1,7 +1,7 @@
 @import "../../../assets/input";
 
 $white: #fff;
-$blue_color: #004ecc;
+$blue_color: #004ecc3d;
 $darker_gray: #515151;
 $lightgray: lightgray;
 $darkgray: darkgray;
@@ -34,7 +34,7 @@ $darkgray: darkgray;
     }
 
     .div1 {
-      background: $lightgray;
+      background: $darkgray;
 
       .__payed_time {
         position: absolute;
@@ -69,7 +69,8 @@ $darkgray: darkgray;
   }
 }
 
-.sign {
+.sign,
+.view_bill {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,6 +95,15 @@ $darkgray: darkgray;
 
 }
 
+.view_bill {
+  background-color: $blue_color;
+
+  .fa-arrow-alt-circle-left{
+    color: $lightgray;
+    font-size: 2.2rem;
+  }
+}
+
 @media(min-width: 550px) {
   .main_border {
     display: flex;
@@ -109,7 +119,7 @@ $darkgray: darkgray;
       width: 50%;
 
       .form {
-        width: 100%;        
+        width: 100%;
       }
     }
   }

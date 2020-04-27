@@ -57,3 +57,9 @@ main {
     }
   }
 }
+@media(min-width: 550px ) {
+  main {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
