@@ -18,12 +18,13 @@ $opacity_background: rgba($color: #2B4C7F, $alpha: 1);
 section {
   display: grid;
   grid-template-areas: 'header''main''footer';
-  grid-template-rows: 5rem 1fr 6rem;
+  grid-template-rows: 5rem 1fr auto;
 
   background: $background_color;
   min-height: 20rem;
   text-align: center;
   align-items: center;
+  justify-content: center;
 
   .title_content {
     grid-area: header;
@@ -64,11 +65,40 @@ section {
 
   article {
     grid-area: footer;
+    --dark_background: #091c3b;
+    --border_color: #ff1408;
+
+    background: var(--dark_background);
+    box-shadow: 2px 2px 7px 0 var(--border_color);
+    margin: 2rem auto;
+    border-radius: 30px;
+    border: 3px solid var(--border_color);
+    min-height: 14rem;
+    width: 97%;
+
+    p {
+      color: #fff;
+      font-size: 1.44rem;
+      padding: .5rem;
+      text-align: right;
+    }
+
+  }
+}
+
+// change default colors for input
+.form {
+  .form-item {
+    background: #f3f3f3;
   }
 }
 
 @media (min-width: 550px) {
   .main_img img {
     width: 30rem;
+  }
+
+  article {
+    min-height: 11rem;
   }
 }

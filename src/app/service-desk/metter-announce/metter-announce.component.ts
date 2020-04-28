@@ -19,9 +19,9 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   // spinner
   spinnerSubscriber: Subscription;
   connectToSrSubscriber: Subscription;
-  testSpinner: boolean = false;
   // need to have error text to show
   notification: boolean = false;
+  testTheFuckingThat = false;
   // notificationText = '';
 
   // textError from server
@@ -52,21 +52,27 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     }
     return false;
   }
+  validInput1 = (): boolean => {
+    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
+      this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
+      return false;
+    }
+    return true;
+  }
+  validInput2 = (): boolean => {
+    if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
+      this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
+      return false;
+    }
+    return true;
+  }
 
-  checkValidInput = (): Promise<boolean> => {
-    return new Promise((resolve, reject) => {
-
-      if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
-        this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
-        reject(false);
-      }
-      if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
-        this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
-        reject(false);
-      }
-      resolve(true);
-    })
-
+  checkValidInput = (): boolean => {
+    if (this.validInput1() && this.validInput2()) {
+      return true;
+    } else {
+      return false
+    }
   }
 
   @HostListener('document: keyup', ['$event'])
@@ -110,28 +116,15 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     this.spinnerChecker(true);
   }
 
-  ngAfterContentChecked(): void {
-    this.interactionService.metterAnnounceErrorText$.subscribe(res => {
-      if (res) {
-        this.$textError = res;
-        this.showMessage = true;
-        this.testSpinner = true;
-        if (this.$textError)
-          this.spinnerChecker(false);
-      }
-    });
-  }
-
-
   nestingLevel = async () => {
     this.changeToDefaultBeforeResponse();
-    const a = await this.checkValidInput();
+    const a = this.checkValidInput();
+    console.log(a);
+
     const b = await this.spinnerChecker(a);
-    this.createSpinner(b);
-    await this.connectToServer().catch(err => console.log(err));
-    // if (this.testSpinner) {
-    //   await this.spinnerChecker(false);
-    // }
+    this.createSpinner(a);
+    if (a)
+      await this.connectToServer().catch(err => console.log(err));
   }
 
   constructor(
@@ -144,6 +137,14 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.interactionService.metterAnnounceErrorText$.subscribe(res => {
+      if (res) {
+        this.$textError = res;
+        this.showMessage = true;
+        if (this.$textError)
+          this.spinnerChecker(false);
+      }
+    });
   }
   ngOnDestroy(): void {
     // this.connectToSrSubscriber.unsubscribe();

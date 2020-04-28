@@ -44,7 +44,7 @@ export class ErrorHandlerService implements ErrorHandler {
       this.router.navigate([routeTo]);
     }, 2000);
   }
-  
+
   private setTimeOutBeforeRoute = () => {
     setTimeout(() => {
       this.router.navigate(['/pg']);
@@ -79,6 +79,9 @@ export class ErrorHandlerService implements ErrorHandler {
         this.customToaster(8000, 'ارتباط با سرویس دهنده برقرار نشد، احتمالا شما به شبکه دسترسی ندارید', 'لطفا چند دقیقه دیگر امتحان کنید یا با شماره 1522 تماس بگیرید');
         break;
       case 500:
+        this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        break;
+      case 502:
         this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
         break;
       case 504:
