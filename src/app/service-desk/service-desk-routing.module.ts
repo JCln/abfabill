@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from '../_layout/layout/layout.component';
 import { AnonyLayoutComponent } from './../_layout/anony-layout/anony-layout.component';
-import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
@@ -21,8 +20,7 @@ const routes: Routes = [
     path: '', component: LayoutComponent, children: [
       { path: 'bill', loadChildren: () => import('./pardakht/pardakht.module').then(p => p.PardakhtModule) },
     ]
-  },
-  { path: '**', component: PageNotFoundComponent }
+  }
 ];
 
 @NgModule({
