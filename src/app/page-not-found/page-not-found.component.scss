@@ -16,7 +16,9 @@ main {
     background-size: initial;
     background-repeat: no-repeat;
     background-position: center;
-    height: 15rem;
+    margin: 0 auto;
+    height: 12rem;
+    width: 18rem;
   }
 
   .error_inner {
@@ -57,9 +59,18 @@ main {
     }
   }
 }
-@media(min-width: 550px ) {
+
+@media(min-width: 550px) {
   main {
     width: 50%;
     margin: 0 auto;
+  }
+}
+
+@media(min-width: 780px) {
+  main {
+    .img_class {
+      width: 23rem;
+    }
   }
 }
