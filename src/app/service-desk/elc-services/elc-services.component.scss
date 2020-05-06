@@ -31,12 +31,7 @@ section {
 
   .button_content {
     display: flex;
-
-    button {
-      @extend %button_first;
-      min-width: auto;
-      background: $medium_slate_blue;
-    }
+    justify-content: space-evenly;
   }
 
   .background_color {
@@ -83,6 +78,7 @@ section {
     button {
       @extend %button_first;
       margin: $font_large_size 0;
+      min-width: 18rem;
     }
 
   }
@@ -100,4 +96,73 @@ section {
     width: 50%;
     margin: auto;
   }
+}
+
+
+
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: $light_gray;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2rem;
+  width: 2rem;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkbox {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked~.checkbox {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked~.checkbox:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkbox:after {
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 40%;
+  background: $white;
+  border-radius: 50%;
 }

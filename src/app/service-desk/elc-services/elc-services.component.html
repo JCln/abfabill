@@ -3,8 +3,14 @@
         <h1>خدمات الکترونیکی</h1>
     </div>
     <div class="button_content">
-        <button (click)="sevageChoosed(false)">آب</button>
-        <button (click)="sevageChoosed(true)">فاضلاب</button>
+        <label class="container" (click)="sevageChoosed(false)">آب
+            <input type="radio" checked="checked" name="radio">
+            <span class="checkbox"></span>
+        </label>
+        <label class="container" (click)="sevageChoosed(true)">فاضلاب
+            <input type="radio" name="radio">
+            <span class="checkbox"></span>
+        </label>
     </div>
     <div class="background_color">
 
