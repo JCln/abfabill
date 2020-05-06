@@ -323,3 +323,23 @@ button {
   @extend %button_first;
   width: 100%;
 }
+
+._button_section {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  .advice {
+    margin: .2rem;
+    border: 2px solid;
+    border-radius: $__border_radius;
+    padding: .2rem;
+    font-size: 1.2rem;
+  }
+
+}
+
+@media (min-width: 800px) {
+  ._button_section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
