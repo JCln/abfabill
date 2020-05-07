@@ -14,7 +14,9 @@
         <span></span>
 
         <ul id="menu">
-            <!-- <li><qrcode [qrdata]="'Your QR code data string'" [size]="256" [level]="'M'"></qrcode></li> -->
+            <a *ngIf="showMemberInfo" [routerLink]="['myInfo']">
+                <li>اطلاعات من</li>
+            </a>
             <a href="https://cafebazaar.ir/app/com.app.leon.moshtarak" target="_blank" rel="noopener noreferrer">
                 <li>اپلیکیشن همراه آبفا</li>
             </a>

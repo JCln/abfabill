@@ -13,7 +13,8 @@ const routes: Routes = [
       { path: 'ma', loadChildren: () => import('./metter-announce/metter-announce.module').then(ma => ma.MetterAnnounceModule) },
       { path: 'kardex', loadChildren: () => import('./kardex/kardex.module').then(kx => kx.KardexModule) },
       { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule) },
-      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule) }
+      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule) },
+      { path: 'myInfo', loadChildren: () => import('./member-info/member-info.module').then(mi => mi.MemberInfoModule) }
     ]
   },
   {

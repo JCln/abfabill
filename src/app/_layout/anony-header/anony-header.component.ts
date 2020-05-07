@@ -1,6 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
+import { InteractionService } from './../../services/interaction.service';
+
 @Component({
   selector: 'app-anony-header',
   templateUrl: './anony-header.component.html',
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnonyHeaderComponent implements OnInit {
   showBack = true;
+  showMemberInfo = false;
 
-  constructor(private _location: Location) { }
+  constructor(private _location: Location, private interactionService: InteractionService) { }
   changeBackImg = () => {
     if (screen.width > 549) {
       return;
@@ -27,6 +30,10 @@ export class AnonyHeaderComponent implements OnInit {
     // maybe better with getState()
     if (this._location.path() === '/pg') {
       this.showBack = false;
+      this.showMemberInfo = false;
+    }
+    else {
+      this.showMemberInfo = true;
     }
   }
   ngOnInit() {

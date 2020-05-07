@@ -37,6 +37,13 @@ export class ViewBillService {
   getInstallment = (): any => {
     return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
   }
+  getKardex = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/bill/getkardex');
+  }
+  getMemberInfo = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
+  }
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<IViewBill> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
@@ -47,17 +54,6 @@ export class ViewBillService {
 
     return this.mainService.SET(`MoshtarakinApi/v2/bill/generateBill/${this.base64}`, body);
   }
-  // sendCriticalOrSuggestions = (): Observable<> => {
-  //   typeId1: 
-  //   typeId2: 
 
-  //   const body = {
-  //     type: Number;
-  //     message: String;      
-  //   }
-  //   return this.mainService.SET('MoshtarakinApi/suggestion/setsuggestion', );
-  // }
-  getKardex = (id: string): any => {
-    return this.mainService.GET(id, 'moshtarakinapi/bill/getkardex');
-  }
+
 }
