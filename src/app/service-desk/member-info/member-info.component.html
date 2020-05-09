@@ -12,12 +12,11 @@
         <div class="background first_background">
             <div class="form" *ngFor="let mi of memberInfo | keyvalue">
                 <div class="form-item">
-                    <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-                        aria-label="mi.key" value="{{mi.value}}">
-                    <!-- <i *ngIf="spinnerBoolean" class="loader"></i> -->
+                    <input type="text" readonly name="mi.value" class="form-input" aria-label="mi.key"
+                        value="{{mi.value}}">
                 </div>
                 <div class="div1">
-                    <p>{{mi.key}}</p>
+                    <p>{{mi.key | memberInfo}}</p>
                     <div class="div2">
                     </div>
                 </div>
@@ -27,3 +26,4 @@
     </main>
 
 </section>
+<app-spinner-wrapper></app-spinner-wrapper>

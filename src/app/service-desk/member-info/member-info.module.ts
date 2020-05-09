@@ -1,14 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from './../../shared/shared.module';
+import { MemberInfoPipe } from './../pipes/member-info.pipe';
 import { MemberInfoRoutingModule } from './member-info-routing.module';
 import { MemberInfoComponent } from './member-info.component';
 
 
 @NgModule({
-  declarations: [MemberInfoComponent],
+  declarations: [MemberInfoComponent, MemberInfoPipe],
   imports: [
-    CommonModule,
+    SharedModule,
     MemberInfoRoutingModule
   ]
 })

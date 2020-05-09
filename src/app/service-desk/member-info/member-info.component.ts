@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
 import { ViewBillService } from './../../services/view-bill.service';
 
@@ -11,9 +12,6 @@ import { ViewBillService } from './../../services/view-bill.service';
 })
 export class MemberInfoComponent implements OnInit {
   billId: string = '';
-  // spinner
-  spinnerBoolean = true;
-  // ----
   memberInfo: Observable<any>;
 
   getDataFromRoute = () => {
@@ -22,15 +20,20 @@ export class MemberInfoComponent implements OnInit {
 
   connectToServer = () => {
     this.viewBillService.getMemberInfo(this.billId).subscribe((res: any) => {
-      this.memberInfo = res;
+      if (res) {
+        this.spinnerWrapper.loading(false);
+        this.memberInfo = res;
+
+      }
     })
   }
 
-  constructor(private interactionService: InteractionService, private viewBillService: ViewBillService) {
+  constructor(private interactionService: InteractionService, private viewBillService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
     this.getDataFromRoute();
   }
 
   ngOnInit(): void {
+    this.spinnerWrapper.loading(true);
     this.connectToServer();
   }
 
