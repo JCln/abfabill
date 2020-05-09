@@ -1,2 +1,12 @@
 @import "../headers";
 @import "../hamburger";
+
+#menu {
+  :nth-child(1) {
+    --green: #51a351;
+
+    li {
+      color: var(--green);
+    }
+  }
+}

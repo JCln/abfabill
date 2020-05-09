@@ -2,5 +2,12 @@
 @import "../hamburger";
 
 #menu {
+  --green: #51a351;
   max-height: 22rem;
+
+  :nth-child(1) {
+    li {
+      color: var(--green);
+    }
+  }
 }
