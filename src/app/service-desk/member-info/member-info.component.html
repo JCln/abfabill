@@ -10,7 +10,7 @@
     <main class="main">
 
         <div class="background first_background">
-            <div class="form" *ngFor="let mi of memberInfo | keyvalue">
+            <div class="form" *ngFor="let mi of memberInfo | keyvalue | filter">
                 <div class="form-item">
                     <input type="text" readonly name="mi.value" class="form-input" aria-label="mi.key"
                         value="{{mi.value}}">
