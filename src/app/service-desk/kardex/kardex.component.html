@@ -1,10 +1,11 @@
 <section>
-    <app-bubble></app-bubble>
-    <app-bar></app-bar>
+    <article>
+        <button [routerLink]="['bubble']">bubble</button>
+        <button [routerLink]="['bar']">bar</button>
+    </article>
     <div class="main_border" *ngFor="let kardex of kardex">
         <div class="first_section">
-            <div class="form" *ngIf="kardex.isBill === true"
-                >
+            <div class="form" *ngIf="kardex.isBill === true">
                 <!-- because class form above have condition so check other things is useless  -->
                 <div class="form-item">
                     <input type="number" readonly name="kardex.id" class="form-input" aria-label="first name"
@@ -51,4 +52,5 @@
         </div>
     </div>
 </section>
+
 <app-spinner-wrapper></app-spinner-wrapper>

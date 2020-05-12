@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from 'src/app/services/interaction.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
@@ -9,12 +10,20 @@ import { SpinnerWrapperService } from './../../services/spinner-wrapper.service'
   styleUrls: ['./kardex.component.scss']
 })
 export class KardexComponent implements OnInit {
+  billId: string;
   // bool kardex
   kardex: any;
   ////////
-  billId: string;
+  // usageForChart
+  us: object;
+  usage: any[] = [];
+  usageDate: any[] = [];
 
-  constructor(private interfaceService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
+  constructor(
+    private interfaceService: ViewBillService,
+    private spinnerWrapper: SpinnerWrapperService,
+    private interationService: InteractionService
+  ) {
     this.getDataFromRoute();
     this.createSpinner();
   }
@@ -25,6 +34,15 @@ export class KardexComponent implements OnInit {
     this.interfaceService.getKardex(this.billId).subscribe((res: any) => {
       if (res) {
         this.kardex = res;
+        res.map(usage => {
+          if (usage.isBill) {
+            this.usage.push(usage.usage);
+            this.usageDate.push(usage.oweDate);
+            this.interationService.setChartDate(this.usage);
+            this.interationService.setChartOweDate(this.usageDate);
+
+          }
+        })
         this.spinnerWrapper.loading(false);
       }
     })
@@ -37,5 +55,4 @@ export class KardexComponent implements OnInit {
   ngOnInit(): void {
     this.connectToServer();
   }
-
 }

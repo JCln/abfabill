@@ -7,6 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 export class InteractionService {
 
   constructor() { }
+  // -------
+  private chartData = new BehaviorSubject<string[]>([]);
+  chartData$ = this.chartData.asObservable();
+
+  private chartOweDate = new BehaviorSubject<string[]>([]);
+  chartOweData$ = this.chartOweDate.asObservable();
+  // -------
 
   private billId = new BehaviorSubject<string>('');
   billId$ = this.billId.asObservable();
@@ -27,4 +34,11 @@ export class InteractionService {
   setmetterAnnounce = (text: string) => this.metterAnnounceErrorTextSource.next(text);
 
   setBillId = (billId: string) => this.billId.next(billId);
+
+  setChartDate = (chartData: string[]) => {
+    this.chartData.next(chartData);
+  }
+  setChartOweDate = (chartData: string[]) => {
+    this.chartOweDate.next(chartData);
+  }
 }
