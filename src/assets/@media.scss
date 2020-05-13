@@ -68,6 +68,31 @@
 
 }
 
+@mixin threeColumns($value) {
+  $xs: repeat(1, 1fr);
+  $s: repeat(2, 1fr);
+  $m: repeat(3, 1fr);
+
+  @media (max-width: 549px) {
+    #{$value} {
+      grid-template-columns: $xs;
+    }
+  }
+
+  @media (min-width: 550px) {
+    #{$value} {
+      grid-template-columns: $s;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    #{$value} {
+      grid-template-columns: $m;
+    }
+  }
+
+}
+
 @media (max-width: 549px) {
   section {
     grid-template-columns: repeat(2, 1fr);

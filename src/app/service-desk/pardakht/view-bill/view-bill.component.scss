@@ -2,6 +2,8 @@
 @import "../../../../assets/input.scss";
 @import "../../../../assets/mixins.scss";
 @import "../../../../assets/spinner_loader.scss";
+@import "../../../../assets/@media.scss";
+
 
 $firstBackground_color: rgba(153, 230, 255, 0.3);
 $secondBackground_color: rgba(255, 0, 0, 0.33);
@@ -45,6 +47,13 @@ section {
     border-radius: $__border_radius;
     padding: 0.5rem;
     margin: 0 0.15rem;
+    display: grid;
+
+    ._detail_content {
+      display: inherit;
+      grid-column: 1 / -1;
+      gap: .5rem;
+    }
 
     .background {
       @include background;
@@ -61,6 +70,10 @@ section {
 
       .form-input {
         border: 1px solid $clr;
+      }
+
+      @media (min-width: 1000px) {
+        grid-column: 2 / 3;
       }
     }
 
@@ -121,6 +134,7 @@ section {
 
 .check_moreinfo {
   @include justify-center;
+  align-items: flex-end;
 
   button {
     @extend %button_first;
@@ -158,8 +172,13 @@ section {
       img {
         width: 7rem;
         height: 6rem;
-        border-radius: $font_medium_size;
+        border-radius: $__border_radius_big;
       }
+    }
+
+    @media (min-width: 550px) {
+      width: 50%;
+      margin: auto;
     }
   }
 
@@ -170,6 +189,10 @@ section {
       @extend %button_first;
       width: 100%;
       padding: 0;
+
+      @media (min-width: 550px) {
+        width: 35%;
+      }
     }
 
     .pay_button {
@@ -242,9 +265,13 @@ section.barcode {
   }
 }
 
-@media (min-width: 550px) {
-  section {
-    width: 50%;
-    margin: auto !important;
-  }
-}
+// @media (min-width: 550px) {
+//   section {
+//     width: 50%;
+//     margin: auto !important;
+//   }
+// }
+
+// @include threeColumns('main .main');
+@include threeColumns('.main ._detail_content');
+@include threeColumns('.main');
