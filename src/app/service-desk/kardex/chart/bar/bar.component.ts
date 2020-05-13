@@ -11,7 +11,7 @@ export class BarComponent implements OnInit, AfterViewInit {
   chartOweDate: any[];
   chartData: any[];
 
-  barChartType: ChartType = 'bar';
+  barChartType: ChartType;
   barChartLegend = true;
   barChartPlugins = [];
   barChartLabels: Array<any> = [];
@@ -22,6 +22,13 @@ export class BarComponent implements OnInit, AfterViewInit {
 
   constructor(private interationService: InteractionService) { }
 
+  onSmallScreens = () => {
+    if (screen.width < 880) {
+      this.barChartType = 'horizontalBar';
+    } else {
+      this.barChartType = 'bar'
+    }
+  }
   infoFromKardexForBar = () => {
     this.interationService.chartOweData$.subscribe(res => {
       this.chartOweDate = res;
@@ -44,13 +51,16 @@ export class BarComponent implements OnInit, AfterViewInit {
       },
     ];
     this.barChartOptions = {
-      responsive: true
+      responsive: true,
+      maintainAspectRatio: false,
     };
   }
 
   ngOnInit(): void {
     this.chartOweDate = [];
     this.chartData = [];
+
+    this.onSmallScreens();
 
     this.infoFromKardexForBar();
 
