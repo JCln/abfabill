@@ -45,7 +45,7 @@ export class ErrorHandlerService implements ErrorHandler {
   billIdISValid = () => {
     let billId: string;
     this.interactionService.billId$.subscribe(res => billId = res);
-    this.timeOutBeforeRoute(`${billId}`);
+    this.timeOutBeforeRoute(billId);
   }
 
   public timeOutBeforeRoute = (routeTo: string) => {
