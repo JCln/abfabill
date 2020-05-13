@@ -10,7 +10,10 @@ import { InteractionService } from 'src/app/services/interaction.service';
 })
 export class ErrorHandlerService implements ErrorHandler {
 
-  constructor(private router: Router, private toasterService: ToastrService, private interactionService: InteractionService) { }
+  constructor(private router: Router,
+    private toasterService: ToastrService,
+    private interactionService: InteractionService
+  ) { }
 
   toasterError = (message: string, info?: string) => {
     if (info) {
@@ -39,6 +42,12 @@ export class ErrorHandlerService implements ErrorHandler {
     });
   }
 
+  billIdISValid = () => {
+    let billId: string;
+    this.interactionService.billId$.subscribe(res => billId = res);
+    this.timeOutBeforeRoute(`${billId}`);
+  }
+
   public timeOutBeforeRoute = (routeTo: string) => {
     setTimeout(() => {
       this.router.navigate([routeTo]);
@@ -58,13 +67,16 @@ export class ErrorHandlerService implements ErrorHandler {
         break;
       case 401:
         this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با شماره 1522 تماس حاصل فرمایید ');
-        break;
+        this.billIdISValid();
+        return;
       case 403:
         this.toasterError('دسترسی شما ممکن نیست');
-        break;
+        this.billIdISValid();
+        return;
       case 408:
-        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است');
-        break;
+        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است. لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.billIdISValid();
+        return;
       case 404:
         this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
@@ -77,18 +89,22 @@ export class ErrorHandlerService implements ErrorHandler {
       }
       case 0:
         this.customToaster(8000, 'ارتباط با سرویس دهنده برقرار نشد، احتمالا شما به شبکه دسترسی ندارید', 'لطفا چند دقیقه دیگر امتحان کنید یا با شماره 1522 تماس بگیرید');
-        break;
+        this.billIdISValid();
+        return;
       case 500:
         this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       case 502:
         this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       case 504:
         this.customToaster(11000, 'باعرض پوزش', 'خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       default:
-        this.toasterError('شما به شبکه دسترسی ندارید');
+        this.toasterError('شما به اینترنت دسترسی ندارید');
     }
     this.setTimeOutBeforeRoute();
   }
