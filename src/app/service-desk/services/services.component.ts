@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { IServices } from './iservices';
@@ -49,13 +50,15 @@ export class ServicesComponent implements OnInit, IServices {
     this.interactionService.setBillId(this.getedDataIdFromRoute);
   }
 
-  constructor(private interactionService: InteractionService) {
+  constructor(private interactionService: InteractionService, public googleAnalyticsService: GoogleAnalyticsService) {
     this.serviceNames = serviceNames;
     this.getDataFromRoute();
   }
-  
+
   ngOnInit() {
     this.setBillIdToChildrens();
   }
+
+  SendButtonEventToAnalytics = () => this.googleAnalyticsService.eventEmitter("userPage", "like", "userLabel", 1);
 
 }
