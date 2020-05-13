@@ -112,10 +112,7 @@ section article {
   .chart_button {
     @extend %button_first;
     background: $disable_pay;
-    display: flex;
-    place-items: center;
-    place-content: space-evenly;
-
+    
     .fa-chart-bar {
       font-size: 1.6rem;
     }

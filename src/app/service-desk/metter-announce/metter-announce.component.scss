@@ -49,9 +49,6 @@ section {
     ._button {
       @extend %button_first;
       background: $dark_torouse;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
       margin: 1.5rem auto;
 
       p {
