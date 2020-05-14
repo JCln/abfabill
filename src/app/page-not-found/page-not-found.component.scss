@@ -1,6 +1,7 @@
 @import "../../assets/input.scss";
 @import "../../assets/mixins.scss";
 
+$c_main_dark: #062c68;
 $c_dark: #142147;
 $c_light_gray: #EEEEEE;
 $c_dark_gray: #AEAEAE;
@@ -10,7 +11,7 @@ main {
   min-height: 55vh;
   border-radius: 55px 55px 30% 30%;
   text-align: center;
-  background: $clr;
+  background: $c_main_dark;
 
   display: flex;
   justify-content: center;
@@ -74,7 +75,7 @@ main {
       }
 
       .div2 {
-        background-color: $clr;
+        background-color: $c_main_dark;
       }
     }
   }
@@ -137,3 +138,25 @@ main {
     }
   }
 }
+
+// .input {
+//   width: 0rem;
+//   position: absolute;
+//   left: 28%;
+//   border: none;
+//   outline: none;
+//   text-align: center;
+//   z-index: 2;
+//   top: 50%;
+
+//   input {
+//     width: 8rem;
+//     background: transparent;
+//     outline: none;
+//     color: #f89406;
+//     border: 0;
+//     text-align: center;
+//     font-weight: 600;
+//     font-size: 1rem;
+//   }
+// }
