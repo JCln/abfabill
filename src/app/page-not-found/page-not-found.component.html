@@ -1,5 +1,10 @@
 <main>
-    <div class="error_inner">
+    <section class="error_inner">
+        <div class="_job_detail" *ngIf="!screen">
+            <h1>خدمات الکترونیکی</h1>
+            <p>شرکت آب و فاضلاب</p>
+            <hr>
+        </div>
         <div class="form">
             <div class="form-item">
                 <input [(ngModel)]="input" type="number" class="form-input" name="billId"
@@ -12,6 +17,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <img class="img_class" src="assets/pagenotfound/pg3.png" alt="">
+    </section>
+    <section class="img_content">
+        <img class="img_class" src="assets/pagenotfound/2.png" alt="">
+    </section>
 </main>

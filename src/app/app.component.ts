@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
-declare var gtag: Function;
-declare var g: Function;
+declare var ga: Function;
 
 @Component({
   selector: 'app-root',

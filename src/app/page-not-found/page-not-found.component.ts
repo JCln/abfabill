@@ -14,6 +14,7 @@ export class PageNotFoundComponent implements OnInit {
   private maxLength = 13;
   private minLength = 4;
   input: number;
+  screen: boolean;
 
   constructor(private router: Router, private errorHandler: ErrorHandlerService, private authGuard: AuthGuard) { }
 
@@ -39,6 +40,10 @@ export class PageNotFoundComponent implements OnInit {
 
   private billIdValue = (billId: IViewBill['billId']) => {
     this.router.navigate([billId]);
+  }
+
+  screenWidth = () => {
+    this.screen = screen.width > 880;
   }
   ngOnInit() {
   }
