@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { IViewBill } from 'src/app/services/iview-bill';
 import { ViewBillService } from 'src/app/services/view-bill.service';
@@ -33,10 +33,9 @@ export class ViewBillComponent implements OnInit {
 
   constructor(
     private viewBillService: ViewBillService,
-    private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService,
-    private router: Router,
-    private interactionService: InteractionService
+    private interactionService: InteractionService,
+    private googleAnalyticsService: GoogleAnalyticsService
   ) {
     this.getDataFromRoute();
   }
@@ -61,7 +60,7 @@ export class ViewBillComponent implements OnInit {
   }
 
   getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];  
+    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
   }
 
   nestingLevel = () => {
@@ -76,6 +75,9 @@ export class ViewBillComponent implements OnInit {
     this.interactionService.setInstallment(this.getedDataIdFromRoute);
   }
 
+  sendButtonEventToAnalytics = () => {
+    this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
+  }
   ngOnInit() {
     this.nestingLevel();
   }

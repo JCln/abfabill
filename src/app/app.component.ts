@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-
-declare var ga: Function;
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +8,9 @@ declare var ga: Function;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
-      }
-    });
-  }
+  constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
+
   ngOnInit() {
+    this.googleAnalyticsService.routerView();
   }
 }

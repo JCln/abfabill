@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
@@ -25,7 +24,6 @@ const serviceNames: IServices[] = [
     title: 'پیشنهادات و انتقادات', desc: '', spanClass: 'fas fa-table', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'
   },
 ];
-declare var ga: Function;
 
 @Component({
   selector: 'app-services',
@@ -54,8 +52,7 @@ export class ServicesComponent implements OnInit, IServices {
 
   constructor(
     private interactionService: InteractionService,
-    public googleAnalyticsService: GoogleAnalyticsService,
-    private router: Router
+    public googleAnalyticsService: GoogleAnalyticsService
   ) {
     this.serviceNames = serviceNames;
     this.getDataFromRoute();
@@ -67,12 +64,6 @@ export class ServicesComponent implements OnInit, IServices {
 
   sendButtonEventToAnalytics = () => {
     this.googleAnalyticsService.eventEmitter("userPage", "clicked", "userLabel", 2);
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
-      }
-    });
+    this.googleAnalyticsService.routerView();
   }
 }

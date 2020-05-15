@@ -444,7 +444,8 @@
   <div class="pay_button_section">
 
     <button class="pay_button" [disabled]="testObject.isPayed === true || spinnerBoolean">
-      <a href="{{chooseBank.linkToSite}}" target="_blank" ref='noopener noreferrer' [ngClass]="{
+      <a href="{{chooseBank.linkToSite}}" (click)="sendButtonEventToAnalytics()" target="_blank"
+        ref='noopener noreferrer' [ngClass]="{
         'disabled':testObject.isPayed === true || spinnerBoolean ,
         'enabled':testObject.isPayed === false
       }">

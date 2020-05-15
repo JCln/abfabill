@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 import { AnonyHeaderComponent } from './_layout/anony-header/anony-header.component';
 import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
@@ -32,7 +33,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule
   ],
   exports: [],
-  providers: [ErrorHandlerService],
+  providers: [ErrorHandlerService, GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
