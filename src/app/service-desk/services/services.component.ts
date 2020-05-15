@@ -66,7 +66,7 @@ export class ServicesComponent implements OnInit, IServices {
   }
 
   sendButtonEventToAnalytics = () => {
-    this.googleAnalyticsService.eventEmitter("userPage", "clicked", "userLabel", 1);
+    this.googleAnalyticsService.eventEmitter("userPage", "clicked", "userLabel", 2);
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
