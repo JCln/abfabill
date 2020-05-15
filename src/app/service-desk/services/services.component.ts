@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
@@ -24,6 +25,7 @@ const serviceNames: IServices[] = [
     title: 'پیشنهادات و انتقادات', desc: '', spanClass: 'fas fa-table', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'
   },
 ];
+declare var ga: Function;
 
 @Component({
   selector: 'app-services',
@@ -35,7 +37,7 @@ export class ServicesComponent implements OnInit, IServices {
   desc: string;
   spanClass: string;
   routerLink: string;
-  serviceNames: any[];
+  serviceNames: IServices[];
 
   // data get from route
   getedDataIdFromRoute: string = '';
@@ -50,7 +52,11 @@ export class ServicesComponent implements OnInit, IServices {
     this.interactionService.setBillId(this.getedDataIdFromRoute);
   }
 
-  constructor(private interactionService: InteractionService, public googleAnalyticsService: GoogleAnalyticsService) {
+  constructor(
+    private interactionService: InteractionService,
+    public googleAnalyticsService: GoogleAnalyticsService,
+    private router: Router
+  ) {
     this.serviceNames = serviceNames;
     this.getDataFromRoute();
   }
@@ -59,6 +65,14 @@ export class ServicesComponent implements OnInit, IServices {
     this.setBillIdToChildrens();
   }
 
-  SendButtonEventToAnalytics = () => this.googleAnalyticsService.eventEmitter("userPage", "like", "userLabel", 1);
+  sendButtonEventToAnalytics = () => {
+    this.googleAnalyticsService.eventEmitter("userPage", "clicked", "userLabel", 1);
 
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
+    });
+  }
 }
