@@ -7,9 +7,8 @@ $darkgreen_background: rgba(0, 102, 34, 0.11);
 $lightgray: lightgray;
 
 section {
-  // background: $clr;
+  background: $clr;
   padding: 1rem 0;
-  background: rgb(0, 47, 16);
 
   .header_title {
     @include justify-center;
@@ -28,27 +27,25 @@ section {
     margin: 0 0.15rem;
 
     .background {
-      display: grid;      
+      display: grid;
     }
 
     .first_background {
       .form-item {
-        background: #33523d;
+        background: #345891;
 
         .form-input {
-          // border: 1px solid $clr;
-          background: #30583e;
-          color: #65b465;
+          border: 1px solid $clr;
+          background: #cccccc;
+          color: #142147;
         }
       }
 
       .div1 {
-        // background: #00368c;
-        background: rgba(0, 102, 34, 0.29);
+        background: #00368c;
 
         .div2 {
-          // background: #345891;
-          background: rgb(51, 82, 61);
+          background: #345891;
         }
       }
     }
@@ -106,4 +103,5 @@ section {
     height: 100%;
   }
 }
+
 @include fourColumns('.background');
