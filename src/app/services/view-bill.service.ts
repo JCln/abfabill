@@ -38,7 +38,8 @@ export class ViewBillService {
     return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
   }
   getKardex = (id: string): any => {
-    return this.mainService.GET(id, 'moshtarakinapi/bill/getkardex');
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/v2/bill/getkardex', this.base64);
   }
   getMemberInfo = (id: string): any => {
     this.idValues(id);
