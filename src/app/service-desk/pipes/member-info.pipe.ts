@@ -24,24 +24,18 @@ export class MemberInfoPipe implements PipeTransform {
         return val.replace('qotr', 'قطر');
       case 'siphon':
         return val.replace('siphon', 'سیفون');
-      // case 'fatherName':
-      //   return val.replace('fatherName', 'نام پدر');
       case 'zoneTitle':
         return val.replace('zoneTitle', 'منطقه');
       case 'domesticUnit':
         return val.replace('domesticUnit', 'مسکونی');
       case 'nonDomesticUnit':
         return val.replace('nonDomesticUnit', 'غیر مسکونی');
-      // case 'noeVagozari':
-      //   return val.replace('noeVagozari', 'نوع واگذاری');
       case 'address':
         return val.replace('address', 'آدرس');
       case 'capacity':
         return val.replace('capacity', 'ظرفیت');
-      // case 'counterSerial':
-      //   return val.replace('counterSerial', 'شماره سریال');
       case 'mande':
-        return val.replace('mande', 'مانده');
+        return val.replace('mande', 'بدهی آب بها');
       case 'arse':
         return val.replace('arse', 'عرصه');
       case 'aian':
