@@ -1,11 +1,12 @@
 @import "../../../assets/input";
 @import "../../../assets/main";
 
+$dark_b_color: #062C68;
+$light_b_color: #004ECC;
 $white: #fff;
-$blue_color: #004ecc3d;
-$darker_gray: #515151;
-$lightgray: lightgray;
-$darkgray: darkgray;
+$lightgray: #EEEEEE;
+$darkgray: #D8D8D8;
+$darker_gray: #5C5C5C;
 
 .main_border {
   border: 2px solid darkgray;
@@ -18,12 +19,11 @@ $darkgray: darkgray;
     background: $white;
 
     .form-item {
-      background: inherit;
 
       .form-input {
         padding: 0 0.5rem 0 .2rem;
         line-height: 3;
-        color: $lightgray;
+        color: $darker_gray;
         border: 1px solid $lightgray;
         transform: translateX(.26rem);
       }
@@ -46,18 +46,12 @@ $darkgray: darkgray;
       }
 
     }
-
-    .div2 {
-      background: $white;
-    }
   }
 
   .first_section {
     display: flex;
 
     .form {
-      // width: 50%;
-
       .form-item {
         width: 65%;
 
@@ -80,14 +74,12 @@ $darkgray: darkgray;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  right: 0;
+  right: 4px;
   top: -50%;
   transform: translateY(50%);
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 
   .fa-check {
     font-size: 2.2rem;
@@ -97,7 +89,7 @@ $darkgray: darkgray;
 }
 
 .view_bill {
-  background-color: $blue_color;
+  background-color: $light_b_color;
 
   .fa-arrow-alt-circle-left {
     color: $lightgray;
@@ -105,14 +97,25 @@ $darkgray: darkgray;
   }
 }
 
+.__transparent_back {
+  background: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 section article {
+  --color: #bd362f;
   display: flex;
   justify-content: center;
 
   .chart_button {
     @extend %button_first;
-    background: $disable_pay;
-    
+    background: var(--color);
+    width: auto;
+
     .fa-chart-bar {
       font-size: 1.6rem;
     }
@@ -122,11 +125,9 @@ section article {
 @media(min-width: 550px) {
   .main_border {
     display: flex;
-    border: 0 solid darkgray;
-    border-bottom: 2px solid darkgray;
+    border: 0;
 
     .form {
-      // width: 100%;
       width: 50%;
     }
 
@@ -138,4 +139,11 @@ section article {
       }
     }
   }
+}
+
+.view_hover:hover,
+.view_hover:focus,
+.view_hover:active {
+  cursor: pointer;
+  box-shadow: 2px 2px 15px 2px $darker_gray;
 }

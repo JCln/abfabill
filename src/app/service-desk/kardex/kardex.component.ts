@@ -10,6 +10,7 @@ import { SpinnerWrapperService } from './../../services/spinner-wrapper.service'
   styleUrls: ['./kardex.component.scss']
 })
 export class KardexComponent implements OnInit {
+  hoveredColor: boolean;
   billId: string;
   // bool kardex
   kardex: any;
@@ -54,5 +55,8 @@ export class KardexComponent implements OnInit {
 
   ngOnInit(): void {
     this.connectToServer();
+  }
+  changeStyleOnMouseOver = (hoveredColor: boolean) => {
+    this.hoveredColor = hoveredColor;
   }
 }
