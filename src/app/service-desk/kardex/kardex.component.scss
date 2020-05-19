@@ -129,6 +129,7 @@ section article {
 @media(min-width: 550px) {
   .main_border {
     display: flex;
+    flex-direction: row;
     border: 0;
 
     .form {
@@ -137,23 +138,44 @@ section article {
     }
 
     .first_section {
+      display: flex;
+      justify-content: flex-end;
       width: auto;
       flex-grow: 1;
-      justify-content: flex-end;
       flex-direction: row;
 
-      .form {
-        width: auto;        
+      .__payment_info {
+        display: flex;
+        flex-direction: column;
+
+        .form {
+          width: auto;
+        }
       }
     }
   }
 }
 
 @media(min-width: 990px) {
-  .first_section {
-    .__payment_info {
+  .main_border {
+    .first_section {
       flex-wrap: wrap;
       flex-direction: row;
+    }
+  }
+}
+
+@media(min-width: 1031px) {
+  .main_border {
+
+    .first_section {
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .__payment_info {
+        display: flex;
+        flex-direction: row;
+      }
     }
   }
 }
