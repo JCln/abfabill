@@ -1,5 +1,6 @@
 @import "../../../assets/input";
 @import "../../../assets/main";
+@import "../../../assets/spinner_loader";
 
 $dark_b_color: #062C68;
 $light_b_color: #004ECC;
@@ -128,14 +129,17 @@ section article {
     border: 0;
 
     .form {
-      width: 50%;
+      width: auto;
+      min-width: 16rem;
     }
 
     .first_section {
-      width: 50%;
+      width: auto;
+      flex-grow: 1;
 
       .form {
-        width: 100%;
+        width: auto;
+        min-width: 16rem;
       }
     }
   }
@@ -146,4 +150,8 @@ section article {
 .view_hover:active {
   cursor: pointer;
   box-shadow: 2px 2px 15px 2px $darker_gray;
+}
+
+.min-width1 {
+  min-width: 60%;
 }

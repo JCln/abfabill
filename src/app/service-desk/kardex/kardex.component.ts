@@ -16,9 +16,11 @@ export class KardexComponent implements OnInit {
   kardex: any;
   ////////
   // usageForChart
-  us: object;
   usage: any[] = [];
   usageDate: any[] = [];
+  // spinner
+  spinnerBoolean: boolean = false;
+  spinnerTest: boolean = false;
 
   constructor(
     private interfaceService: ViewBillService,
@@ -59,4 +61,20 @@ export class KardexComponent implements OnInit {
   changeStyleOnMouseOver = (hoveredColor: boolean) => {
     this.hoveredColor = hoveredColor;
   }
+  getABillKardex = (id: number, zoneId: number) => {
+    this.interfaceService.getABillKardex(id, zoneId).subscribe((res: any) => {
+      this.interationService.setABillKardex(res);
+    });
+  }
+  getPaymentInfoKardex = (id: number, zoneId: number, index: number) => {
+    this.smallSpinnerLoader(true);
+    this.spinnerTest = true;
+    this.interfaceService.paymentInfoKardex(id, zoneId).subscribe((res: any) => {
+      this.kardex[index].payDay = res.payDay;
+      this.kardex[index].payTypeTitle = res.payTypeTitle;
+      this.smallSpinnerLoader(false);
+    });
+  }
+
+  smallSpinnerLoader = (bol: boolean) => this.spinnerBoolean = bol;
 }
