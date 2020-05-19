@@ -28,9 +28,7 @@ section {
 
     .background {
       display: grid;
-    }
 
-    .first_background {
       .form-item {
         background: #345891;
 
@@ -50,19 +48,12 @@ section {
       }
     }
 
-    .darkgreen_background {
-      background: $darkgreen_background;
-      border: 2px solid $darkgreen_background_border;
 
-      .form-input {
-        border: 1px solid $darkgreen_background_border;
-      }
-
+    .first_background {
       .div1 {
-        background: $darkgreen_background_border;
+        background: #062c68;
       }
     }
-
   }
 }
 
