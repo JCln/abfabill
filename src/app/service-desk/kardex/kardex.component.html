@@ -15,13 +15,27 @@
                 <div class="form">
                     <!-- because class form above have condition so check other things is useless  -->
                     <div class="form-item" style="background: #062C68">
-                        <input type="text" readonly name="kardex.id" class="form-input" aria-label="first name"
-                            value="{{kardex.payDay}}">
+                        <input type="text" readonly name="payableReadable" class="form-input"
+                            aria-label="payableReadable" value="{{kardex.payableReadable}}">
                     </div>
                     <div [ngStyle]="{'background': kardex.isBill === false ? '#004ECC' : '#EEEEEE', 'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}"
-                        class="div1" style="width: 48%">
+                        class="div1">
                         <div [ngStyle]="{'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}" class="__payed_time">
-                            تاریخ پرداخت شده</div>
+                            مبلغ به حروف</div>
+                        <div class="div2" style="background: #062C68">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <!-- because class form above have condition so check other things is useless  -->
+                    <div class="form-item" style="background: #062C68">
+                        <input type="text" readonly name="bankTitle" class="form-input" aria-label="bankTitle"
+                            value="{{kardex.bankTitle}}">
+                    </div>
+                    <div [ngStyle]="{'background': kardex.isBill === false ? '#004ECC' : '#EEEEEE', 'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}"
+                        class="div1">
+                        <div [ngStyle]="{'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}" class="__payed_time">
+                            نام بانک</div>
                         <div class="div2" style="background: #062C68">
                         </div>
                     </div>
@@ -35,7 +49,7 @@
                     <div [ngStyle]="{'background': kardex.isBill === false ? '#004ECC' : '#EEEEEE', 'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}"
                         class="div1">
                         <div [ngStyle]="{'color': kardex.isBill === false ? '#fff' : '#5C5C5C'}" class="__payed_time">
-                            روش پرداخت</div>
+                            نحوه پرداخت</div>
                         <div class="div2" style="background: #062C68">
                         </div>
                     </div>

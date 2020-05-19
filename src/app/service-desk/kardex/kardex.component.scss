@@ -18,7 +18,7 @@ $darker_gray: #5C5C5C;
   .form {
     box-shadow: none;
     background: $white;
-    margin: 0.3rem 0;
+    margin: 0.3rem auto;
 
     .form-item {
 
@@ -135,6 +135,7 @@ section article {
     .form {
       width: auto;
       min-width: 16rem;
+      margin: 0.3rem 0;
     }
 
     .first_section {

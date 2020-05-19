@@ -740,7 +740,7 @@
   </ngx-barcode>
 </section>
 
-<section class="pay_section">
+<section class="pay_section" *ngIf="!isABillKardex">
   <div class="pay_button_section">
 
     <button class="pay_button" [disabled]="testObject.isPayed === true || spinnerBoolean">

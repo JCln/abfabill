@@ -73,6 +73,8 @@ export class KardexComponent implements OnInit {
   getPaymentInfoKardex = (id: number, zoneId: number, index: number) => {
     this.interfaceService.paymentInfoKardex(id, zoneId).subscribe((res: any) => {
       this.kardex[index].payDay = res.payDay;
+      this.kardex[index].bankTitle = res.bankTitle;
+      this.kardex[index].payableReadable = res.payableReadable;
       this.kardex[index].payTypeTitle = res.payTypeTitle;
     });
   }
