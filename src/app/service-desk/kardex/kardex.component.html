@@ -11,7 +11,7 @@
         (click)="kardex.isBill === false ? getPaymentInfoKardex(kardex.id , kardex.zoneId, index) : getABillKardex(kardex.id , kardex.zoneId)">
         <div class="first_section">
 
-            <div *ngIf="kardex.isBill === false && kardex.payDay" style="display: flex;">
+            <div *ngIf="kardex.isBill === false && kardex.payDay" class="__payment_info">
                 <div class="form">
                     <!-- because class form above have condition so check other things is useless  -->
                     <div class="form-item" style="background: #062C68">
