@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="form">
+      <div class="form" *ngIf="isABillKardex">
         <div class="form-item inputcontainer">
           <input type="text" readonly name="billId" class="form-input" aria-label="billId"
             value="{{aBillKardex.billId}}">
@@ -133,11 +133,11 @@
 
     <div class="_detail_content" *ngIf="showMoreButton">
 
-      <div class="background purple_background">
+      <div class="background purple_background" *ngIf="!isABillKardex">
         <h3 class="text_align_center">
           <i class="fa fa-user"></i>
           اطلاعات انشعاب</h3>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" >
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
               aria-label="first name" [(ngModel)]="testObject.karbariTitle">
@@ -150,7 +150,7 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.ahadMaskooni">
@@ -162,7 +162,7 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.ahadNonMaskooni">
@@ -175,7 +175,7 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.zarfiatQarardadi">
@@ -187,7 +187,7 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.qotr">
@@ -199,7 +199,7 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.qotrSifoon">
@@ -213,7 +213,7 @@
         </div>
 
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
               [(ngModel)]="testObject.counterStateId">
@@ -717,7 +717,7 @@
         <div class="form" *ngIf="isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.preBedOrBes | perCurrencySplitter}}">
+              value="{{aBillKardex.preDebtOrOwe | perCurrencySplitter}}">
             <i *ngIf="spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
