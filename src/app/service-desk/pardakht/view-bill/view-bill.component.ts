@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
@@ -20,10 +20,14 @@ const bankIcons: IbankIcons[] = [
   templateUrl: './view-bill.component.html',
   styleUrls: ['./view-bill.component.scss']
 })
-export class ViewBillComponent implements OnInit {
+export class ViewBillComponent implements OnInit, AfterViewInit {
   spinnerBoolean = true;
   showMoreButton = false;
 
+  // a bill kardex with details
+  isABillKardex: boolean = false;
+  aBillKardex: any = [];
+  
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
   testObject: any = [];
   getedDataIdFromRoute: any = [];
@@ -89,6 +93,12 @@ export class ViewBillComponent implements OnInit {
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 700);
+  }
+  ngAfterViewInit() {
+    this.interactionService.abillKardex$.subscribe((res: any) => {
+      this.aBillKardex = res;
+      this.isABillKardex = true;
+    })
   }
 
 }

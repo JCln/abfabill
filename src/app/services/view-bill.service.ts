@@ -41,11 +41,11 @@ export class ViewBillService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/bill/getkardex', this.base64);
   }
-  getABillKardex = (id, zoneId): any => {
+  getABillKardex = (id: number, zoneId: number): any => {
     this.idValues(`${id + '' + zoneId}`);
     return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisBill/${this.base64}`);
   }
-  paymentInfoKardex = (id, zoneId): any => {
+  paymentInfoKardex = (id: number, zoneId: number): any => {
     this.idValues(`${id + '' + zoneId}`);
     return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisPayInfo/${this.base64}`);
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
@@ -20,15 +21,15 @@ export class KardexComponent implements OnInit {
   usageDate: any[] = [];
   // spinner
   spinnerBoolean: boolean = false;
-  spinnerTest: boolean = false;
 
   constructor(
     private interfaceService: ViewBillService,
     private spinnerWrapper: SpinnerWrapperService,
-    private interationService: InteractionService
+    private interationService: InteractionService,
+    private router: Router
   ) {
     this.getDataFromRoute();
-    this.createSpinner();
+    this.createSpinner(true);
   }
   getDataFromRoute = () => {
     this.billId = window.location.pathname.split('/')[1];
@@ -46,13 +47,13 @@ export class KardexComponent implements OnInit {
 
           }
         })
-        this.spinnerWrapper.loading(false);
+        this.createSpinner(false);
       }
     })
   }
 
-  createSpinner = () => {
-    this.spinnerWrapper.loading(true);
+  createSpinner = (canLoad: boolean) => {
+    this.spinnerWrapper.loading(canLoad);
   }
 
   ngOnInit(): void {
@@ -62,19 +63,19 @@ export class KardexComponent implements OnInit {
     this.hoveredColor = hoveredColor;
   }
   getABillKardex = (id: number, zoneId: number) => {
+    this.createSpinner(true);
     this.interfaceService.getABillKardex(id, zoneId).subscribe((res: any) => {
       this.interationService.setABillKardex(res);
+      this.createSpinner(false);
+      this.router.navigateByUrl(this.billId + '/bill');
     });
   }
   getPaymentInfoKardex = (id: number, zoneId: number, index: number) => {
-    this.smallSpinnerLoader(true);
-    this.spinnerTest = true;
     this.interfaceService.paymentInfoKardex(id, zoneId).subscribe((res: any) => {
       this.kardex[index].payDay = res.payDay;
       this.kardex[index].payTypeTitle = res.payTypeTitle;
-      this.smallSpinnerLoader(false);
     });
   }
 
-  smallSpinnerLoader = (bol: boolean) => this.spinnerBoolean = bol;
+  // smallSpinnerLoader = (bol: boolean) => this.spinnerBoolean = bol;
 }
