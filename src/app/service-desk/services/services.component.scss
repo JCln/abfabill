@@ -84,6 +84,7 @@ section {
 .content:active {
   --color: rgba(0, 98, 255, 0.88);
   transform: translateX(1.7rem) translateY(.5rem);
+  backface-visibility: hidden;
   cursor: pointer;
   z-index: 3;
   box-shadow: 1px 1px 15px 0px var(--color);
