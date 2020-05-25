@@ -83,8 +83,11 @@ section {
 .content:focus,
 .content:active {
   --color: rgba(0, 98, 255, 0.88);
+  -webkit-transform: translateX(1.7rem) translateY(.5rem);
   transform: translateX(1.7rem) translateY(.5rem);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  opacity: 99;
   cursor: pointer;
   z-index: 3;
   box-shadow: 1px 1px 15px 0px var(--color);
