@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'pg', component: PageNotFoundComponent },
     ]
   },
-  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule) },
+  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },
   {
     path: '', component: NoLayoutComponent, children: [
       {
