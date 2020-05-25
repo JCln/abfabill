@@ -191,3 +191,58 @@ section article {
 .min-width1 {
   min-width: 60%;
 }
+
+.loader {
+  left: -15%;
+  bottom: -43%;
+}
+
+@mixin free($element, $value) {
+  #{$element}: $value !important;
+}
+
+.dark_gray_border {
+  @include free(border, 1px solid $darker_gray);
+}
+
+// color ///////
+.white_c {
+  @include free(color, $white);
+}
+
+.light_gray_c {
+  @include free(color, $lightgray);
+}
+
+.dark_gray_c {
+  @include free(color, $darkgray);
+}
+
+.darker_gray_c {
+  @include free(color, $darker_gray);
+}
+
+.dark_c {
+  @include free(color, $light_b_color);
+}
+
+.darker_c {
+  @include free(color, $dark_b_color);
+}
+
+////////////////
+.dark_gray_b {
+  @include free(background, $darkgray);
+}
+
+.light_gray_b {
+  @include free(background, $lightgray);
+}
+
+.dark_b {
+  @include free(background, $light_b_color);
+}
+
+.darker_b {
+  @include free(background, $dark_b_color);
+}
