@@ -98,11 +98,21 @@ export class ViewBillComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     this.interactionService.abillKardex$.subscribe(res => {
-      if (this.isNull(res))
-        return;
-      this.aBillKardex = res;
-      this.removeLoaderAfterResponse();
-      this.isABillKardex = true;
+      if (res)
+        if (this.isNull(res))
+          return;
+        else {
+          this.aBillKardex = res;
+          this.removeLoaderAfterResponse();
+          this.isABillKardex = true;
+
+          // let detailContent = document.querySelector('._detail_content') as HTMLElement;
+
+          // detailContent.classList.add('.kardex_added_class');
+
+          //   detailContent.setAttribute('grid-template-columns', 'repeat(3, 1fr)');
+          // detailContent.classList.add('.kardex_added_class');
+        }
     })
   }
 
