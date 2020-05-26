@@ -268,8 +268,9 @@ section.barcode {
   }
 }
 
-@include fourColumns('.main ._detail_content');
+@include fourColumns('._detail_content');
 @include threeColumns('.main');
+@include threeColumns('._detail_content_kardex');
 
 // .kardex_remove {
 //   grid-template-columns: repeat(4, 1fr);
