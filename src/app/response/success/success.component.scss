@@ -73,10 +73,6 @@ section {
         color: $bright_torouse;
       }
 
-      // p {
-      //   color: $dark_gray;
-      // }
-
       .back_to_insert_id {
         display: flex;
 
@@ -86,6 +82,16 @@ section {
           font-size: $font_size;
           min-width: 10rem;
           width: 100%;
+        }
+
+        ._special {
+          --special: #00368c;
+          border: 1px solid var(--special);
+          color: var(--special);
+
+          &:hover {
+            font-size: 1.3rem;
+          }
         }
       }
     }

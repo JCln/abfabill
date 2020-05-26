@@ -20,14 +20,14 @@ export class ErrorHandlerService implements ErrorHandler {
       this.toasterService.success(message, info, {
         timeOut: 10000,
         easeTime: '800',
-        easing: 'ease-in-out',
+        easing: 'ease-in',
         progressBar: true
       });
     } else {
       this.toasterService.error(message, 'خطا', {
         timeOut: 5000,
         easeTime: '800',
-        easing: 'ease-in-out',
+        easing: 'ease-in',
         progressBar: true
       });
     }
@@ -37,7 +37,7 @@ export class ErrorHandlerService implements ErrorHandler {
     this.toasterService.error(info, message, {
       timeOut: timeout,
       easeTime: '800',
-      easing: 'ease-in-out',
+      easing: 'ease-in',
       progressBar: false
     });
   }

@@ -83,7 +83,8 @@ section {
   }
 
   .text_align_center {
-    text-align: center;
+    place-content: center;
+    display: flex;
   }
 }
 
