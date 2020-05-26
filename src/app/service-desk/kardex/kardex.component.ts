@@ -26,7 +26,7 @@ export class KardexComponent implements OnInit {
   constructor(
     private interfaceService: ViewBillService,
     private spinnerWrapper: SpinnerWrapperService,
-    private interationService: InteractionService,
+    private interactionService: InteractionService,
     private router: Router
   ) {
     this.getDataFromRoute();
@@ -43,8 +43,8 @@ export class KardexComponent implements OnInit {
           if (usage.isBill) {
             this.usage.push(usage.usage);
             this.usageDate.push(usage.oweDate);
-            this.interationService.setChartDate(this.usage);
-            this.interationService.setChartOweDate(this.usageDate);
+            this.interactionService.setChartDate(this.usage);
+            this.interactionService.setChartOweDate(this.usageDate);
 
           }
         })
@@ -66,7 +66,7 @@ export class KardexComponent implements OnInit {
   getABillKardex = (id: number, zoneId: number) => {
     this.createSpinner(true);
     this.interfaceService.getABillKardex(id, zoneId).subscribe((res: any) => {
-      this.interationService.setABillKardex(res);
+      this.interactionService.setABillKardex(res);
       this.createSpinner(false);
       this.router.navigateByUrl(this.billId + '/bill');
     });
