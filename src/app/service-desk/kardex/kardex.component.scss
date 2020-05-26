@@ -192,11 +192,6 @@ section article {
   min-width: 60%;
 }
 
-.loader {
-  left: -15%;
-  bottom: -43%;
-}
-
 @mixin free($element, $value) {
   #{$element}: $value !important;
 }
@@ -204,6 +199,16 @@ section article {
 .dark_gray_border {
   @include free(border, 1px solid $darker_gray);
 }
+
+/* spinner on each pay id indexs*/
+.loader {
+  left: -100%;
+  bottom: -43%;
+  height: 0.7rem;
+  width: 3rem;
+}
+
+/* */
 
 // color ///////
 .white_c {

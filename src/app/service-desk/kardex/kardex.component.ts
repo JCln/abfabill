@@ -21,6 +21,7 @@ export class KardexComponent implements OnInit {
   usageDate: any[] = [];
   // spinner
   spinnerBoolean: boolean = false;
+  spinnerParameters: any;
 
   constructor(
     private interfaceService: ViewBillService,
@@ -71,13 +72,15 @@ export class KardexComponent implements OnInit {
     });
   }
   getPaymentInfoKardex = (id: number, zoneId: number, index: number) => {
+    this.smallSpinnerLoader(index, true);
     this.interfaceService.paymentInfoKardex(id, zoneId).subscribe((res: any) => {
       this.kardex[index].payDay = res.payDay;
       this.kardex[index].bankTitle = res.bankTitle;
       this.kardex[index].payableReadable = res.payableReadable;
       this.kardex[index].payTypeTitle = res.payTypeTitle;
+      this.smallSpinnerLoader(index, false);
     });
   }
 
-  // smallSpinnerLoader = (bol: boolean) => this.spinnerBoolean = bol;
+  smallSpinnerLoader = (index: number, bol: boolean) => this.kardex[index].spinner = bol;
 }
