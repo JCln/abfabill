@@ -30,11 +30,12 @@ export class KardexComponent implements OnInit {
     private router: Router
   ) {
     this.getDataFromRoute();
-    this.createSpinner(true);
   }
   getDataFromRoute = () => {
     this.billId = window.location.pathname.split('/')[1];
   }
+  isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0
+
   connectToServer = () => {
     this.interfaceService.getKardex(this.billId).subscribe((res: any) => {
       if (res) {
@@ -49,6 +50,7 @@ export class KardexComponent implements OnInit {
           }
         })
         this.createSpinner(false);
+        this.interactionService.setKardex(this.kardex);
       }
     })
   }
@@ -58,7 +60,17 @@ export class KardexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.connectToServer();
+    this.interactionService.kardex$.subscribe(res => {
+      if (this.isNull(res)) {
+        this.createSpinner(true);
+        this.connectToServer();
+      }
+      else {
+        this.createSpinner(false);
+        this.kardex = res;
+      }
+    })
+
   }
   changeStyleOnMouseOver = (hoveredColor: boolean) => {
     this.hoveredColor = hoveredColor;

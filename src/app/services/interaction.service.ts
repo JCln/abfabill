@@ -13,6 +13,10 @@ export class InteractionService {
 
   private chartOweDate = new BehaviorSubject<string[]>([]);
   chartOweData$ = this.chartOweDate.asObservable();
+
+  private kardex = new BehaviorSubject<string[]>([]);
+  kardex$ = this.kardex.asObservable();
+
   // -------
 
   private abillKardexInfo = new BehaviorSubject<any>([]);
@@ -46,5 +50,8 @@ export class InteractionService {
   }
   setABillKardex = (aBillKardexInfo: any) => {
     this.abillKardexInfo.next(aBillKardexInfo);
+  }
+  setKardex = (kardex: any) => {
+    this.kardex.next(kardex);
   }
 }
