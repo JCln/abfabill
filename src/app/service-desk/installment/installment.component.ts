@@ -29,8 +29,7 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
     super();
   }
 
-  isNull = (value: any) =>
-    typeof value === "undefined" || (typeof value !== "object" || !value)
+  // typeof value !== "object" cleared
 
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;

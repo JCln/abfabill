@@ -32,8 +32,6 @@ export class KardexComponent extends CheckRoute implements OnInit {
     super();
   }
 
-  isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0
-
   connectToServer = () => {
     this.interfaceService.getKardex(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {

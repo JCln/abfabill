@@ -90,7 +90,6 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 700);
   }
-  isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0
 
   ngAfterContentInit() {
     this.interactionService.abillKardex$.subscribe(res => {
