@@ -14,6 +14,8 @@ $darker_gray: #5C5C5C;
   border-radius: 30px;
   margin: 0 .1rem;
   margin-bottom: .8rem;
+  display: flex;
+  flex-direction: column-reverse;
 
   .form {
     box-shadow: none;
@@ -124,6 +126,16 @@ section article {
       font-size: 1.6rem;
     }
   }
+}
+
+._payid_button {
+  @extend %button_first;
+  min-width: 12rem;
+  width: auto;
+  background: inherit;
+  border: 1px solid;
+  font-size: 1rem;
+  margin: auto .1rem;
 }
 
 @media(min-width: 550px) {
