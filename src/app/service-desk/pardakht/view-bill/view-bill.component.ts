@@ -6,6 +6,7 @@ import { IViewBill } from 'src/app/services/iview-bill';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { IbankIcons, IBarcode } from '../ibank-icons';
+import { CheckRoute } from './../../../shared/check-route';
 
 const bankIcons: IbankIcons[] = [
   {
@@ -20,7 +21,7 @@ const bankIcons: IbankIcons[] = [
   templateUrl: './view-bill.component.html',
   styleUrls: ['./view-bill.component.scss']
 })
-export class ViewBillComponent implements OnInit, AfterContentInit {
+export class ViewBillComponent extends CheckRoute implements OnInit, AfterContentInit {
   spinnerBoolean = true;
   showMoreButton = false;
 
@@ -30,7 +31,6 @@ export class ViewBillComponent implements OnInit, AfterContentInit {
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
   testObject: any = [];
-  getedDataIdFromRoute: any = [];
   bankIcons = bankIcons;
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
@@ -41,7 +41,7 @@ export class ViewBillComponent implements OnInit, AfterContentInit {
     private interactionService: InteractionService,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {
-    this.getDataFromRoute();
+    super();
   }
 
 
@@ -61,10 +61,6 @@ export class ViewBillComponent implements OnInit, AfterContentInit {
         this.insertValToVar(res, this.removeLoaderAfterResponse);
       }
     });
-  }
-
-  getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
   }
 
   nestingLevel = () => {

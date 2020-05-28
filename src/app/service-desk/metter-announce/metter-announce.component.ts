@@ -5,6 +5,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { ErrorHandlerService } from './../../services/error-handler.service';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { ViewBillService } from './../../services/view-bill.service';
+import { CheckRoute } from './../../shared/check-route';
 
 const mobileLength = 11;
 @Component({
@@ -12,9 +13,8 @@ const mobileLength = 11;
   templateUrl: './metter-announce.component.html',
   styleUrls: ['./metter-announce.component.scss']
 })
-export class MetterAnnounceComponent implements OnInit, OnDestroy {
+export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDestroy {
   input: number;
-  getedDataIdFromRoute = '';
   mobileNumber = '';
   // spinner
   spinnerSubscriber: Subscription;
@@ -34,10 +34,6 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   private minLength = 1;
 
   private mobileLength = mobileLength;
-
-  getDataFromRoute = () => {
-    this.interactionService.billId$.subscribe(res => this.getedDataIdFromRoute = res);
-  }
 
   pushOrPopFromMobileNumber = () => {
     // unshift to array just allowed so => string to array and then to string should converted
@@ -133,7 +129,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
   ) {
-    this.getDataFromRoute();
+    super();
   }
 
   ngOnInit(): void {

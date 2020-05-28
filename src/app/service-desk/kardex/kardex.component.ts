@@ -4,15 +4,15 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-kardex',
   templateUrl: './kardex.component.html',
   styleUrls: ['./kardex.component.scss']
 })
-export class KardexComponent implements OnInit {
+export class KardexComponent extends CheckRoute implements OnInit {
   hoveredColor: boolean;
-  billId: string;
   // bool kardex
   kardex: any;
   ////////
@@ -29,15 +29,13 @@ export class KardexComponent implements OnInit {
     private interactionService: InteractionService,
     private router: Router
   ) {
-    this.getDataFromRoute();
+    super();
   }
-  getDataFromRoute = () => {
-    this.billId = window.location.pathname.split('/')[1];
-  }
+
   isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0
 
   connectToServer = () => {
-    this.interfaceService.getKardex(this.billId).subscribe((res: any) => {
+    this.interfaceService.getKardex(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {
         this.kardex = res;
         res.map(usage => {
@@ -80,7 +78,7 @@ export class KardexComponent implements OnInit {
     this.interfaceService.getABillKardex(id, zoneId).subscribe((res: any) => {
       this.interactionService.setABillKardex(res);
       this.createSpinner(false);
-      this.router.navigateByUrl(this.billId + '/bill');
+      this.router.navigateByUrl(this.getedDataIdFromRoute + '/bill');
     });
   }
   getPaymentInfoKardex = (id: number, zoneId: number, index: number) => {

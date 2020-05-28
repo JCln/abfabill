@@ -3,18 +3,18 @@ import * as AOS from 'aos';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { InteractionService } from '../../services/interaction.service';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-installment',
   templateUrl: './installment.component.html',
   styleUrls: ['./installment.component.scss']
 })
-export class InstallmentComponent implements OnInit {
+export class InstallmentComponent extends CheckRoute implements OnInit {
   spinnerBoolean = true;
   showMoreButton = false;
   sumOfInstallments = 0;
   billId: string = '';
-  getedDataIdFromRoute: any = [];
   response;
   respnseIsNull = true;
 
@@ -26,7 +26,7 @@ export class InstallmentComponent implements OnInit {
     private interactionService: InteractionService,
     private viewBillService: ViewBillService,
   ) {
-    this.getDataFromRoute();
+    super();
   }
 
   isNull = (value: any) =>
@@ -66,10 +66,6 @@ export class InstallmentComponent implements OnInit {
         this.insertValToVar(res, this.removeLoaderAfterResponse);
       }
     });
-  }
-
-  getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
   }
 
   // seemed that it is unnessesary
