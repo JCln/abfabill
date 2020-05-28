@@ -13,6 +13,8 @@
         (click)="!kardex.isBill ? getPaymentInfoKardex(kardex.id , kardex.zoneId, index) : getABillKardex(kardex.id , kardex.zoneId)">
         <button class="_payid_button" *ngIf="!kardex.isBill && !kardex.payDay">مشاهده جزئیات
             پرداخت</button>
+        <button class="_payid_button dark_gray_border bill" *ngIf="kardex.isBill">مشاهده جزئیات
+            قبض</button>
         <div class="first_section">
             <div *ngIf="!kardex.isBill && kardex.spinner">
                 <i class="loader"></i>
@@ -21,7 +23,8 @@
                 <div class="form" *ngIf="kardex.payDay">
                     <div class="darker_b form-item" style="min-width: 11rem;">
                         <input type="text" readonly name="payableReadable" class="form-input"
-                            aria-label="payableReadable" value="{{kardex.payableReadable}} ریال" style="font-size: 1rem;">
+                            aria-label="payableReadable" value="{{kardex.payableReadable}} ریال"
+                            style="font-size: 1rem;">
                     </div>
                     <div class="div1 dark_b">
                         <div class="__payed_time white_c" style="font-size: .9rem;">

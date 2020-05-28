@@ -133,9 +133,16 @@ section article {
   min-width: 12rem;
   width: auto;
   background: inherit;
-  border: 1px solid;
+  border: 1px solid $darkgray;
+  color: $darkgray;
   font-size: 1rem;
   margin: auto .1rem;
+}
+
+.bill {
+  // border: inherit $darker_gray;
+  color: $darker_gray;
+  box-shadow: 2px 2px 15px 2px $darker_gray;
 }
 
 @media(min-width: 550px) {
