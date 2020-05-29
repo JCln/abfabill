@@ -52,7 +52,7 @@ export class KardexComponent extends CheckRoute implements OnInit {
   }
 
   createSpinner = (canLoad: boolean) => {
-    this.spinnerWrapper.loading(canLoad);
+    canLoad ? this.spinnerWrapper.startLoading() : this.spinnerWrapper.stopLoading()
   }
 
   ngOnInit(): void {

@@ -9,21 +9,17 @@ export class SpinnerWrapperService {
   private loadingStatus = new BehaviorSubject<boolean>(false);
   loadingStatus$ = this.loadingStatus.asObservable();
 
-  loading(loadingStatus: boolean) {
+  private loading(loadingStatus: boolean) {
     this.loadingStatus.next(loadingStatus);
   }
   
-  // loadingOLd (loadingStatus: boolean) {
-  //   this.loadingStatus.next(loadingStatus);
-  // }
+  startLoading() {
+    this.loading(true);
+  }
 
-  // startLoading() {
-  //   this.loading(true);
-  // }
-
-  // stopLoading() {
-  //   this.loading (false);
-  // }
+  stopLoading() {
+    this.loading(false);
+  }
 
   constructor() { }
 }

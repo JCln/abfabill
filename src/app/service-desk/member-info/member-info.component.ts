@@ -1,26 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from 'src/app/services/interaction.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
 import { ViewBillService } from './../../services/view-bill.service';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-member-info',
   templateUrl: './member-info.component.html',
   styleUrls: ['./member-info.component.scss']
 })
-export class MemberInfoComponent implements OnInit {
-  billId: string = '';
+export class MemberInfoComponent extends CheckRoute implements OnInit {
   memberInfo: any = [];
-
-  getDataFromRoute = () => {
-    this.interactionService.billId$.subscribe(res => this.billId = res);
-  }
-
+  
   connectToServer = () => {
-    this.viewBillService.getMemberInfo(this.billId).subscribe((res: any) => {
-      if (res) {
-        this.spinnerWrapper.loading(false);
+    this.viewBillService.getMemberInfo(this.getedDataIdFromRoute).subscribe((res: any) => {
+      if (!this.isNull(res)) {
+        this.spinnerWrapper.stopLoading();
         this.memberInfo = res;
         this.memberInfo.firstName = this.memberInfo.firstName.trim();
         this.memberInfo.sureName = this.memberInfo.sureName.trim();
@@ -28,12 +23,12 @@ export class MemberInfoComponent implements OnInit {
     })
   }
 
-  constructor(private interactionService: InteractionService, private viewBillService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
-    this.getDataFromRoute();
+  constructor(private viewBillService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
+    super();
   }
 
   ngOnInit(): void {
-    this.spinnerWrapper.loading(true);
+    this.spinnerWrapper.startLoading();
     this.connectToServer();
   }
 

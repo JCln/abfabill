@@ -93,17 +93,21 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
     )
   }
 
-  createSpinner = (val: any) => {
+  spinnerCondition = (val: any) => {
     this.spinnerSubscriber = this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
       this.notification = status;
     })
   }
 
+  createSpinner = (canLoad: boolean) => {
+    canLoad ? this.spinnerWrapper.startLoading() : this.spinnerWrapper.stopLoading()
+  }
+
   spinnerChecker = (bol: boolean): Promise<any> => {
     return new Promise(resolve =>
       setTimeout(() => {
-        resolve(this.spinnerWrapper.loading(bol))
+        resolve(this.createSpinner(bol))
       }, 100)
     )
   }
@@ -118,7 +122,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
     console.log(a);
 
     const b = await this.spinnerChecker(a);
-    this.createSpinner(a);
+    this.spinnerCondition(a);
     if (a)
       await this.connectToServer().catch(err => console.log(err));
   }

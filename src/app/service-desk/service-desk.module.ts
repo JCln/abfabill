@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { GoogleAnalyticsService } from './../services/google-analytics.service';
 import { ServiceDeskRoutingModule } from './service-desk-routing.module';
 import { ServicesComponent } from './services/services.component';
 
@@ -10,7 +9,6 @@ import { ServicesComponent } from './services/services.component';
   imports: [
     SharedModule,
     ServiceDeskRoutingModule
-  ],
-  providers: [GoogleAnalyticsService]
+  ]
 })
 export class ServiceDeskModule { }
