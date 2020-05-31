@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
+import { IViewBill } from './../../services/iview-bill';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { ViewBillService } from './../../services/view-bill.service';
 import { CheckRoute } from './../../shared/check-route';
@@ -82,7 +83,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
     return new Promise(resolve =>
       setTimeout(() => {
         resolve(
-          this.connectToSrSubscriber = this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
+          this.connectToSrSubscriber = this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: IViewBill) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
               this.errorHandler.timeOutBeforeRoute('r/success');

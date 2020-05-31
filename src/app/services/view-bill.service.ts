@@ -1,41 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IViewBill } from './iview-bill';
 import { MainService } from './main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewBillService {
-  private id: string;
   private base64: string;
   constructor(private mainService: MainService) {
   }
 
-  getId = () => {
-    return this.id;
-  }
-  setId = (id: string) => {
-    this.id = id;
-    this.idValues(this.id);
-  }
-  setInstallmentId = (id: string) => {
-    this.id = id;
-  }
   idValues = (id: string) => {
     this.base64 = btoa(id);
   }
-  checkValidRoute = (val: object): boolean => {
-    if (typeof (Object.values(val)[0]) === "string")
-      return false;
-    return true;
+  getViewBill = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/V2/Bill/Get', this.base64);
   }
-  getViewBill = (): any => {
-    return this.mainService.GET(this.id, 'moshtarakinapi/V2/Bill/Get', this.base64);
-  }
-  getInstallment = (): any => {
-    return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
+  getInstallment = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/Installment/Get');
   }
   getKardex = (id: string): any => {
     this.idValues(id);
@@ -53,7 +38,7 @@ export class ViewBillService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
   }
-  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<IViewBill> => {
+  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
 

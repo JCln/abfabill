@@ -44,35 +44,25 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     super();
   }
 
+  private removeLoaderAfterResponse = () => this.spinnerBoolean = false;
 
-  removeLoaderAfterResponse = () => this.spinnerBoolean = false;
-
-  insertValToVar = (res: IViewBill, callback: () => void) => {
-    for (const key in res) {
-      if (res.hasOwnProperty(key)) {
-        this.testObject[key] = (res[key]);
-      }
-    }
+  private insertValToVar = (res: IViewBill, callback: () => void) => {
+    this.testObject = res;
     callback();
   }
-  connectToServer = () => {
-    this.viewBillService.getViewBill().subscribe((res: any) => {
-      if (res) {
+  private connectToServer = () => {
+    this.viewBillService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
+      if (!this.isNull(res)) { // should implement isNull insead
         this.insertValToVar(res, this.removeLoaderAfterResponse);
+      } else {
+        this.errorHandler.handleError(404);
       }
     });
   }
 
-  nestingLevel = () => {
-    this.viewBillService.setId(this.getedDataIdFromRoute);
-
-    if (this.viewBillService.checkValidRoute(this.viewBillService.getViewBill())) {
-      this.connectToServer();
-    } else {
-      this.errorHandler.handleError(404);
-    }
+  private nestingLevel = () => {
+    this.connectToServer();
     this.interactionService.setReceipt(this.testObject);
-    this.interactionService.setInstallment(this.getedDataIdFromRoute);
   }
 
   sendButtonEventToAnalytics = () => {

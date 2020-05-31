@@ -52,12 +52,9 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
   }
   removeLoaderAfterResponse = () => this.spinnerBoolean = false;
   connectToServer = () => {
-    this.viewBillService.getInstallment().subscribe((res: any) => {
+    this.viewBillService.getInstallment(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {
-        // looking for async pipe make ups
-        // this.$asyncPipeTest = res;
         this.response = true;
-
         // when response is null and means no installment exists
         if (this.isNull(res[0])) {
           this.respnseIsNull = false;
@@ -67,20 +64,7 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
     });
   }
 
-  // seemed that it is unnessesary
-  getId = (callback: () => void) => {
-    this.interactionService.installmentId$.subscribe(res => {
-      if (res)
-        this.billId = res;
-    });
-    callback();
-  }
-
-  nestingLevel = async () => {
-    this.viewBillService.setInstallmentId(this.getedDataIdFromRoute);
-
-    this.connectToServer();
-  }
+  nestingLevel = () => this.connectToServer();
 
   ngOnInit() {
     this.nestingLevel();
