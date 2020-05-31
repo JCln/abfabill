@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
   templateUrl: './receipt.component.html',
   styleUrls: ['./receipt.component.scss']
 })
-export class ReceiptComponent implements OnInit {
+export class ReceiptComponent implements OnInit, AfterContentChecked {
 
   childEl: any = [];
   constructor(private receiptService: InteractionService) {

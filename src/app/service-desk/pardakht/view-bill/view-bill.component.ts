@@ -54,6 +54,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.viewBillService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) { // should implement isNull insead
         this.insertValToVar(res, this.removeLoaderAfterResponse);
+        this.interactionService.setReceipt(this.testObject);
       } else {
         this.errorHandler.handleError(404);
       }
@@ -61,8 +62,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   }
 
   private nestingLevel = () => {
-    this.connectToServer();
-    this.interactionService.setReceipt(this.testObject);
+    this.connectToServer();    
   }
 
   sendButtonEventToAnalytics = () => {
