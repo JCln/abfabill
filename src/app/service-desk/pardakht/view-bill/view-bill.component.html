@@ -748,7 +748,7 @@
             </div>
           </div>
         </div>
-      
+
         <div class="form" *ngIf="isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
@@ -1123,7 +1123,7 @@
             </div>
           </div>
         </div>
-     
+
         <div class="form" *ngIf="isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
@@ -1136,8 +1136,8 @@
             </div>
           </div>
         </div>
-     
-     
+
+
         <div class="form" *ngIf="isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
@@ -1158,7 +1158,7 @@
 
 </section>
 
-<section class="barcode">
+<section class="barcode" *ngIf="!isABillKardex">
   <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
     [bc-height]="barcode.height" [bc-display-value]="true">
   </ngx-barcode>
