@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   help = () => {
-    this.helpService.addMessage('from bill', 'this is bill main test', '', 'some bill footer');
+    this.helpService.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و .... را مشاهده کنید', 'assets/axiliaryroute/2.png', 'assets/axiliaryroute/2-2.png', '', 'lot of main text');
     this.router.navigate(["/aux/inner", { outlets: { modal: ["help"] } }]);
   }
 

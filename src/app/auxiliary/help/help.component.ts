@@ -31,11 +31,11 @@ export class HelpComponent implements OnInit, AfterContentChecked {
   // }
 
   ngOnInit(): void {
-    this.helpService.countdownEnd$.subscribe(res => console.log(res))
+    // this.helpService.countdownEnd$.subscribe(res => console.log(res))
   }
   
   ngAfterContentChecked(): void {
 
-    // this.messages = this.helpService.messages;
+    this.messages = this.helpService.messages;
   }
 }

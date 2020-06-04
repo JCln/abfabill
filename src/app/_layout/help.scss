@@ -1,11 +1,16 @@
-$clr: #00368c;
-
 .help {
+  --clr: #00368c;
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
   position: absolute;
   cursor: pointer;
+  border: 1px solid;
   padding: 1rem;
+  place-items: center;
   left: 2.5rem;
-  top: 9rem;
-  font-size: 1.7rem;
-  color: $clr;
+  border-radius: 50%;
+  top: 9.5rem;
+  font-size: 1.6rem;
+  color: var(--clr);
 }
