@@ -3,8 +3,12 @@
     <span></span>
     <span></span>
 </div>
-
-
+<div>
+    <a (click)="help()" class="help">
+        <i class="fa fa-question">
+        </i>
+    </a>
+</div>
 <nav role="navigation">
     <div id="menuToggle">
         <input type="checkbox" (change)="changeBackImg()">
@@ -14,6 +18,7 @@
         <span></span>
 
         <ul id="menu">
+
             <a *ngIf="showMemberInfo" [routerLink]="['myInfo']">
                 <li>اطلاعات انشعاب</li>
             </a>

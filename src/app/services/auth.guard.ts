@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanActivateChild,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 
 import { ErrorHandlerService } from './error-handler.service';
 
@@ -18,7 +11,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   private maxLength = 13;
   private minLength = 4;
 
-  constructor(private router: Router, private route: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
+  constructor(private router: Router, private errorHandler: ErrorHandlerService) { }
 
   private checkValidInput = (): boolean => {
     if (this.idRoutePart === null || this.idRoutePart.length > this.maxLength || this.idRoutePart.length <= this.minLength)

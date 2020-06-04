@@ -11,7 +11,7 @@ export class GoogleAnalyticsService {
   constructor(public router: Router) { }
 
   //create our event emitter to send our data to Google Analytics
-  public eventEmitter(eventCategory: string,
+  eventEmitter(eventCategory: string,
     eventAction: string,
     eventLabel: string = null,
     eventValue: number = null) {
@@ -22,7 +22,7 @@ export class GoogleAnalyticsService {
       eventValue: eventValue
     });
   }
-  public routerView = () => {
+  routerView = () => {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         ga('set', 'page', event.urlAfterRedirects);

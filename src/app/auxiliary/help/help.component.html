@@ -1,0 +1,19 @@
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span (click)="backClicked()" class="close">&times;</span>
+            <h2>{{messages[0]}}</h2>
+        </div>
+        <div class="modal-body">
+            <p>{{messages[1]}}</p>
+            <img src="{{messages[3]}}" alt="">
+            <!-- <p>{{messages[4]}}</p> -->
+        </div>
+        <div class="modal-footer">
+            <h3>{{messages[2]}}</h3>
+        </div>
+    </div>
+
+</div>

@@ -30,7 +30,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

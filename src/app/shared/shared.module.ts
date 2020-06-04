@@ -10,7 +10,7 @@ import { SpinnerWrapperComponent } from './../spinner-wrapper/spinner-wrapper.co
     CommonModule,
     FormsModule
   ],
-  exports: [FormsModule, CommonModule , SpinnerWrapperComponent],
+  exports: [FormsModule, CommonModule, SpinnerWrapperComponent],
 
 })
 export class SharedModule { }
