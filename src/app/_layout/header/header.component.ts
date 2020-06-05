@@ -33,8 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   help = () => {
-    this.helpService.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و .... را مشاهده کنید', 'assets/axiliaryroute/2.png', 'assets/axiliaryroute/2-2.png', '', 'lot of main text');
-    this.router.navigate(["/aux/inner", { outlets: { modal: ["help"] } }]);
+    this.helpService.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و .... را مشاهده کنید', 'assets/axiliaryroute/2.PNG', 'assets/axiliaryroute/2-2.PNG', '', 'برای آن دسته از کاربران که تمایل به مشاهده قبض همانند قبض کاغذی دارند میتوانند با کلیک برروی مشاهد قبض کاغذی به این قسمت دسترسی داشته باشند');
+    this.router.navigate(["/aux", { outlets: { modal: ["help"] } }]);
   }
 
 }

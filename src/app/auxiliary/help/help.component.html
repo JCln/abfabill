@@ -3,14 +3,20 @@
     <!-- Modal content -->
     <div class="modal-content">
         <div class="modal-header">
-            <span (click)="backClicked()" class="close">&times;</span>
+            <div class="close">
+                <span (click)="backClicked()" class="_close">&times;</span>
+            </div>
             <h2>{{messages[0]}}</h2>
         </div>
         <div class="modal-body">
             <p>{{messages[1]}}</p>
-            <img src="{{messages[2]}}" alt="">
+            <div class="_img_container">
+                <img src="{{messages[2]}}" alt="">
+            </div>
             <p>{{messages[5]}}</p>
-            <img src="{{messages[4]}}" alt="">
+            <div class="_img_container">
+                <img src="{{messages[4]}}" alt="">
+            </div>
         </div>
         <div class="modal-footer">
             <h3>{{messages[3]}}</h3>

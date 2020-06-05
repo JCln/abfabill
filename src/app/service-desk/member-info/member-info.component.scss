@@ -9,6 +9,7 @@ $lightgray: lightgray;
 section {
   background: $clr;
   padding: 1rem 0;
+  border-radius: $__border_radius;
 
   .header_title {
     @include justify-center;
