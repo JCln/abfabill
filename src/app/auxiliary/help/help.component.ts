@@ -1,5 +1,5 @@
+import { Location } from '@angular/common';
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { HelpService } from '../../services/help.service';
 
@@ -15,12 +15,9 @@ export class HelpComponent implements OnInit, AfterContentChecked {
   btn = document.getElementById("myBtn");
   span = document.getElementsByClassName("close")[0];
 
-  constructor(private router: Router, private helpService: HelpService) {
+  constructor(private helpService: HelpService, private _location: Location) { }
 
-
-  }
-
-  backClicked = () => this.router.navigate([{ outlets: { modal: null } }]);;
+  backClicked = () => this._location.back();
 
   // When the user clicks anywhere outside of the modal, close it
   // @HostListener('document: keyup', ['$event'])
@@ -33,7 +30,7 @@ export class HelpComponent implements OnInit, AfterContentChecked {
   ngOnInit(): void {
     // this.helpService.countdownEnd$.subscribe(res => console.log(res))
   }
-  
+
   ngAfterContentChecked(): void {
 
     this.messages = this.helpService.messages;
