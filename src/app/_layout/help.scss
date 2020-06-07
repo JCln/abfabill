@@ -13,4 +13,10 @@
   top: 9.5rem;
   font-size: 1.6rem;
   color: var(--clr);
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }

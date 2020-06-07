@@ -80,7 +80,8 @@ section {
     button {
       @extend %button_first;
       margin: $font_large_size auto;
-      min-width: 18rem;
+      min-width: 19rem;
+      width: auto;
     }
 
   }
