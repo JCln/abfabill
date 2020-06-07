@@ -41,7 +41,6 @@ main {
       display: none;
 
       h1 {
-        // font-size: 1.5rem;
         font-weight: 700;
         color: $c_light_gray;
       }
@@ -71,7 +70,13 @@ main {
       cursor: pointer;
 
       p {
-        width: 0;
+        transform: translateY(-50%) translateX(-50%);
+        top: 50%;
+        transition: ease-in-out 200ms font-size;
+
+        &:hover {
+          font-size: 1.5rem;
+        }
       }
 
       .div2 {
