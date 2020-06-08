@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', redirectTo: 'pg', pathMatch: 'full' },
       { path: 'pg', component: PageNotFoundComponent },
+      { path: 'registerNew', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule) }
     ]
   },
   { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },

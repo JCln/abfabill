@@ -1,5 +1,7 @@
 @import "../../assets/input.scss";
 @import "../../assets/mixins.scss";
+@import "../../assets/main.scss";
+
 
 $c_main_dark: #062c68;
 $c_dark: #142147;
@@ -84,6 +86,25 @@ main {
       .div2 {
         background-color: $c_main_dark;
       }
+    }
+  }
+
+  button {
+    --v-l-c: #e3e3e3;
+    --color: #116fff;
+    @extend %button_first;
+    min-width: auto;
+    width: 75%;
+    margin-top: 1rem;
+    background: var(--v-l-c);
+    border: 2px solid var(--color);
+    color: var(--color);
+
+    img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border: 1px solid var(--color);
     }
   }
 }
