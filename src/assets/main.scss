@@ -1,4 +1,8 @@
-@import 'variables.scss';
+$white: #fff;
+$b-l-blue: #116fff;
+
+$margin_bottom_sections: 0.9rem;
+$font_medium_size: 1.3rem;
 
 %button_first {
   color: $white;
@@ -12,7 +16,7 @@
   width: 93%;
   outline: none;
   border-radius: 30px;
-  background-color: #116fff;
+  background-color: $b-l-blue;
   box-shadow: 0 0 10px rgba(17, 111, 255, 0.5);
   margin-bottom: $margin_bottom_sections;
   cursor: pointer;
@@ -26,11 +30,4 @@
   %button_first {
     font-size: $font_medium_size;
   }
-}
-
-// unique shape on hover and focus
-a:hover,
-a:focus,
-a:active {
-  outline: none;
 }
