@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
-import { InteractionService } from '../../services/interaction.service';
 import { CheckRoute } from './../../shared/check-route';
 
 @Component({
@@ -23,8 +22,7 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
   // testObject = a;
 
   constructor(
-    private interactionService: InteractionService,
-    private viewBillService: ViewBillService,
+    private viewBillService: ViewBillService
   ) {
     super();
   }

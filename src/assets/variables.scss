@@ -24,3 +24,12 @@ $pale_levender: #d4dcff;
 $bright_torouse: #61E786;
 $medium_slate_blue: #7d83ff;
 $background_color_border_radius: #0198f1;
+$c_light_gray: #EEEEEE;
+
+hr {
+  width: 70%;
+  margin-bottom: 15%;
+  height: .4rem;
+  border-radius: 30px;
+  background: $c_light_gray;
+}

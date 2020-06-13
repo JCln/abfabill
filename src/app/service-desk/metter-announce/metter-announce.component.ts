@@ -22,7 +22,6 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
   connectToSrSubscriber: Subscription;
   // need to have error text to show
   notification: boolean = false;
-  testTheFuckingThat = false;
   // notificationText = '';
 
   // textError from server

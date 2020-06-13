@@ -48,6 +48,16 @@ export class ViewBillService {
 
     return this.mainService.SET(`MoshtarakinApi/v2/bill/generateBill/${this.base64}`, body);
   }
+  setNewRegister = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
+    const requestOrigin = 6;
+    this.idValues(billId.toString());
+
+    const body = {
+      billId, counterclaim, notificationMobile, requestOrigin
+    }
+
+    return this.mainService.SET(`MoshtarakinApi/v2//${this.base64}`, body);
+  }
 
 
 }

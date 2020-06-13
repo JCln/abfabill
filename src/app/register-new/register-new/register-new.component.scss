@@ -1,0 +1,57 @@
+@import '../../../assets/input.scss';
+@import '../../../assets/@media.scss';
+@import '../../../assets/main.scss';
+@import '../../../assets/variables.scss';
+@import '../../../assets/mixins.scss';
+@import '../../../assets/radio_checkbox.scss';
+
+$bright_torouse: #08c000;
+$disable_pay :#e1645d;
+
+.background {
+  display: grid;
+}
+
+button {
+  @extend %button_first;
+  background: $bright_torouse;
+  width: auto;
+  margin-top: 1rem;
+  transition: background ease-in-out 250ms;
+
+  &:disabled {
+    background: $disable_pay;
+  }
+}
+
+@include threeColumns('.background');
+
+.title_content {
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    font-size: 2rem;
+    color: $clr;
+    margin: 1rem;
+  }
+}
+
+.container {
+  color: $clr_border;
+  font-weight: 600;
+
+  .checkmark {
+    border: 1px solid $clr_border;
+  }
+}
+
+justify_center {
+  color: #656464;
+  font-size: 1.2rem;
+}
+
+hr {
+  background: #116fff;
+  margin: 1rem auto;
+}

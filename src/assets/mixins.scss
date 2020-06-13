@@ -7,6 +7,18 @@
   justify-content: center;
 }
 
+@mixin space_evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.justify_center {
+  @include justify-center();
+}
+
+.space_evenly {
+  @include space_evenly();
+}
 
 .text_align_right {
   @include text_align(right);

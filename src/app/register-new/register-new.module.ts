@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './../shared/shared.module';
 import { RegisterNewRoutingModule } from './register-new-routing.module';
 import { RegisterNewComponent } from './register-new/register-new.component';
 
@@ -8,7 +9,8 @@ import { RegisterNewComponent } from './register-new/register-new.component';
 @NgModule({
   declarations: [RegisterNewComponent],
   imports: [
-    CommonModule,
+    SharedModule,
+    ReactiveFormsModule,
     RegisterNewRoutingModule
   ]
 })
