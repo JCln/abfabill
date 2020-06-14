@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AuxRoutingModule } from './auxiliary-routing.module';
 import { HelpComponent } from './help/help.component';
-import { InnerComponent } from './inner.component';
 
 
 @NgModule({
-  declarations: [InnerComponent, HelpComponent],
+  declarations: [HelpComponent],
   imports: [
     CommonModule,
     AuxRoutingModule

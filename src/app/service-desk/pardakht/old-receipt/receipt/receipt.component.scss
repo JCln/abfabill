@@ -183,8 +183,9 @@ section {
         }
 
         .borders {
-          border-color: #c6edfe !important;
-          background-color: #c6edfe;
+          --color: #c6edfe;
+          border-color: var(--color) !important;
+          background-color: var(--color);
         }
       }
 

@@ -11,7 +11,6 @@ $purple_backgruond_border: rgba(102, 0, 51, 1);
 $purple_backgruond: rgba(255, 204, 230, 0.1);
 $darkgreen_background_border: rgba(34, 162, 78, 1);
 $darkgreen_background: rgba(0, 102, 34, 0.11);
-$lightgreen_border: #e4572e;
 $lightgreen: rgba(179, 179, 179, 0.3);
 
 @mixin orgenize_color ($b_c, $border_c) {
@@ -39,7 +38,7 @@ $lightgreen: rgba(179, 179, 179, 0.3);
 }
 
 h3 {
-  color: gray;
+  color: $gray;
 }
 
 
@@ -89,7 +88,7 @@ section {
     }
 
     .orangegray_background {
-      @include orgenize_color($lightgreen, $lightgreen_border);
+      @include orgenize_color($lightgreen, $orange_color);
     }
 
     .darkgreen_background {
@@ -238,10 +237,6 @@ section.barcode {
 @include fourColumns('._detail_content');
 @include threeColumns('.main');
 @include threeColumns('._detail_content_kardex');
-
-// .kardex_remove {
-//   grid-template-columns: repeat(4, 1fr);
-// }
 
 .kardex_added_class {
   grid-template-columns: repeat(3, 1fr) !important;

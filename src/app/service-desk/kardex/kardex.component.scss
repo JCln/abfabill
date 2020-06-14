@@ -1,11 +1,9 @@
 @import "../../../assets/input";
 @import "../../../assets/main";
 @import "../../../assets/spinner_loader";
+@import "../../../assets/variables.scss";
 
 $dark_b_color: #062C68;
-$light_b_color: #004ECC;
-$white: #fff;
-$lightgray: #EEEEEE;
 $darkgray: #D8D8D8;
 $darker_gray: #5C5C5C;
 
@@ -20,7 +18,7 @@ $darker_gray: #5C5C5C;
   .form {
     box-shadow: none;
     background: $white;
-    margin: 0.3rem auto;
+    margin: 0.3rem auto 1px;
 
     .form-item {
 
@@ -28,7 +26,7 @@ $darker_gray: #5C5C5C;
         padding: 0 0.5rem 0 .2rem;
         line-height: 3;
         color: $darker_gray;
-        border: 1px solid $lightgray;
+        border: 1px solid $c_light_gray;
         transform: translateX(.26rem);
       }
 
@@ -95,10 +93,10 @@ $darker_gray: #5C5C5C;
 }
 
 .view_bill {
-  background-color: $light_b_color;
+  background-color: $clr_border;
 
   .fa-arrow-alt-circle-left {
-    color: $lightgray;
+    color: $c_light_gray;
     font-size: 2.2rem;
   }
 }
@@ -113,13 +111,12 @@ $darker_gray: #5C5C5C;
 }
 
 section article {
-  --color: #bd362f;
   display: flex;
   justify-content: center;
 
   .chart_button {
     @extend %button_first;
-    background: var(--color);
+    background: $orange_color;
     width: auto;
 
     .fa-chart-bar {
@@ -145,7 +142,7 @@ section article {
   box-shadow: 2px 2px 15px 2px $darker_gray;
 }
 
-@media(min-width: 550px) {
+@media(min-width: 720px) {
   .main_border {
     display: flex;
     flex-direction: row;
@@ -235,7 +232,7 @@ section article {
 }
 
 .light_gray_c {
-  @include free(color, $lightgray);
+  @include free(color, $c_light_gray);
 }
 
 .dark_gray_c {
@@ -247,7 +244,7 @@ section article {
 }
 
 .dark_c {
-  @include free(color, $light_b_color);
+  @include free(color, $clr_border);
 }
 
 .darker_c {
@@ -260,11 +257,11 @@ section article {
 }
 
 .light_gray_b {
-  @include free(background, $lightgray);
+  @include free(background, $c_light_gray);
 }
 
 .dark_b {
-  @include free(background, $light_b_color);
+  @include free(background, $clr_border);
 }
 
 .darker_b {

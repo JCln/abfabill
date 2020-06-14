@@ -23,7 +23,7 @@ export class AnonyHeaderComponent implements OnInit {
   // back to previous page
   backClicked = () => this._location.back();
 
-  private whereWhere = this._location.path() === '/pg' ? true : false;
+  private whereWhere = this._location.path() == '/pg' ? true : false;
   // to check if we are in first page and not show back url
   canShowBackUrl = () => {
     // maybe better with getState()
@@ -32,6 +32,8 @@ export class AnonyHeaderComponent implements OnInit {
       this.showMemberInfo = false;
     }
     else {
+      this.showBack = true;
+
       this.showMemberInfo = true;
     }
   }

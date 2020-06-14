@@ -14,7 +14,7 @@ section {
 
     img {
       width: $img-size;
-      height: calc(#{$img-size} - 1rem);
+      height: calc(#{$img-size} - 4rem);
 
       transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
     }

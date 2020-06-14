@@ -2,13 +2,13 @@
 @import "../../assets/mixins.scss";
 @import "../../assets/main.scss";
 
-
 $c_main_dark: #062c68;
 $c_dark: #142147;
 $c_light_gray: #EEEEEE;
 $c_dark_gray: #AEAEAE;
 
 main {
+  --v-l-c: #e3e3e3;
   height: 100%;
   min-height: 55vh;
   border-radius: 55px 55px 30% 30%;
@@ -51,6 +51,7 @@ main {
       hr {
         color: $c_dark_gray;
       }
+
       hr {
         margin-bottom: 5rem;
       }
@@ -74,30 +75,29 @@ main {
       width: 25%;
       cursor: pointer;
 
-      p {
-        transform: translateY(-50%) translateX(-50%);
-        top: 50%;
-        transition: ease-in-out 200ms font-size;
-
-        &:hover,
-        &:focus,
-        &:active {
-          font-size: 1.5rem;
-        }
-      }
-
       .div2 {
         background-color: $c_main_dark;
+      }
+
+      p {
+        position: absolute;
+        cursor: pointer;
+        left: 50%;
+        top: 50%;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--v-l-c);
+        transform: translateX(-50%) translateY(-50%);
       }
     }
   }
 
   button {
-    --v-l-c: #e3e3e3;
     --color: #116fff;
     @extend %button_first;
     min-width: auto;
-    width: 75%;
+    width: auto;
+    font-size: 1.1rem;
     margin-top: 1rem;
     background: var(--v-l-c);
     border: 2px solid var(--color);
