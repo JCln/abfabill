@@ -8,11 +8,15 @@
   border: 1px solid;
   padding: 1rem;
   place-items: center;
-  left: 2.5rem;
+  left: 1rem;
   border-radius: 50%;
   top: 9.5rem;
   font-size: 1.6rem;
   color: var(--clr);
+
+  @media (min-width: 550px) {
+    left: 2.5rem;
+  }
 
   &:hover,
   &:focus,

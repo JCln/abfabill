@@ -4,8 +4,12 @@ $clr: #00368c;
   position: absolute;
   cursor: pointer;
   padding: 1rem;
-  left: 2rem;
+  left: .6rem;
   top: 6rem;
+
+  @media (min-width: 550px) {
+    left: 2rem;
+  }
 
   span {
     display: block;
