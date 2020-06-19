@@ -48,7 +48,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     phoneNumber: ['', [Validators.pattern("^[0-9]*$"),
     Validators.minLength(8), Validators.maxLength(11)]],
     fatherName: [''],
-    mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11), Validators.pattern("^[0-9]*$")]],//, forbiddenNameValidator(/bob/i)   
+    mobile: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern("^[0-9]*$")]],//, forbiddenNameValidator(/bob/i)   
     selectedServices: ['', Validators.required],
     neighbourBillId: ['', [Validators.required, Validators.pattern("^[0-9]*$"),
     Validators.maxLength(13)]],

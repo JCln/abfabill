@@ -58,7 +58,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="mobile" formControlName="mobile" class="form-input" aria-label="mobile"
-                            maxlength=11 required>
+                            maxlength=11 minlength=11 required>
                     </div>
                     <div class="div1">
                         <p>شماره همراه</p>
@@ -127,7 +127,7 @@
             </div>
             <hr>
             <div class="justify_center">
-                <button type="submit"
+                <button type="submit" (click)="nestingLevel()"
                     [disabled]="!profileForm.valid">{{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
             </div>
         </form>

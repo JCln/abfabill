@@ -30,5 +30,11 @@ $white: white;
   h2 {
     margin-top: 10rem;
     color: $white;
+
+    .fa-spin,
+    .fa-circle-notch {
+      animation: around2 400ms infinite linear;
+    }
   }
+
 }
