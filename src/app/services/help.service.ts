@@ -85,7 +85,7 @@ export class HelpService {
         this.addMessage('مشاهده آخرین قبض بصورت کاغذی', 'در این قسمت امکان مشاهده قبض تمام صفحه و پرینت آن وجود دارد ', 'assets/axiliaryroute/2-3.PNG');
         break;
       case 'bar':
-        this.addMessage('نمودار مصرف شما', '', 'assets/axiliaryroute/2-3.PNG');
+        this.addMessage('نمودار مصرف شما', 'نمودار مصرف شما بترتیب تاریخ مرتب شده است', '');
         break;
 
       default:
