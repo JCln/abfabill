@@ -46,8 +46,8 @@
                 </div>
                 <div class="form">
                     <div class="form-item">
-                        <input name="nationalId" formControlName="nationalId" class="form-input" aria-label="nationalId"
-                            maxlength=10 required>
+                        <input name="nationalId" [(ngModel)]="nationalId" formControlName="nationalId"
+                            class="form-input" aria-label="nationalId" maxlength=10 required>
                     </div>
                     <div class="div1">
                         <p>کد ملی</p>
@@ -58,7 +58,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="mobile" formControlName="mobile" class="form-input" aria-label="mobile"
-                            maxlength=11 minlength=11 required>
+                            maxlength=11 minlength=11 [(ngModel)]="mobileNumber" required>
                     </div>
                     <div class="div1">
                         <p>شماره همراه</p>
@@ -80,7 +80,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="neighbourBillId" formControlName="neighbourBillId" class="form-input"
-                            aria-label="neighbourBillId" maxlength=13 required>
+                            aria-label="neighbourBillId" [(ngModel)]="neighbourBillId" maxlength=13 required>
                     </div>
                     <div class="div1">
                         <p>شناسه همسایه</p>
@@ -102,7 +102,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="address" formControlName="address" class="form-input"
-                            aria-label="address" required>
+                            aria-label="address" #address required>
                     </div>
                     <div class="div1">
                         <p>نشانی</p>
@@ -127,8 +127,8 @@
             </div>
             <hr>
             <div class="justify_center">
-                <button type="submit" (click)="nestingLevel()"
-                    [disabled]="!profileForm.valid">{{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
+                <button type="submit">{{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
+                <!--[disabled]="!profileForm.valid"-->
             </div>
         </form>
     </main>

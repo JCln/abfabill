@@ -47,8 +47,8 @@ section {
   .main {
     background: rgba(179, 179, 179, 0.3);
     border-radius: $__border_radius;
-    padding: 0.5rem;
-    margin: 0 0.15rem;
+    padding: 0;
+    margin: 0;
     display: grid;
 
     ._detail_content {
@@ -202,8 +202,8 @@ section.barcode {
 
 @media screen and (max-width: 414px) {
   .main {
-    padding: 5px;
-    margin: 0;
+    padding: 0.5rem;
+    margin: 0 0.15rem;
 
     .form {
       width: 98%;

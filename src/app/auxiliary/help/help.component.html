@@ -13,7 +13,15 @@
             <div class="_img_container">
                 <img src="{{messages[2]}}" alt="">
             </div>
+            <div style="text-align: right; font-size: 1.3rem">
+                <a *ngIf="messages[6]" href="https://myket.ir/app/com.app.leon.moshtarak" target="_blank"
+                    rel="noopener noreferrer"> اپلیکیشن همراه آبفا </a>
+            </div>
             <p>{{messages[5]}}</p>
+            <div *ngIf="messages[7]" style="font-size: 1.3rem; text-align: right; direction: rtl;">
+                <a href="tel:1522" target="_self" rel="noopener noreferrer">1522</a>
+                نسبت به عملیات مورد نظر خود اقدام نمایید
+            </div>
             <div class="_img_container">
                 <img src="{{messages[4]}}" alt="">
             </div>

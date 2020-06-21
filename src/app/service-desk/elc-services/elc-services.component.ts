@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ErrorHandlerService } from './../../services/error-handler.service';
+import { HelpService } from './../../services/help.service';
+
 interface IElcServies {
   [index: string]: {
     name: string;
@@ -53,10 +56,11 @@ export const elcServices = [
   styleUrls: ['./elc-services.component.scss']
 })
 export class ElcServicesComponent implements OnInit {
+  static elcWarnTime = true;
   elcService = elcServices;
   sevageSelected = false;
 
-  constructor() { }
+  constructor(private errorHandler: ErrorHandlerService, private helpService: HelpService) { }
   // switch between options
   sevageChoosed = (selected: boolean) => {
     this.sevageSelected = selected;
@@ -67,6 +71,13 @@ export class ElcServicesComponent implements OnInit {
     // this.elcService.pipe
   }
   ngOnInit() {
+    if (ElcServicesComponent.elcWarnTime) {
+      this.helpService.customName();
+      this.helpService.help();
+      ElcServicesComponent.elcWarnTime = false;
+    }
+    this.errorHandler.customToaster(5000, 'مشترک گرامی', 'این قسمت بطور کامل پیاده سازی نشده است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید');
+
   }
 
 }

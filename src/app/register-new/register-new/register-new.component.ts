@@ -7,7 +7,10 @@ import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { CheckRoute } from './../../shared/check-route';
 
+const minNeighbourBillId = 4;
+const maxNeighbourBillId = 13;
 const mobileLength = 11;
+const nationalId = 10;
 @Component({
   selector: 'app-register-new',
   templateUrl: './register-new.component.html',
@@ -15,6 +18,7 @@ const mobileLength = 11;
 })
 export class RegisterNewComponent extends CheckRoute implements OnInit {
   input: number;
+  nationalId = '';
   mobileNumber = '';
   // spinner
   notification: boolean = false;
@@ -27,9 +31,13 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
   private maxLength = 5;
   private minLength = 1;
+  private minNeighbourBillId = minNeighbourBillId;
+  private maxNeidghbourBillId = maxNeighbourBillId;
+  private neighbourBillId;
 
   clickableButton: boolean = true;
   private mobileLength = mobileLength;
+  private nationalIdLength = nationalId;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -57,7 +65,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     Validators.minLength(9), Validators.maxLength(10)]]
   });
   onSubmit() {
-    console.warn(this.profileForm.value);
+    // console.warn(this.profileForm.value);
+    this.checkValidInput();
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -74,8 +83,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     return false;
   }
   validInput1 = (): boolean => {
-    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
-      this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
+    if (this.nationalId === null || this.nationalId.toString().length !== nationalId) {
+      this.errorHandler.customToaster(4000, 'کد ملی اشتباه است');
       return false;
     }
     return true;
@@ -87,11 +96,20 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     }
     return true;
   }
-
+  checkNeighbourBillId = (): boolean => {
+    if (this.neighbourBillId.toString().trim() === null || this.neighbourBillId.toString().trim().length > this.maxNeidghbourBillId || this.neighbourBillId.toString().trim().length < this.minNeighbourBillId) {
+      this.errorHandler.customToaster(4000, 'شناسه قبض همسایه اشتباه است');
+      return false;
+    }
+    return true;
+  }
   checkValidInput = (): boolean => {
-    if (this.validInput1() && this.validInput2()) {
+    if (this.validInput1() && this.validInput2() && this.checkNeighbourBillId()) {
+      console.log('true');
+
       return true;
     } else {
+      console.log('false');
       return false
     }
   }
@@ -130,18 +148,19 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
   }
   changeToDefaultBeforeResponse = () => {
     this.interactionService.setmetterAnnounce('');
-    this.spinnerChecker(true);
   }
 
   nestingLevel = async () => {
     this.changeToDefaultBeforeResponse();
     const a = this.checkValidInput();
     console.log(a);
-
-    const b = await this.spinnerChecker(a);
-    this.spinnerCondition(a);
-    if (a)
-      await this.connectToServer().catch(err => console.log(err));
+    if (a) {
+      this.spinnerChecker(true);
+      const b = await this.spinnerChecker(a);
+      this.spinnerCondition(a);
+      if (a)
+        await this.connectToServer().catch(err => console.log(err));
+    }
   }
 
 

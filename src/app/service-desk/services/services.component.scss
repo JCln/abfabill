@@ -83,7 +83,7 @@ section {
 .content:focus,
 .content:active {
   --color: rgba(0, 98, 255, 0.88);
-  transform: translateX(1.7rem) translateY(.5rem);
+  transform: translateX(1.1rem) translateY(.5rem);
   opacity: 99;
   cursor: pointer;
   z-index: 3;
@@ -102,7 +102,7 @@ section {
 .content:nth-child(even):hover,
 .content:nth-child(even):focus,
 .content:nth-child(even):active {
-  transform: translateX(-1.7rem) translateY(.5rem);
+  transform: translateX(-1.1rem) translateY(.5rem);
 
   &::after {
     content: '';
@@ -121,7 +121,7 @@ section {
   &::after {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 106%;
     height: 106%;
     bottom: -.1rem;
     left: -1.7rem;

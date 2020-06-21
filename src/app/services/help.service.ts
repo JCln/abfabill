@@ -8,13 +8,15 @@ export class HelpService {
   messages: string[] = [];
   currentLastRoute: any;
 
-  addMessage = (header: string, mainText: string, img: string, secondImg?: string, footer?: string, secondMainText?: string) => {
+  private addMessage = (header: string, mainText: string, img: string, secondImg?: string, footer?: string, secondMainText?: string, link?: string, phone?: string) => {
     this.messages[0] = header;
     this.messages[1] = mainText;
     this.messages[2] = img;
     this.messages[3] = footer;
     this.messages[4] = secondImg;
     this.messages[5] = secondMainText;
+    this.messages[6] = link;
+    this.messages[7] = phone;
 
   }
   private routeToAxiliary = () => this.router.navigate(["aux", { outlets: { modal: ["help"] } }]);
@@ -27,22 +29,22 @@ export class HelpService {
 
     switch (this.currentLastRoute) {
       case 'pg':
-        this.addMessage('راهنمای استفاده از همراه آبفا استان اصفهان', 'اپلیکیشن اندروید "همراه آبفای استان اصفهان" به سفارش سازمان آب و فاضلاب استان اصفهان جهت سهولت ارتباط مشترکین و سازمان و کاهش مراجعات حضوری از طریق انجام خدمات به صورت غیرحضوری، برنامه ­نویسی و در فروشگاه­ های معتبر اندروید منتشرشد.شما می ­توانید با مراجعه به سایت مايکت با لینک 1https://myket.ir (https://myket.ir/app/com.app.leon.moshtarak)` ', 'assets/axiliaryroute/id.png', 'more pg', 'lot of pg text here');
+        this.addMessage('راهنمای استفاده از همراه آبفا استان اصفهان', 'اپلیکیشن وب "آبفای استان اصفهان" به سفارش سازمان آب و فاضلاب استان اصفهان جهت سهولت ارتباط مشترکین و سازمان و کاهش مراجعات حضوری از طریق انجام خدمات به صورت غیرحضوری، برنامه ­نویسی و منتشرشد. همچنین شما می ­توانید با مراجعه به سایت مايکت با لینک زیر', '', '', '', 'نسبت به استفاده از اپلیکیشن همراه آبفا نیز استفاده نمایید.', 'true');
         break;
       case 'bill':
         this.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و .... را مشاهده کنید', 'assets/axiliaryroute/2.PNG', 'assets/axiliaryroute/2-2.PNG', '', 'برای آن دسته از کاربران که تمایل به مشاهده قبض همانند قبض کاغذی دارند میتوانند با کلیک برروی مشاهد قبض کاغذی به این قسمت دسترسی داشته باشند');
         break;
       case 'ma':
-        this.addMessage('from ma', 'some text', 'more footer', 'assets/imgs/waterMeter.png', 'lot of text here');
+        this.addMessage(' صدور قبض میاندوره یا اعلام کارکرد کنتور', 'درصورتی که نیاز به صدور قبض خود دارید با وارد کردن شماره کنتور و شماره همراه خود آخرین قبض خود را صادر نمایید. در صورتی که اطلاعات شما بدرستی وارد شده باشد به صفحه قبض میاندوره صادر شد منتقل خواهید شد', '', 'assets/axiliaryroute/1.PNG', '');
         break;
       case 'kardex':
-        this.addMessage('صورتحساب (10 قبض آخر)', ' لیست آخرین قبوض خود و وضعیت آن­ ها را مشاهده نمایید. در این قسمت با تپ بر روی "صورت حساب آب بها" می توانید نمودار مصرف اخیر خود را ملاحظه نمایید. ضمنا با کلیک یا تب کردن روی هر سطر میتوانید جزئیات مربروط به آن آن سطر را مشاهده نمایید.', '', 'more kardex footer', 'lot of text here');
+        this.addMessage('صورتحساب (10 قبض آخر)', ' لیست آخرین قبوض خود و وضعیت آن­ ها را مشاهده نمایید. در این قسمت با تپ بر روی "مشاهده نمودار مصرف" می توانید نمودار مصرف اخیر خود را ملاحظه نمایید. ضمنا با کلیک یا تب کردن روی هر سطر میتوانید جزئیات بیشتر مربروط به آن آن سطر را مشاهده نمایید.', '', '', '');
         break;
       case 'installment':
-        this.addMessage('from installment', 'some text', '', 'more installment footer', 'lot of text here');
+        this.addMessage('اقساط', 'درصورتی که قبلا نسبت به اقساطی کردن قبوض خود اقدام کرده باشید میتوانید اطلاعات اقساط خود را مشاهده نمایید', '', '', '');
         break;
       case 'myInfo':
-        this.addMessage('اطلاعات انشعاب', 'some text', '', 'more installment footer', 'lot of text here');
+        this.addMessage('اطلاعات انشعاب', 'اطلاعات کلی انشعاب خود را مشاهده کنید', '', '', '');
         break;
       case 'elcs':
         this.addMessage(
@@ -77,13 +79,13 @@ export class HelpService {
         );
         break;
       case 'cs':
-        this.addMessage('from cs', 'در صورتی­که کاربران نسبت به این وب سایت ، پیشنهاد یا انتقادی دارند یا درصورت مشاهده هرگونه خطا می ­توانند کارشناسان سازمان را از طریق بخش "انتقادات و پیشنهادات" باخبر سازند.', '', 'more cs', 'lot of text here');
+        this.addMessage('انتقادات و پیشنهادات', 'در صورتی­که کاربران نسبت به این وب سایت ، پیشنهاد یا انتقادی دارند یا درصورت مشاهده هرگونه خطا می ­توانند کارشناسان سازمان را از طریق این بخش باخبر سازند.', '', '', '');
         break;
       case 'receipt':
-        this.addMessage('inside receipt', 'wooow', 'assets/axiliaryroute/2-3.PNG');
+        this.addMessage('مشاهده آخرین قبض بصورت کاغذی', 'در این قسمت امکان مشاهده قبض تمام صفحه و پرینت آن وجود دارد ', 'assets/axiliaryroute/2-3.PNG');
         break;
       case 'bar':
-        this.addMessage('نمودار مصرف', 'wooow', 'assets/axiliaryroute/2-3.PNG');
+        this.addMessage('نمودار مصرف شما', '', 'assets/axiliaryroute/2-3.PNG');
         break;
 
       default:
@@ -97,10 +99,18 @@ export class HelpService {
           8.            آموزش
           9.            انتقادات و پیشنهادات
           می ­باشد که با انتخاب هر کدام وارد صفحه مربوط به آن می شوید.
-          `, '', 'more cs', 'lot of text here');
+          `, '', '', '');
         break;
     };
   }
+  customName = () => {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd)
+        this.currentLastRoute = event.url.split('/').pop();
+    });
+    this.addMessage('مشترک گرامی', `این قسمت بطور کامل پیاده سازی نشده است، لطفا از طریق`, '', '', '', 'و یا با شماره ', 'true', 'true');
+  }
+
   help = () => this.routeToAxiliary();
 
   constructor(private router: Router) { }
