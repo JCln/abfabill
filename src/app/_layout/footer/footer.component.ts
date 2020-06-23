@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  lastMonthAnalytics: number = 405;
+  newContacts: number = 181;
 
   constructor() { }
 

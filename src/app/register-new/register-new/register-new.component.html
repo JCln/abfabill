@@ -127,7 +127,8 @@
             </div>
             <hr>
             <div class="justify_center">
-                <button type="submit">{{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
+                <button [disabled]="!profileForm.valid" type="submit">
+                    {{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
                 <!--[disabled]="!profileForm.valid"-->
             </div>
         </form>

@@ -31,8 +31,7 @@ $lighter_back: #eee;
 
 section {
   display: grid;
-  // grid-template-columns: repeat(2, 1fr);
-  margin-bottom: $mediaum_border;
+  margin-bottom: auto $mediaum_border $mediaum_border;
   min-height: 10rem;
   gap: .5rem;
 
@@ -83,7 +82,7 @@ section {
 .content:focus,
 .content:active {
   --color: rgba(0, 98, 255, 0.88);
-  transform: translateX(1.1rem) translateY(.5rem);
+  transform: translateX(.1rem) translateY(.1rem);
   opacity: 99;
   cursor: pointer;
   z-index: 3;
@@ -102,7 +101,7 @@ section {
 .content:nth-child(even):hover,
 .content:nth-child(even):focus,
 .content:nth-child(even):active {
-  transform: translateX(-1.1rem) translateY(.5rem);
+  transform: translateX(-.1rem) translateY(.1rem);
 
   &::after {
     content: '';

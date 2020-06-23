@@ -15,8 +15,16 @@ export class ErrorHandlerService implements ErrorHandler {
     private interactionService: InteractionService
   ) { }
 
-  toasterError = (message: string, info?: string) => {
-    if (info) {
+  toasterError = (message: string, info?: string, makeInfo?: string) => {
+    // the makeInfo added for information as lightblue color
+    if (makeInfo) {
+      this.toasterService.info(message, info, {
+        timeOut: 8000,
+        easeTime: '800',
+        easing: 'ease-in',
+        progressBar: true
+      });
+    } else if (info) {
       this.toasterService.success(message, info, {
         timeOut: 10000,
         easeTime: '800',

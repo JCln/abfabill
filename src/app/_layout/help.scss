@@ -1,22 +1,19 @@
 .help {
   --clr: #00368c;
   display: flex;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.9rem;
+  height: 2.9rem;
   position: absolute;
   cursor: pointer;
   border: 1px solid;
   padding: 1rem;
   place-items: center;
-  left: 1rem;
+  justify-content: center;
+  left: 1.35rem;
   border-radius: 50%;
-  top: 9.5rem;
+  top: 5.5rem;
   font-size: 1.6rem;
   color: var(--clr);
-
-  @media (min-width: 550px) {
-    left: 2.5rem;
-  }
 
   &:hover,
   &:focus,

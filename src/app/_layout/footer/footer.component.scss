@@ -4,6 +4,7 @@ $clr: #00368c;
 $white: #fff;
 $pale_levender: #d4dcff;
 $s-f: 2px;
+$font_size_title: 2rem;
 
 footer {
   $footer_background: rgba(0, 98, 255, 0.88);
@@ -20,17 +21,15 @@ footer {
     direction: rtl;
     color: $white;
 
-    li,
-    a {
+    li {
       font-size: 1.4rem;
       margin-bottom: 0.41rem;
 
-      .text_style {
-        text-decoration: none;
-        width: 77%;
-        color: $pale_levender;
-        font-weight: 600;
-      }
+
+      text-decoration: none;
+      width: auto;
+      color: $pale_levender;
+      font-weight: 600;
 
       :hover,
       :focus,
@@ -59,8 +58,12 @@ footer.brand {
 }
 
 @media screen and (min-width: 800px) {
-  footer ul {
-    display: flex;
-    justify-content: space-evenly;
+  footer {
+    margin-top: $font_size_title;
+
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
 }

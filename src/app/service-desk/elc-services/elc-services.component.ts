@@ -76,7 +76,7 @@ export class ElcServicesComponent implements OnInit {
       this.helpService.help();
       ElcServicesComponent.elcWarnTime = false;
     }
-    this.errorHandler.customToaster(5000, 'مشترک گرامی', 'این قسمت بطور کامل پیاده سازی نشده است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید');
+    this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
 
   }
 

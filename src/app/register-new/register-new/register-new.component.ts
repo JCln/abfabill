@@ -5,6 +5,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
+import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
 
 const minNeighbourBillId = 4;
@@ -17,9 +18,11 @@ const nationalId = 10;
   styleUrls: ['./register-new.component.scss']
 })
 export class RegisterNewComponent extends CheckRoute implements OnInit {
+  static firstTime = true;
   input: number;
   nationalId = '';
   mobileNumber = '';
+  neighbourBillId: string = '';
   // spinner
   notification: boolean = false;
   // notificationText = '';
@@ -29,11 +32,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
   showMessage = false;
   // button
 
-  private maxLength = 5;
-  private minLength = 1;
   private minNeighbourBillId = minNeighbourBillId;
   private maxNeidghbourBillId = maxNeighbourBillId;
-  private neighbourBillId;
 
   clickableButton: boolean = true;
   private mobileLength = mobileLength;
@@ -44,7 +44,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     private viewBillService: ViewBillService,
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private helpService: HelpService
   ) {
     super();
   }
@@ -165,6 +166,12 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
 
   ngOnInit(): void {
+    if (RegisterNewComponent.firstTime) {
+      this.helpService.customName();
+      this.helpService.help();
+      RegisterNewComponent.firstTime = false;
+    }
+    this.errorHandler.toasterError('مشترک گرامی این قسمت در حال بروز رسانی است، لطفا از طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
