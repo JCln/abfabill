@@ -1,6 +1,6 @@
 import { animate, animateChild, group, query, style, transition, trigger } from '@angular/animations';
 
-export const slideInAnimation =
+export const slideInAnimation = [
     trigger('routeAnimations', [
         transition('AppModule <=> ServiceDesk', [
             style({ position: 'relative' }),
@@ -37,7 +37,7 @@ export const slideInAnimation =
                 })
             ]),
             query(':enter', [
-                style({ left: '-100%' })
+                style({ left: '100%' })
             ], { optional: true }),
             query(':leave', animateChild(), { optional: true }),
             group([
@@ -50,4 +50,5 @@ export const slideInAnimation =
             ]),
             query(':enter', animateChild(), { optional: true }),
         ])
-    ]);
+    ])
+]
