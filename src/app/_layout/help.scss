@@ -6,14 +6,14 @@
   position: absolute;
   cursor: pointer;
   border: 1px solid;
-  padding: 1rem;
-  place-items: center;
+  align-items: center;
   justify-content: center;
   left: 1.35rem;
   border-radius: 50%;
   top: 5.5rem;
   font-size: 1.6rem;
   color: var(--clr);
+  transition: all ease-in-out 200ms;
 
   &:hover,
   &:focus,

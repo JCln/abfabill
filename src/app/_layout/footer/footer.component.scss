@@ -33,16 +33,16 @@ footer {
 }
 
 footer.brand {
-  --background: linear-gradient(#00368c, #232323);
   display: flex;
   place-items: center;
+  align-items: center;
   justify-content: center;
   color: $white;
   height: 1.5rem;
   padding: 0;
   margin-top: 0;
   border-radius: 0;
-  background: var(--background);
+  background: linear-gradient(#00368c, #232323);
 
   p {
     font-size: .8rem;
@@ -51,11 +51,11 @@ footer.brand {
 
 @media screen and (min-width: 600px) {
   footer {
-    margin-top: $font_size_title;
+    margin-top: $font_size_title + 0.8rem;
 
     ul {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
     }
   }
 }

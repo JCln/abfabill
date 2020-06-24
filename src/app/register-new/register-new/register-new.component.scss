@@ -17,6 +17,7 @@ button {
   background: $bright_torouse;
   width: auto;
   margin-top: 1rem;
+  justify-content: center;
   transition: background ease-in-out 250ms;
 
   &:disabled {
