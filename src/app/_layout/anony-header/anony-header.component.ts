@@ -9,7 +9,7 @@ import { HelpService } from './../../services/help.service';
   styleUrls: ['./anony-header.component.scss']
 })
 export class AnonyHeaderComponent implements AfterViewChecked {
-  showBack = true;
+  showBack = false;
   showMemberInfo = false;
 
   constructor(private _location: Location, private helpService: HelpService, private cdRef: ChangeDetectorRef) { }
@@ -25,22 +25,29 @@ export class AnonyHeaderComponent implements AfterViewChecked {
 
   private whereWhere = () => {
     let helpButton = document.querySelector('.help') as HTMLElement;
-    if (this._location.path() == '/pg') {
+    if (this._location.path() === '/pg') {
       helpButton.style.top = '3rem';
-      return true;
+      return 1;
     }
-    return false;
+    if (this._location.path() === '/registerNew') {
+      helpButton.style.top = '6rem';
+      return 2;
+    }
+    return 3;
   }
   // to check if we are in first page and not show back url
   canShowBackUrl = () => {
-    // maybe better with getState()
-    if (this.whereWhere()) {
+    if (this.whereWhere() === 1) {
       this.showBack = false;
       this.showMemberInfo = false;
     }
-    else {
+    else if (this.whereWhere() === 2) {
       this.showBack = true;
+      this.showMemberInfo = false;
+    }
+    else {
       this.showMemberInfo = true;
+      this.showBack = true;
     }
   }
   ngAfterViewChecked(): void {

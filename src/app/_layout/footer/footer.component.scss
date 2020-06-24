@@ -24,18 +24,10 @@ footer {
     li {
       font-size: 1.4rem;
       margin-bottom: 0.41rem;
-
-
       text-decoration: none;
       width: auto;
       color: $pale_levender;
       font-weight: 600;
-
-      :hover,
-      :focus,
-      :active {
-        border-bottom: $s-f solid $white;
-      }
     }
   }
 }
@@ -57,7 +49,7 @@ footer.brand {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 600px) {
   footer {
     margin-top: $font_size_title;
 
@@ -65,5 +57,11 @@ footer.brand {
       display: flex;
       justify-content: space-evenly;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  footer {
+    margin-top: $font_size_title + .7rem;
   }
 }
