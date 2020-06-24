@@ -108,7 +108,7 @@ export class HelpService {
       if (event instanceof NavigationEnd)
         this.currentLastRoute = event.url.split('/').pop();
     });
-    this.addMessage('مشترک گرامی', `این قسمت بطور کامل پیاده سازی نشده است، لطفا از طریق`, '', '', '', 'و یا با شماره ', 'true', 'true');
+    this.addMessage('مشترک گرامی', `این قسمت در حال بروز رسانی است، لطفا از طریق`, '', '', '', 'و یا با شماره ', 'true', 'true');
   }
 
   help = () => this.routeToAxiliary();
