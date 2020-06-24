@@ -57,6 +57,7 @@ $header_footer_b: linear-gradient(45deg, #00368c, #142147);
   position: absolute;
   display: flex;
   align-items: center;
+  justify-content: center;
   top: -1.5rem;
   right: -1.5rem;
   height: 3rem;
@@ -67,12 +68,6 @@ $header_footer_b: linear-gradient(45deg, #00368c, #142147);
   font-weight: bold;
   color: $lightgray;
   background: $header_footer_b;
-
-  ._close {
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-  }
 }
 
 .close:hover,
