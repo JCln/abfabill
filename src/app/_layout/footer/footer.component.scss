@@ -4,19 +4,19 @@ $clr: #00368c;
 $white: #fff;
 $pale_levender: #d4dcff;
 $s-f: 2px;
-$font_size_title: 2rem;
+$font_size_title: 2.2rem;
 
 footer {
   $footer_background: rgba(0, 98, 255, 0.88);
 
   background: linear-gradient($footer_background, $clr);
-  margin-top: $margin_bottom_sections;
+  margin-top: $font_size_title;
   border-radius: 30% 30% 0 0%;
 
   ul {
     text-align: right;
     list-style-type: disc;
-    padding: 1rem 0.1rem;
+    padding: .5rem 0.1rem;
     margin: 0px 4rem;
     direction: rtl;
     color: $white;
@@ -62,6 +62,6 @@ footer.brand {
 
 @media screen and (min-width: 1200px) {
   footer {
-    margin-top: $font_size_title + .7rem;
+    margin-top: $font_size_title + 1.5rem;
   }
 }
