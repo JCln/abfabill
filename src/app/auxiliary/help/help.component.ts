@@ -33,5 +33,8 @@ export class HelpComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.messages = this.helpService.messages;
+    if (!this.messages) {
+      this.messages = this.helpService.defaultMessage;
+    }
   }
 }

@@ -35,7 +35,7 @@ export const slideInAnimation = [
                     left: 0,
                     width: '100%'
                 })
-            ]),
+            ], { optional: true }),
             query(':enter', [
                 style({ left: '100%' })
             ], { optional: true }),

@@ -6,6 +6,17 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HelpService {
   messages: string[] = [];
+  defaultMessage: string[] = ['میز خدمات الکترونیکی شرکت آبفا', `1.            آخرین قبض
+  2.            صورتحساب
+  3.            اعلام کارکرد کنتور
+  4.            فروش انشعاب
+  5.            خدمات پس از فروش
+  6.            پیگیری درخواست ها
+  7.            راهنما
+  8.            آموزش
+  9.            انتقادات و پیشنهادات
+  می ­باشد که با انتخاب هر کدام وارد صفحه مربوط به آن می شوید.
+  `, '', '', '']; // for default message help
   currentLastRoute: any;
 
   private addMessage = (header: string, mainText: string, img: string, secondImg?: string, footer?: string, secondMainText?: string, link?: string, phone?: string) => {
@@ -19,7 +30,7 @@ export class HelpService {
     this.messages[7] = phone;
 
   }
-  private routeToAxiliary = () => this.router.navigate(["aux", { outlets: { modal: ["help"] } }]);
+  private routeToAxiliary = () => this.router.navigate(["/aux", { outlets: { modal: ["help"] } }]);
 
   someName = () => {
     this.router.events.subscribe(event => {
@@ -32,7 +43,7 @@ export class HelpService {
         this.addMessage('راهنمای استفاده از همراه آبفا استان اصفهان', 'اپلیکیشن وب "آبفای استان اصفهان" به سفارش سازمان آب و فاضلاب استان اصفهان جهت سهولت ارتباط مشترکین و سازمان و کاهش مراجعات حضوری از طریق انجام خدمات به صورت غیرحضوری، برنامه ­نویسی و منتشرشد. همچنین شما می ­توانید با مراجعه به سایت مايکت با لینک زیر', '', '', '', 'نسبت به استفاده از اپلیکیشن همراه آبفا نیز استفاده نمایید.', 'true');
         break;
       case 'bill':
-        this.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و .... را مشاهده کنید', 'assets/axiliaryroute/2.PNG', 'assets/axiliaryroute/2-2.PNG', '', 'برای آن دسته از کاربران که تمایل به مشاهده قبض همانند قبض کاغذی دارند میتوانند با کلیک برروی مشاهد قبض کاغذی به این قسمت دسترسی داشته باشند');
+        this.addMessage('بررسی آخرین قبض', 'می ­توانید اطلاعات مربوط به آخرین قبض خود، اعم از شناسه قبض، شناسه پرداخت، مهلت و مبلغ قابل پرداخت، شماره فعلی و پیشین و ... را مشاهده کنید', 'assets/axiliaryroute/2.PNG', 'assets/axiliaryroute/2-2.PNG', '', 'برای آن دسته از کاربران که تمایل به مشاهده قبض همانند قبض کاغذی دارند میتوانند با کلیک برروی مشاهد قبض کاغذی به این قسمت دسترسی داشته باشند');
         break;
       case 'ma':
         this.addMessage(' صدور قبض میاندوره یا اعلام کارکرد کنتور', 'درصورتی که نیاز به صدور قبض خود دارید با وارد کردن شماره کنتور و شماره همراه خود آخرین قبض خود را صادر نمایید. در صورتی که اطلاعات شما بدرستی وارد شده باشد به صفحه قبض میاندوره صادر شد منتقل خواهید شد', '', 'assets/axiliaryroute/1.PNG', '');
