@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthGuard } from '../services/auth.guard';
@@ -10,7 +10,7 @@ import { IViewBill } from './../services/iview-bill';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss']
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {
   private maxLength = 13;
   private minLength = 4;
   input: number;
@@ -23,8 +23,6 @@ export class PageNotFoundComponent implements OnInit {
       this.checkValidInput();
     }
   }
-  // isNull = (value: any) =>
-  //   typeof value === "undefined" || (typeof value !== "object" || !value)
 
   checkValidInput = () => {
     if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length <= this.minLength) {
@@ -39,9 +37,6 @@ export class PageNotFoundComponent implements OnInit {
 
   private billIdValue = (billId: IViewBill['billId']) => {
     this.router.navigate([billId]);
-  }
-
-  ngOnInit() {
   }
 
 }

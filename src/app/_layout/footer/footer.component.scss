@@ -55,7 +55,7 @@ footer.brand {
 
 @media screen and (min-width: 600px) {
   footer {
-    margin-top: $font_size_title + 0.8rem;
+    margin-top: $font_size_title + 1.5rem;
 
     ul {
       display: flex;
@@ -66,6 +66,6 @@ footer.brand {
 
 @media screen and (min-width: 1200px) {
   footer {
-    margin-top: $font_size_title + 1.5rem;
+    margin-top: $font_size_title + 2.3rem;
   }
 }
