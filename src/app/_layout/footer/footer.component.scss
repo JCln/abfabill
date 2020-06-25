@@ -23,11 +23,15 @@ footer {
 
     li {
       font-size: 1.4rem;
-      margin-bottom: 0.41rem;
       text-decoration: none;
       width: auto;
       color: $pale_levender;
       font-weight: 600;
+
+      i {
+        transform: translateY(3px);
+        padding: 0 1rem;
+      }
     }
   }
 }
