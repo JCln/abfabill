@@ -26,11 +26,11 @@ export class AnonyHeaderComponent implements AfterViewChecked {
   private whereWhere = () => {
     let helpButton = document.querySelector('.help') as HTMLElement;
     if (this._location.path() === '/pg') {
-      helpButton.style.top = '3rem';
+      helpButton.style.top = '2.5rem';
       return 1;
     }
     if (this._location.path() === '/registerNew') {
-      helpButton.style.top = '6rem';
+      helpButton.style.top = '5.5rem';
       return 2;
     }
     return 3;
