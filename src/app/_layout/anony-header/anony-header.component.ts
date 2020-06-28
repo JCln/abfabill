@@ -56,7 +56,9 @@ export class AnonyHeaderComponent implements AfterViewChecked {
   }
 
   help = () => {
-    this.helpService.someName();
+    const a = window.location.pathname.split('/').pop();
+
+    this.helpService.someName(a);
     this.helpService.help();
   }
 

@@ -14,22 +14,22 @@ footer {
   border-radius: 30% 30% 0 0%;
 
   ul {
-    text-align: right;
-    list-style-type: disc;
+    text-align: center;
+    list-style-type: none;
     padding: .5rem 0.1rem;
-    margin: 0px 4rem;
+    margin: 0;
     direction: rtl;
     color: $white;
 
     li {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       text-decoration: none;
       width: auto;
       color: $pale_levender;
       font-weight: 600;
 
       i {
-        transform: translateY(3px);
+        transform: translateY(3px) translateX(1rem);
         padding: 0 1rem;
       }
     }
@@ -55,17 +55,9 @@ footer.brand {
 
 @media screen and (min-width: 600px) {
   footer {
-    margin-top: $font_size_title + 1.5rem;
-
     ul {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
     }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  footer {
-    margin-top: $font_size_title + 2.3rem;
   }
 }

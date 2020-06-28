@@ -1,5 +1,5 @@
 .content {
-  min-height: 60vh;
+  min-height: 70vh;
   overflow: hidden;
   display: block;
   position: relative;
@@ -7,7 +7,6 @@
 
 @media screen and (min-width: 550px) {
   .content {
-    // width: 50%;
     margin: 0 auto;
     min-width: auto;
     padding: 0 .15rem;

@@ -6,22 +6,22 @@ import { IServices } from './iservices';
 
 const serviceNames: IServices[] = [
   {
-    title: 'اعلام کارکرد کنتور', desc: '', spanClass: 'fas fa-table', routerLink: 'ma', src: 'assets/imgs/serviceDesk/AnnouncingTheMeter.png'
+    title: 'اعلام کارکرد کنتور', routerLink: 'ma', src: 'assets/imgs/serviceDesk/AnnouncingTheMeter.png'
   },
   {
-    title: 'آخرین قبض', desc: '', spanClass: 'fas fa-receipt', routerLink: 'bill', src: 'assets/imgs/serviceDesk/latestBill.png'
+    title: 'آخرین قبض', routerLink: 'bill', src: 'assets/imgs/serviceDesk/latestBill.png'
   },
   {
-    title: 'ده قبض آخر', desc: '', spanClass: 'fas fa-receipt', routerLink: 'kardex', src: 'assets/imgs/serviceDesk/viewBills.png'
+    title: 'ده قبض آخر', routerLink: 'kardex', src: 'assets/imgs/serviceDesk/viewBills.png'
   },
   {
-    title: 'نمایش اقساط', desc: '', spanClass: 'fas fa-money-bill', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment.png'
+    title: 'نمایش اقساط', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment.png'
   },
   {
-    title: 'خدمات پس از فروش', desc: '', spanClass: 'fas fa-table', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+    title: 'خدمات پس از فروش', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
   },
   {
-    title: 'پیشنهادات و انتقادات', desc: '', spanClass: 'fas fa-table', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'
+    title: 'پیشنهادات و انتقادات', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'
   },
 ];
 

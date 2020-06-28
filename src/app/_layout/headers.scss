@@ -95,6 +95,8 @@ section {
 
 #menu {
   position: absolute;
+  visibility: hidden;
+  opacity: 0;
   right: -0.7rem;
   width: 100vw;
   margin: -100px 0 0 -30px;
@@ -106,9 +108,9 @@ section {
   -webkit-font-smoothing: antialiased;
 
   transform-origin: 0% 0%;
-  transform: translate(-11%, -100%);
+  transform: translate(-25%, -100%);
 
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: visibility 100ms, opacity 200ms linear, transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
   @media (min-width: 550px) {
     margin: -100px 0 0 -53px;
@@ -130,6 +132,8 @@ section {
 }
 
 #menuToggle input:checked~ul {
+  visibility: visible;
+  opacity: 1;
   background: linear-gradient(#00368c, rgba(0, 98, 255, 0.88));
   box-shadow: 2px -1px 6px 10px $pale_levender;
   transform: none;

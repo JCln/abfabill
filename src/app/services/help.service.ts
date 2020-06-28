@@ -32,13 +32,8 @@ export class HelpService {
   }
   private routeToAxiliary = () => this.router.navigate(["/aux", { outlets: { modal: ["help"] } }]);
 
-  someName = () => {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd)
-        this.currentLastRoute = event.url.split('/').pop();
-    });
-
-    switch (this.currentLastRoute) {
+  someName = (currentRoute: string) => {
+    switch (currentRoute) {
       case 'pg':
         this.addMessage('راهنمای استفاده از همراه آبفا استان اصفهان', 'اپلیکیشن وب "آبفای استان اصفهان" به سفارش سازمان آب و فاضلاب استان اصفهان جهت سهولت ارتباط مشترکین و سازمان و کاهش مراجعات حضوری از طریق انجام خدمات به صورت غیرحضوری، برنامه ­نویسی و منتشرشد. همچنین شما می ­توانید با مراجعه به سایت مايکت با لینک زیر', '', '', '', 'نسبت به استفاده از اپلیکیشن همراه آبفا نیز استفاده نمایید.', 'true');
         break;
@@ -92,6 +87,9 @@ export class HelpService {
       case 'cs':
         this.addMessage('انتقادات و پیشنهادات', 'در صورتی­که کاربران نسبت به این وب سایت ، پیشنهاد یا انتقادی دارند یا درصورت مشاهده هرگونه خطا می ­توانند کارشناسان سازمان را از طریق این بخش باخبر سازند.', '', '', '');
         break;
+      case 'registerNew':
+        this.addMessage('خرید انشعاب', 'در این قسمت میتوانید نسبت به خرید انشعاب آب و یا آب و فاضلاب اقدام نمایید', '');
+        break;
       case 'receipt':
         this.addMessage('مشاهده آخرین قبض بصورت کاغذی', 'در این قسمت امکان مشاهده قبض تمام صفحه و پرینت آن وجود دارد ', 'assets/axiliaryroute/2-3.PNG');
         break;
@@ -113,6 +111,7 @@ export class HelpService {
           `, '', '', '');
         break;
     };
+
   }
   customName = () => {
     this.router.events.subscribe(event => {
