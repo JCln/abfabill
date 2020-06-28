@@ -106,10 +106,10 @@ section {
   &::after {
     content: '';
     position: absolute;
-    width: 106%;
-    height: 106%;
+    width: 104%;
+    height: 102%;
     bottom: -.1rem;
-    right: -1.7rem;
+    right: -.3rem;
   }
 }
 
@@ -120,9 +120,9 @@ section {
   &::after {
     content: '';
     position: absolute;
-    width: 106%;
-    height: 106%;
+    width: 104%;
+    height: 102%;
     bottom: -.1rem;
-    left: -1.7rem;
+    left: -.3rem;
   }
 }
