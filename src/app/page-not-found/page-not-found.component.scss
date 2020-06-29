@@ -102,6 +102,7 @@ main {
   button {
     --color: #116fff;
     @extend %button_first;
+    max-height: 3rem;
     min-width: auto;
     width: auto;
     align-items: center;

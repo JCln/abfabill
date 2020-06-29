@@ -4,13 +4,11 @@ $clr: #00368c;
 $white: #fff;
 $pale_levender: #d4dcff;
 $s-f: 2px;
-$font_size_title: 2.2rem;
 
 footer {
   $footer_background: rgba(0, 98, 255, 0.88);
 
   background: linear-gradient($footer_background, $clr);
-  margin-top: $font_size_title;
   border-radius: 30% 30% 0 0%;
 
   ul {
