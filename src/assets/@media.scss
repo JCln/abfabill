@@ -93,48 +93,20 @@
 
 }
 
-@media (max-width: 549px) {
-  section {
-    grid-template-columns: repeat(2, 1fr);
+@mixin threeColumnsWithVals($value, $val, $val2) {
+  $s: repeat(2, 1fr);
+  $m: repeat(3, 1fr);
+
+  @media (min-width: $val) {
+    #{$value} {
+      grid-template-columns: $s;
+    }
   }
-}
 
-@media (min-width: 550px) {
-  section {
-    grid-template-columns: repeat(3, 1fr);
+  @media (min-width: $val2) {
+    #{$value} {
+      grid-template-columns: $m;
+    }
   }
+
 }
-
-@media (min-width: 780px) {
-  section {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1000px) {
-  section {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  section {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-// could implement for default element and 
-// @mixin woow($value) {
-//   section: $value;
-
-//   @media (min-width: 550px) {
-//     @include parameter(section, (3, 1fr));
-//   }
-// }
-
-
-// @mixin parameter($element, $min-width) {
-//   #{$element} {
-//     grid-template-columns: repeat($min-width);
-//   }
-// }

@@ -1,8 +1,7 @@
 <main>
     <section class="error_inner">
         <div class="_job_detail">
-            <h1>خدمات الکترونیکی</h1>
-            <p>شرکت آب و فاضلاب استان اصفهان</p>
+            <h1>خدمات پس از فروش</h1>
             <hr>
         </div>
         <div class="form">
@@ -11,20 +10,40 @@
                     placeholder="شناسه قبض را اینجا وارد کنید" autofocus required
                     title="لطفا  شناسه قبض خود را وارد فرمایید">
             </div>
-            <div class="div1" (click)="checkValidInput()">
-                <p>ورود</p>
-                <div class="div2">
-                </div>
-            </div>
         </div>
         <div class="justify_center">
-            <button [routerLink]="['../registerNew']">
-                <img src="assets/imgs/registernew.png" alt="">
-                <div style="margin: auto; text-align: center;"> خرید انشعاب آب و فاضلاب</div>
+            <button (click)="checkValidInput()">
+                <div style="margin: auto; text-align: center;">ورود</div>
             </button>
         </div>
     </section>
-    <section class="img_content">
-        <img class="img_class" src="assets/pagenotfound/pg.png" alt="">
+    <section class="register_new">
+        <div class="_job_detail">
+            <h1>خرید انشعاب جدید</h1>
+            <hr>
+        </div>
+        <div class="justify_center">
+            <button [routerLink]="['../registerNew']">
+                <div style="margin: auto; text-align: center;">شروع درخواست</div>
+            </button>
+        </div>
+    </section>
+    <section class="track_request">
+        <div class="_job_detail">
+            <h1>پیگیری درخواست های قبلی</h1>
+            <hr>
+        </div>
+        <div class="form">
+            <div class="form-item">
+                <input [(ngModel)]="input" type="number" class="form-input" name="billId"
+                    placeholder="شماره پیگیری را اینجا وارد کنید" autofocus required
+                    title="لطفا شماره پیگیری را وارد فرمایید">
+            </div>
+        </div>
+        <div class="justify_center">
+            <button (click)="checkValidInput()">
+                <div style="margin: auto; text-align: center;">ورود</div>
+            </button>
+        </div>
     </section>
 </main>

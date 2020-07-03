@@ -55,7 +55,8 @@ section {
 
   .bottom_back {
     position: relative;
-    width: 60%;
+    // width: 60%;
+    width: 100%;
     height: 6rem;
     max-height: 6rem;
     margin: 0 auto;
@@ -69,7 +70,7 @@ section {
       border: none;
 
       img {
-        width: 5.5rem;
+        width: 7.5rem;
         height: 5.5rem;
       }
 
@@ -81,7 +82,8 @@ section {
 .content:hover,
 .content:focus,
 .content:active {
-  --color: rgba(0, 98, 255, 0.88);
+  $clr: #00368c;
+  --color: rgba(0, 98, 255, 0.40);
   transform: translateX(.1rem) translateY(.1rem);
   opacity: 99;
   cursor: pointer;
@@ -89,7 +91,7 @@ section {
   box-shadow: 1px 1px 15px 0px var(--color);
   outline: none;
   font-size: 1.6rem;
-  color: rgba(0, 98, 255, 0.88);
+  color: $clr;
   background: linear-gradient(#00368c47, var(--color));
 
   img {
@@ -126,3 +128,5 @@ section {
     left: -.3rem;
   }
 }
+
+@include sixColumns(section);
