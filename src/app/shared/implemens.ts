@@ -1,6 +1,6 @@
 interface IImplements {
     connectToServer(): void | Promise<any>
 }
-export class Implemens implements IImplements {
-    connectToServer = () => { }
+export abstract class Implemens implements IImplements {
+    abstract connectToServer = () => { }
 }

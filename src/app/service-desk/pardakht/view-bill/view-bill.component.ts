@@ -36,7 +36,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
   constructor(
-    private viewBillService: ViewBillService,
+    private interfaceService: ViewBillService,
     private errorHandler: ErrorHandlerService,
     private interactionService: InteractionService,
     private googleAnalyticsService: GoogleAnalyticsService
@@ -51,7 +51,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     callback();
   }
   private connectToServer = () => {
-    this.viewBillService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
+    this.interfaceService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) { // should implement isNull insead
         this.insertValToVar(res, this.removeLoaderAfterResponse);
         this.interactionService.setReceipt(this.testObject);
@@ -62,7 +62,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   }
 
   private nestingLevel = () => {
-    this.connectToServer();    
+    this.connectToServer();
   }
 
   sendButtonEventToAnalytics = () => {

@@ -33,16 +33,22 @@ const serviceNames: IServices[] = [
     title: 'صدور قبض میاندوره', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/annMetter.png'
   },
   {
-    title: ' ', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/.png'
+    title: 'تعویض کنتور خراب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
   },
   {
-    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+    title: 'آزمایش کنتور', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/test.png'
   },
   {
-    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+    title: 'لوله‌گذاری', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/valve.png'
   },
   {
-    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/.png'
+    title: 'استعلام نظام مهندسی', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ass.png'
+  },
+  {
+    title: 'نصب سیفون اضافی فاضلاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/nvalve.png'
+  },
+  {
+    title: 'قطع یا نصب انشعاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/opnclose.png'
   },
   {
     title: 'پیشنهادات و انتقادات', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'

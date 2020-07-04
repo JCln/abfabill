@@ -23,6 +23,9 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule)
+  },
+  {
     path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)
   },
   { path: '**', redirectTo: 'pg', pathMatch: 'full' }
