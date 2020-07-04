@@ -7,8 +7,7 @@
         <div class="form">
             <div class="form-item">
                 <input [(ngModel)]="input" type="number" class="form-input" name="billId"
-                    placeholder="شناسه قبض را اینجا وارد کنید" autofocus required
-                    title="لطفا  شناسه قبض خود را وارد فرمایید">
+                    placeholder="شناسه قبض را اینجا وارد کنید" required title="لطفا  شناسه قبض خود را وارد فرمایید">
             </div>
         </div>
         <div class="justify_center">
@@ -22,8 +21,15 @@
             <h1>خرید انشعاب جدید</h1>
             <hr>
         </div>
+        <div class="form">
+            <div class="form-item">
+                <input [(ngModel)]="neighbourBillId" type="number" class="form-input" name="neighbourBillId"
+                    placeholder="شناسه قبض همسایه را اینجا وارد کنید" required
+                    title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید">
+            </div>
+        </div>
         <div class="justify_center">
-            <button [routerLink]="['../registerNew']">
+            <button (click)="isNeighbourBillId()">
                 <div style="margin: auto; text-align: center;">شروع درخواست</div>
             </button>
         </div>
@@ -36,12 +42,11 @@
         <div class="form">
             <div class="form-item">
                 <input [(ngModel)]="input" type="number" class="form-input" name="billId"
-                    placeholder="شماره پیگیری را اینجا وارد کنید" autofocus required
-                    title="لطفا شماره پیگیری را وارد فرمایید">
+                    placeholder="شماره پیگیری را اینجا وارد کنید" required title="لطفا شماره پیگیری را وارد فرمایید">
             </div>
         </div>
         <div class="justify_center">
-            <button (click)="checkValidInput()">
+            <button>
                 <div style="margin: auto; text-align: center;">ورود</div>
             </button>
         </div>

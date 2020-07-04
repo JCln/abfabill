@@ -6,10 +6,10 @@ import { IServices } from './iservices';
 
 const serviceNames: IServices[] = [
   {
-    title: 'اعلام کارکرد کنتور', routerLink: 'ma', src: 'assets/imgs/serviceDesk/AnnouncingTheMeter.png'
+    title: 'اعلام کارکرد کنتور', routerLink: 'ma', src: 'assets/imgs/serviceDesk/meter.png'
   },
   {
-    title: 'آخرین قبض', routerLink: 'bill', src: 'assets/imgs/serviceDesk/latestBill.png'
+    title: 'آخرین قبض', routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
   },
   {
     title: 'ده قبض آخر', routerLink: 'kardex', src: 'assets/imgs/serviceDesk/viewBills.png'
@@ -18,7 +18,31 @@ const serviceNames: IServices[] = [
     title: 'نمایش اقساط', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment.png'
   },
   {
-    title: 'خدمات پس از فروش', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+    title: 'تغییر واحد مسکونی', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/vahed.png'
+  },
+  {
+    title: 'تغییر مشخصات', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/name.png'
+  },
+  {
+    title: 'تغییر کاربری', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/karbari.png'
+  },
+  {
+    title: 'ثبت شماره همراه', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/mobile.png'
+  },
+  {
+    title: 'صدور قبض میاندوره', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/annMetter.png'
+  },
+  {
+    title: ' ', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/.png'
+  },
+  {
+    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+  },
+  {
+    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/support.png'
+  },
+  {
+    title: '', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/.png'
   },
   {
     title: 'پیشنهادات و انتقادات', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'

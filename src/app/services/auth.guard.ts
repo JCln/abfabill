@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { ErrorHandlerService } from './error-handler.service';
 
@@ -11,7 +12,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   private maxLength = 13;
   private minLength = 4;
 
-  constructor(private router: Router, private errorHandler: ErrorHandlerService) { }
+  constructor(private router: Router, private errorHandler: ErrorHandlerService, private interfaceService: ViewBillService) { }
 
   private checkValidInput = (): boolean => {
     if (this.idRoutePart === null || this.idRoutePart.length > this.maxLength || this.idRoutePart.length <= this.minLength)
@@ -29,9 +30,18 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return false;
   }
 
-  private mainCheckup = () => {
+  checkValidBillId = (): boolean => {
+    return this.interfaceService.getIsValidId(this.idRoutePart).subscribe((res: any) => {
+      if (res.errorCode === 200)
+        return true;
+      return false;
+    });
+  }
+
+  mainCheckup = () => {
     if (this.checkValidInput() && this.checkValidRoute()) {
-      return true;
+      if (this.checkValidBillId())
+        return true;
     }
     this.router.navigate(['/pg']);
     this.errorHandler.handleError(406);
