@@ -29,7 +29,7 @@ export class AnonyHeaderComponent implements AfterViewChecked {
       helpButton.style.top = '2.5rem';
       return 1;
     }
-    if (this._location.path() === '/registerNew') {
+    if (this._location.path() === '/registerNew' || this._location.path() === '/tr') {
       helpButton.style.top = '5.5rem';
       return 2;
     }

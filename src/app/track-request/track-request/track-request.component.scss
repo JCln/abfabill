@@ -1,0 +1,66 @@
+@import '../../../assets/mixins';
+@import '../../../assets/variables';
+
+.header_title {
+  background: $clr;
+
+  .title {
+    font-size: 1.8rem;
+    color: $c_light_gray;
+    margin: $small_font_size;
+  }
+}
+
+main {
+  text-align: right;
+  background: $c_light_gray;
+}
+
+section {
+  display: grid;
+  padding: $small_font_size;
+}
+
+._status {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: .7rem;
+  color: $dark_b_color;
+}
+
+._date-time {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  .__time {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $dark_b_color;
+  }
+
+  .__date {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    font-size: $font_medium_size;
+  }
+
+  ._more-details {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: $font_medium_size;
+    color: $clr_border;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+}
+
+hr {
+  width: 100%;
+  height: 0;
+  color: $c_light_gray;
+  margin: 0;
+}

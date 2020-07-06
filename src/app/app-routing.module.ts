@@ -11,7 +11,8 @@ const routes: Routes = [
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', redirectTo: 'pg', pathMatch: 'full' },
       { path: 'pg', component: PageNotFoundComponent },
-      { path: 'registerNew', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } }
+      { path: 'rn', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } },
+      { path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
     ]
   },
   { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },
@@ -21,9 +22,6 @@ const routes: Routes = [
         path: 'r', loadChildren: () => import('./response/response.module').then(r => r.ResponseModule)
       }
     ]
-  },
-  {
-    path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule)
   },
   {
     path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)

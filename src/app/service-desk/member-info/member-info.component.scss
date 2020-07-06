@@ -41,7 +41,7 @@ section {
       }
 
       .div1 {
-        background: #00368c;
+        background: $clr;
 
         .div2 {
           background: #345891;
@@ -52,7 +52,7 @@ section {
 
     .first_background {
       .div1 {
-        background: #062c68;
+        background: $dark_b_color;
       }
     }
   }

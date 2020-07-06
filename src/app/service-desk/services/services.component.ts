@@ -48,7 +48,7 @@ const serviceNames: IServices[] = [
     title: 'نصب سیفون اضافی فاضلاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/nvalve.png'
   },
   {
-    title: 'قطع یا نصب انشعاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/opnclose.png'
+    title: 'قطع یا نصب انشعاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
   },
   {
     title: 'پیشنهادات و انتقادات', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'

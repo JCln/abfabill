@@ -1,31 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
-import { ViewBillService } from 'src/app/services/view-bill.service';
+import { AfterContentChecked, Component } from '@angular/core';
 
-import { Implemens } from './../../shared/implemens';
+import { ErrorHandlerService } from './../../services/error-handler.service';
+import { TrackRequestService } from './../../services/track-request.service';
 
 @Component({
   selector: 'app-track-request',
   templateUrl: './track-request.component.html',
   styleUrls: ['./track-request.component.scss']
 })
-export class TrackRequestComponent implements OnInit, Implemens {
+export class TrackRequestComponent implements AfterContentChecked {
   trackRequests: any = [];
 
   constructor(
-    private interfaceService: ViewBillService,
-    private spinnerWrapper: SpinnerWrapperService
+    private trackRequestService: TrackRequestService,
+    private toasterService: ErrorHandlerService
   ) { }
 
-  connectToServer = () => {
-  }
-
-  createSpinner = (canLoad: boolean) => {
-    canLoad ? this.spinnerWrapper.startLoading() : this.spinnerWrapper.stopLoading()
-  }
-
-
-  ngOnInit(): void {
+  ngAfterContentChecked() {
+    this.trackRequestService.$tracks.subscribe(res => {
+      console.log(res);
+      console.log(1);
+      if (!res) {
+        this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
+        this.trackRequestService.noInfoExists;
+      }
+    })
   }
 
 }

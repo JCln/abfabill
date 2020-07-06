@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { MainService } from './main.service';
 
+const tracks = of([1 , '3233', 'woooow']);
+// const tracks = [
+//   {
+//     status: 'woow',
+//     hm: '15:35',
+//     dateJalali: '95/11/24'
+//   }
+// ]
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +21,9 @@ export class ViewBillService {
 
   idValues = (id: string) => {
     this.base64 = btoa(id);
+  }
+  getIsValidId = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/member/isvalid');
   }
   getViewBill = (id: string): any => {
     this.idValues(id);
@@ -29,6 +40,11 @@ export class ViewBillService {
   getABillKardex = (id: number, zoneId: number): any => {
     this.idValues(`${id + '' + zoneId}`);
     return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisBill/${this.base64}`);
+  }
+  getTrackingRequest = (id: number): any => {
+    const idToString = id.toString();
+    return tracks;
+    // return this.mainService.GET(idToString, 'moshtarakinapi/requestManager/getTrackings');
   }
   paymentInfoKardex = (id: number, zoneId: number): any => {
     this.idValues(`${id + '' + zoneId}`);

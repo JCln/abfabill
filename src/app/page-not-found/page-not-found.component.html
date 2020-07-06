@@ -41,12 +41,12 @@
         </div>
         <div class="form">
             <div class="form-item">
-                <input [(ngModel)]="input" type="number" class="form-input" name="billId"
+                <input [(ngModel)]="tracks" type="number" class="form-input" name="billId"
                     placeholder="شماره پیگیری را اینجا وارد کنید" required title="لطفا شماره پیگیری را وارد فرمایید">
             </div>
         </div>
         <div class="justify_center">
-            <button>
+            <button (click)="checkTrackNumber()">
                 <div style="margin: auto; text-align: center;">ورود</div>
             </button>
         </div>

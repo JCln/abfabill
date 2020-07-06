@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthGuard } from '../services/auth.guard';
 import { ErrorHandlerService } from '../services/error-handler.service';
 import { IViewBill } from './../services/iview-bill';
+import { TrackRequestService } from './../services/track-request.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -13,10 +14,14 @@ import { IViewBill } from './../services/iview-bill';
 export class PageNotFoundComponent {
   private maxLength = 13;
   private minLength = 4;
+  private trackMinLength = 3;
+  private trackMaxLength = 9;
+
   input: number;
   neighbourBillId: number;
+  tracks: number;
 
-  constructor(private router: Router, private errorHandler: ErrorHandlerService, private authGuard: AuthGuard) { }
+  constructor(private router: Router, private errorHandler: ErrorHandlerService, private authGuard: AuthGuard, private trackRequstService: TrackRequestService) { }
 
   // @HostListener('document: keyup', ['$event'])
   // onkeyUpHandler(event: KeyboardEvent) {
@@ -25,13 +30,26 @@ export class PageNotFoundComponent {
   //   }
   // }
 
+  checkTrackNumber = () => {
+    if (isNaN(this.tracks) || this.tracks === null || this.tracks.toString().length > this.trackMaxLength || this.tracks.toString().length <= this.trackMinLength) {
+      this.tracks = null;
+      this.errorHandler.customToaster(5000, 'شماره پیگیری اشتباه است');
+      return;
+    } else {
+      const canRoute = this.trackRequstService.canConnectToServer(this.tracks);
+      console.log(typeof canRoute);
+
+      if (canRoute)
+        this.router.navigate(['tr'])
+    }
+  }
   isNeighbourBillId = () => {
     if (isNaN(this.neighbourBillId) || this.neighbourBillId === null || this.neighbourBillId.toString().length > this.maxLength || this.neighbourBillId.toString().length <= this.minLength) {
       this.neighbourBillId = null;
       this.errorHandler.handleError(404);
       return;
     } else {
-      this.router.navigate(['registerNew'])
+      this.router.navigate(['rn'])
     }
   }
   checkValidInput = () => {

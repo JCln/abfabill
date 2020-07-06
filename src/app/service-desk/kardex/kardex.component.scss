@@ -9,7 +9,7 @@ $darker_gray: #5C5C5C;
 
 .main_border {
   border: 2px solid darkgray;
-  border-radius: 30px;
+  border-radius: $__border_radius;
   margin: 0 .1rem;
   margin-bottom: .8rem;
   display: flex;
@@ -41,7 +41,7 @@ $darker_gray: #5C5C5C;
 
       .__payed_time {
         position: absolute;
-        font-size: 1rem;
+        font-size: $small_font_size;
         font-weight: 600;
         line-height: 1.8;
         color: $darker_gray;
@@ -75,8 +75,8 @@ $darker_gray: #5C5C5C;
   align-items: center;
   position: absolute;
   background-color: $bright_torouse;
-  width: 3rem;
-  height: 3rem;
+  width: $big_size;
+  height: $big_size;
   border-radius: 50%;
   right: 4px;
   top: -50%;
@@ -132,7 +132,7 @@ section article {
   background: inherit;
   border: 1px solid $darkgray;
   color: $darkgray;
-  font-size: 1rem;
+  font-size: $small_font_size;
   margin: auto .1rem;
 }
 

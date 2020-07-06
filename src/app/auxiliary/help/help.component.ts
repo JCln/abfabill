@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component } from '@angular/core';
 
 import { HelpService } from '../../services/help.service';
 
@@ -8,14 +8,14 @@ import { HelpService } from '../../services/help.service';
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss']
 })
-export class HelpComponent implements OnInit, AfterContentChecked {
+export class HelpComponent implements AfterContentChecked {
   messages: string[] = [];
 
   modal = document.getElementById("myModal");
   btn = document.getElementById("myBtn");
   span = document.getElementsByClassName("close")[0];
 
-  constructor(private helpService: HelpService, private _location: Location) { }
+  constructor(private helpService: HelpService, private _location: Location, private cr: ChangeDetectorRef) { }
 
   backClicked = () => this._location.back();
 
@@ -27,14 +27,15 @@ export class HelpComponent implements OnInit, AfterContentChecked {
   //   }
   // }
 
-  ngOnInit(): void {
-    // this.helpService.countdownEnd$.subscribe(res => console.log(res))
-  }
 
   ngAfterContentChecked(): void {
     this.messages = this.helpService.messages;
     if (!this.messages) {
+      console.log(this.messages);
+
       this.messages = this.helpService.defaultMessage;
+      this.cr.detectChanges();
+      // this.router.navigate()
     }
   }
 }
