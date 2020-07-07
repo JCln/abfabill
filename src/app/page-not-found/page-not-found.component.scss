@@ -32,6 +32,7 @@ main {
         font-weight: 700;
         padding-left: .5rem;
         color: $c_light_gray;
+        @include justify_center;
 
         &::after {
           content: var(--after_img);

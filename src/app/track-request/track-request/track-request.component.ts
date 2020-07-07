@@ -18,11 +18,12 @@ export class TrackRequestComponent implements AfterContentChecked {
 
   ngAfterContentChecked() {
     this.trackRequestService.$tracks.subscribe(res => {
-      console.log(res);
-      console.log(1);
       if (!res) {
         this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
         this.trackRequestService.noInfoExists;
+      }
+      else {
+        this.trackRequests = res;
       }
     })
   }

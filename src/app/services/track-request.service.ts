@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { SpinnerWrapperService } from './spinner-wrapper.service';
 import { ViewBillService } from './view-bill.service';
@@ -9,7 +9,7 @@ import { ViewBillService } from './view-bill.service';
   providedIn: 'root'
 })
 export class TrackRequestService {
-  private tracks = new Subject<any>();
+  private tracks = new BehaviorSubject<any>([]);
   $tracks = this.tracks.asObservable();
 
   // getTracks = (): any => {

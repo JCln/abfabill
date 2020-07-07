@@ -3,7 +3,12 @@ import { Observable, of } from 'rxjs';
 
 import { MainService } from './main.service';
 
-const tracks = of([1 , '3233', 'woooow']);
+const tracks: any[] = [
+  { status: 'بارگذاری مدارک', hm: '99:99', dateJalali: "99/99/99" },
+  { status: 'تعیین روز بازدید', hm: '99:99', dateJalali: "99/99/99" },
+  { status: '4', hm: '99:99', dateJalali: "99/99/99" },
+  { status: 'حذف درخواست', hm: '99:99', dateJalali: "99/99/99" }
+];
 // const tracks = [
 //   {
 //     status: 'woow',
@@ -43,7 +48,7 @@ export class ViewBillService {
   }
   getTrackingRequest = (id: number): any => {
     const idToString = id.toString();
-    return tracks;
+    return of(tracks);
     // return this.mainService.GET(idToString, 'moshtarakinapi/requestManager/getTrackings');
   }
   paymentInfoKardex = (id: number, zoneId: number): any => {

@@ -9,6 +9,9 @@ const serviceNames: IServices[] = [
     title: 'اعلام کارکرد کنتور', routerLink: 'ma', src: 'assets/imgs/serviceDesk/meter.png'
   },
   {
+    title: 'صدور قبض میاندوره', routerLink: 'ma', src: 'assets/imgs/serviceDesk/annMetter.png'
+  },
+  {
     title: 'آخرین قبض', routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
   },
   {
@@ -28,9 +31,6 @@ const serviceNames: IServices[] = [
   },
   {
     title: 'ثبت شماره همراه', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/mobile.png'
-  },
-  {
-    title: 'صدور قبض میاندوره', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/annMetter.png'
   },
   {
     title: 'تعویض کنتور خراب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
