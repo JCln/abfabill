@@ -19,7 +19,7 @@ export class LogginsService {
   }
 
   // is valid bill id to enter service desk section
-  checkValidBillId = (insertedBillId: string) => { // have to be private function
+  private checkValidBillId = (insertedBillId: string) => { // have to be private function
     this.interfaceService.getIsValidId(insertedBillId).subscribe((res: any) => {
       if (res) {
         if (res.errorCode === 200)
@@ -32,7 +32,7 @@ export class LogginsService {
     });
   }
 
-  waitForOneSecond(input: string) {
+  private waitForOneSecond(input: string) {
     return new Promise(resolve => {
       const a = this.checkValidBillId(input.toString());
       resolve(a);
