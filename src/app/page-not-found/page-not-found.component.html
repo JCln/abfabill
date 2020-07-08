@@ -4,51 +4,59 @@
             <h1>خدمات پس از فروش</h1>
             <hr>
         </div>
-        <div class="form">
-            <div class="form-item">
-                <input [(ngModel)]="input" type="number" class="form-input" name="billId"
-                    placeholder="شناسه قبض را اینجا وارد کنید" required title="لطفا  شناسه قبض خود را وارد فرمایید">
+        <form [formGroup]="serviceDeskForm" (ngSubmit)="checkValidInput()">
+            <div class="form">
+                <div class="form-item">
+                    <input [(ngModel)]="input" type="text" class="form-input" formControlName="billId"
+                        placeholder="شناسه قبض را اینجا وارد کنید" title="لطفا  شناسه قبض خود را وارد فرمایید"
+                        minlength="3" maxlength="13" required>
+                </div>
             </div>
-        </div>
-        <div class="justify_center">
-            <button (click)="checkValidInput()">
-                <div style="margin: auto; text-align: center;">ورود</div>
-            </button>
-        </div>
+            <div class="justify_center">
+                <button>
+                    <div style="margin: auto; text-align: center;">ورود</div>
+                </button>
+            </div>
+        </form>
     </section>
     <section class="register_new">
         <div class="_job_detail">
             <h1>خرید انشعاب جدید</h1>
             <hr>
         </div>
-        <div class="form">
-            <div class="form-item">
-                <input [(ngModel)]="neighbourBillId" type="number" class="form-input" name="neighbourBillId"
-                    placeholder="شناسه قبض همسایه را اینجا وارد کنید" required
-                    title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید">
+        <form [formGroup]="registerNewForm" (ngSubmit)="isNeighbourBillId()">
+            <div class="form">
+                <div class="form-item">
+                    <input [(ngModel)]="neighbourBillId" type="text" class="form-input"
+                        formControlName="neighbourBillId" placeholder="شناسه قبض همسایه را اینجا وارد کنید"
+                        title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13" required>
+                </div>
             </div>
-        </div>
-        <div class="justify_center">
-            <button (click)="isNeighbourBillId()">
-                <div style="margin: auto; text-align: center;">شروع درخواست</div>
-            </button>
-        </div>
+            <div class="justify_center">
+                <button>
+                    <div style="margin: auto; text-align: center;">شروع درخواست</div>
+                </button>
+            </div>
+        </form>
     </section>
     <section class="track_request">
         <div class="_job_detail">
             <h1>پیگیری درخواست های قبلی</h1>
             <hr>
         </div>
-        <div class="form">
-            <div class="form-item">
-                <input [(ngModel)]="tracks" type="number" class="form-input" name="billId"
-                    placeholder="شماره پیگیری را اینجا وارد کنید" required title="لطفا شماره پیگیری را وارد فرمایید">
+        <form [formGroup]="trackRequestForm" (ngSubmit)="checkTrackNumber()">
+            <div class="form">
+                <div class="form-item">
+                    <input [(ngModel)]="tracks" type="text" class="form-input" formControlName="trackNumber"
+                        placeholder="شماره پیگیری را اینجا وارد کنید" title="لطفا شماره پیگیری را وارد فرمایید"
+                        minlength="2" maxlength="10" required>
+                </div>
             </div>
-        </div>
-        <div class="justify_center">
-            <button (click)="checkTrackNumber()">
-                <div style="margin: auto; text-align: center;">ورود</div>
-            </button>
-        </div>
+            <div class="justify_center">
+                <button type="submit">
+                    <div style="margin: auto; text-align: center;">ورود</div>
+                </button>
+            </div>
+        </form>
     </section>
 </main>
