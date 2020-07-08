@@ -57,20 +57,24 @@ export class PageNotFoundComponent {
       this.router.navigate(['rn'])
     }
   }
+  async asyncMethod() {
+    await this.logginsService.asyncMethod(this.input.toString());
+    this.logginsService.getIsLoaded().subscribe(res => {
+      if (res) {
+        this.authGuard.changeIdRoutePart(this.input.toString());
+        this.billIdValue(this.input);
+      }
+    });
+
+  }
+
   checkValidInput = () => {
-    let a: any;
     if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length <= this.minLength) {
       this.input = null;
       this.errorHandler.handleError(404);
       return;
     } else {
-      this.logginsService.checkValidBillId(this.input.toString());
-      a = this.logginsService.isLoaded;
-      console.log(a);
-      // if (a) {
-      //   this.authGuard.changeIdRoutePart(this.input.toString());
-      //   this.billIdValue(this.input);
-      // }
+      this.asyncMethod();
     }
   }
 
