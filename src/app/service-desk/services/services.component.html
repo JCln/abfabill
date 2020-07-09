@@ -1,6 +1,6 @@
 <section>
-  <div class="content" *ngFor="let sn of serviceNames" (click)="sendButtonEventToAnalytics()"
-    [routerLink]="[sn.routerLink]">
+  <div class="content" *ngFor="let sn of serviceNames; let index = index" (click)="sendButtonEventToAnalytics()"
+    [routerLink]="[sn.routerLink]" [queryParams]="{checked: index}">
     <div class="top_front">
       <div class="title">
         {{sn.title}}

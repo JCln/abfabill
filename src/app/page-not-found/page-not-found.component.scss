@@ -10,7 +10,7 @@ $c_light_gray: #EEEEEE;
 $c_medium_gray: #cfcfcf;
 
 main {
-  --after_img: url(/assets/pagenotfound/ImgFollowUp.png);
+  --after_img: url(/assets/imgs/pagenotfound/ImgFollowUp.png);
   --h1_job_detail: #EEEEEE;
   --v-l-c: #e3e3e3;
   height: 100%;
@@ -48,7 +48,7 @@ main {
   }
 
   .register_new {
-    --after_img: url(/assets/pagenotfound/ImgWaterManagement.png);
+    --after_img: url(/assets/imgs/pagenotfound/rn.png);
     --orange: #e4572e;
     --h1_job_detail: var(--orange);
     background-color: $c_medium_gray;
@@ -99,7 +99,7 @@ main {
   }
 
   .error_inner {
-    --after_img: url(/assets/pagenotfound/ImgSupport.png);
+    --after_img: url(/assets/imgs/pagenotfound/ImgSupport.png);
     --h1_job_detail: #384B67;
     background-color: var(--h1_job_detail);
 
