@@ -7,7 +7,7 @@
         <form [formGroup]="serviceDeskForm" (ngSubmit)="checkValidInput()">
             <div class="form">
                 <div class="form-item">
-                    <input [(ngModel)]="input" type="text" class="form-input" formControlName="billId"
+                    <input [(ngModel)]="billId" type="text" class="form-input" formControlName="billId"
                         placeholder="شناسه قبض را اینجا وارد کنید" title="لطفا  شناسه قبض خود را وارد فرمایید"
                         minlength="3" maxlength="13" required>
                 </div>

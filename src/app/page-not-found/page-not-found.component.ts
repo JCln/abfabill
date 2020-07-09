@@ -20,7 +20,7 @@ export class PageNotFoundComponent {
   private trackMaxLength = 9;
   loggin: LogginsService;
 
-  input: number;
+  billId: number;
   neighbourBillId: number;
   tracks: number;
 
@@ -58,19 +58,19 @@ export class PageNotFoundComponent {
     }
   }
   async asyncMethod() {
-    await this.logginsService.asyncMethod(this.input.toString());
+    await this.logginsService.asyncMethod(this.billId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
-        this.authGuard.changeIdRoutePart(this.input.toString());
-        this.billIdValue(this.input);
+        this.authGuard.changeIdRoutePart(this.billId.toString());
+        this.billIdValue(this.billId);
       }
     });
 
   }
 
   checkValidInput = () => {
-    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length <= this.minLength) {
-      this.input = null;
+    if (isNaN(this.billId) || this.billId === null || this.billId.toString().length > this.maxLength || this.billId.toString().length <= this.minLength) {
+      this.billId = null;
       this.errorHandler.handleError(404);
       return;
     } else {
