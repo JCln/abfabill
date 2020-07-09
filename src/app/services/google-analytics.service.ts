@@ -1,14 +1,25 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/internal/operators/filter';
 
-declare const ga: Function; // Declare ga as a function
+declare const ga; // Declare ga as a function
+declare var gtag;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAnalyticsService {
-
-  constructor(public router: Router) { }
+  navEndEvents;
+  constructor(public router: Router) {
+    this.navEndEvents = router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    );
+    this.navEndEvents.subscribe((event: NavigationEnd) => {
+      gtag('config', 'UA-152433655-1', {
+        'page_path': event.urlAfterRedirects
+      });
+    });
+  }
 
   //create our event emitter to send our data to Google Analytics
   eventEmitter(eventCategory: string,
@@ -23,11 +34,9 @@ export class GoogleAnalyticsService {
     });
   }
   routerView = () => {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
-      }
+    this.navEndEvents.subscribe((event: NavigationEnd) => {
+      ga('set', 'page', event.urlAfterRedirects);
+      ga('send', 'pageview');
     });
   }
 }
