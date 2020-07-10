@@ -24,11 +24,9 @@ export class TrackRequestService {
       if (res) {
         this.setTracks(res);
         this.router.navigate(['tr']);
-
         return true;
-      } else {
-        return false;
       }
+      return false;
     });
   }
 
@@ -44,5 +42,5 @@ export class TrackRequestService {
     return a;
   }
 
-  noInfoExists = this.router.navigate(['/pg']);
+  noInfoExists = () => this.router.navigate(['/pg']);
 }

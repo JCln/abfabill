@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
 
+import { SpinnerWrapperService } from './spinner-wrapper.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,8 @@ export class ErrorHandlerService implements ErrorHandler {
 
   constructor(private router: Router,
     private toasterService: ToastrService,
-    private interactionService: InteractionService
+    private interactionService: InteractionService,
+    private spinnerWrapper: SpinnerWrapperService
   ) { }
 
   toasterError = (message: string, info?: string, makeInfo?: string) => {
@@ -57,12 +60,14 @@ export class ErrorHandlerService implements ErrorHandler {
   }
 
   public timeOutBeforeRoute = (routeTo: string) => {
+    this.spinnerWrapper.stopLoading();
     setTimeout(() => {
       this.router.navigate([routeTo]);
     }, 2000);
   }
 
   private setTimeOutBeforeRoute = () => {
+    this.spinnerWrapper.stopLoading();
     setTimeout(() => {
       this.router.navigate(['/pg']);
     }, 2000);

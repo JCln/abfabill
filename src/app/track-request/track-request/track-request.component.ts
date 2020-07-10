@@ -1,57 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
 import { TrackRequestService } from './../../services/track-request.service';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-track-request',
   templateUrl: './track-request.component.html',
   styleUrls: ['./track-request.component.scss']
 })
-export class TrackRequestComponent implements OnInit {
+export class TrackRequestComponent extends CheckRoute implements OnInit {
   trackRequests: any = [];
 
   constructor(
     private trackRequestService: TrackRequestService,
-    private toasterService: ErrorHandlerService,
-    private spinnerWrapper: SpinnerWrapperService,
-    private router: Router
+    private toasterService: ErrorHandlerService
   ) {
-    // this.spinnerCondition();
-    // this.spinnerWrapper.startLoading();
+    super();
   }
-  ngOnInit() {
-    this.getTracks();
-    this.spinnerWrapper.stopLoading();
-  }
-
-  // spinnerCondition = () => {
-  //   this.spinnerWrapper.loadingStatus$.subscribe(status => {
-  //     console.log(status);
-  //   })
-  // }
 
   getTracks() {
-    // this.spinnerWrapper.startLoading();
     this.trackRequestService.getTracks().subscribe(res => {
-      if (!res) {
+      if (this.isNull(res[0])) {
         this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
-        this.trackRequestService.noInfoExists;
-        // this.spinnerWrapper.stopLoading();
-        console.log(111);
-        
-        this.router.navigate(['/pg']);
+        this.trackRequestService.noInfoExists();
       } else {
-        console.log(2);
-        this.router.navigate(['tr']);
         this.trackRequests = res;
-        // setTimeout(() => {
-          // this.spinnerWrapper.stopLoading();
-        // }, 2000);
       }
     });
   }
 
+  ngOnInit() {
+    this.getTracks();
+  }
 }
