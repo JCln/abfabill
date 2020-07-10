@@ -13,6 +13,14 @@
   justify-content: space-evenly;
 }
 
+@mixin m_font_size {
+  font-size: 1.2rem !important;
+}
+
+.m_font_size {
+  @include m_font_size();
+}
+
 .justify_center {
   @include justify-center();
 }
