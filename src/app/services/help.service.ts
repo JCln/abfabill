@@ -32,6 +32,9 @@ export class HelpService {
   }
   private routeToAxiliary = () => this.router.navigate(["/aux", { outlets: { modal: ["help"] } }]);
 
+  customMessage = (header: string, mainText: string, img: string, footer?: string) => {
+    this.addMessage(header, mainText, img, footer);
+  }
   someName = (currentRoute: string) => {
     switch (currentRoute) {
       case 'pg':

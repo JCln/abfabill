@@ -37,7 +37,6 @@ export class PageNotFoundComponent extends CheckRoute {
   ) {
     super();
   }
-
   track = async () => {
     await this.trackRequstService.asyncMethod(this.tracks);
     this.trackRequstService.getTracks().subscribe(res => {
@@ -49,7 +48,6 @@ export class PageNotFoundComponent extends CheckRoute {
     })
 
   }
-
   checkTrackNumber = () => {
     if (isNaN(this.tracks) || this.tracks === null || this.tracks.toString().trim().length > this.trackMaxLength || this.tracks.toString().trim().length <= this.trackMinLength) {
       this.tracks = null;
@@ -69,7 +67,7 @@ export class PageNotFoundComponent extends CheckRoute {
       this.router.navigate(['rn'])
     }
   }
-  async asyncMethod() {
+  asyncMethod = async () => {
     await this.logginsService.asyncMethod(this.billId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
@@ -79,7 +77,6 @@ export class PageNotFoundComponent extends CheckRoute {
     });
 
   }
-
   checkValidInput = () => {
     if (isNaN(this.billId) || this.billId === null || this.billId.toString().length > this.maxLength || this.billId.toString().length <= this.minLength) {
       this.billId = null;
@@ -89,11 +86,9 @@ export class PageNotFoundComponent extends CheckRoute {
       this.asyncMethod();
     }
   }
-
   private billIdValue = (billId: IViewBill['billId']) => {
     this.router.navigate([billId]);
   }
-
   trackRequestForm = this.fb.group({
     trackNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
   });

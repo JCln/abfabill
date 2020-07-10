@@ -5,6 +5,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
+import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
 
 const minNeighbourBillId = 4;
@@ -45,7 +46,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     private viewBillService: ViewBillService,
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private helpService: HelpService
   ) {
     super();
   }
@@ -135,7 +137,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
       resolve(
         this.viewBillService.setNewRegister(this.profileForm.value).subscribe((res) => {
           if (res) {
-            console.log('successfully done');
+            this.helpService.customMessage('مشترک گرامی', 'درخواست شما با موفقیت ثبت و کد پیگیری برای شما پیامک شد', '', '');
+            this.helpService.help();
           }
         })
       )
@@ -174,12 +177,6 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
 
   ngOnInit(): void {
-    // if (RegisterNewComponent.firstTime) {
-    //   this.helpService.customName();
-    //   this.helpService.help();
-    //   RegisterNewComponent.firstTime = false;
-    // }
-    // this.errorHandler.toasterError('مشترک گرامی این قسمت در حال بروز رسانی است، لطفا از طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
