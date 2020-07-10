@@ -5,7 +5,8 @@ import { AndroidComponent } from './android.component';
 
 
 const routes: Routes = [
-  { path: '', component: AndroidComponent }
+  { path: '', component: AndroidComponent },
+  { path: 'learn', loadChildren: () => import('./learn/learn.module').then(ln => ln.LearnModule) }
 ];
 
 @NgModule({

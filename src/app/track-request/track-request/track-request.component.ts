@@ -26,6 +26,8 @@ export class TrackRequestComponent extends CheckRoute implements OnInit {
         this.trackRequestService.noInfoExists();
       } else {
         this.trackRequests = res;
+        console.log(this.trackRequests);
+        
       }
     });
   }
