@@ -31,21 +31,29 @@ export class PageNotFoundComponent {
     private trackRequstService: TrackRequestService,
     private logginsService: LogginsService,
     private fb: FormBuilder
+    // private spinnerWrapper: SpinnerWrapperService
   ) { }
 
+  track = async () => {
+    // this.spinnerWrapper.startLoading();
+    const canRoute = await this.trackRequstService.asyncMethod(this.tracks);
+    
+    if (canRoute) {
+      console.log('w');
+    }
+    else {
+      this.router.navigate(['tr']);
+    }    
+    // this.spinnerWrapper.stopLoading();
+  }
+
   checkTrackNumber = () => {
-    if (isNaN(this.tracks) || this.tracks === null || this.tracks.toString().length > this.trackMaxLength || this.tracks.toString().length <= this.trackMinLength) {
+    if (isNaN(this.tracks) || this.tracks === null || this.tracks.toString().trim().length > this.trackMaxLength || this.tracks.toString().trim().length <= this.trackMinLength) {
       this.tracks = null;
       this.errorHandler.customToaster(5000, 'شماره پیگیری اشتباه است');
       return;
     } else {
-      // console.log(1);
-      const canRoute = this.trackRequstService.canConnectToServer(this.tracks);
-      // console.log(canRoute);
-      // console.log(typeof canRoute);
-
-      if (canRoute)
-        this.router.navigate(['tr'])
+      this.track();
     }
   }
   isNeighbourBillId = () => {
