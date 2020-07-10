@@ -6,14 +6,16 @@ import { AuthGuard } from '../services/auth.guard';
 import { ErrorHandlerService } from '../services/error-handler.service';
 import { IViewBill } from './../services/iview-bill';
 import { LogginsService } from './../services/loggins.service';
+import { SpinnerWrapperService } from './../services/spinner-wrapper.service';
 import { TrackRequestService } from './../services/track-request.service';
+import { CheckRoute } from './../shared/check-route';
 
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss']
 })
-export class PageNotFoundComponent {
+export class PageNotFoundComponent extends CheckRoute {
   private maxLength = 13;
   private minLength = 4;
   private trackMinLength = 3;
@@ -30,21 +32,22 @@ export class PageNotFoundComponent {
     private authGuard: AuthGuard,
     private trackRequstService: TrackRequestService,
     private logginsService: LogginsService,
-    private fb: FormBuilder
-    // private spinnerWrapper: SpinnerWrapperService
-  ) { }
+    private fb: FormBuilder,
+    private spinnerWrapper: SpinnerWrapperService
+  ) {
+    super();
+  }
 
   track = async () => {
-    // this.spinnerWrapper.startLoading();
-    const canRoute = await this.trackRequstService.asyncMethod(this.tracks);
-    
-    if (canRoute) {
-      console.log('w');
-    }
-    else {
-      this.router.navigate(['tr']);
-    }    
-    // this.spinnerWrapper.stopLoading();
+    await this.trackRequstService.asyncMethod(this.tracks);
+    this.trackRequstService.getTracks().subscribe(res => {
+      if (this.isNull(res[0])) {
+        console.log(res);
+      } else {
+        this.spinnerWrapper.stopLoading();
+      }
+    })
+
   }
 
   checkTrackNumber = () => {
@@ -53,6 +56,7 @@ export class PageNotFoundComponent {
       this.errorHandler.customToaster(5000, 'شماره پیگیری اشتباه است');
       return;
     } else {
+      this.spinnerWrapper.startLoading();
       this.track();
     }
   }

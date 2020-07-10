@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
-import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { TrackRequestService } from './../../services/track-request.service';
 
 @Component({
@@ -20,11 +20,11 @@ export class TrackRequestComponent implements OnInit {
     private router: Router
   ) {
     // this.spinnerCondition();
-    this.spinnerWrapper.startLoading();
-    this.getTracks();
+    // this.spinnerWrapper.startLoading();
   }
   ngOnInit() {
-    // this.spinnerWrapper.startLoading();
+    this.getTracks();
+    this.spinnerWrapper.stopLoading();
   }
 
   // spinnerCondition = () => {
@@ -39,7 +39,7 @@ export class TrackRequestComponent implements OnInit {
       if (!res) {
         this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
         this.trackRequestService.noInfoExists;
-        this.spinnerWrapper.stopLoading();
+        // this.spinnerWrapper.stopLoading();
         console.log(111);
         
         this.router.navigate(['/pg']);
@@ -47,9 +47,9 @@ export class TrackRequestComponent implements OnInit {
         console.log(2);
         this.router.navigate(['tr']);
         this.trackRequests = res;
-        setTimeout(() => {
-          this.spinnerWrapper.stopLoading();
-        }, 2000);
+        // setTimeout(() => {
+          // this.spinnerWrapper.stopLoading();
+        // }, 2000);
       }
     });
   }
