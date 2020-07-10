@@ -41,9 +41,9 @@ export class PageNotFoundComponent extends CheckRoute {
   track = async () => {
     await this.trackRequstService.asyncMethod(this.tracks);
     this.trackRequstService.getTracks().subscribe(res => {
-      if (this.isNull(res[0])) {
-        console.log(res);
-      } else {
+      if (res) {
+        if (this.isNull(res[0]))
+          return;
         this.spinnerWrapper.stopLoading();
       }
     })

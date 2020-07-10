@@ -14,7 +14,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="firstName" class="form-input" formControlName="firstName"
-                            aria-label="firstName" required>
+                            aria-label="firstName" [(ngModel)]="firstName" required>
                     </div>
                     <div class="div1">
                         <p>نام</p>
@@ -25,7 +25,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="sureName" formControlName="sureName" class="form-input"
-                            aria-label="sureName" required>
+                            aria-label="sureName" [(ngModel)]="sureName" required>
                     </div>
                     <div class="div1">
                         <p>نام خانوادگی</p>
@@ -46,8 +46,8 @@
                 </div>
                 <div class="form">
                     <div class="form-item">
-                        <input name="nationalId" [(ngModel)]="nationalId" formControlName="nationalId"
-                            class="form-input" aria-label="nationalId" maxlength=10 required>
+                        <input name="nationalId" type="text" [(ngModel)]="nationalId" formControlName="nationalId"
+                            class="form-input" aria-label="nationalId" minlength=10 maxlength=10 required>
                     </div>
                     <div class="div1">
                         <p>کد ملی</p>
@@ -69,7 +69,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="phoneNumber" formControlName="phoneNumber" class="form-input"
-                            aria-label="phoneNumber" maxlength=11 placeholder="اختیاری">
+                            aria-label="phoneNumber" minlength=8 maxlength=10 placeholder="اختیاری">
                     </div>
                     <div class="div1">
                         <p>تلفن ثابت</p>
@@ -80,7 +80,8 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="neighbourBillId" formControlName="neighbourBillId" class="form-input"
-                            aria-label="neighbourBillId" [(ngModel)]="neighbourBillId" maxlength=13 required>
+                            aria-label="neighbourBillId" [(ngModel)]="neighbourBillId" minlength=3 maxlength=13
+                            required>
                     </div>
                     <div class="div1">
                         <p>شناسه همسایه</p>
@@ -91,7 +92,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="postalCode" formControlName="postalCode" class="form-input"
-                            aria-label="postalCode" maxlength=10 placeholder="اختیاری">
+                            aria-label="postalCode" minlength=9 maxlength=10 placeholder="اختیاری">
                     </div>
                     <div class="div1">
                         <p>کد پستی</p>
@@ -102,7 +103,7 @@
                 <div class="form">
                     <div class="form-item">
                         <input type="text" name="address" formControlName="address" class="form-input"
-                            aria-label="address" #address required>
+                            aria-label="address" [(ngModel)]="address" minlength=10 required>
                     </div>
                     <div class="div1">
                         <p>نشانی</p>
@@ -117,19 +118,18 @@
             </div>
             <div class="button_content space_evenly">
                 <label class="container">انشعاب آب
-                    <input type="radio" formControlName="selectedServices" value="water" name="selectedServices">
+                    <input type="radio" formControlName="SelectedServices" value=1>
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">انشعاب آب و فاضلاب
-                    <input type="radio" formControlName="selectedServices" value="water&sevage" name="selectedServices">
+                    <input type="radio" formControlName="SelectedServices" value=2>
                     <span class="checkmark"></span>
                 </label>
             </div>
             <hr>
             <div class="justify_center">
-                <button [disabled]="!profileForm.valid" type="submit">
+                <button type="submit">
                     {{!profileForm.valid ? 'لطفا فرم را کامل کنید' : 'درخواست خرید'}}</button>
-                <!--[disabled]="!profileForm.valid"-->
             </div>
         </form>
     </main>

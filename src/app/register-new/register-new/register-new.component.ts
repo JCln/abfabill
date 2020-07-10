@@ -5,7 +5,6 @@ import { InteractionService } from 'src/app/services/interaction.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
-import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
 
 const minNeighbourBillId = 4;
@@ -18,10 +17,12 @@ const nationalId = 10;
   styleUrls: ['./register-new.component.scss']
 })
 export class RegisterNewComponent extends CheckRoute implements OnInit {
-  static firstTime = true;
   input: number;
-  nationalId = '';
-  mobileNumber = '';
+  nationalId: string = '';
+  mobileNumber: string = '';
+  address: string = '';
+  firstName: string = '';
+  sureName: string = '';
   neighbourBillId: string = '';
   // spinner
   notification: boolean = false;
@@ -29,7 +30,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
   // textError from server
   $textError: string;
-  showMessage = false;
+  showMessage: boolean = false;
   // button
 
   private minNeighbourBillId = minNeighbourBillId;
@@ -44,8 +45,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     private viewBillService: ViewBillService,
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
-    private fb: FormBuilder,
-    private helpService: HelpService
+    private fb: FormBuilder
   ) {
     super();
   }
@@ -53,21 +53,21 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     firstName: ['', Validators.required],
     sureName: ['', Validators.required],
     nationalId: ['', [Validators.required, Validators.pattern("^[0-9]*$"),
-    Validators.minLength(10), Validators.maxLength(11)]],
+    Validators.minLength(10), Validators.maxLength(10)]],
     phoneNumber: ['', [Validators.pattern("^[0-9]*$"),
-    Validators.minLength(8), Validators.maxLength(11)]],
+    Validators.minLength(8), Validators.maxLength(10)]],
     fatherName: [''],
     mobile: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), Validators.pattern("^[0-9]*$")]],//, forbiddenNameValidator(/bob/i)   
-    selectedServices: ['', Validators.required],
-    neighbourBillId: ['', [Validators.required, Validators.pattern("^[0-9]*$"),
+    SelectedServices: this.fb.array([1, 2]),
+    neighbourBillId: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(3),
     Validators.maxLength(13)]],
-    address: ['', Validators.required],
+    address: ['', [Validators.required, Validators.minLength(10)]],
+    requestOrigin: 6,
     postalCode: ['', [Validators.pattern("^[0-9]*$"),
     Validators.minLength(9), Validators.maxLength(10)]]
   });
   onSubmit() {
-    // console.warn(this.profileForm.value);
-    this.checkValidInput();
+    this.nestingLevel();
   }
 
   pushOrPopFromMobileNumber = () => {
@@ -84,14 +84,14 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     return false;
   }
   validInput1 = (): boolean => {
-    if (this.nationalId === null || this.nationalId.toString().length !== nationalId) {
+    if (this.nationalId.trim() === null || this.nationalId.trim().length !== this.nationalIdLength) {
       this.errorHandler.customToaster(4000, 'کد ملی اشتباه است');
       return false;
     }
     return true;
   }
   validInput2 = (): boolean => {
-    if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
+    if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === '' || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
       return false;
     }
@@ -104,28 +104,41 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     }
     return true;
   }
-  checkValidInput = (): boolean => {
-    if (this.validInput1() && this.validInput2() && this.checkNeighbourBillId()) {
-      console.log('true');
-
-      return true;
-    } else {
-      console.log('false');
-      return false
+  checkAddress = (): boolean => {
+    if (this.address.toString().trim() === '' || this.address.toString().trim().length < 10) {
+      this.errorHandler.customToaster(4000, 'آدرس اشتباه است');
+      return false;
     }
+    return true;
+  }
+  checkFirstName = (): boolean => {
+    if (this.firstName.toString().trim() === '') {
+      this.errorHandler.customToaster(4000, 'نام را وارد کنید');
+      return false;
+    }
+    return true;
+  }
+  checkSureName = (): boolean => {
+    if (this.sureName.toString().trim() === '') {
+      this.errorHandler.customToaster(4000, 'نام خانوادگی را وارد کنید');
+      return false;
+    }
+    return true;
+  }
+  checkValidInput = (): boolean => {
+    if (this.checkFirstName() && this.checkSureName() && this.validInput1() && this.validInput2() && this.checkNeighbourBillId() && this.checkAddress())
+      return true;
+    return false;
   }
   connectToServer = (): Promise<any> => {
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve(
-          this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res) => {
-            if (res) {
-              this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-              this.errorHandler.timeOutBeforeRoute('r/success');
-            }
-          })
-        )
-      }, 3000)
+      resolve(
+        this.viewBillService.setNewRegister(this.profileForm.value).subscribe((res) => {
+          if (res) {
+            console.log('successfully done');
+          }
+        })
+      )
     )
   }
 
@@ -147,12 +160,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
       }, 100)
     )
   }
-  changeToDefaultBeforeResponse = () => {
-    this.interactionService.setmetterAnnounce('');
-  }
-
   nestingLevel = async () => {
-    this.changeToDefaultBeforeResponse();
     const a = this.checkValidInput();
     console.log(a);
     if (a) {
@@ -166,12 +174,12 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
 
   ngOnInit(): void {
-    if (RegisterNewComponent.firstTime) {
-      this.helpService.customName();
-      this.helpService.help();
-      RegisterNewComponent.firstTime = false;
-    }
-    this.errorHandler.toasterError('مشترک گرامی این قسمت در حال بروز رسانی است، لطفا از طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
+    // if (RegisterNewComponent.firstTime) {
+    //   this.helpService.customName();
+    //   this.helpService.help();
+    //   RegisterNewComponent.firstTime = false;
+    // }
+    // this.errorHandler.toasterError('مشترک گرامی این قسمت در حال بروز رسانی است، لطفا از طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;

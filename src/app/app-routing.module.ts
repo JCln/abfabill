@@ -26,6 +26,9 @@ const routes: Routes = [
   {
     path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)
   },
+  {
+    path: 'android/?rsb', loadChildren: () => import('./android/android.module').then(and => and.AndroidModule)
+  },
   { path: '**', redirectTo: 'pg', pathMatch: 'full' }
 ];
 
