@@ -38,12 +38,16 @@ export class PageNotFoundComponent extends CheckRoute {
     super();
   }
   track = async () => {
+    await this.trackRequstService.setTrackToZero();
+    this.spinnerWrapper.startLoading();
     await this.trackRequstService.asyncMethod(this.tracks);
-    this.trackRequstService.getTracks().subscribe(res => {
+    this.trackRequstService.getTracks().subscribe((res: Array<object>[]) => {
       if (res) {
-        if (this.isNull(res[0]))
-          return;
-        this.spinnerWrapper.stopLoading();
+        if (!this.isNull(res[0]))
+          this.spinnerWrapper.stopLoading();
+        else
+          this.spinnerWrapper.startLoading();
+
       }
     })
 
@@ -54,7 +58,6 @@ export class PageNotFoundComponent extends CheckRoute {
       this.errorHandler.customToaster(5000, 'شماره پیگیری اشتباه است');
       return;
     } else {
-      this.spinnerWrapper.startLoading();
       this.track();
     }
   }

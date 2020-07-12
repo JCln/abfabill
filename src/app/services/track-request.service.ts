@@ -41,6 +41,12 @@ export class TrackRequestService {
     const a = await this.waiting(input);
     return a;
   }
+  setTrackToZero = () => {
+    return new Promise(resolve => {
+      this.setTracks([]);
+      resolve();
+    })
+  }
 
   noInfoExists = () => this.router.navigate(['/pg']);
 }

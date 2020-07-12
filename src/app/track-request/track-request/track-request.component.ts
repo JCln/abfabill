@@ -21,13 +21,12 @@ export class TrackRequestComponent extends CheckRoute implements OnInit {
 
   getTracks() {
     this.trackRequestService.getTracks().subscribe(res => {
-      if (this.isNull(res[0])) {
-        this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
-        this.trackRequestService.noInfoExists();
-      } else {
+      if (!this.isNull(res[0])) {
         this.trackRequests = res;
         console.log(this.trackRequests);
-        
+      } else {
+        // this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
+        this.trackRequestService.noInfoExists();
       }
     });
   }
