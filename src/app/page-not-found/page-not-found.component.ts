@@ -53,6 +53,11 @@ export class PageNotFoundComponent extends CheckRoute {
 
   }
   checkTrackNumber = () => {
+    if (this.tracks.toString().trim().substring(0, 1) === '0') {
+      this.errorHandler.customToaster(5000, 'لطفا شماره پیگیری بدون صفر اول وارد شود');
+      this.tracks = null;
+      return;
+    }
     if (isNaN(this.tracks) || this.tracks === null || this.tracks.toString().trim().length > this.trackMaxLength || this.tracks.toString().trim().length <= this.trackMinLength) {
       this.tracks = null;
       this.errorHandler.customToaster(5000, 'شماره پیگیری اشتباه است');
@@ -93,7 +98,7 @@ export class PageNotFoundComponent extends CheckRoute {
     this.router.navigate([billId]);
   }
   trackRequestForm = this.fb.group({
-    trackNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
+    trackNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern("^[1-9]\d*$")]],
   });
   registerNewForm = this.fb.group({
     neighbourBillId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(13), Validators.pattern("^[0-9]*$")]],
