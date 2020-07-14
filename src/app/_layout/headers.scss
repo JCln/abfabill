@@ -102,7 +102,7 @@ section {
   margin: -100px 0 0 -30px;
   padding: 50px;
   padding-top: 90px;
-  max-height: 23rem;
+  max-height: 26rem;
   border-radius: 0 0 30% 30%;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -144,6 +144,17 @@ section {
   z-index: 2;
   width: 3.5rem !important;
   height: 2.8rem !important;
+}
+
+.__cand {
+  display: flex;
+  justify-content: center;
+
+  i {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding-left: 0.3rem;
+  }
 }
 
 @media screen and (min-width: 550px) {
