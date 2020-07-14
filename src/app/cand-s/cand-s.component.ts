@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ErrorHandlerService } from './../../services/error-handler.service';
-import { HelpService } from './../../services/help.service';
+import { ErrorHandlerService } from '../services/error-handler.service';
+import { HelpService } from '../services/help.service';
 
 @Component({
   selector: 'app-cand-s',
@@ -10,7 +10,7 @@ import { HelpService } from './../../services/help.service';
 })
 export class CAndSComponent implements OnInit {
   static candWarnTime = true;
-  private criticalSelected = false;
+  // private criticalSelected = false;
   userText: string = '';
 
   constructor(private helpService: HelpService, private errorHandler: ErrorHandlerService) { }

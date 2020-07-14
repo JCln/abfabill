@@ -49,10 +49,7 @@ const serviceNames: IServices[] = [
   },
   {
     title: 'قطع یا نصب انشعاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
-  },
-  {
-    title: 'پیشنهادات و انتقادات', routerLink: 'cs', src: 'assets/imgs/serviceDesk/cands.png'
-  },
+  }
 ];
 
 @Component({
