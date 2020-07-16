@@ -20,7 +20,7 @@ export class PageNotFoundComponent extends CheckRoute {
   private minLength = 4;
   private trackMinLength = 3;
   private trackMaxLength = 9;
-  
+
   billId: number;
   neighbourBillId: number;
   tracks: number;
@@ -65,13 +65,21 @@ export class PageNotFoundComponent extends CheckRoute {
       this.track();
     }
   }
+  checkNeightbourBillId = async () => {
+    await this.logginsService.asyncMethod(this.neighbourBillId.toString());
+    this.logginsService.getIsLoaded().subscribe(res => {
+      if (res) {
+        this.router.navigate(['rn'], { queryParams: { nid: this.neighbourBillId } });
+      }
+    });
+  }
   isNeighbourBillId = () => {
     if (isNaN(this.neighbourBillId) || this.neighbourBillId === null || this.neighbourBillId.toString().length > this.maxLength || this.neighbourBillId.toString().length <= this.minLength) {
       this.neighbourBillId = null;
       this.errorHandler.handleError(404);
       return;
     } else {
-      this.router.navigate(['rn'])
+      this.checkNeightbourBillId();
     }
   }
   asyncMethod = async () => {

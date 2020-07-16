@@ -51,7 +51,7 @@ export class InteractionService {
   setABillKardex = (aBillKardexInfo: any) => {
     this.abillKardexInfo.next(aBillKardexInfo);
   }
-  setKardex = (kardex: any) => {
+  setKardex = (kardex: string[]) => {
     this.kardex.next(kardex);
   }
 }

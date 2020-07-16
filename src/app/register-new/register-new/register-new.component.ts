@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
@@ -47,7 +48,8 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
     private fb: FormBuilder,
-    private helpService: HelpService
+    private helpService: HelpService,
+    private route: ActivatedRoute
   ) {
     super();
   }
@@ -177,6 +179,10 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
 
   ngOnInit(): void {
+    // set entered neighbour bill id to input
+    this.route.queryParams.subscribe(params => {
+      this.neighbourBillId = params['nid'];
+    });
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
