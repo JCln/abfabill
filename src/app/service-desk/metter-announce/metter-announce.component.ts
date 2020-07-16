@@ -1,5 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
@@ -14,16 +13,10 @@ const mobileLength = 11;
   templateUrl: './metter-announce.component.html',
   styleUrls: ['./metter-announce.component.scss']
 })
-export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDestroy {
+export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   input: number;
   mobileNumber = '';
-  // spinner
-  spinnerSubscriber: Subscription;
-  connectToSrSubscriber: Subscription;
-  // need to have error text to show
   notification: boolean = false;
-  // notificationText = '';
-
   // textError from server
   $textError: string;
   showMessage = false;
@@ -80,21 +73,21 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
 
   connectToServer = (): Promise<any> => {
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve(
-          this.connectToSrSubscriber = this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: IViewBill) => {
+      resolve(
+        this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber)
+          .subscribe((res: IViewBill) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
               this.errorHandler.timeOutBeforeRoute('r/success');
             }
           })
-        )
-      }, 3000)
+
+      )
     )
   }
 
   spinnerCondition = (val: any) => {
-    this.spinnerSubscriber = this.spinnerWrapper.loadingStatus$.subscribe(status => {
+    this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
       this.notification = status;
     })
@@ -106,9 +99,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
 
   spinnerChecker = (bol: boolean): Promise<any> => {
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve(this.createSpinner(bol))
-      }, 100)
+      resolve(this.createSpinner(bol))
     )
   }
   changeToDefaultBeforeResponse = () => {
@@ -145,9 +136,5 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDes
           this.spinnerChecker(false);
       }
     });
-  }
-  ngOnDestroy(): void {
-    // this.connectToSrSubscriber.unsubscribe();
-    // this.spinnerSubscriber.unsubscribe();
   }
 }
