@@ -20,8 +20,7 @@ export class PageNotFoundComponent extends CheckRoute {
   private minLength = 4;
   private trackMinLength = 3;
   private trackMaxLength = 9;
-  loggin: LogginsService;
-
+  
   billId: number;
   neighbourBillId: number;
   tracks: number;
