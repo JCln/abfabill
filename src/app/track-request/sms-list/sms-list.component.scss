@@ -3,13 +3,14 @@
 
 main {
   display: grid;
+  direction: rtl;
   gap: 0.5rem;
   margin: 0 .2rem;
 }
 
 ._title {
   color: $clr;
-  text-align: right;
+  text-align: center;
   padding: 0 1rem;
 }
 
@@ -26,4 +27,3 @@ p {
 }
 
 @include threeColumns(main);
-@include media_wrapper(550px, '._title', text-align, center);

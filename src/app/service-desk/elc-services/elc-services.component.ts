@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
@@ -40,7 +40,7 @@ export const elcServices: IElcServies[] = [
   templateUrl: './elc-services.component.html',
   styleUrls: ['./elc-services.component.scss']
 })
-export class ElcServicesComponent implements OnInit, AfterContentChecked {
+export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDestroy {
   static elcWarnTime = true;
   elcService = elcServices;
   sevageSelected = false;
@@ -55,12 +55,12 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked {
     elcServices[item].checked = bol;
   }
   ngOnInit() {
-    if (ElcServicesComponent.elcWarnTime) {
-      this.helpService.customName();
-      this.helpService.help();
-      ElcServicesComponent.elcWarnTime = false;
-    }
-    this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
+    // if (ElcServicesComponent.elcWarnTime) {
+    //   this.helpService.customName();
+    //   this.helpService.help();
+    //   ElcServicesComponent.elcWarnTime = false;
+    // }
+    // this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
 
   }
   ngAfterContentChecked(): void {
@@ -83,5 +83,10 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked {
     const a = await this.canSendRequest();
     console.log(a);
 
+  }
+  ngOnDestroy(): void {
+    this.elcService.map(items => {
+      items.checked = false;
+    });
   }
 }

@@ -29,6 +29,7 @@ section {
 
     .background {
       display: grid;
+      direction: rtl;
 
       .form-item {
         background: #345891;
@@ -56,6 +57,10 @@ section {
       }
     }
   }
+}
+
+.form {
+  direction: ltr;
 }
 
 @media screen and (max-width: 414px) {
