@@ -112,10 +112,9 @@ section {
     font-family: inherit;
   }
 
-  @media (min-width: 880px) {
-    grid-column: 2/3;
-  }
 }
+
+@include media_wrapper (880px, '.check_moreinfo', grid-column, 2/3);
 
 .show {
   transition-duration: 500ms;
@@ -159,11 +158,9 @@ section {
       @extend %button_first;
       width: 100%;
       padding: 0;
-
-      @media (min-width: 550px) {
-        width: 35%;
-      }
     }
+
+    @include media_wrapper (550px, 'button', width, 35%);
 
     .pay_button {
       font-family: inherit;

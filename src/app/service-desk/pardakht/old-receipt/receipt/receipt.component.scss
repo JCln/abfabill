@@ -1,4 +1,5 @@
 @import '../../../../../assets/main';
+@import '../../../../../assets/@media.scss';
 
 $__border_radius: 15px;
 $__border_radius_bigger: 50px;
@@ -339,8 +340,4 @@ button {
 
 }
 
-@media (min-width: 800px) {
-  ._button_section {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+@include media_wrapper (800px, '._button_section', grid-template-columns, 1fr 1fr);
