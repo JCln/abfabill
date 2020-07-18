@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { ErrorHandlerService } from './../../services/error-handler.service';
 import { TrackRequestService } from './../../services/track-request.service';
 import { CheckRoute } from './../../shared/check-route';
 
@@ -11,24 +11,29 @@ import { CheckRoute } from './../../shared/check-route';
 })
 export class TrackRequestComponent extends CheckRoute implements OnInit {
   trackRequests: any = [];
+  smsList: object;
+  smsStatus: string;
 
   constructor(
     private trackRequestService: TrackRequestService,
-    private toasterService: ErrorHandlerService
+    // for route between nesting component and hide the parent after child routed
+    public route: ActivatedRoute
   ) {
     super();
   }
 
   getTracks() {
     this.trackRequestService.getTracks().subscribe(res => {
-      if (!this.isNull(res[0])) {
+      if (!this.isNull(res[0]))
         this.trackRequests = res;
-        console.log(this.trackRequests);
-      } else {
-        // this.toasterService.toasterError('', 'لطفا شماره پیگیری خود را وارد فرمایید', 'true');
+      else {
         this.trackRequestService.noInfoExists();
       }
     });
+  }
+  getSMSList = (sms: object, status: string) => {
+    this.smsList = sms;
+    this.smsStatus = status;
   }
 
   ngOnInit() {

@@ -3,7 +3,7 @@
         پیگیری درخواست ها
     </h3>
 </div>
-<main>
+<main *ngIf="route.children.length === 0">
     <section *ngFor="let item of trackRequests">
         <div class="_status">
             {{item.status}}
@@ -59,11 +59,11 @@
         <div class="_date-time">
             <div class="__time">{{item.hm}}</div>
             <div class="__date">{{item.dateJalali}}</div>
-            <div class="__more-details">
+            <div class="__more-details" (click)="getSMSList(item.smsList , item.status)" [routerLink]="['sms']">
                 جزئیات بیشتر
             </div>
         </div>
     </section>
 </main>
-
+<app-sms-list *ngIf="route.children.length !== 0" [smsList]="smsList" [status]="smsStatus"></app-sms-list>
 <app-spinner-wrapper></app-spinner-wrapper>

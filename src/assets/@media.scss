@@ -110,3 +110,11 @@
   }
 
 }
+
+@mixin media_wrapper($width_size, $attribute, $element, $element_param) {
+  @media (min-width: $width_size) {
+    #{$attribute} {
+      #{$element}: $element_param;
+    }
+  }
+}

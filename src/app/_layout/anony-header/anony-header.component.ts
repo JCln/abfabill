@@ -24,12 +24,12 @@ export class AnonyHeaderComponent implements AfterViewChecked {
   backClicked = () => this._location.back();
 
   private whereWhere = () => {
-    let helpButton = document.querySelector('.help') as HTMLElement;
+    const helpButton = document.querySelector('.help') as HTMLElement;
     if (this._location.path() === '/pg') {
       helpButton.style.top = '2.5rem';
       return 1;
     }
-    if (this._location.path() === '/rn' || this._location.path() === '/tr' || this._location.path() === '/cs' ) {
+    if (this._location.path() === '/rn' || this._location.path() === '/tr' || this._location.path() === '/cs' || this._location.path() === '/sms') {
       helpButton.style.top = '5.5rem';
       return 2;
     }
