@@ -21,11 +21,20 @@ export class MainService {
     )
   };
 
-  analyticsHeaders = {
+  analyticsAccessToken = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ya29.a0AfH6SMCkYDLGqbjL5JNNkjm3yas_kcvenh5mtw1B8gEN-4VYrjZDFb___TMnjnP85Fu3yCYXPAMsZixN4c0oUz0Zk8sGI_rUFI4qNIRmc9g8RqZVwmZNQx6UIk2FOLdpvvk-gETXIfPe3x7BGcGDcu_GW5zOkpYP7QYL'
+        'Authorization': 'Bearer ya29.a0AfH6SMCdOJz1HNclR93UF97W_S2JM_rd1rlcq9LOt4Qx5Ys5WMSGX3RVPOzldRy5sAzt-PF-QwA3MWbGy2D5wC13Ppww0IY9PZcpRCgGeYtiGdoN-nqLNaPxLGIIGADopGqo4JfUxm6K3-2GCd0XlpOkk46SoiqAlEB7'
+      }
+    )
+  };
+
+  analyticsRefreshToken = {
+    headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ODgxNjA5OTEzMzU4LWhyazRlbWU4YzU2YmU4M29rbzZ0NTNiZzIyNm1kMXMyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tOk1lVkNFNVJodjFYRjZqQlZ3Uk5Ta2tEcA=='
       }
     )
   };
@@ -60,10 +69,35 @@ export class MainService {
         catchError(err => this.errorHandler.errorHandler(err)));
   }
 
-  setAnalytics = (URL: string, body: any): any => {
+  // setAnalyticsAccessToken = (URL: string, body: any): any => {
+  //   return this.http.post<any>(URL, body, this.analyticsAccessToken).pipe(
+  //     retry(2),
+  //     catchError(this.setAnalyticsRefreshToken()));
+  //   // catchError(err => this.errorHandler.errorHandler(err)));
+  //   // catchError(async (err) => console.log(err)));
+  //   // );
+  // }
 
-    return this.http.post<any>(URL, body, this.analyticsHeaders).pipe(
-      retry(3),
-      catchError(err => this.errorHandler.errorHandler(err)));
-  }
+  // setAnalyticsRefreshToken = ()=> {
+  //   console.log(1);
+    
+  //   const URL = 'https://accounts.google.com/o/oauth2/token';
+  //   const body = {
+  //     grant_type: "authorization_code",
+  //     code: "4/2AHV4kIYM4NX8JljC7w9fS6LATU3o8z0177COhz6f2bYg6xfM-CZkqH4JawCwGqqoKdjYAiA-YYsvfSuTxVFgfk",
+  //     redirect_uri: "http://crm.abfaesfahan.ir", // should change for crm.abfa
+  //     client_id: "881609913358-hrk4eme8c56be83oko6t53bg226md1s2.apps.googleusercontent.com"
+  //   }
+  //   this.http.post<any>(URL, body, this.analyticsAccessToken).pipe(
+  //     retry(3),
+      
+  //     catchError(async (err) => console.log(err)));
+  //     // catchError(this.setAnalyticsAccessToken())
+  // }
+  // setAnalyticsRefreshToken = (URL: string, body: any): any => {
+
+  //   return this.http.post<any>(URL, body, this.analyticsAccessToken).pipe(
+  //     retry(3),
+  //     catchError(async (err) => console.log(err)));
+  // }
 }

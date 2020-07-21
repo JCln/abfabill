@@ -40,26 +40,26 @@ export class GoogleAnalyticsService {
       ga('send', 'pageview');
     });
   }
-  pageViews = () => {
-    const body = {
-      "reportRequests": [
-        {
-          "viewId": "217853513",
-          "dateRanges": [
-            {
-              "startDate": "2020-05-01",
-              "endDate": "today"
-            }
-          ],
-          "metrics": [
-            {
-              "expression": "ga:pageviews"
-            }
-          ]
-        }
-      ]
-    }
-    return this.interfaceService.getPageViewsAnalytics(body);
-  }
-
+  // pageViews = () => {
+  //   const body = {
+  //     "reportRequests": [
+  //       {
+  //         "viewId": "217853513",
+  //         "dateRanges": [
+  //           {
+  //             "startDate": "2020-05-01",
+  //             "endDate": "today"
+  //           }
+  //         ],
+  //         "metrics": [
+  //           {
+  //             "expression": "ga:pageviews"
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   }
+  //   return this.interfaceService.getPageViewsAnalytics(body);
+  // }
+  
 }

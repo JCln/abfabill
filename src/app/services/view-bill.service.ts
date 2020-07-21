@@ -45,9 +45,12 @@ export class ViewBillService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
   }
-  getPageViewsAnalytics = (body: any): Observable<any> => {
-    return this.mainService.setAnalytics('https://analyticsreporting.googleapis.com/v4/reports:batchGet', body);
-  }
+  // getPageViewsAnalytics = (body: any): Observable<any> => {
+  //   return this.mainService.setAnalyticsAccessToken('https://analyticsreporting.googleapis.com/v4/reports:batchGet', body);
+  // }
+  // getRefreshToken = (body: any): Observable<any> => {
+  //   return this.mainService.setAnalyticsRefreshToken('https://accounts.google.com/o/oauth2/token', body);
+  // }
 
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;

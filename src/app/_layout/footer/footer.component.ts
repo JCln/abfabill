@@ -1,16 +1,15 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements AfterViewInit {
-  lastMonthAnalytics: number;
+export class FooterComponent { //implements AfterViewInit 
+  lastMonthAnalytics: number = 23384;
   a: number;
 
-  constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
+  constructor() { } //private googleAnalyticsService: GoogleAnalyticsService
   printValues(obj): number {
     for (const key in obj) {
       if (typeof obj[key] === "object") {
@@ -24,14 +23,20 @@ export class FooterComponent implements AfterViewInit {
     return this.a;
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.googleAnalyticsService.pageViews().subscribe((res: any) => {
-        if (res) {
-          this.lastMonthAnalytics = this.printValues(res);
-        }
-      });
-    }, 2000);
-  }
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //     // this.googleAnalyticsService.refreshToken().subscribe((res: any) => {
+  //     //   if (res) {
+  //     //     console.log(res);
+
+  //     //   }
+  //     // })
+  //     this.googleAnalyticsService.pageViews().subscribe((res: any) => {
+  //       if (res) {
+  //         this.lastMonthAnalytics = this.printValues(res);
+  //       }
+  //     });
+  //   }, 2000);
+  // }
 
 }

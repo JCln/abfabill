@@ -60,7 +60,7 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDest
     //   this.helpService.help();
     //   ElcServicesComponent.elcWarnTime = false;
     // }
-    // this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
+    this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
 
   }
   ngAfterContentChecked(): void {
