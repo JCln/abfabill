@@ -105,7 +105,7 @@ export class PageNotFoundComponent extends CheckRoute {
     this.router.navigate([billId]);
   }
   trackRequestForm = this.fb.group({
-    trackNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern("^[1-9]\d*$")]],
+    trackNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]],
   });
   registerNewForm = this.fb.group({
     neighbourBillId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(13), Validators.pattern("^[0-9]*$")]],

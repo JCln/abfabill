@@ -13,7 +13,6 @@ import { IViewBill } from './iview-bill';
 export class MainService {
   private mainConfigUrl = '';
   // private auxiliaryConfigUrl: string = '';
-
   httpOptions = {
     headers: new HttpHeaders(
       {
@@ -21,6 +20,16 @@ export class MainService {
       }
     )
   };
+
+  analyticsHeaders = {
+    headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ya29.a0AfH6SMCkYDLGqbjL5JNNkjm3yas_kcvenh5mtw1B8gEN-4VYrjZDFb___TMnjnP85Fu3yCYXPAMsZixN4c0oUz0Zk8sGI_rUFI4qNIRmc9g8RqZVwmZNQx6UIk2FOLdpvvk-gETXIfPe3x7BGcGDcu_GW5zOkpYP7QYL'
+      }
+    )
+  };
+
 
   private getEnvironment = (): void => {
     this.mainConfigUrl = environment.API_URL;
@@ -43,21 +52,18 @@ export class MainService {
         catchError(err => this.errorHandler.errorHandler(err))
       );
     }
-
-    // let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-    //   catchError(err => this.errorHandler.errorHandler(err)),
-    //   retry(1) // retry failed request up to 1
-    // );
-    // let res2 = this.http.get<IViewBill>(this.auxiliaryConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-    //   catchError(err => this.errorHandler.errorHandler(err)),
-    //   retry(1) // retry failed request up to 1
-    // );
-    // return forkJoin([res1, res2]);
   }
 
   SET = (URL: string, body: object): Observable<any> => {
     return this.http.post<any>(this.mainConfigUrl + '/' + URL, body)
       .pipe(
         catchError(err => this.errorHandler.errorHandler(err)));
+  }
+
+  setAnalytics = (URL: string, body: any): any => {
+
+    return this.http.post<any>(URL, body, this.analyticsHeaders).pipe(
+      retry(3),
+      catchError(err => this.errorHandler.errorHandler(err)));
   }
 }

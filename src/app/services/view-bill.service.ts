@@ -45,6 +45,10 @@ export class ViewBillService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
   }
+  getPageViewsAnalytics = (body: any): Observable<any> => {
+    return this.mainService.setAnalytics('https://analyticsreporting.googleapis.com/v4/reports:batchGet', body);
+  }
+
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
