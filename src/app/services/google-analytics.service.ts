@@ -23,14 +23,15 @@ export class GoogleAnalyticsService {
   }
 
   //create our event emitter to send our data to Google Analytics
-  eventEmitter(eventCategory: string,
+  eventEmitter(
+    eventCategory: string,
     eventAction: string,
     eventLabel: string = null,
     eventValue: number = null) {
     ga('send', 'event', {
       eventCategory: eventCategory,
-      eventLabel: eventLabel,
       eventAction: eventAction,
+      eventLabel: eventLabel,
       eventValue: eventValue
     });
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-learn',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearnComponent implements OnInit {
 
-  constructor() { }
+  constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
+    this.sendButtonEventToAnalytics();
+  }
+  sendButtonEventToAnalytics = () => {
+    this.googleAnalyticsService.eventEmitter("userPage", "clicked", "userLabel", 5);
+    this.googleAnalyticsService.routerView();
   }
 
 }
