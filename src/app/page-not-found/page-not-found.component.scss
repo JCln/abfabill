@@ -1,42 +1,133 @@
 @import "../../assets/input.scss";
 @import "../../assets/mixins.scss";
+@import "../../assets/second_button.scss";
+@import "../../assets/@media.scss";
+@import "../../assets/spinner_loader.scss";
+
+$c_main_dark: #062c68;
+$c_light: #425496;
+$c_dark: #142147;
+$c_light_gray: #EEEEEE;
+$c_medium_gray: #cfcfcf;
 
 main {
+  --after_img: url(/assets/imgs/pagenotfound/ImgFollowUp.png);
+  --h1_job_detail: #EEEEEE;
+  --v-l-c: #e3e3e3;
   height: 100%;
   min-height: 55vh;
   border-radius: 55px 55px 30% 30%;
   text-align: center;
-  background: $clr;
 
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: grid;
+  gap: .5rem;
 
-  .img_class {
-    background-size: initial;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0 auto;
-    height: 12rem;
-    width: 18rem;
+  section {
+    border-radius: 20px;
+    padding-bottom: 2rem;
+    margin: 1rem .3rem;
+    box-shadow: 1px 1px 3px 0 var(--h1_job_detail);
+
+    ._job_detail {
+      h1 {
+        font-weight: 700;
+        padding-left: .5rem;
+        color: $c_light_gray;
+        @include justify_center;
+
+        &::after {
+          content: var(--after_img);
+          vertical-align: middle;
+          line-height: 0;
+          padding-left: 1rem;
+        }
+      }
+
+    }
+
+
+  }
+
+  .register_new {
+    --after_img: url(/assets/imgs/pagenotfound/rn.png);
+    --orange: #e4572e;
+    --h1_job_detail: var(--orange);
+    background-color: $c_medium_gray;
+
+    button {
+      background-color: var(--h1_job_detail);
+      color: var(--v-l-c);
+    }
+
+    ._job_detail {
+
+      h1 {
+        color: var(--h1_job_detail);
+
+        ::after {
+          content: var(--after_img);
+        }
+      }
+
+      hr {
+        border: 2px solid var(--h1_job_detail);
+
+      }
+
+    }
+  }
+
+  .track_request {
+    --h1_job_detail: #e91e63;
+    --color: $c_main_dark;
+    background-color: $c_main_dark;
+
+    button {
+      color: var(--h1_job_detail);
+      border: 2px solid var(--h1_job_detail);
+    }
+
+    ._job_detail {
+      h1 {
+        color: var(--h1_job_detail);
+      }
+
+      hr {
+        border: 2px solid var(--h1_job_detail);
+        background-color: transparent;
+      }
+    }
   }
 
   .error_inner {
-    padding: 0.2rem;
-    margin: 1rem 0;
+    --after_img: url(/assets/imgs/pagenotfound/ImgSupport.png);
+    --h1_job_detail: #384B67;
+    background-color: var(--h1_job_detail);
 
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #fff;
+    h1 {
+      ::after {
+        content: var(--after_img);
+      }
     }
+
+    button {
+      color: var(--h1_job_detail);
+    }
+
+    hr {
+      background-color: transparent;
+    }
+
   }
 
   .form {
     width: 90%;
+    margin-bottom: 1rem;
 
     .form-item {
       background: inherit;
+      width: inherit;
+      height: inherit;
 
       .form-input {
         font-size: 1.2rem;
@@ -44,33 +135,79 @@ main {
         text-align: center;
       }
     }
+  }
 
-    .div1 {
-      width: 25%;
-      cursor: pointer;
+  button {
+    @extend %second_button;
+  }
+}
 
-      p {
-        width: 0;
+.loader {
+  left: 25%;
+}
+
+.enter {
+  margin: auto;
+  text-align: center;
+}
+
+@media(min-width: 670px) {
+
+  main {
+    min-height: 60vh;
+    border-radius: 0;
+
+    button {
+      width: 90%;
+      margin: 0;
+    }
+
+    .register_new {
+
+      hr {
+        margin-bottom: 5rem;
       }
+    }
 
-      .div2 {
-        background-color: $clr;
+    .error_inner {
+
+      .form {
+        background: $c_dark;
+      }
+    }
+
+
+    ._job_detail {
+      display: block;
+      margin-bottom: 6rem;
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0;
       }
     }
   }
+
 }
 
-@media(min-width: 550px) {
-  main {
-    width: 50%;
-    margin: 0 auto;
-  }
-}
+@media(min-width: 1020px) {
 
-@media(min-width: 780px) {
   main {
-    .img_class {
-      width: 23rem;
+    grid-auto-flow: dense;
+
+    .register_new {
+      grid-column: 2/3;
+    }
+
+    .track_request {
+      grid-column: 1/2;
+    }
+
+    .error_inner {
+      grid-column: 3/-1;
     }
   }
+
 }
+
+@include threeColumnsWithVals(main, 670px, 1020px);

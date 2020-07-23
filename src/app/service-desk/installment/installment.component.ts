@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
-import { InteractionService } from '../../services/interaction.service';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-installment',
   templateUrl: './installment.component.html',
   styleUrls: ['./installment.component.scss']
 })
-export class InstallmentComponent implements OnInit {
+export class InstallmentComponent extends CheckRoute implements OnInit {
   spinnerBoolean = true;
   showMoreButton = false;
   sumOfInstallments = 0;
   billId: string = '';
-  getedDataIdFromRoute: any = [];
   response;
   respnseIsNull = true;
 
@@ -23,14 +22,12 @@ export class InstallmentComponent implements OnInit {
   // testObject = a;
 
   constructor(
-    private interactionService: InteractionService,
-    private viewBillService: ViewBillService,
+    private viewBillService: ViewBillService
   ) {
-    this.getDataFromRoute();
+    super();
   }
 
-  isNull = (value: any) =>
-    typeof value === "undefined" || (typeof value !== "object" || !value)
+  // typeof value !== "object" cleared
 
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
@@ -53,12 +50,9 @@ export class InstallmentComponent implements OnInit {
   }
   removeLoaderAfterResponse = () => this.spinnerBoolean = false;
   connectToServer = () => {
-    this.viewBillService.getInstallment().subscribe((res: any) => {
+    this.viewBillService.getInstallment(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {
-        // looking for async pipe make ups
-        // this.$asyncPipeTest = res;
         this.response = true;
-
         // when response is null and means no installment exists
         if (this.isNull(res[0])) {
           this.respnseIsNull = false;
@@ -68,24 +62,7 @@ export class InstallmentComponent implements OnInit {
     });
   }
 
-  getDataFromRoute = () => {
-    this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
-  }
-
-  // seemed that it is unnessesary
-  getId = (callback: () => void) => {
-    this.interactionService.installmentId$.subscribe(res => {
-      if (res)
-        this.billId = res;
-    });
-    callback();
-  }
-
-  nestingLevel = async () => {
-    this.viewBillService.setInstallmentId(this.getedDataIdFromRoute);
-
-    this.connectToServer();
-  }
+  nestingLevel = () => this.connectToServer();
 
   ngOnInit() {
     this.nestingLevel();

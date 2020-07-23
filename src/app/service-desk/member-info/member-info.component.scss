@@ -1,0 +1,104 @@
+@import "../../../assets/input.scss";
+@import "../../../assets/@media.scss";
+
+$darkgreen_background_border: rgba(34, 162, 78, 1);
+$darkgreen_background: rgba(0, 102, 34, 0.11);
+
+$lightgray: lightgray;
+
+section {
+  background: $clr;
+  padding: 1rem 0;
+  border-radius: $__border_radius;
+
+  .header_title {
+    @include justify-center;
+
+    .title {
+      font-size: $font_size_title;
+      color: $lightgray;
+      margin: 1rem;
+    }
+  }
+
+  .main {
+    background: rgba(179, 179, 179, 0.3);
+    border-radius: $__border_radius;
+    padding: 0.5rem;
+    margin: 0 0.15rem;
+
+    .background {
+      display: grid;
+      direction: rtl;
+
+      .form-item {
+        background: #345891;
+
+        .form-input {
+          border: 1px solid $clr;
+          background: #cccccc;
+          color: #142147;
+        }
+      }
+
+      .div1 {
+        background: $clr;
+
+        .div2 {
+          background: #345891;
+        }
+      }
+    }
+
+
+    .first_background {
+      .div1 {
+        background: $dark_b_color;
+      }
+    }
+  }
+}
+
+.form {
+  direction: ltr;
+}
+
+@media screen and (max-width: 414px) {
+  .main {
+    padding: 5px;
+    margin: 0;
+
+    .form {
+      width: 98%;
+
+      .form-item {
+        background: #345891;
+      }
+
+      .div1 {
+        width: 43%;
+      }
+
+      .form-input {
+        padding: 0 0.5rem;
+        font-size: 1.4rem;
+      }
+
+      .pay_button {
+
+        a.disabled,
+        a.enabled {
+          font-size: $small_font_size;
+        }
+      }
+
+    }
+  }
+
+  .pay_section img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@include fourColumns('.background');

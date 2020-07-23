@@ -11,9 +11,12 @@ const routes: Routes = [
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', redirectTo: 'pg', pathMatch: 'full' },
       { path: 'pg', component: PageNotFoundComponent },
+      { path: 'rn', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } },
+      { path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
+      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule), data: { animation: 'ServiceDesk' } }
     ]
   },
-  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule) },
+  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },
   {
     path: '', component: NoLayoutComponent, children: [
       {
@@ -21,12 +24,17 @@ const routes: Routes = [
       }
     ]
   },
-
+  {
+    path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)
+  },
+  {
+    path: 'android', loadChildren: () => import('./android/android.module').then(and => and.AndroidModule)
+  },
   { path: '**', redirectTo: 'pg', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

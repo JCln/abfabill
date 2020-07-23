@@ -1,43 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IViewBill } from './iview-bill';
 import { MainService } from './main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewBillService {
-  private id: string;
   private base64: string;
   constructor(private mainService: MainService) {
   }
 
-  getId = () => {
-    return this.id;
-  }
-  setId = (id: string) => {
-    this.id = id;
-    this.idValues(this.id);
-  }
-  setInstallmentId = (id: string) => {
-    this.id = id;
-  }
   idValues = (id: string) => {
     this.base64 = btoa(id);
   }
-  checkValidRoute = (val: object): boolean => {
-    if (typeof (Object.values(val)[0]) === "string")
-      return false;
-    return true;
+  getIsValidId = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/member/isvalid');
   }
-  getViewBill = (): any => {
-    return this.mainService.GET(this.id, 'moshtarakinapi/V2/Bill/Get', this.base64);
+  getViewBill = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/V2/Bill/Get', this.base64);
   }
-  getInstallment = (): any => {
-    return this.mainService.GET(this.id, 'moshtarakinapi/Installment/Get');
+  getInstallment = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/Installment/Get');
   }
-  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<IViewBill> => {
+  getKardex = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/v2/bill/getkardex', this.base64);
+  }
+  getABillKardex = (id: number, zoneId: number): any => {
+    this.idValues(`${id + '' + zoneId}`);
+    return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisBill/${this.base64}`);
+  }
+  getTrackingRequest = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/requestManager/getTrackings');
+  }
+  paymentInfoKardex = (id: number, zoneId: number): any => {
+    this.idValues(`${id + '' + zoneId}`);
+    return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisPayInfo/${this.base64}`);
+  }
+  getMemberInfo = (id: string): any => {
+    this.idValues(id);
+    return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
+  }
+  setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
 
@@ -47,17 +54,9 @@ export class ViewBillService {
 
     return this.mainService.SET(`MoshtarakinApi/v2/bill/generateBill/${this.base64}`, body);
   }
-  // sendCriticalOrSuggestions = (): Observable<> => {
-  //   typeId1: 
-  //   typeId2: 
-
-  //   const body = {
-  //     type: Number;
-  //     message: String;      
-  //   }
-  //   return this.mainService.SET('MoshtarakinApi/suggestion/setsuggestion', );
-  // }
-  getKardex = (id: string): any => {
-    return this.mainService.GET(id, 'moshtarakinapi/bill/getkardex');
+  setNewRegister = (form: object): Observable<any> => {
+    return this.mainService.SET('MoshtarakinApi/requestManager/registerNew', form);
   }
+
+
 }

@@ -13,7 +13,6 @@ import { IViewBill } from './iview-bill';
 export class MainService {
   private mainConfigUrl = '';
   // private auxiliaryConfigUrl: string = '';
-
   httpOptions = {
     headers: new HttpHeaders(
       {
@@ -43,16 +42,6 @@ export class MainService {
         catchError(err => this.errorHandler.errorHandler(err))
       );
     }
-
-    // let res1 = this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-    //   catchError(err => this.errorHandler.errorHandler(err)),
-    //   retry(1) // retry failed request up to 1
-    // );
-    // let res2 = this.http.get<IViewBill>(this.auxiliaryConfigUrl + '/' + URL + '/' + base64 + '/' + ID).pipe(
-    //   catchError(err => this.errorHandler.errorHandler(err)),
-    //   retry(1) // retry failed request up to 1
-    // );
-    // return forkJoin([res1, res2]);
   }
 
   SET = (URL: string, body: object): Observable<any> => {

@@ -1,0 +1,69 @@
+<div class="header_title justify_center">
+    <h3 class="title">
+        پیگیری درخواست ها
+    </h3>
+</div>
+<main *ngIf="route.children.length === 0">
+    <section *ngFor="let item of trackRequests">
+        <div class="_status">
+            {{item.status}}
+            <i *ngIf="item.stateCode === 0">
+                <img src="assets/imgs/trackrequest/registered.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 10">
+                <img src="assets/imgs/trackrequest/guide.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 15">
+                <img src="assets/imgs/trackrequest/guide.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 17">
+                <img src="assets/imgs/trackrequest/upload.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 20">
+                <img src="assets/imgs/trackrequest/confirmed.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 50">
+                <img src="assets/imgs/trackrequest/confirm.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 60">
+                <img src="assets/imgs/trackrequest/clipboard.png" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 65">
+                <img src="assets/imgs/trackrequest/again.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 70">
+                <img src="assets/imgs/trackrequest/row.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 75">
+                <img src="assets/imgs/trackrequest/confirmedPay.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 80">
+                <img src="assets/imgs/trackrequest/confirmed2.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 90">
+                <img src="assets/imgs/trackrequest/registered3.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 110">
+                <img src="assets/imgs/trackrequest/confirmed.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 90000">
+                <img src="assets/imgs/trackrequest/delete.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 90001">
+                <img src="assets/imgs/trackrequest/deleteAll.svg" alt="{{item.status}}">
+            </i>
+            <i *ngIf="item.stateCode === 90003">
+                <img src="assets/imgs/trackrequest/archived.png" alt="{{item.status}}">
+            </i>
+        </div>
+        <div class="_date-time">
+            <div class="__time">{{item.hm}}</div>
+            <div class="__date">{{item.dateJalali}}</div>
+            <div class="__more-details" (click)="getSMSList(item.smsList , item.status)" [routerLink]="['sms']">
+                جزئیات بیشتر
+            </div>
+        </div>
+    </section>
+</main>
+<app-sms-list *ngIf="route.children.length !== 0" [smsList]="smsList" [status]="smsStatus"></app-sms-list>
+<app-spinner-wrapper></app-spinner-wrapper>

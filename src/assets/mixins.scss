@@ -5,8 +5,29 @@
 @mixin justify-center {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
+@mixin space_evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@mixin m_font_size {
+  font-size: 1.2rem !important;
+}
+
+.m_font_size {
+  @include m_font_size();
+}
+
+.justify_center {
+  @include justify-center();
+}
+
+.space_evenly {
+  @include space_evenly();
+}
 
 .text_align_right {
   @include text_align(right);

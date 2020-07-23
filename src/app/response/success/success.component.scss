@@ -1,6 +1,5 @@
 @import "../../../assets/main.scss";
-
-$dark_gray: darkgray;
+@import "../../../assets/variables.scss";
 
 $__small_border_radius: 13px;
 
@@ -73,19 +72,25 @@ section {
         color: $bright_torouse;
       }
 
-      // p {
-      //   color: $dark_gray;
-      // }
-
       .back_to_insert_id {
         display: flex;
 
         button {
           @extend %button_first;
           background-color: $bright_torouse;
-          font-size: $font_size;
+          font-size: $small_font_size;
           min-width: 10rem;
           width: 100%;
+        }
+
+        ._special {
+          --special: #00368c;
+          border: 1px solid var(--special);
+          color: var(--special);
+
+          &:hover {
+            font-size: 1.3rem;
+          }
         }
       }
     }

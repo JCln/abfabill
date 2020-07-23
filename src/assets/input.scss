@@ -17,7 +17,6 @@
     @include justify-center;
     flex-direction: column;
     width: 52%;
-    // height: 3.5rem;
     height: auto;
     flex-grow: 1;
     background: lightgray;
@@ -31,7 +30,7 @@
   }
 
   .form-input {
-    padding: 0 1rem;
+    padding: 0 $small_font_size;
     font-family: inherit;
     outline: none;
     text-align: right;

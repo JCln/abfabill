@@ -1,0 +1,7 @@
+<h3 class="_title">فهرست پیامک های ارسالی در مرحله {{status}}</h3>
+<main>
+    <div *ngFor="let item of smsList">
+        <p>{{item}}</p>
+    </div>
+    <p *ngIf="!smsList[0]">شما در این مرحله پیامکی دریافت نکرده اید</p>
+</main>

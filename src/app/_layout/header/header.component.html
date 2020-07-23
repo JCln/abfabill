@@ -3,6 +3,10 @@
 	<span></span>
 	<span></span>
 </div>
+<a (click)="help()" class="help">
+	<i class="fa fa-question">
+	</i>
+</a>
 
 <nav role="navigation">
 	<div id="menuToggle">
@@ -13,11 +17,17 @@
 		<span></span>
 
 		<ul id="menu">
+			<a [routerLink]="['myInfo']">
+				<li>اطلاعات انشعاب</li>
+			</a>
 			<a [routerLink]="['/'+previousPage]">
 				<li>بازگشت به صفحه اصلی</li>
 			</a>
-			<a href="https://cafebazaar.ir/app/com.app.leon.moshtarak" target="_blank" rel="noopener noreferrer">
-				<li>اپلیکیشن همراه آبفا</li>
+			<a [routerLink]="['/cs']">
+				<li class="__cand justify_center">
+					<i><img src="assets/imgs/header/cands.png" alt="انتقادات و پیشنهادات"></i>
+					انتقادات و پیشنهادات
+				</li>
 			</a>
 			<a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer">
 				<li>پرتال شرکت آبفا</li>
@@ -31,7 +41,7 @@
 <header>
 	<section>
 		<div class="header_icon">
-			<img class="abfa" src="assets/imgs/bigger.png" alt="">
+			<img class="abfa" src="assets/imgs/header/bigger.png" alt="">
 		</div>
 	</section>
 </header>

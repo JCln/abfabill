@@ -1,0 +1,137 @@
+<section>
+
+    <div class="title_content">
+        <h1>
+            خرید انشعاب
+        </h1>
+    </div>
+
+
+    <main class="main">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="background first_background">
+
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="firstName" class="form-input" formControlName="firstName"
+                            aria-label="firstName" [(ngModel)]="firstName" required>
+                    </div>
+                    <div class="div1">
+                        <p>نام</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="sureName" formControlName="sureName" class="form-input"
+                            aria-label="sureName" [(ngModel)]="sureName" required>
+                    </div>
+                    <div class="div1">
+                        <p>نام خانوادگی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="fatherName" formControlName="fatherName" class="form-input"
+                            aria-label="fatherName" placeholder="اختیاری">
+                    </div>
+                    <div class="div1">
+                        <p>نام پدر</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input name="nationalId" type="text" [(ngModel)]="nationalId" formControlName="nationalId"
+                            class="form-input" aria-label="nationalId" minlength=10 maxlength=10 required>
+                    </div>
+                    <div class="div1">
+                        <p>کد ملی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="mobile" formControlName="mobile" class="form-input" aria-label="mobile"
+                            maxlength=11 minlength=11 [(ngModel)]="mobileNumber" required>
+                    </div>
+                    <div class="div1">
+                        <p>شماره همراه</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="phoneNumber" formControlName="phoneNumber" class="form-input"
+                            aria-label="phoneNumber" minlength=8 maxlength=10 placeholder="اختیاری">
+                    </div>
+                    <div class="div1">
+                        <p>تلفن ثابت</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="neighbourBillId" formControlName="neighbourBillId" class="form-input"
+                            aria-label="neighbourBillId" [(ngModel)]="neighbourBillId" minlength=3 maxlength=13 required
+                            readonly>
+                    </div>
+                    <div class="div1">
+                        <p>شناسه همسایه</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="postalCode" formControlName="postalCode" class="form-input"
+                            aria-label="postalCode" minlength=9 maxlength=10 placeholder="اختیاری">
+                    </div>
+                    <div class="div1">
+                        <p>کد پستی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-item">
+                        <input type="text" name="address" formControlName="address" class="form-input"
+                            aria-label="address" [(ngModel)]="address" minlength=10 required>
+                    </div>
+                    <div class="div1">
+                        <p>نشانی</p>
+                        <div class="div2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="justify_center">
+                <h3>لطفا یکی از خدمات زیر را انتخاب کنید</h3>
+            </div>
+            <div class="button_content space_evenly">
+                <label class="container">انشعاب آب
+                    <input type="radio" formControlName="SelectedServices" value=1>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">انشعاب آب و فاضلاب
+                    <input type="radio" formControlName="SelectedServices" value=2>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <hr>
+            <div class="justify_center">
+                <button type="submit">درخواست خرید</button>
+            </div>
+        </form>
+    </main>
+
+</section>
+<app-spinner-wrapper></app-spinner-wrapper>

@@ -4,8 +4,8 @@ $clr: #00368c;
   position: absolute;
   cursor: pointer;
   padding: 1rem;
-  left: 2rem;
-  top: 6rem;
+  left: .6rem;
+  top: 2.1rem;
 
   span {
     display: block;
@@ -13,12 +13,9 @@ $clr: #00368c;
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-
     background: $clr;
     border-radius: 3px;
-
     z-index: 2;
-
     transform-origin: 4px 0px;
 
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),

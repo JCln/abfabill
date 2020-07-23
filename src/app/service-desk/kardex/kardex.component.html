@@ -1,52 +1,125 @@
 <section>
-    <div class="main_border" *ngFor="let kardex of kardex">
+    <article>
+        <button class="chart_button" [routerLink]="['bar']">مشاهده نمودار مصرف
+            <i class="far fa-chart-bar"></i>
+        </button>
+    </article>
+    <div [ngClass]="{
+        'darker_b': !kardex.isBill,
+        'dark_gray_b': kardex.isBill,
+        view_hover: kardex.isBill && hoveredColor}" (mouseover)="changeStyleOnMouseOver(true)"
+        (mouseleave)="changeStyleOnMouseOver(false)" class="main_border"
+        *ngFor="let kardex of kardex ; let index = index"
+        (click)="!kardex.isBill ? getPaymentInfoKardex(kardex.id , kardex.zoneId, index) : getABillKardex(kardex.id , kardex.zoneId)">
+        <button class="_payid_button" *ngIf="!kardex.isBill && !kardex.payDay">مشاهده جزئیات
+            پرداخت</button>
+        <button class="_payid_button dark_gray_border bill" *ngIf="kardex.isBill">مشاهده جزئیات
+            قبض</button>
         <div class="first_section">
-            <div class="form" *ngIf="kardex.isBill === true"
-                >
-                <!-- because class form above have condition so check other things is useless  -->
+            <div *ngIf="!kardex.isBill && kardex.spinner">
+                <i class="loader"></i>
+            </div>
+            <div *ngIf="!kardex.isBill" class="__payment_info">
+                <div class="form" *ngIf="kardex.payDay">
+                    <div class="darker_b form-item" style="min-width: 11rem;">
+                        <input type="text" readonly name="payableReadable" class="form-input"
+                            aria-label="payableReadable" value="{{kardex.payableReadable}} ریال"
+                            style="font-size: 1rem;">
+                    </div>
+                    <div class="div1 dark_b">
+                        <div class="__payed_time white_c" style="font-size: .9rem;">
+                            مبلغ به حروف</div>
+                        <div class="div2 darker_b">
+                        </div>
+                    </div>
+                </div>
+                <div class="form" *ngIf="kardex.payDay">
+                    <div class="darker_b form-item">
+                        <input type="text" readonly name="payableReadable" class="form-input"
+                            aria-label="payableReadable" value="{{kardex.bankTitle}}" style="font-size: 1rem;">
+
+                    </div>
+                    <div class="div1 dark_b">
+                        <div class="__payed_time white_c">
+                            نام بانک</div>
+                        <div class="div2 darker_b">
+                        </div>
+                    </div>
+                </div>
+                <div class="form" *ngIf="kardex.payDay">
+                    <div class="darker_b form-item">
+                        <input type="text" readonly name="payableReadable" class="form-input"
+                            aria-label="payableReadable" value="{{kardex.payTypeTitle}}" style="font-size: 1rem;">
+
+                    </div>
+                    <div class="div1 dark_b">
+                        <div class="__payed_time white_c">
+                            نحوه پرداخت</div>
+                        <div class="div2 darker_b">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form" *ngIf="kardex.isBill">
                 <div class="form-item">
                     <input type="number" readonly name="kardex.id" class="form-input" aria-label="first name"
-                        value="{{kardex.isBill === false ? '':kardex.usage}}">
+                        value="{{kardex.usage}}">
                 </div>
-                <div class="div1">
-                    <p *ngIf="kardex.isBill === true">مصرف</p>
+                <div class="div1 light_gray_b darker_gray_c">
+                    <div class="__payed_time darker_gray_c">
+                        مصرف</div>
                     <div class="div2">
                     </div>
                 </div>
             </div>
             <div class="form">
-                <div class="form-item">
+                <div class="form-item" [ngClass]="{
+                    'darker_b': !kardex.isBill}">
                     <input type="text" readonly name="kardex.id" class="form-input" aria-label="first name"
-                        value="{{kardex.isBill === false ? kardex.creditorDate : kardex.oweDate }}">
+                        value="{{!kardex.isBill? kardex.creditorDate : kardex.oweDate }}">
                 </div>
-                <div class="div1">
-                    <div class="__payed_time">{{kardex.isBill === false ? 'تاریخ پرداخت' : 'تاریخ صدور'}}</div>
-                    <div class="div2">
+                <div [ngClass]="{
+                    'dark_b': !kardex.isBill,
+                    'light_gray_b': kardex.isBill}" class="div1">
+                    <div [ngClass]="{'white_c': !kardex.isBill,'darker_gray_c': kardex.isBill}" class="__payed_time">
+                        {{!kardex.isBill ? 'تاریخ پرداخت' : 'تاریخ صدور'}}</div>
+                    <div [ngClass]="{'darker_gray_c': !kardex.isBill,'darker_gray_c': kardex.isBill, 
+                    'darker_b': !kardex.isBill,'dark_gray_b': kardex.isBill}" class="div2">
                     </div>
                 </div>
             </div>
         </div>
         <div class="form">
-            <div class="form-item">
-                <input type="number" readonly name="kardex.id" class="form-input"
-                    [ngStyle]="{'color': kardex.isBill === false ? '#515151' : '#484fde' , 'border': kardex.isBill === false ? '2px solid #61e78652' : '1px solid lightgray'}"
-                    aria-label="first name" value="{{kardex.amount}}">
+            <div class="form-item" [ngClass]="{
+                'darker_b': !kardex.isBill}">
+                <input type="number" readonly name="kardex.id" [ngClass]="{
+                    'dark_c': !kardex.isBill,
+                    'darker_gray_c': kardex.isBill}" class="form-input" aria-label=" first name"
+                    value="{{kardex.amount}}">
             </div>
-            <div class="div1" [ngStyle]="{'background': kardex.isBill === false ? '#61e78652' : '#484fde'}">
-                <div class="sign" *ngIf="kardex.isBill === false">
+            <div class="div1 min-width1" [ngClass]="{
+                'dark_b': !kardex.isBill,
+                'light_gray_b' : kardex.isBill}">
+                <div class="sign" *ngIf="!kardex.isBill">
                     <i class="fa fa-check"></i>
                 </div>
-                <div class="view_bill" *ngIf="kardex.isBill === true">
-                    <i class="fa fa-arrow-alt-circle-left"></i>
+                <div class="view_bill __transparent_back" *ngIf="kardex.isBill">
+                    <img src="assets/imgs/s-viewbill.png" alt="">
                 </div>
-                <p [ngStyle]="{'color': kardex.isBill === false ? '#515151' : ''}">
-                    {{kardex.isBill ? 'نمایش قبض': 'پرداخت شده'}}
+                <p [ngClass]="{'white_c': !kardex.isBill,'darker_c': kardex.isBill}">
+                    {{kardex.isBill ? 'مبلغ': 'پرداخت شده'}}
                 </p>
 
-                <div class="div2">
+                <div [ngClass]="{
+                    'darker_b': !kardex.isBill,
+                    'dark_gray_b': kardex.isBill}" class="div2">
                 </div>
             </div>
         </div>
     </div>
+
 </section>
+
 <app-spinner-wrapper></app-spinner-wrapper>

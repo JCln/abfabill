@@ -24,3 +24,8 @@ html {
 *::after {
   box-sizing: border-box;
 }
+
+/* right align toaster*/
+.ngx-toastr {
+  text-align: right;  
+}

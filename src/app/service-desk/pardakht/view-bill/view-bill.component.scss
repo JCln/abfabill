@@ -2,29 +2,28 @@
 @import "../../../../assets/input.scss";
 @import "../../../../assets/mixins.scss";
 @import "../../../../assets/spinner_loader.scss";
+@import "../../../../assets/@media.scss";
 
-$firstBackground_color: rgba(153, 230, 255, 0.3);
-$secondBackground_color: rgba(255, 0, 0, 0.33);
-$firstBackground_color_border: rgba(153, 230, 255, 1);
-$red_background_color: rgba(255, 0, 0, 0.11);
+
 $orange_background: rgba(255, 191, 128, 0.5);
 $orange_background_border: rgba(125, 73, 8, 1);
 $purple_backgruond_border: rgba(102, 0, 51, 1);
 $purple_backgruond: rgba(255, 204, 230, 0.1);
 $darkgreen_background_border: rgba(34, 162, 78, 1);
 $darkgreen_background: rgba(0, 102, 34, 0.11);
-$lightblue_background_border: rgba(0, 153, 255, 1);
-$lightblue_background: rgba(204, 235, 255, 0.11);
-$blue_backgroud_border: rgba(26, 163, 255, 1);
-$blue_backgroud: rgba(26, 163, 255, 0.11);
-$footer_background: rgba(0, 230, 0, 1);
-$footer_button: rgba(0, 26, 0, 1);
-
-$lightgreen_border: #e4572e;
 $lightgreen: rgba(179, 179, 179, 0.3);
 
-h3 {
-  color: gray;
+@mixin orgenize_color ($b_c, $border_c) {
+  background: $b_c;
+  border: 2px solid $border_c;
+
+  .form-input {
+    border: 1px solid $border_c;
+  }
+
+  .div1 {
+    background: $border_c;
+  }
 }
 
 @mixin background {
@@ -38,13 +37,25 @@ h3 {
   }
 }
 
+h3 {
+  color: $gray;
+}
+
+
 section {
 
   .main {
     background: rgba(179, 179, 179, 0.3);
     border-radius: $__border_radius;
-    padding: 0.5rem;
-    margin: 0 0.15rem;
+    padding: 0 0.1rem;
+    margin: 0;
+    display: grid;
+
+    ._detail_content {
+      display: inherit;
+      grid-column: 1 / -1;
+      gap: .5rem;
+    }
 
     .background {
       @include background;
@@ -62,58 +73,26 @@ section {
       .form-input {
         border: 1px solid $clr;
       }
+
+      @media (min-width: 1000px) {
+        grid-column: 2 / 3;
+      }
     }
 
     .orange_background {
-      background: $orange_background;
-      border: 2px solid $orange_background_border;
-
-      .form-input {
-        border: 1px solid $orange_background_border;
-      }
-
-      .div1 {
-        background: $orange_background_border;
-      }
+      @include orgenize_color($orange_background, $orange_background_border)
     }
 
     .purple_background {
-      background: $purple_backgruond;
-      border: 2px solid $purple_backgruond_border;
-
-      .form-input {
-        border: 1px solid $purple_backgruond_border;
-      }
-
-      .div1 {
-        background: $purple_backgruond_border;
-      }
+      @include orgenize_color($purple_backgruond, $purple_backgruond_border);
     }
 
     .orangegray_background {
-      background: $lightgreen;
-      border: 2px solid $lightgreen_border;
-
-      .form-input {
-        border: 1px solid $lightgreen_border;
-      }
-
-      .div1 {
-        background: $lightgreen_border;
-      }
+      @include orgenize_color($lightgreen, $orange_color);
     }
 
     .darkgreen_background {
-      background: $darkgreen_background;
-      border: 2px solid $darkgreen_background_border;
-
-      .form-input {
-        border: 1px solid $darkgreen_background_border;
-      }
-
-      .div1 {
-        background: $darkgreen_background_border;
-      }
+      @include orgenize_color($darkgreen_background, $darkgreen_background_border);
     }
 
   }
@@ -121,6 +100,7 @@ section {
 
 .check_moreinfo {
   @include justify-center;
+  align-items: flex-end;
 
   button {
     @extend %button_first;
@@ -128,14 +108,14 @@ section {
     border: 2px solid $medium_slate_blue;
     background: $white;
     justify-content: space-around;
-    display: flex;
-    align-items: center;
     flex-direction: row-reverse;
     font-family: inherit;
   }
+
 }
 
-// transition not working now !!!!!!!!!!!
+@include media_wrapper (880px, '.check_moreinfo', grid-column, 2/3);
+
 .show {
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -156,12 +136,18 @@ section {
       border-radius: 4rem;
       margin: 0.3rem;
       padding: 0.77rem;
+      cursor: pointer;
 
       img {
         width: 7rem;
         height: 6rem;
-        border-radius: $font_medium_size;
+        border-radius: $__border_radius_big;
       }
+    }
+
+    @media (min-width: 550px) {
+      width: 50%;
+      margin: auto;
     }
   }
 
@@ -173,6 +159,8 @@ section {
       width: 100%;
       padding: 0;
     }
+
+    @include media_wrapper (550px, 'button', width, 35%);
 
     .pay_button {
       font-family: inherit;
@@ -212,8 +200,8 @@ section.barcode {
 
 @media screen and (max-width: 414px) {
   .main {
-    padding: 5px;
-    margin: 0;
+    padding: 0.5rem;
+    margin: 0 0.15rem;
 
     .form {
       width: 98%;
@@ -244,9 +232,10 @@ section.barcode {
   }
 }
 
-@media (min-width: 550px) {
-  section {
-    width: 50%;
-    margin: auto !important;
-  }
+@include fourColumns('._detail_content');
+@include threeColumns('.main');
+@include threeColumns('._detail_content_kardex');
+
+.kardex_added_class {
+  grid-template-columns: repeat(3, 1fr) !important;
 }

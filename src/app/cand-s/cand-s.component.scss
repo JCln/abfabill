@@ -1,0 +1,90 @@
+@import "../../assets/main.scss";
+@import "../../assets/mixins.scss";
+@import "../../assets/checkbox.scss";
+@import "../../assets/radio_checkbox.scss";
+
+
+$background_border_color: #087CDB;
+$background_color: #062C68;
+$customer_border: #1B6CEE;
+$green_button: #2DC227;
+$medium_slate_blue: rgba(125, 131, 255, .5);
+$white: #fff;
+$light_gray: lightgray;
+$dark_gray: #605f5f;
+
+
+section {
+  background-color: $background_color;
+  min-height: 20rem;
+  padding: 1rem .5rem;
+  border-radius: 30px;
+
+  .title_content {
+    text-align: center;
+
+    h1 {
+      color: $light_gray;
+      font-size: 2rem;
+      margin: .5em;
+    }
+  }
+
+  .button_content {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  main {
+    display: flex;
+
+    textarea {
+      color: $dark_gray;
+      border-radius: 30px;
+      width: 100%;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: right;
+      padding: 1rem;
+      margin: 0 .5rem;
+      border: 2px solid $customer_border;
+      font-family: inherit;
+      direction: rtl;
+      outline: none;
+    }
+  }
+
+  .background_color {
+    button {
+      @extend %button_first;
+      min-width: 17rem;
+      background: $green_button;
+      margin: 0.9rem auto;
+    }
+  }
+}
+
+
+[hidden] {
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  section .button_content button {
+    font-size: 1.20rem;
+  }
+}
+
+@media (min-width: 550px) {
+
+  main,
+  .text_align_center {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .text_align_center {
+    place-content: center;
+    display: flex;
+  }
+}

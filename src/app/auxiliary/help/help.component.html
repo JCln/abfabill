@@ -1,0 +1,34 @@
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content  border_radius">
+        <div class="modal-header border_radius">
+            <div class="close" (click)="backClicked()">
+                <span>&times;</span>
+            </div>
+            <h2 *ngIf="messages[0]">{{messages[0]}}</h2>
+        </div>
+        <div class="modal-body">
+            <p *ngIf="messages[1]">{{messages[1]}}</p>
+            <div *ngIf="messages[2]" class="_img_container">
+                <img src="{{messages[2]}}" alt="">
+            </div>
+            <div style="text-align: right; font-size: 1.3rem">
+                <a *ngIf="messages[6]" href="https://myket.ir/app/com.app.leon.moshtarak" target="_blank"
+                    rel="noopener noreferrer"> اپلیکیشن همراه آبفا </a>
+            </div>
+            <p *ngIf="messages[5]">{{messages[5]}}</p>
+            <div *ngIf="messages[7]" style="font-size: 1.3rem; text-align: right; direction: rtl;">
+                <a href="tel:1522" target="_self" rel="noopener noreferrer">1522</a>
+                نسبت به عملیات مورد نظر خود اقدام نمایید
+            </div>
+            <div *ngIf="messages[4]" class="_img_container">
+                <img src="{{messages[4]}}" alt="">
+            </div>
+        </div>
+        <div class="modal-footer footer_radius">
+            <h3>{{messages[3]}}</h3>
+        </div>
+    </div>
+
+</div>

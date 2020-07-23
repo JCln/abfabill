@@ -3,8 +3,12 @@
     <span></span>
     <span></span>
 </div>
-
-
+<div>
+    <button (click)="help()" class="help">
+        <i class="fa fa-question">
+        </i>
+    </button>
+</div>
 <nav role="navigation">
     <div id="menuToggle">
         <input type="checkbox" (change)="changeBackImg()">
@@ -14,7 +18,19 @@
         <span></span>
 
         <ul id="menu">
-            <!-- <li><qrcode [qrdata]="'Your QR code data string'" [size]="256" [level]="'M'"></qrcode></li> -->
+
+            <a *ngIf="showMemberInfo" [routerLink]="['myInfo']">
+                <li>اطلاعات انشعاب</li>
+            </a>
+            <a *ngIf="showMemberInfo" [routerLink]="['pg']">
+                <li>شناسه قبض دیگری وارد کنید</li>
+            </a>
+            <a [routerLink]="['/cs']">
+                <li class="__cand justify_center">
+                    <i><img src="assets/imgs/header/cands.png" alt="انتقادات و پیشنهادات"></i>
+                    انتقادات و پیشنهادات
+                </li>
+            </a>
             <a href="https://cafebazaar.ir/app/com.app.leon.moshtarak" target="_blank" rel="noopener noreferrer">
                 <li>اپلیکیشن همراه آبفا</li>
             </a>
@@ -27,7 +43,7 @@
 <header>
     <section>
         <div class="header_icon">
-            <img class="abfa" src="assets/imgs/bigger.png" alt="">
+            <img class="abfa" src="assets/imgs/header/bigger.png" alt="">
         </div>
     </section>
 </header>

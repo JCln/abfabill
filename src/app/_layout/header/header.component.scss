@@ -1,6 +1,13 @@
 @import "../headers";
 @import "../hamburger";
+@import "../help";
 
 #menu {
-  max-height: 22rem;
+  --green: #142147;
+
+  :nth-child(1) {
+    li {
+      color: var(--green);
+    }
+  }
 }

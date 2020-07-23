@@ -1,29 +1,31 @@
 @import "../../../assets/input";
+@import "../../../assets/main";
+@import "../../../assets/spinner_loader";
+@import "../../../assets/variables.scss";
 
-$white: #fff;
-$blue_color: #004ecc3d;
-$darker_gray: #515151;
-$lightgray: lightgray;
-$darkgray: darkgray;
+$dark_b_color: #062C68;
+$darker_gray: #5C5C5C;
 
 .main_border {
   border: 2px solid darkgray;
-  border-radius: 30px;
+  border-radius: $__border_radius;
   margin: 0 .1rem;
   margin-bottom: .8rem;
+  display: flex;
+  flex-direction: column-reverse;
 
   .form {
     box-shadow: none;
     background: $white;
+    margin: 0.3rem auto 1px;
 
     .form-item {
-      background: inherit;
 
       .form-input {
         padding: 0 0.5rem 0 .2rem;
         line-height: 3;
-        color: $lightgray;
-        border: 1px solid $lightgray;
+        color: $darker_gray;
+        border: 1px solid $c_light_gray;
         transform: translateX(.26rem);
       }
 
@@ -38,25 +40,21 @@ $darkgray: darkgray;
 
       .__payed_time {
         position: absolute;
-        font-size: 1rem;
+        font-size: $small_font_size;
         font-weight: 600;
-        line-height: 2;
+        line-height: 1.8;
         color: $darker_gray;
       }
 
-    }
-
-    .div2 {
-      background: $white;
     }
   }
 
   .first_section {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
 
     .form {
-      // width: 50%;
-
       .form-item {
         width: 65%;
 
@@ -76,17 +74,15 @@ $darkgray: darkgray;
   align-items: center;
   position: absolute;
   background-color: $bright_torouse;
-  width: 3rem;
-  height: 3rem;
+  width: $big_size;
+  height: $big_size;
   border-radius: 50%;
-  right: 0;
+  right: 4px;
   top: -50%;
   transform: translateY(50%);
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 
   .fa-check {
     font-size: 2.2rem;
@@ -96,31 +92,177 @@ $darkgray: darkgray;
 }
 
 .view_bill {
-  background-color: $blue_color;
+  background-color: $clr_border;
 
-  .fa-arrow-alt-circle-left{
-    color: $lightgray;
+  .fa-arrow-alt-circle-left {
+    color: $c_light_gray;
     font-size: 2.2rem;
   }
 }
 
-@media(min-width: 550px) {
+.__transparent_back {
+  background: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+section article {
+  display: flex;
+  justify-content: center;
+
+  .chart_button {
+    @extend %button_first;
+    background: $orange_color;
+    width: auto;
+
+    .fa-chart-bar {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+._payid_button {
+  @extend %button_first;
+  min-width: 12rem;
+  width: auto;
+  background: inherit;
+  border: 1px solid $darkgray;
+  color: $darkgray;
+  font-size: $small_font_size;
+  margin: auto .1rem;
+}
+
+.bill {
+  // border: inherit $darker_gray;
+  color: $darker_gray;
+  box-shadow: 2px 2px 15px 2px $darker_gray;
+}
+
+@media(min-width: 720px) {
   .main_border {
     display: flex;
-    border: 0 solid darkgray;
-    border-bottom: 2px solid darkgray;
+    flex-direction: row;
+    border: 0;
 
     .form {
-      // width: 100%;
-      width: 50%;
+      width: auto;
+      min-width: 16rem;
+      margin: 0.3rem 0;
     }
 
     .first_section {
-      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+      width: auto;
+      flex-grow: 1;
+      flex-direction: row;
 
-      .form {
-        width: 100%;
+      .__payment_info {
+        display: flex;
+        flex-direction: column;
+
+        .form {
+          width: auto;
+        }
       }
     }
   }
+}
+
+@media(min-width: 990px) {
+  .main_border {
+    .first_section {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
+}
+
+@media(min-width: 1031px) {
+  .main_border {
+
+    .first_section {
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      .__payment_info {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.view_hover:hover,
+.view_hover:focus,
+.view_hover:active {
+  cursor: pointer;
+  box-shadow: 2px 2px 15px 2px $darker_gray;
+}
+
+.min-width1 {
+  min-width: 60%;
+}
+
+@mixin free($element, $value) {
+  #{$element}: $value !important;
+}
+
+.dark_gray_border {
+  @include free(border, 1px solid $darker_gray);
+}
+
+/* spinner on each pay id indexs*/
+.loader {
+  left: -100%;
+  bottom: -43%;
+  height: 0.7rem;
+  width: 3rem;
+}
+
+/* */
+
+// color ///////
+.white_c {
+  @include free(color, $white);
+}
+
+.light_gray_c {
+  @include free(color, $c_light_gray);
+}
+
+.dark_gray_c {
+  @include free(color, $darkgray);
+}
+
+.darker_gray_c {
+  @include free(color, $darker_gray);
+}
+
+.dark_c {
+  @include free(color, $clr_border);
+}
+
+.darker_c {
+  @include free(color, $dark_b_color);
+}
+
+////////////////
+.dark_gray_b {
+  @include free(background, $darkgray);
+}
+
+.light_gray_b {
+  @include free(background, $c_light_gray);
+}
+
+.dark_b {
+  @include free(background, $clr_border);
+}
+
+.darker_b {
+  @include free(background, $dark_b_color);
 }

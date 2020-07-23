@@ -1,14 +1,16 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
+import { HelpService } from './../../services/help.service';
+import { CheckRoute } from './../../shared/check-route';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends CheckRoute implements OnInit {
   previousPage: string;
-
   changeBackImg = () => {
     if (screen.width > 549) {
       return;
@@ -16,18 +18,25 @@ export class HeaderComponent implements OnInit {
     const abfaImg = document.querySelector('.abfa');
     abfaImg.classList.toggle('toggleImg');
   }
-  constructor(private _location: Location) { }
+  constructor(private _location: Location, private helpService: HelpService) {
+    super();
+  }
 
   // back to previous page
   backClicked = () => {
     this._location.back();
   }
-
   ngOnInit() {
     this.goToHome();
   }
   goToHome = () => {
-    this.previousPage = window.location.pathname.split('/')[1];
+    this.previousPage = this.getedDataIdFromRoute;
+  }
+
+  help = () => {
+    const a = window.location.pathname.split('/').pop();
+    this.helpService.someName(a);
+    this.helpService.help();
   }
 
 }

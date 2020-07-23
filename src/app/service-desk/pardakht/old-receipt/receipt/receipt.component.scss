@@ -1,4 +1,5 @@
 @import '../../../../../assets/main';
+@import '../../../../../assets/@media.scss';
 
 $__border_radius: 15px;
 $__border_radius_bigger: 50px;
@@ -45,7 +46,7 @@ section {
       margin: 1rem;
       display: flex;
       flex-direction: row;
-
+      justify-content: center;
 
       ._first {
         width: 20rem;
@@ -106,6 +107,7 @@ section {
             .text_part,
             .dynamic_details {
               width: 50%;
+              padding: 0.3rem .2rem;
             }
           }
         }
@@ -183,8 +185,9 @@ section {
         }
 
         .borders {
-          border-color: #c6edfe !important;
-          background-color: #c6edfe;
+          --color: #c6edfe;
+          border-color: var(--color) !important;
+          background-color: var(--color);
         }
       }
 
@@ -323,3 +326,19 @@ button {
   @extend %button_first;
   width: 100%;
 }
+
+._button_section {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  .advice {
+    margin: .2rem;
+    border: 2px solid;
+    border-radius: $__border_radius;
+    padding: .2rem;
+    font-size: 1.2rem;
+  }
+
+}
+
+@include media_wrapper (800px, '._button_section', grid-template-columns, 1fr 1fr);

@@ -1,2 +1,13 @@
 @import "../headers";
 @import "../hamburger";
+@import "../help";
+
+#menu {
+  :nth-child(1) {
+    --green: #142147;
+
+    li {
+      color: var(--green);
+    }
+  }
+}

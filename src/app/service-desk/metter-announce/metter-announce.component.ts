@@ -1,10 +1,11 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
+import { IViewBill } from './../../services/iview-bill';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { ViewBillService } from './../../services/view-bill.service';
+import { CheckRoute } from './../../shared/check-route';
 
 const mobileLength = 11;
 @Component({
@@ -12,18 +13,10 @@ const mobileLength = 11;
   templateUrl: './metter-announce.component.html',
   styleUrls: ['./metter-announce.component.scss']
 })
-export class MetterAnnounceComponent implements OnInit, OnDestroy {
+export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   input: number;
-  getedDataIdFromRoute = '';
   mobileNumber = '';
-  // spinner
-  spinnerSubscriber: Subscription;
-  connectToSrSubscriber: Subscription;
-  // need to have error text to show
   notification: boolean = false;
-  testTheFuckingThat = false;
-  // notificationText = '';
-
   // textError from server
   $textError: string;
   showMessage = false;
@@ -34,10 +27,6 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
   private minLength = 1;
 
   private mobileLength = mobileLength;
-
-  getDataFromRoute = () => {
-    this.interactionService.billId$.subscribe(res => this.getedDataIdFromRoute = res);
-  }
 
   pushOrPopFromMobileNumber = () => {
     // unshift to array just allowed so => string to array and then to string should converted
@@ -84,31 +73,33 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
 
   connectToServer = (): Promise<any> => {
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve(
-          this.connectToSrSubscriber = this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber).subscribe((res: any) => {
+      resolve(
+        this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber)
+          .subscribe((res: IViewBill) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
               this.errorHandler.timeOutBeforeRoute('r/success');
             }
           })
-        )
-      }, 3000)
+
+      )
     )
   }
 
-  createSpinner = (val: any) => {
-    this.spinnerSubscriber = this.spinnerWrapper.loadingStatus$.subscribe(status => {
+  spinnerCondition = (val: any) => {
+    this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
       this.notification = status;
     })
   }
 
+  createSpinner = (canLoad: boolean) => {
+    canLoad ? this.spinnerWrapper.startLoading() : this.spinnerWrapper.stopLoading()
+  }
+
   spinnerChecker = (bol: boolean): Promise<any> => {
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve(this.spinnerWrapper.loading(bol))
-      }, 100)
+      resolve(this.createSpinner(bol))
     )
   }
   changeToDefaultBeforeResponse = () => {
@@ -122,7 +113,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     console.log(a);
 
     const b = await this.spinnerChecker(a);
-    this.createSpinner(a);
+    this.spinnerCondition(a);
     if (a)
       await this.connectToServer().catch(err => console.log(err));
   }
@@ -133,7 +124,7 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
   ) {
-    this.getDataFromRoute();
+    super();
   }
 
   ngOnInit(): void {
@@ -145,9 +136,5 @@ export class MetterAnnounceComponent implements OnInit, OnDestroy {
           this.spinnerChecker(false);
       }
     });
-  }
-  ngOnDestroy(): void {
-    // this.connectToSrSubscriber.unsubscribe();
-    // this.spinnerSubscriber.unsubscribe();
   }
 }

@@ -9,16 +9,16 @@ const routes: Routes = [
   {
     path: '', component: AnonyLayoutComponent, children: [
       { path: '', component: ServicesComponent },
-      { path: 'installment', loadChildren: () => import('./installment/installment.module').then(i => i.InstallmentModule) },
-      { path: 'ma', loadChildren: () => import('./metter-announce/metter-announce.module').then(ma => ma.MetterAnnounceModule) },
-      { path: 'kardex', loadChildren: () => import('./kardex/kardex.module').then(kx => kx.KardexModule) },
-      { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule) },
-      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule) }
+      { path: 'installment', loadChildren: () => import('./installment/installment.module').then(i => i.InstallmentModule), data: { animation: 'ServiceDesk' } },
+      { path: 'ma', loadChildren: () => import('./metter-announce/metter-announce.module').then(ma => ma.MetterAnnounceModule), data: { animation: 'ServiceDesk' } },
+      { path: 'kardex', loadChildren: () => import('./kardex/kardex.module').then(kx => kx.KardexModule), data: { animation: 'ServiceDesk' } },
+      { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule), data: { animation: 'ServiceDesk' } },
+      { path: 'myInfo', loadChildren: () => import('./member-info/member-info.module').then(mi => mi.MemberInfoModule), data: { animation: 'ServiceDesk' } }
     ]
   },
   {
     path: '', component: LayoutComponent, children: [
-      { path: 'bill', loadChildren: () => import('./pardakht/pardakht.module').then(p => p.PardakhtModule) },
+      { path: 'bill', loadChildren: () => import('./pardakht/pardakht.module').then(p => p.PardakhtModule), data: { animation: 'FilterPage' } },
     ]
   }
 ];

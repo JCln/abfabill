@@ -5,26 +5,40 @@ import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
 
+import { SpinnerWrapperService } from './spinner-wrapper.service';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService implements ErrorHandler {
 
-  constructor(private router: Router, private toasterService: ToastrService, private interactionService: InteractionService) { }
+  constructor(private router: Router,
+    private toasterService: ToastrService,
+    private interactionService: InteractionService,
+    private spinnerWrapper: SpinnerWrapperService
+  ) { }
 
-  toasterError = (message: string, info?: string) => {
-    if (info) {
+  toasterError = (message: string, info?: string, makeInfo?: string) => {
+    // the makeInfo added for information as lightblue color
+    if (makeInfo) {
+      this.toasterService.info(message, info, {
+        timeOut: 8000,
+        easeTime: '800',
+        easing: 'ease-in',
+        progressBar: true
+      });
+    } else if (info) {
       this.toasterService.success(message, info, {
         timeOut: 10000,
         easeTime: '800',
-        easing: 'ease-in-out',
+        easing: 'ease-in',
         progressBar: true
       });
     } else {
       this.toasterService.error(message, 'خطا', {
         timeOut: 5000,
         easeTime: '800',
-        easing: 'ease-in-out',
+        easing: 'ease-in',
         progressBar: true
       });
     }
@@ -34,37 +48,48 @@ export class ErrorHandlerService implements ErrorHandler {
     this.toasterService.error(info, message, {
       timeOut: timeout,
       easeTime: '800',
-      easing: 'ease-in-out',
+      easing: 'ease-in',
       progressBar: false
     });
   }
 
+  billIdISValid = () => {
+    let billId: string;
+    this.interactionService.billId$.subscribe(res => billId = res);
+    this.timeOutBeforeRoute(billId);
+  }
+
   public timeOutBeforeRoute = (routeTo: string) => {
+    this.spinnerWrapper.stopLoading();
     setTimeout(() => {
       this.router.navigate([routeTo]);
     }, 2000);
   }
 
   private setTimeOutBeforeRoute = () => {
+    this.spinnerWrapper.stopLoading();
     setTimeout(() => {
       this.router.navigate(['/pg']);
     }, 2000);
   }
 
-  public handleError(error: number, message?: string) {
+  handleError(error: number, message?: string) {
     switch (error) {
       case 400:
         this.customToaster(10000, message);
         break;
       case 401:
         this.toasterError('اطلاعات شما در شرکت آبفا بدرستی ثبت نشده است،لطفا با شماره 1522 تماس حاصل فرمایید ');
-        break;
+        this.billIdISValid();
+        return;
       case 403:
         this.toasterError('دسترسی شما ممکن نیست');
-        break;
+        this.billIdISValid();
+        return;
       case 408:
-        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است');
-        break;
+        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است. لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.billIdISValid();
+        return;
       case 404:
         this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
         break;
@@ -77,18 +102,22 @@ export class ErrorHandlerService implements ErrorHandler {
       }
       case 0:
         this.customToaster(8000, 'ارتباط با سرویس دهنده برقرار نشد، احتمالا شما به شبکه دسترسی ندارید', 'لطفا چند دقیقه دیگر امتحان کنید یا با شماره 1522 تماس بگیرید');
-        break;
+        this.billIdISValid();
+        return;
       case 500:
         this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       case 502:
         this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       case 504:
         this.customToaster(11000, 'باعرض پوزش', 'خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
-        break;
+        this.billIdISValid();
+        return;
       default:
-        this.toasterError('شما به شبکه دسترسی ندارید');
+        this.toasterError('شما به اینترنت دسترسی ندارید');
     }
     this.setTimeOutBeforeRoute();
   }

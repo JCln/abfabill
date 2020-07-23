@@ -1,0 +1,84 @@
+@import '../../../assets/mixins';
+@import '../../../assets/variables';
+@import '../../../assets/@media';
+
+.header_title {
+  background: $clr;
+
+  .title {
+    font-size: 1.8rem;
+    color: $c_light_gray;
+    margin: $small_font_size;
+  }
+}
+
+main {
+  display: grid;
+  direction: rtl;
+  text-align: right;
+}
+
+section {
+  direction: ltr;
+  padding: $small_font_size;
+}
+
+section:nth-child(odd) {
+  background: $c_light_gray;
+}
+
+section:nth-child(even) {
+  background: $darkgray;
+}
+
+
+._status {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: .7rem;
+  color: $dark_b_color;
+
+  i {
+    padding-left: 1rem;
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+}
+
+._date-time {
+  display: grid;
+
+  .__time {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $dark_b_color;
+  }
+
+  .__date {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    font-size: $font_medium_size;
+  }
+
+  .__more-details {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: $font_medium_size;
+    color: $clr_border;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+  }
+
+}
+
+@include fourColumns(main);
