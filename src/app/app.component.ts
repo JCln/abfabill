@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component } from '@angular/core';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
@@ -6,11 +6,11 @@ import { GoogleAnalyticsService } from 'src/app/services/google-analytics.servic
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterContentInit {
 
   constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
 
-  ngOnInit() {
+  ngAfterContentInit() {
     this.googleAnalyticsService.routerView();
   }
 }

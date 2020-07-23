@@ -19,7 +19,7 @@ export class TrackRequestService {
 
   constructor(private interfaceService: ViewBillService, private router: Router) { }
 
-  canConnectToServer = (trackNumber: number): boolean => {
+  canConnectToServer = (trackNumber: string): boolean => {
     return this.interfaceService.getTrackingRequest(trackNumber).subscribe((res: any) => {
       if (res) {
         this.setTracks(res);
@@ -30,14 +30,14 @@ export class TrackRequestService {
     });
   }
 
-  private waiting(input: number) {
+  private waiting(input: string) {
     return new Promise(resolve => {
       const a = this.canConnectToServer(input);
       resolve(a);
     });
   }
 
-  asyncMethod = async (input: number) => {
+  asyncMethod = async (input: string) => {
     const a = await this.waiting(input);
     return a;
   }

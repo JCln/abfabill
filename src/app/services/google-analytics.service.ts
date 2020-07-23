@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/internal/operators/filter';
-import { ViewBillService } from 'src/app/services/view-bill.service';
 
 declare const ga; // Declare ga as a function
 declare const gtag;
@@ -11,7 +10,7 @@ declare const gtag;
 })
 export class GoogleAnalyticsService {
   navEndEvents;
-  constructor(public router: Router, private interfaceService: ViewBillService) {
+  constructor(public router: Router) {
     this.navEndEvents = router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     );
@@ -41,26 +40,5 @@ export class GoogleAnalyticsService {
       ga('send', 'pageview');
     });
   }
-  // pageViews = () => {
-  //   const body = {
-  //     "reportRequests": [
-  //       {
-  //         "viewId": "217853513",
-  //         "dateRanges": [
-  //           {
-  //             "startDate": "2020-05-01",
-  //             "endDate": "today"
-  //           }
-  //         ],
-  //         "metrics": [
-  //           {
-  //             "expression": "ga:pageviews"
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   }
-  //   return this.interfaceService.getPageViewsAnalytics(body);
-  // }
-  
+
 }

@@ -33,9 +33,8 @@ export class ViewBillService {
     this.idValues(`${id + '' + zoneId}`);
     return this.mainService.GET(`${id}/${zoneId}`, `MoshtarakinApi/V2/Bill/GetThisBill/${this.base64}`);
   }
-  getTrackingRequest = (id: number): any => {
-    const idToString = id.toString();
-    return this.mainService.GET(idToString, 'moshtarakinapi/requestManager/getTrackings');
+  getTrackingRequest = (id: string): any => {
+    return this.mainService.GET(id, 'moshtarakinapi/requestManager/getTrackings');
   }
   paymentInfoKardex = (id: number, zoneId: number): any => {
     this.idValues(`${id + '' + zoneId}`);
@@ -45,13 +44,6 @@ export class ViewBillService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
   }
-  // getPageViewsAnalytics = (body: any): Observable<any> => {
-  //   return this.mainService.setAnalyticsAccessToken('https://analyticsreporting.googleapis.com/v4/reports:batchGet', body);
-  // }
-  // getRefreshToken = (body: any): Observable<any> => {
-  //   return this.mainService.setAnalyticsRefreshToken('https://accounts.google.com/o/oauth2/token', body);
-  // }
-
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());

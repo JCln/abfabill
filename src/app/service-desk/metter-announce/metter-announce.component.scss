@@ -23,10 +23,7 @@ section {
   background: $background_color;
   min-height: 20rem;
   border-radius: $__border_radius;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-
+  
   .title_content {
     grid-area: header;
     color: lightgray;
