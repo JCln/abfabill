@@ -2,6 +2,7 @@
 @import "../../assets/mixins.scss";
 @import "../../assets/second_button.scss";
 @import "../../assets/@media.scss";
+@import "../../assets/spinner_loader.scss";
 
 $c_main_dark: #062c68;
 $c_light: #425496;
@@ -139,6 +140,15 @@ main {
   button {
     @extend %second_button;
   }
+}
+
+.loader {
+  left: 25%;
+}
+
+.enter {
+  margin: auto;
+  text-align: center;
 }
 
 @media(min-width: 670px) {

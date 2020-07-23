@@ -10,11 +10,12 @@
                     <input [(ngModel)]="billId" type="text" class="form-input" formControlName="billId"
                         placeholder="شناسه قبض را اینجا وارد کنید" title="لطفا  شناسه قبض خود را وارد فرمایید"
                         minlength="3" maxlength="13" required>
+                    <i *ngIf="spinnerBooleanServiceDesk" class="loader"></i>
                 </div>
             </div>
             <div class="justify_center">
                 <button>
-                    <div style="margin: auto; text-align: center;">ورود</div>
+                    <div class="enter">ورود</div>
                 </button>
             </div>
         </form>
@@ -30,11 +31,12 @@
                     <input [(ngModel)]="neighbourBillId" type="text" class="form-input"
                         formControlName="neighbourBillId" placeholder="شناسه قبض همسایه را اینجا وارد کنید"
                         title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13" required>
+                    <i *ngIf="spinnerBooleanNeighbour" class="loader"></i>
                 </div>
             </div>
             <div class="justify_center">
                 <button>
-                    <div style="margin: auto; text-align: center;">شروع درخواست</div>
+                    <div class="enter">شروع درخواست</div>
                 </button>
             </div>
         </form>
@@ -54,7 +56,7 @@
             </div>
             <div class="justify_center">
                 <button type="submit">
-                    <div style="margin: auto; text-align: center;">ورود</div>
+                    <div class="enter">ورود</div>
                 </button>
             </div>
         </form>

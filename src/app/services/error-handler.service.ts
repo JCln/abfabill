@@ -73,7 +73,7 @@ export class ErrorHandlerService implements ErrorHandler {
     }, 2000);
   }
 
-  public handleError(error: number, message?: string) {
+  handleError(error: number, message?: string) {
     switch (error) {
       case 400:
         this.customToaster(10000, message);

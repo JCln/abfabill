@@ -21,10 +21,12 @@ export class PageNotFoundComponent extends CheckRoute {
   private trackMinLength = 3;
   private trackMaxLength = 9;
 
-
   billId: number;
   neighbourBillId: number;
   tracks: number;
+  // small spinner
+  spinnerBooleanServiceDesk: boolean = false;
+  spinnerBooleanNeighbour: boolean = false;
 
   constructor(
     private router: Router,
@@ -80,12 +82,16 @@ export class PageNotFoundComponent extends CheckRoute {
     }
   }
   checkNeightbourBillId = async () => {
+    this.spinnerBooleanNeighbour = true;
     await this.logginsService.asyncMethod(this.neighbourBillId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
         this.router.navigate(['rn'], { queryParams: { nid: this.neighbourBillId } });
       }
     });
+    setTimeout(() => {
+      this.spinnerBooleanNeighbour = false;
+    }, 2000);
   }
   isNeighbourBillId = () => {
     this.neighbourBillId = this.persianToEngNumbers(this.neighbourBillId);
@@ -102,14 +108,18 @@ export class PageNotFoundComponent extends CheckRoute {
     }
   }
   asyncMethod = async () => {
+    this.spinnerBooleanServiceDesk = true;
     await this.logginsService.asyncMethod(this.billId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
         this.authGuard.changeIdRoutePart(this.billId.toString());
         this.billIdValue(this.billId);
+        this.spinnerBooleanServiceDesk = false;
       }
     });
-
+    setTimeout(() => {
+      this.spinnerBooleanServiceDesk = false;
+    }, 2000);
   }
   checkValidInput = () => {
     this.billId = this.persianToEngNumbers(this.billId);
