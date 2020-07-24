@@ -1,6 +1,5 @@
 @import '../../../assets/input';
 @import '../../../assets/main.scss';
-@import "../../../assets/mixins.scss";
 
 $dark_torouse: #2DC227;
 $dark_green : #51a351;
@@ -23,7 +22,10 @@ section {
   background: $background_color;
   min-height: 20rem;
   border-radius: $__border_radius;
-  
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
   .title_content {
     grid-area: header;
     color: lightgray;
