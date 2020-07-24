@@ -1,0 +1,56 @@
+@import '../../../assets/mixins';
+@import '../../../assets/variables';
+@import "../../../assets/input.scss";
+@import '../../../assets/@media';
+@import "../../../assets/second_button.scss";
+
+.header_title {
+  background: $clr;
+
+  .title {
+    font-size: 1.8rem;
+    color: $c_light_gray;
+    margin: $small_font_size;
+  }
+}
+
+main {
+  --h1_job_detail: #062C68;
+
+  background: $dark_b_color;
+  border-radius: 20px;
+  padding: 2rem 0;
+  margin: 1rem .3rem;
+  box-shadow: 1px 1px 3px 0 var(--h1_job_detail);
+}
+
+button {
+  @extend %second_button;
+  background: $medium_green;
+  color: $c_light_gray;
+  justify-content: space-evenly;
+
+  p {
+    margin: 0;
+    background: $dark_green;
+    border-radius: 50%;
+    padding: .3rem;
+  }
+}
+
+.form {
+  width: 90%;
+  margin-bottom: 1rem;
+
+  .form-item {
+    background: inherit;
+    width: inherit;
+    height: inherit;
+
+    .form-input {
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+  }
+}

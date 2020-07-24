@@ -33,6 +33,9 @@ const serviceNames: IServices[] = [
     title: 'ثبت شماره همراه', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/mobile.png'
   },
   {
+    title: 'تغییر شماره همراه', routerLink: 'um', src: 'assets/imgs/serviceDesk/mobile.png'
+  },
+  {
     title: 'تعویض کنتور خراب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
   },
   {

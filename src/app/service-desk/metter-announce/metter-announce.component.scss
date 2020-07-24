@@ -1,13 +1,9 @@
 @import '../../../assets/input';
 @import '../../../assets/main.scss';
 
-$dark_torouse: #2DC227;
-$dark_green : #51a351;
 $light_gray: lightgray;
-$transparent_for_img: #d7d7d7;
 $dark_background: #091c3b;
 $border_color: #ff1408;
-$background_color: #062C68;
 
 $m_size: 0.5rem;
 $b_size: 2rem;
@@ -19,7 +15,7 @@ section {
   grid-template-areas: 'header''main''footer';
   grid-template-rows: 5rem 1fr auto;
 
-  background: $background_color;
+  background: $dark_b_color;
   min-height: 20rem;
   border-radius: $__border_radius;
   text-align: center;
@@ -28,7 +24,7 @@ section {
 
   .title_content {
     grid-area: header;
-    color: lightgray;
+    color: $light_gray;
     font-weight: 600;
     font-size: 1.1rem;
   }
@@ -48,7 +44,8 @@ section {
 
     ._button {
       @extend %button_first;
-      background: $dark_torouse;
+      background: $medium_green;
+      color: $c_light_gray;
       margin: 1.5rem auto;
 
       p {

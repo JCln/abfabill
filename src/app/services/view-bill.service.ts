@@ -57,6 +57,8 @@ export class ViewBillService {
   setNewRegister = (form: object): Observable<any> => {
     return this.mainService.SET('MoshtarakinApi/requestManager/registerNew', form);
   }
-
+  setUpdateMobile = (body: object): Observable<any> => {
+    return this.mainService.SET('MoshtarakinApi/member/updateMobile', body);
+  }
 
 }

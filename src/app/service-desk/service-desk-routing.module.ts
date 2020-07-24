@@ -13,7 +13,8 @@ const routes: Routes = [
       { path: 'ma', loadChildren: () => import('./metter-announce/metter-announce.module').then(ma => ma.MetterAnnounceModule), data: { animation: 'ServiceDesk' } },
       { path: 'kardex', loadChildren: () => import('./kardex/kardex.module').then(kx => kx.KardexModule), data: { animation: 'ServiceDesk' } },
       { path: 'elcs', loadChildren: () => import('./elc-services/elc-services.module').then(elc => elc.ElcServicesModule), data: { animation: 'ServiceDesk' } },
-      { path: 'myInfo', loadChildren: () => import('./member-info/member-info.module').then(mi => mi.MemberInfoModule), data: { animation: 'ServiceDesk' } }
+      { path: 'myInfo', loadChildren: () => import('./member-info/member-info.module').then(mi => mi.MemberInfoModule), data: { animation: 'ServiceDesk' } },
+      { path: 'um', loadChildren: () => import('./update-mobile/update-mobile.module').then(um => um.UpdateMobileModule), data: { animation: 'ServiceDesk' } }
     ]
   },
   {

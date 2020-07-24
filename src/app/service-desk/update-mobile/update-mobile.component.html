@@ -1,0 +1,20 @@
+<div class="header_title justify_center">
+    <h3 class="title">
+        تغییر شماره همراه
+    </h3>
+</div>
+
+<main>
+    <div class="form">
+        <div class="form-item">
+            <input type="text" class="form-input" [(ngModel)]="mobileNumber" name="mobileNumber"
+                title="شماره همراه خود را وارد کنید" placeholder="تلفن همراه را اینجا وارد کنید" required>
+        </div>
+    </div>
+    <div class="justify_center">
+        <button (click)="classWrapper()">
+            <div class="enter">تغییر شماره تلفن</div>
+            <p class="fa fa-search"></p>
+        </button>
+    </div>
+</main>
