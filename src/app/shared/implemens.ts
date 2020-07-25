@@ -3,4 +3,5 @@ interface IImplements {
 }
 export abstract class Implemens implements IImplements {
     abstract connectToServer = () => { }
+    abstract classWrapper = () => { }
 }

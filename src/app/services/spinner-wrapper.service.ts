@@ -12,7 +12,7 @@ export class SpinnerWrapperService {
   private loading(loadingStatus: boolean) {
     this.loadingStatus.next(loadingStatus);
   }
-  
+
   startLoading() {
     this.loading(true);
   }

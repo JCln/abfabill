@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ViewBillService } from './view-bill.service';
-
 describe('ViewBillService', () => {
-  let vbs: ViewBillService;
+  // let vbs: ViewBillService;
   beforeEach(() => TestBed.configureTestingModule({}));
 
   // it('should should return observable as IViewbill', () => {

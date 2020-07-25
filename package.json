@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve && ng lint",
-    "build": "ng build --prod --base-href '/' --outputHashing=all && ng lint",
+    "build": "ng build --prod --base-href '/' --outputHashing=all",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -16,7 +16,7 @@ export class CheckRoute {
         }
         return str;
     };
-    isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0;
+    isNull = (value: any) => typeof value === 'undefined' || !value || value.length === 0;
 
     numbersValidation = <T>(values: T): boolean => {
         const stringVal = values.toString();
