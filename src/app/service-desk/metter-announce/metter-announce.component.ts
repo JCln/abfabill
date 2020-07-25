@@ -53,7 +53,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   private validInput1 = (): boolean => {
     if (!this.numbersValidation(this.kontorNumber)) {
       this.errorHandler.customToaster(5000, 'شماره کنتور اشتباه است');
-      return;
+      return false;
     }
     if (this.kontorNumber === null || this.kontorNumber.toString().length > this.maxLength || this.kontorNumber.toString().length < this.minLength) {
       this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
@@ -64,7 +64,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   private validInput2 = (): boolean => {
     if (!this.numbersValidation(this.mobileNumber)) {
       this.errorHandler.customToaster(5000, 'شماره موبایل اشتباه است');
-      return;
+      return false;
     }
     if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
@@ -74,11 +74,9 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   }
 
   private checkValidInput = (): boolean => {
-    if (this.validInput1() && this.validInput2()) {
+    if (this.validInput1() && this.validInput2())
       return true;
-    } else {
-      return false
-    }
+    return false;
   }
 
   @HostListener('document: keyup', ['$event'])
