@@ -1,6 +1,4 @@
 @import './variables.scss';
-@import './mixins.scss';
-
 
 .form {
   display: flex;
@@ -14,7 +12,9 @@
   border-radius: 3em;
 
   .form-item {
-    @include justify-center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     width: 52%;
     height: auto;

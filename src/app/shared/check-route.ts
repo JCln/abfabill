@@ -18,4 +18,11 @@ export class CheckRoute {
     };
     isNull = (value: any) => typeof value === "undefined" || !value || value.length === 0;
 
+    numbersValidation = <T>(values: T): boolean => {
+        const stringVal = values.toString();
+        const regexIsPersian = /^[\u06F0-\u06F90-9]+$/;
+        if (regexIsPersian.test(stringVal))
+            return true;
+        return false;
+    }
 }

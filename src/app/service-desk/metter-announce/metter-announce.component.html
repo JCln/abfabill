@@ -8,8 +8,8 @@
     <main class="main">
         <div class="form">
             <div class="form-item">
-                <input type="number" class="form-input" [(ngModel)]="input" name="metterAnnounce"
-                    title="شماره کنتور خود را وارد کنید" placeholder=" شماره کنتور" required>
+                <input type="text" class="form-input" [(ngModel)]="kontorNumber" name="metterAnnounce"
+                    title="شماره کنتور خود را وارد کنید" maxlength="5" placeholder=" شماره کنتور" required>
             </div>
             <div class="div1">
                 <p>شماره کنتور</p>
@@ -19,8 +19,8 @@
         </div>
         <div class="form">
             <div class="form-item">
-                <input type="number" class="form-input" [(ngModel)]="mobileNumber" name="mobileNumber"
-                    title="شماره همراه خود را وارد کنید" placeholder=" تلفن همراه" required>
+                <input type="text" class="form-input" [(ngModel)]="mobileNumber" name="mobileNumber"
+                    title="شماره همراه خود را وارد کنید" maxlength="11" placeholder=" تلفن همراه" required>
             </div>
             <div class="div1">
                 <p>شماره همراه</p>

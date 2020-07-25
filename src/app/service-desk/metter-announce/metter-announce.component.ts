@@ -14,7 +14,7 @@ const mobileLength = 11;
   styleUrls: ['./metter-announce.component.scss']
 })
 export class MetterAnnounceComponent extends CheckRoute implements OnInit {
-  input: number;
+  kontorNumber: number;
   mobileNumber = '';
   notification: boolean = false;
   // textError from server
@@ -28,7 +28,16 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
 
   private mobileLength = mobileLength;
 
-  pushOrPopFromMobileNumber = () => {
+  private persianCharacters = () => {
+    const promise = new Promise((resolve) => {
+      this.kontorNumber = this.persianToEngNumbers(this.kontorNumber);
+      this.mobileNumber = this.persianToEngNumbers(this.mobileNumber);
+      resolve(this.mobileNumber);
+    });
+    return promise;
+  }
+
+  private pushOrPopFromMobileNumber = () => {
     // unshift to array just allowed so => string to array and then to string should converted
     const arrayString = [];
     if (this.mobileNumber.toString().startsWith('09')) {
@@ -41,14 +50,22 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     }
     return false;
   }
-  validInput1 = (): boolean => {
-    if (isNaN(this.input) || this.input === null || this.input.toString().length > this.maxLength || this.input.toString().length < this.minLength) {
+  private validInput1 = (): boolean => {
+    if (!this.numbersValidation(this.kontorNumber)) {
+      this.errorHandler.customToaster(5000, 'شماره کنتور اشتباه است');
+      return;
+    }
+    if (this.kontorNumber === null || this.kontorNumber.toString().length > this.maxLength || this.kontorNumber.toString().length < this.minLength) {
       this.errorHandler.customToaster(4000, 'شماره کنتور اشتباه است');
       return false;
     }
     return true;
   }
-  validInput2 = (): boolean => {
+  private validInput2 = (): boolean => {
+    if (!this.numbersValidation(this.mobileNumber)) {
+      this.errorHandler.customToaster(5000, 'شماره موبایل اشتباه است');
+      return;
+    }
     if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
       return false;
@@ -56,7 +73,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     return true;
   }
 
-  checkValidInput = (): boolean => {
+  private checkValidInput = (): boolean => {
     if (this.validInput1() && this.validInput2()) {
       return true;
     } else {
@@ -71,10 +88,10 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     }
   }
 
-  connectToServer = (): Promise<any> => {
+  private connectToServer = (): Promise<any> => {
     return new Promise(resolve =>
       resolve(
-        this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.input, this.mobileNumber)
+        this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.kontorNumber, this.mobileNumber)
           .subscribe((res: IViewBill) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
@@ -86,28 +103,29 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     )
   }
 
-  spinnerCondition = (val: any) => {
+  private spinnerCondition = (val: any) => {
     this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
       this.notification = status;
     })
   }
 
-  createSpinner = (canLoad: boolean) => {
+  private createSpinner = (canLoad: boolean) => {
     canLoad ? this.spinnerWrapper.startLoading() : this.spinnerWrapper.stopLoading()
   }
 
-  spinnerChecker = (bol: boolean): Promise<any> => {
+  private spinnerChecker = (bol: boolean): Promise<any> => {
     return new Promise(resolve =>
       resolve(this.createSpinner(bol))
     )
   }
-  changeToDefaultBeforeResponse = () => {
+  private changeToDefaultBeforeResponse = () => {
     this.interactionService.setmetterAnnounce('');
     this.spinnerChecker(true);
   }
 
   nestingLevel = async () => {
+    await this.persianCharacters();
     this.changeToDefaultBeforeResponse();
     const a = this.checkValidInput();
     console.log(a);

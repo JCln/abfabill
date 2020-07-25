@@ -39,15 +39,6 @@ export class PageNotFoundComponent extends CheckRoute {
   ) {
     super();
   }
-
-  numbersValidation = (values: number) => {
-    const stringVal = values.toString();
-    // eslint-disable-next-line no-control-regex
-    const regexIsPersian = /^[\u06F0-\u06F90-9]+$/;
-    if (regexIsPersian.test(stringVal))
-      return true;
-    return false;
-  }
   track = async () => {
     await this.trackRequstService.setTrackToZero();
     this.spinnerWrapper.startLoading();
