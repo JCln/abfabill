@@ -2,7 +2,6 @@ import { AfterContentChecked, Component, OnDestroy, OnInit } from '@angular/core
 import { ActivatedRoute } from '@angular/router';
 
 import { ErrorHandlerService } from './../../services/error-handler.service';
-import { HelpService } from './../../services/help.service';
 
 interface IElcServies {
   name: string;
@@ -46,7 +45,7 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDest
   sevageSelected = false;
   checkedParameter: any;
 
-  constructor(private errorHandler: ErrorHandlerService, private helpService: HelpService, private route: ActivatedRoute) { }
+  constructor(private errorHandler: ErrorHandlerService, private route: ActivatedRoute) { }
   checkboxChanged = (e: any, d: any) => {
     d.checked = e.target.checked;
     // this.elcService.pipe
@@ -55,11 +54,6 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDest
     elcServices[item].checked = bol;
   }
   ngOnInit() {
-    // if (ElcServicesComponent.elcWarnTime) {
-    //   this.helpService.customName();
-    //   this.helpService.help();
-    //   ElcServicesComponent.elcWarnTime = false;
-    // }
     this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
 
   }

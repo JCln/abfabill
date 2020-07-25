@@ -14,6 +14,10 @@ export class ViewBillService {
   idValues = (id: string) => {
     this.base64 = btoa(id);
   }
+  getBase64 = (id: string): string => {
+    this.idValues(id);
+    return this.base64;
+  }
   getIsValidId = (id: string): any => {
     return this.mainService.GET(id, 'moshtarakinapi/member/isvalid');
   }
@@ -58,7 +62,7 @@ export class ViewBillService {
     return this.mainService.SET('MoshtarakinApi/requestManager/registerNew', form);
   }
   setUpdateMobile = (body: object): Observable<any> => {
-    return this.mainService.SET('MoshtarakinApi/member/updateMobile', body);
+    return this.mainService.SET('MoshtarakinApi/v2/member/updateMobile', body);
   }
 
 }

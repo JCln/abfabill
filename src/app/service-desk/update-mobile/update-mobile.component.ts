@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { ViewBillService } from 'src/app/services/view-bill.service';
 
+import { HelpService } from './../../services/help.service';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { CheckRoute } from './../../shared/check-route';
 
@@ -11,19 +11,17 @@ import { CheckRoute } from './../../shared/check-route';
   templateUrl: './update-mobile.component.html',
   styleUrls: ['./update-mobile.component.scss']
 })
-export class UpdateMobileComponent extends CheckRoute implements OnInit {
+export class UpdateMobileComponent extends CheckRoute {
   mobileNumber: string = '';
   mobileLength: number = 11;
 
   constructor(
     private errorHandler: ErrorHandlerService,
     private interfaceService: ViewBillService,
-    private spinnerWrapperService: SpinnerWrapperService
+    private spinnerWrapperService: SpinnerWrapperService,
+    private helpService: HelpService
   ) {
     super();
-  }
-
-  ngOnInit(): void {
   }
   private persianCharacters = () => {
     const promise = new Promise((resolve) => {
@@ -65,7 +63,8 @@ export class UpdateMobileComponent extends CheckRoute implements OnInit {
       resolve({
         "mobile": this.mobileNumber,
         "origin": 6,
-        "billId": this.getedDataIdFromRoute
+        "billId": this.getedDataIdFromRoute,
+        "api": this.interfaceService.getBase64(this.getedDataIdFromRoute)
       });
     });
     return promise;
@@ -78,11 +77,18 @@ export class UpdateMobileComponent extends CheckRoute implements OnInit {
       resolve(this.createSpinner(bol))
     )
   }
+  private successFullMessage = (res: string) => {
+    this.helpService.customMessage('', res, '');
+    this.helpService.help();
+  }
   private connectToServer = (body: any) => {
     return new Promise((resolve, reject) => {
-      this.interfaceService.setUpdateMobile(body).subscribe((res: Observable<any>) => {
-        console.log(res);
-        resolve(res);
+      this.interfaceService.setUpdateMobile(body).subscribe((res: any) => {
+        if (res) {
+          this.spinnerChecker(false);
+          this.successFullMessage(res.message);
+          resolve(res);
+        }
       });
       reject(false);
     });
@@ -91,17 +97,12 @@ export class UpdateMobileComponent extends CheckRoute implements OnInit {
     await this.persianCharacters();
     const checkValidationVal = await this.checkValidation();
     if (checkValidationVal) {
-      this.spinnerChecker(true);// should test for ok
+      this.spinnerChecker(true);
       const bodyObject = await this.shapeBodyObject();
-      const w = await this.connectToServer(bodyObject);
-      if (w) {
-        this.spinnerChecker(false);
-      }
-      // console.log(Object.values(w).length-1); happyyyyyyyy
-
+      await this.connectToServer(bodyObject)
+        .then(res => console.log(res))
+        .catch(res => this.spinnerChecker(false));
     }
   }
-
-
 
 }

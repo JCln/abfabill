@@ -34,7 +34,8 @@ button {
     margin: 0;
     background: $dark_green;
     border-radius: 50%;
-    padding: .3rem;
+    font-size: 1.8rem;
+    padding: .4rem;
   }
 }
 
@@ -54,3 +55,5 @@ button {
     }
   }
 }
+
+@include media_wrapper_two_params(650px, main, width, 25rem, margin, 2rem auto);

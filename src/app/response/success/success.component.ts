@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class SuccessComponent implements OnInit {
   interval;
   billId: string = '';
 
-  constructor(private interactionService: InteractionService, private router: Router) { }
+  constructor(private interactionService: InteractionService) { }
 
   // absolutely beautiful async could implement
   ngOnInit() {

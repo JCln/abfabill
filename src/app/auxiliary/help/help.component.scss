@@ -80,6 +80,7 @@ $header_footer_b: linear-gradient(45deg, #00368c, #142147);
   padding: 2px 16px;
   background: $header_footer_b;
   color: white;
+  min-height: 1.5rem;
 }
 
 .modal-body {
