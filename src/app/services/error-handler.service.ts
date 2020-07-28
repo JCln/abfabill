@@ -87,7 +87,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.billIdISValid();
         return;
       case 408:
-        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است. لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.toasterError('مشکلی در نمایش اطلاعات پیش آمد، احتمالا سرعت اینترنت شما کم است. لطفا دقایقی دیگر امتحان فرمایید');
         this.billIdISValid();
         return;
       case 404:
@@ -105,15 +105,15 @@ export class ErrorHandlerService implements ErrorHandler {
         this.billIdISValid();
         return;
       case 500:
-        this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.toasterError('با عرض پوزش، سرور در حال بروزرسانی است، لطفا دقایقی دیگر امتحان فرمایید');
         this.billIdISValid();
         return;
       case 502:
-        this.toasterError('خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.toasterError('با ‌عرض پوزش، سرور در حال بروزرسانی است، لطفا دقایقی دیگر امتحان فرمایید');
         this.billIdISValid();
         return;
       case 504:
-        this.customToaster(11000, 'باعرض پوزش', 'خطای سرویس دهنده، لطفا دقایقی دیگر دوباره امتحان فرمایید');
+        this.toasterError('با عرض پوزش، سرور در حال بروزرسانی است، لطفا دقایقی دیگر امتحان فرمایید');
         this.billIdISValid();
         return;
       default:

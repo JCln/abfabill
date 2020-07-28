@@ -17,9 +17,9 @@ import { CheckRoute } from './../shared/check-route';
 })
 export class PageNotFoundComponent extends CheckRoute {
   private maxLength = 13;
-  private minLength = 4;
-  private trackMinLength = 3;
-  private trackMaxLength = 9;
+  private minLength = 3;
+  private trackMinLength = 2;
+  private trackMaxLength = 10;
 
   billId: number;
   neighbourBillId: number;
@@ -74,7 +74,7 @@ export class PageNotFoundComponent extends CheckRoute {
   }
   checkNeightbourBillId = async () => {
     this.spinnerBooleanNeighbour = true;
-    await this.logginsService.asyncMethod(this.neighbourBillId.toString());
+    await this.logginsService.checkValidation(this.neighbourBillId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
         this.router.navigate(['rn'], { queryParams: { nid: this.neighbourBillId } });
@@ -87,12 +87,12 @@ export class PageNotFoundComponent extends CheckRoute {
   isNeighbourBillId = () => {
     this.neighbourBillId = this.persianToEngNumbers(this.neighbourBillId);
     if (!this.numbersValidation(this.neighbourBillId)) {
-      this.errorHandler.customToaster(5000, 'شناسه قبض اشتباه است');
+      this.errorHandler.customToaster(5000, 'شناسه قبض همسایه اشتباه است');
       return;
     }
     if (this.neighbourBillId === null || this.neighbourBillId.toString().length > this.maxLength || this.neighbourBillId.toString().length <= this.minLength) {
       this.neighbourBillId = null;
-      this.errorHandler.handleError(404);
+      this.errorHandler.customToaster(5000, 'شناسه قبض همسایه اشتباه است');
       return;
     } else {
       this.checkNeightbourBillId();
@@ -100,7 +100,7 @@ export class PageNotFoundComponent extends CheckRoute {
   }
   asyncMethod = async () => {
     this.spinnerBooleanServiceDesk = true;
-    await this.logginsService.asyncMethod(this.billId.toString());
+    await this.logginsService.checkValidation(this.billId.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res) {
         this.authGuard.changeIdRoutePart(this.billId.toString());

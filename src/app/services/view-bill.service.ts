@@ -18,7 +18,7 @@ export class ViewBillService {
     this.idValues(id);
     return this.base64;
   }
-  getIsValidId = (id: string): any => {
+  getIsValidId = (id: string): Observable<any> => {
     return this.mainService.GET(id, 'moshtarakinapi/member/isvalid');
   }
   getViewBill = (id: string): any => {

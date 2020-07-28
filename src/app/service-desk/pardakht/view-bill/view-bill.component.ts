@@ -52,7 +52,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   }
   private connectToServer = () => {
     this.interfaceService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
-      if (!this.isNull(res)) { // should implement isNull insead
+      if (!this.isNull(res)) {
         this.insertValToVar(res, this.removeLoaderAfterResponse);
         this.interactionService.setReceipt(this.testObject);
       } else {

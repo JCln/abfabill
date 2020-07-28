@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return false;
   }
   isValidBillId = async (input: string) => {
-    await this.logginsService.asyncMethod(input.toString());
+    await this.logginsService.checkValidation(input.toString());
     this.logginsService.getIsLoaded().subscribe(res => {
       if (res)
         return true;
