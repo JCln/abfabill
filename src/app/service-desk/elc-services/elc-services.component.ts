@@ -25,7 +25,6 @@ export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDest
   }
   checkboxChanged = (e: any, d: any) => {
     d.checked = e.target.checked;
-    // this.elcService.pipe
   }
   checkboxStatus = (item: number, bol: boolean) => {
     elcs[item].checked = bol;
