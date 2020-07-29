@@ -3,11 +3,8 @@
 @import "../../../assets/spinner_loader";
 @import "../../../assets/variables.scss";
 
-$dark_b_color: #062C68;
-$darker_gray: #5C5C5C;
-
 .main_border {
-  border: 2px solid darkgray;
+  border: 2px solid $b_medium_gray;
   border-radius: $__border_radius;
   margin: 0 .1rem;
   margin-bottom: .8rem;
@@ -130,13 +127,12 @@ section article {
   width: auto;
   background: inherit;
   border: 1px solid $darkgray;
-  color: $darkgray;
   font-size: $small_font_size;
-  margin: auto .1rem;
+  margin: .3rem .1rem;
+  box-shadow: 0 0 2px $darker_gray;
 }
 
 .bill {
-  // border: inherit $darker_gray;
   color: $darker_gray;
   box-shadow: 2px 2px 15px 2px $darker_gray;
 }
@@ -243,7 +239,7 @@ section article {
 }
 
 .dark_c {
-  @include free(color, $clr_border);
+  @include free(color, $dark_green);
 }
 
 .darker_c {
@@ -260,9 +256,9 @@ section article {
 }
 
 .dark_b {
-  @include free(background, $clr_border);
+  @include free(background, $gray);
 }
 
 .darker_b {
-  @include free(background, $dark_b_color);
+  @include free(background, $b_medium_gray);
 }

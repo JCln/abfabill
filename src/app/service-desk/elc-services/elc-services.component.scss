@@ -3,32 +3,20 @@
 @import "../../../assets/input.scss";
 @import "../../../assets/mixins.scss";
 @import "../../../assets/@media.scss";
+@import "../../../assets/title_second.scss";
 
 $background_border_color: #087CDB;
-$background_color: #062C68;
 $customer_border: #1B6CEE;
 $medium_slate_blue: rgba(125, 131, 255, .5);
-$white: #fff;
 $light_gray: lightgray;
 
-$checkbox-height: 3rem;
 $duration: 250ms;
 
 section {
-  background-color: $background_color;
+  background-color: $dark_b_color;
   min-height: 20rem;
   padding: 1rem .5rem;
   border-radius: 30px;
-
-  .title_content {
-    text-align: center;
-
-    h1 {
-      color: $light_gray;
-      font-size: 2rem;
-      margin: .5em;
-    }
-  }
 
   .button_content {
     display: flex;

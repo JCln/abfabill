@@ -1,7 +1,11 @@
+<div class="header_title justify_center">
+    <h3 class="title">
+        نمایش اقساط
+    </h3>
+</div>
+
 <section class="main_content" *ngIf="response; else spinner">
-    <div class="title_content">
-        <h1>نمایش اقساط</h1>
-    </div>
+
     <div class="_content" *ngIf="respnseIsNull; else noInstallment">
         <main class="main" *ngFor="let i of testObject | slice: 1:2">
             <div class="background first_background">
@@ -74,7 +78,7 @@
                     </div>
 
                 </div>
-                <div class="customers">
+                <div class="customers justify_center">
                     <label class="dynamic_checkbox">
                         <input type="checkbox" (change)="CalcInstallmentAmount(i.amount , $event)">
                         <span class="checkmark"></span>
@@ -84,7 +88,7 @@
 
         </main>
 
-        <section class="check_moreinfo">
+        <section class="check_moreinfo justify_center">
             <button (click)="showMoreButtonClicked()">
                 {{showMoreButton? 'فقط اقساط پرداخت نشده': 'مشاهده اقساط پرداخت شده'}}
                 <i class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i>
@@ -122,7 +126,7 @@
                         <h2>قسطی پرداخت نشده است !</h2>
                     </ng-template>
 
-                    <div class="customers">
+                    <div class="customers justify_center">
                         <label class="dynamic_checkbox">
                             <input type="checkbox" checked="checked" disabled>
                             <span class="checkmark payed_installments"></span>
@@ -135,7 +139,7 @@
 </section>
 
 <footer *ngIf="sumOfInstallments != 0">
-    <div class="pay">
+    <div class="pay justify_center">
         {{sumOfInstallments | perCurrencySplitter}}
     </div>
     <div class="text">
@@ -149,7 +153,7 @@
     </div>
 </ng-template>
 <ng-template #spinner>
-    <section class="spinner">
+    <section class="spinner justify_center">
         <i *ngIf="spinnerBoolean" class="loader"></i>
         <h2>
             <i class="fas fa-circle-notch fa-spin"></i>

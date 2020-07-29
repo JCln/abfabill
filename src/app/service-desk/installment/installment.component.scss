@@ -4,14 +4,10 @@
 @import "./counter.scss";
 @import "../../../assets/spinner_loader";
 @import "../../../assets/mixins.scss";
+@import "../../../assets/title_second.scss";
 
 $background_border_color: #087CDB;
-$background_color: #062C68;
-$gray_border: #707070;
 $light_gray: #cccccc;
-$payed_installments:#2DC227;
-$payed_installments_border:#24963A;
-$payed_color: #F65050;
 
 .title_content {
   text-align: center;
@@ -24,7 +20,6 @@ $payed_color: #F65050;
 }
 
 .check_moreinfo {
-  @include justify-center;
 
   button {
     @extend %button_first;
@@ -37,17 +32,8 @@ $payed_color: #F65050;
   }
 }
 
-@mixin background {
-  border-radius: $__border_radius;
-
-  i {
-    color: $orange_color;
-    width: $font_size_title;
-  }
-}
-
 section {
-  background-color: $background_color;
+  background: $dark_b_color;
   padding: 2rem 0;
   border-radius: $__border_radius;
 
@@ -58,7 +44,12 @@ section {
     padding: 0.2rem;
 
     .background {
-      @include background;
+      border-radius: $__border_radius;
+
+      i {
+        color: $orange_color;
+        width: $font_size_title;
+      }
     }
 
     .first_background {
@@ -78,7 +69,7 @@ section {
 
 
         .form-input {
-          border: 1px solid $gray_border;
+          border: 1px solid $darker_gray;
           background: inherit;
           min-width: 8.2rem;
           direction: rtl;
@@ -89,19 +80,17 @@ section {
           background-color: $white;
         }
 
-        .unpayed_button {
-          background-color: $payed_color;
-        }
-
         .payed_button {
           background-color: #24963A;
+        }
+
+        .unpayed_button {
+          background: $orange_color_m;
         }
 
       }
 
       .customers {
-        @include justify-center;
-        align-items: center;
         width: 20%;
         margin: 0.9rem 0;
       }
@@ -130,7 +119,7 @@ footer {
   height: 4rem;
   bottom: 0;
   margin-top: auto;
-  background: $payed_installments;
+  background: $bright_green;
   text-align: center;
   z-index: 1;
 
@@ -139,8 +128,6 @@ footer {
   display: flex;
 
   .pay {
-    @include justify-center;
-    align-items: center;
     height: inherit;
   }
 
@@ -153,8 +140,6 @@ footer {
 }
 
 .spinner {
-  @include justify-center;
-  align-items: center;
   min-height: 20rem;
   transform: scaleX(1) scaleY(1);
   transform-origin: center;

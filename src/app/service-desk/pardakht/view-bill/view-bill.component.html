@@ -1,6 +1,6 @@
 <section>
 
-  <div class="header_title">
+  <div class="header_title justify_center">
     <h3 class="title">
       مشاهده قبض
     </h3>
@@ -1165,7 +1165,7 @@
 </section>
 
 <section class="pay_section" *ngIf="!isABillKardex">
-  <div class="pay_button_section">
+  <div class="pay_button_section justify_center">
 
     <button class="pay_button" [disabled]="testObject.isPayed === true || spinnerBoolean">
       <a href="{{chooseBank.linkToSite}}" (click)="sendButtonEventToAnalytics()" target="_blank"

@@ -3,6 +3,7 @@
 @import "../../../../assets/mixins.scss";
 @import "../../../../assets/spinner_loader.scss";
 @import "../../../../assets/@media.scss";
+@import "../../../../assets/title_second.scss";
 
 
 $orange_background: rgba(255, 191, 128, 0.5);
@@ -154,8 +155,6 @@ section {
   }
 
   .pay_button_section {
-    @include justify-center;
-
     & button {
       @extend %button_first;
       width: 100%;
@@ -188,16 +187,6 @@ section {
 section.barcode {
   @include justify-center;
   margin: $margin_top_sections;
-}
-
-.header_title {
-  @include justify-center;
-
-  .title {
-    font-size: $font_size_title;
-    color: $clr;
-    margin: 1rem;
-  }
 }
 
 @media screen and (max-width: 414px) {

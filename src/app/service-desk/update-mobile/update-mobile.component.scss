@@ -3,16 +3,7 @@
 @import "../../../assets/input.scss";
 @import '../../../assets/@media';
 @import "../../../assets/second_button.scss";
-
-.header_title {
-  background: $clr;
-
-  .title {
-    font-size: 1.8rem;
-    color: $c_light_gray;
-    margin: $small_font_size;
-  }
-}
+@import "../../../assets/title_first.scss";
 
 main {
   --h1_job_detail: #062C68;

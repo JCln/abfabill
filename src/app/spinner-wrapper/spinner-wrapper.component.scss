@@ -13,8 +13,6 @@ $white: white;
   right: 0;
   z-index: 1;
   background: radial-gradient(#004eccc9, #062c68);
-  @include justify-center;
-  align-items: center;
   min-height: 20rem;
   transform: scaleX(1) scaleY(1);
   transform-origin: center;

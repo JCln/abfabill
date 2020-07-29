@@ -1,30 +1,27 @@
+@import "../../assets/variables.scss";
 @import "../../assets/main.scss";
 @import "../../assets/mixins.scss";
 @import "../../assets/checkbox.scss";
 @import "../../assets/radio_checkbox.scss";
+@import "../../assets/title_second.scss";
 
 
 $background_border_color: #087CDB;
-$background_color: #062C68;
 $customer_border: #1B6CEE;
-$green_button: #2DC227;
 $medium_slate_blue: rgba(125, 131, 255, .5);
-$white: #fff;
-$light_gray: lightgray;
-$dark_gray: #605f5f;
-
 
 section {
-  background-color: $background_color;
+  background-color: $dark_b_color;
   min-height: 20rem;
   padding: 1rem .5rem;
   border-radius: 30px;
+  margin: 1rem .1rem;
 
   .title_content {
     text-align: center;
 
     h1 {
-      color: $light_gray;
+      color: $b_medium_gray;
       font-size: 2rem;
       margin: .5em;
     }
@@ -39,7 +36,7 @@ section {
     display: flex;
 
     textarea {
-      color: $dark_gray;
+      color: $darker_gray;
       border-radius: 30px;
       width: 100%;
       font-size: 1.5rem;
@@ -58,7 +55,7 @@ section {
     button {
       @extend %button_first;
       min-width: 17rem;
-      background: $green_button;
+      background: $bright_green;
       margin: 0.9rem auto;
     }
   }
