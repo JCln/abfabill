@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
-import { ViewBillService } from 'src/app/services/view-bill.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 
 import { CheckRoute } from './../../shared/check-route';
 
@@ -18,22 +18,17 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
   respnseIsNull = true;
 
   testObject: any = [];
-  // $asyncPipeTest: any;
-  // testObject = a;
-
   constructor(
-    private viewBillService: ViewBillService
+    private viewBillService: InterfaceService
   ) {
     super();
   }
-
-  // typeof value !== "object" cleared
 
   showMoreButtonClicked = (): void => {
     this.showMoreButton = !this.showMoreButton;
     scroll(0, 1200);
   }
-  CalcInstallmentAmount = (val: number, event: any): void => {
+  calcInstallmentAmount = (val: number, event: any): void => {
     if (event.srcElement.checked) {
       this.sumOfInstallments += val;
     } else {
@@ -42,6 +37,7 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
   }
   insertValToVar = (res: any, callback: () => void) => {
     for (const key in res) {
+      // eslint-disable-next-line no-prototype-builtins
       if (res.hasOwnProperty(key)) {
         this.testObject[key] = (res[key]);
       }

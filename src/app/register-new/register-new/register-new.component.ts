@@ -3,8 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
-import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
@@ -44,7 +44,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
 
   constructor(
     private errorHandler: ErrorHandlerService,
-    private viewBillService: ViewBillService,
+    private viewBillService: InterfaceService,
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
     private fb: FormBuilder,

@@ -1,59 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceDeskService } from 'src/app/services/DI/service-desk.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
 
-import { IServices } from './iservices';
-
-const serviceNames: IServices[] = [
-  {
-    title: 'اعلام کارکرد کنتور', routerLink: 'ma', src: 'assets/imgs/serviceDesk/meter.png'
-  },
-  {
-    title: 'صدور قبض میاندوره', routerLink: 'ma', src: 'assets/imgs/serviceDesk/annMetter.png'
-  },
-  {
-    title: 'آخرین قبض', routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
-  },
-  {
-    title: 'ده قبض آخر', routerLink: 'kardex', src: 'assets/imgs/serviceDesk/viewBills.png'
-  },
-  {
-    title: 'نمایش اقساط', routerLink: 'installment', src: 'assets/imgs/serviceDesk/installment.png'
-  },
-  {
-    title: 'تغییر واحد مسکونی', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/vahed.png'
-  },
-  {
-    title: 'تغییر مشخصات', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/name.png'
-  },
-  {
-    title: 'تغییر کاربری', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/karbari.png'
-  },
-  {
-    title: 'ثبت شماره همراه', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/mobile.png'
-  },
-  {
-    title: 'تغییر شماره همراه', routerLink: 'um', src: 'assets/imgs/serviceDesk/mobile.png'
-  },
-  {
-    title: 'تعویض کنتور خراب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
-  },
-  {
-    title: 'آزمایش کنتور', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/test.png'
-  },
-  {
-    title: 'لوله‌گذاری', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/valve.png'
-  },
-  {
-    title: 'استعلام نظام مهندسی', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ass.png'
-  },
-  {
-    title: 'نصب سیفون اضافی فاضلاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/nvalve.png'
-  },
-  {
-    title: 'قطع یا نصب انشعاب', routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
-  }
-];
+import { IServices } from '../../interfaces/iservices';
 
 @Component({
   selector: 'app-services',
@@ -82,9 +32,10 @@ export class ServicesComponent implements OnInit, IServices {
 
   constructor(
     private interactionService: InteractionService,
-    public googleAnalyticsService: GoogleAnalyticsService
+    public googleAnalyticsService: GoogleAnalyticsService,
+    desks: ServiceDeskService
   ) {
-    this.serviceNames = serviceNames;
+    this.serviceNames = desks.getServiceDesks();
     this.getDataFromRoute();
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InterfaceService } from 'src/app/services/interface.service';
 import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
-import { ViewBillService } from './../../services/view-bill.service';
 import { CheckRoute } from './../../shared/check-route';
 
 @Component({
@@ -11,7 +11,7 @@ import { CheckRoute } from './../../shared/check-route';
 })
 export class MemberInfoComponent extends CheckRoute implements OnInit {
   memberInfo: any = [];
-  
+
   connectToServer = () => {
     this.viewBillService.getMemberInfo(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) {
@@ -23,7 +23,7 @@ export class MemberInfoComponent extends CheckRoute implements OnInit {
     })
   }
 
-  constructor(private viewBillService: ViewBillService, private spinnerWrapper: SpinnerWrapperService) {
+  constructor(private viewBillService: InterfaceService, private spinnerWrapper: SpinnerWrapperService) {
     super();
   }
 

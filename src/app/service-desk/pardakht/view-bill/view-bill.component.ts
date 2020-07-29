@@ -1,21 +1,15 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { IViewBill } from 'src/app/interfaces/iview-bill';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { IViewBill } from 'src/app/services/iview-bill';
-import { ViewBillService } from 'src/app/services/view-bill.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 
-import { IbankIcons, IBarcode } from '../ibank-icons';
+import { IbankIcons, IBarcode } from '../../../interfaces/ibank-icons';
+import { ViewbillService } from './../../../services/DI/viewbill.service';
 import { CheckRoute } from './../../../shared/check-route';
 
-const bankIcons: IbankIcons[] = [
-  {
-    imgUrl: 'assets/imgs/bankIcons/parsian.jpg', name: 'پارسیان', linkToSite: 'https://bill.pec.ir/Bill/payment'
-  },
-  {
-    imgUrl: 'assets/imgs/bankIcons/bpm.png', name: 'به پرداخت ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/'
-  }
-];
+
 @Component({
   selector: 'app-view-bill',
   templateUrl: './view-bill.component.html',
@@ -31,17 +25,19 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
   testObject: any = [];
-  bankIcons = bankIcons;
+  bankIcons: IbankIcons[];
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
   constructor(
-    private interfaceService: ViewBillService,
+    private interfaceService: InterfaceService,
     private errorHandler: ErrorHandlerService,
     private interactionService: InteractionService,
-    private googleAnalyticsService: GoogleAnalyticsService
+    private googleAnalyticsService: GoogleAnalyticsService,
+    banks: ViewbillService
   ) {
     super();
+    this.bankIcons = banks.getBankIcon();
   }
 
   private removeLoaderAfterResponse = () => this.spinnerBoolean = false;

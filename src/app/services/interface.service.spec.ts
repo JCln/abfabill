@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-describe('ViewBillService', () => {
+describe('interfaceService', () => {
   // let vbs: ViewBillService;
   beforeEach(() => TestBed.configureTestingModule({}));
 

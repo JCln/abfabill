@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 
+import { IViewBill } from '../../interfaces/iview-bill';
 import { ErrorHandlerService } from './../../services/error-handler.service';
-import { IViewBill } from './../../services/iview-bill';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
-import { ViewBillService } from './../../services/view-bill.service';
 import { CheckRoute } from './../../shared/check-route';
 
 const mobileLength = 11;
@@ -136,7 +136,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
 
   constructor(
     private errorHandler: ErrorHandlerService,
-    private viewBillService: ViewBillService,
+    private viewBillService: InterfaceService,
     private interactionService: InteractionService,
     private spinnerWrapper: SpinnerWrapperService,
   ) {

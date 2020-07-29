@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
-import { ViewBillService } from 'src/app/services/view-bill.service';
 
 import { HelpService } from './../../services/help.service';
+import { InterfaceService } from './../../services/interface.service';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { CheckRoute } from './../../shared/check-route';
 
@@ -17,7 +17,7 @@ export class UpdateMobileComponent extends CheckRoute {
 
   constructor(
     private errorHandler: ErrorHandlerService,
-    private interfaceService: ViewBillService,
+    private interfaceService: InterfaceService,
     private spinnerWrapperService: SpinnerWrapperService,
     private helpService: HelpService
   ) {
@@ -73,9 +73,10 @@ export class UpdateMobileComponent extends CheckRoute {
     canLoad ? this.spinnerWrapperService.startLoading() : this.spinnerWrapperService.stopLoading()
   }
   private spinnerChecker = (bol: boolean): Promise<any> => {
-    return new Promise(resolve =>
-      resolve(this.createSpinner(bol))
-    )
+    return new Promise(resolve => {
+      this.createSpinner(bol);
+      resolve();
+    })
   }
   private successFullMessage = (res: string) => {
     this.helpService.customMessage('', res, '');
@@ -87,10 +88,12 @@ export class UpdateMobileComponent extends CheckRoute {
         if (res) {
           this.spinnerChecker(false);
           this.successFullMessage(res.message);
-          resolve(res);
+          resolve(true);
+        }
+        else {
+          resolve(false);
         }
       });
-      reject(false);
     });
   }
   classWrapper = async () => {
@@ -99,8 +102,10 @@ export class UpdateMobileComponent extends CheckRoute {
     if (checkValidationVal) {
       this.spinnerChecker(true);
       const bodyObject = await this.shapeBodyObject();
-      await this.connectToServer(bodyObject)
-        .then(res => console.log(res))
+      const a = await this.connectToServer(bodyObject)
+        .then(res => {
+          console.log(res); console.log(a);
+        })
         .catch(res => this.spinnerChecker(false));
     }
   }

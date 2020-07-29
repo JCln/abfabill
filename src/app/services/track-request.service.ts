@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { InterfaceService } from 'src/app/services/interface.service';
 
-import { ViewBillService } from './view-bill.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class TrackRequestService {
     this.tracks.next(newTrack);
   }
 
-  constructor(private interfaceService: ViewBillService, private router: Router) { }
+  constructor(private interfaceService: InterfaceService, private router: Router) { }
 
   canConnectToServer = (trackNumber: string): boolean => {
     return this.interfaceService.getTrackingRequest(trackNumber).subscribe((res: any) => {

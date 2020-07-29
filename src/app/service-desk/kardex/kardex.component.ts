@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { ViewBillService } from 'src/app/services/view-bill.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { CheckRoute } from './../../shared/check-route';
@@ -24,7 +24,7 @@ export class KardexComponent extends CheckRoute implements OnInit {
   spinnerParameters: any;
 
   constructor(
-    private interfaceService: ViewBillService,
+    private interfaceService: InterfaceService,
     private spinnerWrapper: SpinnerWrapperService,
     private interactionService: InteractionService,
     private router: Router

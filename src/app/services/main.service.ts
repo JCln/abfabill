@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
+import { IViewBill } from '../interfaces/iview-bill';
 import { ErrorHandlerService } from './error-handler.service';
-import { IViewBill } from './iview-bill';
 
 @Injectable({
   providedIn: 'root'

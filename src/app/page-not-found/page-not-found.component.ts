@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { IViewBill } from '../interfaces/iview-bill';
 import { AuthGuard } from '../services/auth.guard';
 import { ErrorHandlerService } from '../services/error-handler.service';
-import { IViewBill } from './../services/iview-bill';
 import { LogginsService } from './../services/loggins.service';
 import { SpinnerWrapperService } from './../services/spinner-wrapper.service';
 import { TrackRequestService } from './../services/track-request.service';

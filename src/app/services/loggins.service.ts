@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { InteractionService } from 'src/app/services/interaction.service';
+import { InterfaceService } from 'src/app/services/interface.service';
 
-import { ViewBillService } from './view-bill.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { ViewBillService } from './view-bill.service';
 export class LogginsService {
   private sub = new Subject<boolean>();
 
-  constructor(private interfaceService: ViewBillService, private interactionService: InteractionService) { }
+  constructor(private interfaceService: InterfaceService, private interactionService: InteractionService) { }
 
   set isLoaded(value: boolean) {
     this.sub.next(value);

@@ -103,10 +103,10 @@
                 'dark_b': !kardex.isBill,
                 'light_gray_b' : kardex.isBill}">
                 <div class="sign" *ngIf="!kardex.isBill">
-                    <i class="fa fa-check"></i>
+                    <img src="assets/imgs/kardex/cashpay.png" alt="">
                 </div>
                 <div class="view_bill __transparent_back" *ngIf="kardex.isBill">
-                    <img src="assets/imgs/s-viewbill.png" alt="">
+                    <img src="assets/imgs/kardex/s-viewbill.png" alt="">
                 </div>
                 <p [ngClass]="{'white_c': !kardex.isBill,'darker_c': kardex.isBill}">
                     {{kardex.isBill ? 'مبلغ': 'پرداخت شده'}}

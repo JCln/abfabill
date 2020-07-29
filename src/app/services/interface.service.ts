@@ -6,7 +6,7 @@ import { MainService } from './main.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ViewBillService {
+export class InterfaceService {
   private base64: string;
   constructor(private mainService: MainService) {
   }
