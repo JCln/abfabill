@@ -49,22 +49,11 @@ export class MainService {
       .pipe(
         catchError(err => this.errorHandler.errorHandler(err)));
   }
-  // PUT = (URL: string, body: object): any => {
-  //   const promise = new Promise((resolve, reject) => {
-  //     this.http.put<any>(this.mainConfigUrl + '/' + URL, body)
-  //       .pipe(
-  //         catchError(err => this.errorHandler.errorHandler(err))
-  //       )
-  //       .toPromise().then(res => { console.log(res); resolve(); }, msg => reject(msg));
-  //   });
-  //   return promise;
-  // }
 
   PUT = (URL: string, body: object): any => {
     return this.http.put<any>(this.mainConfigUrl + '/' + URL, body)
       .pipe(
         catchError(err => this.errorHandler.errorHandler(err))
-      ).
-      toPromise();
+      )
   }
 }
