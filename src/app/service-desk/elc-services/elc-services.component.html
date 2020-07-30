@@ -18,11 +18,25 @@
                 </label>
             </div>
         </main>
+        <article>
+            <div class="form">
+                <div class="form-item">
+                    <input type="number" name="notificationMobile" class="form-input" aria-label="notificationMobile"
+                        maxlength=11 minlength=11 [(ngModel)]="notificationMobile" required>
+                </div>
+                <div class="div1">
+                    <p>شماره همراه</p>
+                    <div class="div2">
+                    </div>
+                </div>
+            </div>
+        </article>
 
         <div class="text_align_center">
-            <button (click)="connectToServer()">ارسال درخواست
+            <button (click)="classWrapper()">ارسال درخواست
                 <i class="fas fa-upload"></i>
             </button>
         </div>
     </div>
 </section>
+<app-spinner-wrapper></app-spinner-wrapper>

@@ -10,7 +10,7 @@ import { IServices } from '../../interfaces/iservices';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss']
 })
-export class ServicesComponent implements OnInit, IServices {
+export class ServicesComponent implements OnInit {
   title: string;
   desc: string;
   spanClass: string;

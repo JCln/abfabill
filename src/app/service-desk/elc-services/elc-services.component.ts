@@ -1,57 +1,131 @@
-import { AfterContentChecked, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ElcService } from 'src/app/services/DI/elc.service';
+import { InterfaceService } from 'src/app/services/interface.service';
+import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service';
 
 import { IElcServies } from '../../interfaces/I-elc-service';
 import { ErrorHandlerService } from './../../services/error-handler.service';
-import { elcs } from './elcs';
+import { CheckRoute } from './../../shared/check-route';
 
 @Component({
   selector: 'app-elc-services',
   templateUrl: './elc-services.component.html',
   styleUrls: ['./elc-services.component.scss']
 })
-export class ElcServicesComponent implements OnInit, AfterContentChecked, OnDestroy {
+export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestroy {
   static elcWarnTime = true;
   elcs: IElcServies[];
-  sevageSelected = false;
   checkedParameter: any;
+  // users Inputs
+  notificationMobile: string = '';
+  mobileLength: number = 11;
+  selectedServices: number[] = [];
+  address: string = '';
 
   constructor(
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
+    private interfaceService: InterfaceService,
+    private spinnerWrapperService: SpinnerWrapperService,
     elcService: ElcService) {
+    super();
     this.elcs = elcService.getElc();
   }
-  checkboxChanged = (e: any, d: any) => {
+
+  private pushOrPopFromMobileNumber = () => {
+    // unshift to array just allowed so => string to array and then to string should converted
+    const arrayString = [];
+    if (this.notificationMobile.toString().startsWith('09')) {
+      return true;
+    } else if (this.notificationMobile.toString().startsWith('9')) {
+      arrayString.push(0);
+      arrayString.push(this.notificationMobile);
+      this.notificationMobile = arrayString.join("");
+      return true;
+    }
+    return false;
+  }
+  mobileValidation = (): boolean => {
+    if (!this.pushOrPopFromMobileNumber() || this.notificationMobile.toString().trim() === null || this.notificationMobile.toString().trim().length > this.mobileLength || this.notificationMobile.toString().trim().length < this.mobileLength) {
+      this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
+      return false;
+    }
+    return true;
+  }
+  protected checkboxChanged = (e: any, d: any) => {
     d.checked = e.target.checked;
   }
-  checkboxStatus = (item: number, bol: boolean) => {
-    elcs[item].checked = bol;
+
+  private checkboxStatus = (id: number, bol: boolean) => {
+    this.elcs.map(item => {
+      if (item.id == id) {
+        item.checked = bol;
+      }
+    })
   }
   ngOnInit() {
-    this.errorHandler.toasterError('مشترک گرامی این قسمت درحال بروز رسانی است، لطفااز طریق اپلیکیشن همراه آبفا اصفهان و یا شماره 1522 اقدام نمایید', '', 'makeInfo');
-
-  }
-  ngAfterContentChecked(): void {
     this.checkedParameter = this.route.snapshot.queryParamMap.get('checked');
     this.checkboxStatus(this.checkedParameter, true);
   }
 
-  canSendRequest = () => {
-    return new Promise(resolve => {
-      this.elcs.map(items => {
-        if (items.checked === true) {
-          resolve(items.name);
-        }
-        resolve(items);
+  private checkValidation = () => {
+    const promise = new Promise((resolve, reject) => {
+      if (this.mobileValidation())
+        resolve(true);
+      else {
+        this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
+        resolve(false);
+      }
+    });
+    return promise;
+  }
+  private shapeBodyObject = () => {
+    const promise = new Promise((resolve) => {
+      resolve({
+        billId: this.getedDataIdFromRoute,
+        notificationMobile: this.notificationMobile.toString(),
+        selectedServices: this.selectedServices,
+        requestOrigin: 6
       });
-    })
+    });
+    return promise;
   }
 
-  connectToServer = async () => {
-    const a = await this.canSendRequest();
-    console.log(a);
+  canSendRequest = () => {
+    const selectedServices: number[] = [];
+    return new Promise(resolve => {
+      this.elcs.map(items => {
+        if (items.checked === true)
+          selectedServices.push(items.id);
+      });
+      resolve(this.selectedServices = selectedServices);
+    });
+  }
+  private connectToServer = (body: any) => {
+    return new Promise((resolve, reject) => {
+      this.interfaceService.setRegisterAS(body).subscribe((res: any) => {
+        if (res) {
+          resolve(true);
+        }
+        else {
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  classWrapper = async () => {
+    const checkValidationVal = await this.checkValidation();
+    if (checkValidationVal) {
+      this.spinnerWrapperService.startLoading();
+      await this.canSendRequest();
+      const bodyObject = await this.shapeBodyObject();
+      const a = await this.connectToServer(bodyObject);
+      if (a || !a) {
+        this.spinnerWrapperService.stopLoading();
+      }
+    }
 
   }
   ngOnDestroy(): void {

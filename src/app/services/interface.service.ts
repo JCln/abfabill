@@ -61,6 +61,9 @@ export class InterfaceService {
   setNewRegister = (form: object): Observable<any> => {
     return this.mainService.SET('MoshtarakinApi/requestManager/registerNew', form);
   }
+  setRegisterAS = (body: object): Observable<any> => {
+    return this.mainService.PUT('MoshtarakinApi/requestManager/registerAS', body);    
+  }
   setUpdateMobile = (body: object): Observable<any> => {
     return this.mainService.SET('MoshtarakinApi/v2/member/updateMobile', body);
   }
