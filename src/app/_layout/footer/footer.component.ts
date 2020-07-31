@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  lastMonthAnalytics: number = 52148;
+  lastMonthAnalytics: number = 62157;
 
 }

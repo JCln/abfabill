@@ -89,4 +89,4 @@ section {
 }
 
 @include fourColumns('.background_color main');
-@include media_wrapper(650px, '.form', width, 25rem);
+@include media_wrapper(550px, '.form', width, 19rem);
