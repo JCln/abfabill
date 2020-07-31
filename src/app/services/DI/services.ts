@@ -44,6 +44,6 @@ export const desks: IServices[] = [
         title: 'قطع یا نصب انشعاب', id: 11, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
     },
     {
-        title: 'سایر خدمات', id: 74, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
+        title: 'سایر خدمات', id: 74, routerLink: 'elcs', src: 'assets/imgs/trackrequest/confirmed.svg'
     }
 ];

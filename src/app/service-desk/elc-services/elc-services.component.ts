@@ -111,7 +111,7 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     return new Promise(resolve => {
       this.elcs.map(items => {
         if (items.checked === true)
-          selectedServices.push(items.id);
+          selectedServices.push(items.id)
       });
       resolve(this.selectedServices = selectedServices);
     });
@@ -148,9 +148,7 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
 
   }
   ngOnDestroy(): void {
-    this.elcs.map(items => {
-      items.checked = false;
-    });
+    this.elcs.map(items => items.checked = false);
   }
 
 }
