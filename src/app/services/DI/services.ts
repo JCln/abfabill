@@ -20,22 +20,22 @@ export const desks: IServices[] = [
         title: 'تغییر شماره همراه', id: 1, routerLink: 'um', src: 'assets/imgs/serviceDesk/mobile.png'
     },
     {
-        title: 'درخواست انشعاب فاضلاب', id: 2, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/vahed.png'
+        title: 'درخواست انشعاب فاضلاب', id: 2, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ensheab.png'
     },
     {
-        title: 'تغییر مشخصات', id: 5, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/karbari.png'
+        title: 'تغییر مشخصات', id: 5, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/name.png'
     },
     {
-        title: 'تغییر واحد', id: 6, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
+        title: 'تغییر واحد', id: 6, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/vahed.png'
     },
     {
-        title: 'تغییر کاربری', id: 7, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/test.png'
+        title: 'تغییر کاربری', id: 7, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/karbari.png'
     },
     {
-        title: 'تغییر قطر انشعاب', id: 8, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ass.png'
+        title: 'تغییر قطر انشعاب', id: 8, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/change.png'
     },
     {
-        title: 'نصب سیفون اضافی', id: 9, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ass.png'
+        title: 'نصب سیفون اضافی', id: 9, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/nvalve.png'
     },
     {
         title: 'نظام مهندسی', id: 29, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/ass.png'
