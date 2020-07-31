@@ -1,0 +1,16 @@
+.form {
+  width: 90%;
+  margin-bottom: 1rem;
+
+  .form-item {
+    background: inherit;
+    width: inherit;
+    height: inherit;
+
+    .form-input {
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+  }
+}

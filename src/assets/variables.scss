@@ -35,10 +35,19 @@ $dark_green : #51a351;
 $medium_slate_blue: #7d83ff;
 $background_color_border_radius: #0198f1;
 
-hr {
+.hr_1 {
   width: 70%;
   margin-bottom: 1.5rem;
   height: .4rem;
+  border-radius: 30px;
+  background: $c_light_gray;
+}
+
+.hr_2 {
+  opacity: .7;
+  width: 70%;
+  margin: 2.5rem auto;
+  height: .2rem;
   border-radius: 30px;
   background: $c_light_gray;
 }

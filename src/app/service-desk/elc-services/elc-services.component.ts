@@ -6,7 +6,9 @@ import { SpinnerWrapperService } from 'src/app/services/spinner-wrapper.service'
 
 import { IElcServies } from '../../interfaces/I-elc-service';
 import { ErrorHandlerService } from './../../services/error-handler.service';
+import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
+import { elcs } from './elcs';
 
 @Component({
   selector: 'app-elc-services',
@@ -28,11 +30,11 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     private route: ActivatedRoute,
     private interfaceService: InterfaceService,
     private spinnerWrapperService: SpinnerWrapperService,
+    private helpService: HelpService,
     elcService: ElcService) {
     super();
     this.elcs = elcService.getElc();
   }
-
   private pushOrPopFromMobileNumber = () => {
     // unshift to array just allowed so => string to array and then to string should converted
     const arrayString = [];
@@ -47,16 +49,13 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     return false;
   }
   mobileValidation = (): boolean => {
-    if (!this.pushOrPopFromMobileNumber() || this.notificationMobile.toString().trim() === null || this.notificationMobile.toString().trim().length > this.mobileLength || this.notificationMobile.toString().trim().length < this.mobileLength) {
-      this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
+    if (!this.pushOrPopFromMobileNumber() || this.notificationMobile.toString().trim() === null || this.notificationMobile.toString().trim().length > this.mobileLength || this.notificationMobile.toString().trim().length < this.mobileLength)
       return false;
-    }
     return true;
   }
   protected checkboxChanged = (e: any, d: any) => {
     d.checked = e.target.checked;
   }
-
   private checkboxStatus = (id: number, bol: boolean) => {
     this.elcs.map(item => {
       if (item.id == id) {
@@ -64,12 +63,28 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
       }
     })
   }
+  private persianCharacters = () => {
+    const promise = new Promise((resolve) => {
+      this.notificationMobile = this.persianToEngNumbers(this.notificationMobile);
+      resolve(this.notificationMobile);
+    });
+    return promise;
+  }
+  private isEmptySelected = (): boolean => {
+    const a = this.elcs.find((items) => items.checked === true);
+    if (a)
+      return true;
+    return false;
+  }
   ngOnInit() {
     this.checkedParameter = this.route.snapshot.queryParamMap.get('checked');
     this.checkboxStatus(this.checkedParameter, true);
   }
-
   private checkValidation = () => {
+    if (!this.isEmptySelected()) {
+      this.errorHandler.customToaster(4000, 'لطفا حداقل یکی از خدمات را انتخاب فرمایید');
+      return;
+    }
     const promise = new Promise((resolve, reject) => {
       if (this.mobileValidation())
         resolve(true);
@@ -91,7 +106,6 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     });
     return promise;
   }
-
   canSendRequest = () => {
     const selectedServices: number[] = [];
     return new Promise(resolve => {
@@ -102,10 +116,15 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
       resolve(this.selectedServices = selectedServices);
     });
   }
+  private successFullMessage = (res: string) => {
+    this.helpService.customMessage('درخواست ثبت شد', res, '');
+    this.helpService.help();
+  }
   private connectToServer = (body: any) => {
     return new Promise((resolve, reject) => {
       this.interfaceService.setRegisterAS(body).subscribe((res: any) => {
         if (res) {
+          this.successFullMessage(res.message);
           resolve(true);
         }
         else {
@@ -114,8 +133,8 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
       });
     });
   }
-
   classWrapper = async () => {
+    await this.persianCharacters();
     const checkValidationVal = await this.checkValidation();
     if (checkValidationVal) {
       this.spinnerWrapperService.startLoading();
@@ -133,4 +152,5 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
       items.checked = false;
     });
   }
+
 }

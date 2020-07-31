@@ -36,3 +36,8 @@
 .text_align_center {
   @include text_align(center);
 }
+
+.enter {
+  margin: auto;
+  text-align: center;
+}
