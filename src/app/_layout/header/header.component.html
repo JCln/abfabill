@@ -32,7 +32,7 @@
 			<a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer">
 				<li>پرتال شرکت آبفا</li>
 			</a>
-			<a routerLink='bill/receipt'>
+			<a *ngIf="isBillRouteActivated()" routerLink='bill/receipt'>
 				<li>نمایش قبض کاغذی</li>
 			</a>
 		</ul>
