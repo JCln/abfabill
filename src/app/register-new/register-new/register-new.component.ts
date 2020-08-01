@@ -27,14 +27,10 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
   sureName: string = '';
   neighbourBillId: string = '';
   // spinner
-  notification: boolean = false;
-  // notificationText = '';
-
-  // textError from server
+  _notification: boolean = false;
   $textError: string;
   showMessage: boolean = false;
-  // button
-
+  
   private minNeighbourBillId = minNeighbourBillId;
   private maxNeidghbourBillId = maxNeighbourBillId;
 
@@ -150,7 +146,7 @@ export class RegisterNewComponent extends CheckRoute implements OnInit {
   spinnerCondition = (val: any) => {
     this.spinnerWrapper.loadingStatus$.subscribe(status => {
       this.clickableButton = status;
-      this.notification = status;
+      this._notification = status;
     })
   }
 

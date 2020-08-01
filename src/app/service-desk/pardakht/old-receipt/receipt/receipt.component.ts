@@ -14,16 +14,18 @@ export class ReceiptComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.receiptService.receipt$.subscribe(res => {
-      console.log(res);
-      this.childEl = res;
+      if (res) {
+        console.log(res);
+        this.childEl = res;
+      }
     });
   }
   fixedWidth = () => {
-    let main = document.querySelector('.main') as HTMLElement;
-    let _numbers1 = document.querySelector('._first') as HTMLElement;
-    let _numbers2 = document.querySelector('._second') as HTMLElement;
-    let _numbers3 = document.querySelector('._third') as HTMLElement;
-    let _numbers4 = document.querySelector('._forth') as HTMLElement;
+    const main = document.querySelector('.main') as HTMLElement;
+    const _numbers1 = document.querySelector('._first') as HTMLElement;
+    const _numbers2 = document.querySelector('._second') as HTMLElement;
+    const _numbers3 = document.querySelector('._third') as HTMLElement;
+    const _numbers4 = document.querySelector('._forth') as HTMLElement;
 
     main.style.display = "grid";
     main.style.gridTemplateColumns = "repeat(4, minmax(20rem , 1fr))";

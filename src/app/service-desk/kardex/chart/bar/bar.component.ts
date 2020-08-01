@@ -19,6 +19,11 @@ export class BarComponent implements OnInit, AfterViewInit {
   barChartColors: Array<any>;
   barChartOptions: ChartOptions;
 
+  private defaultOptions = {
+    fontFamily: 'Blotus',
+    fontSize: 18,
+    fontStyle: 'bold'
+  }
 
   constructor(private interationService: InteractionService) { }
 
@@ -39,8 +44,6 @@ export class BarComponent implements OnInit, AfterViewInit {
   insertToChart = () => {
     this.barChartData = [{ data: this.chartData, label: 'مصرف' }];
     this.barChartLabels = this.chartOweDate;
-    this.defaultOptions = this.defaultOptions
-
 
     this.barChartColors = [
       {
@@ -58,7 +61,7 @@ export class BarComponent implements OnInit, AfterViewInit {
       legend: { labels: this.defaultOptions },
       scales: {
         xAxes: [{ ticks: this.defaultOptions }],
-        yAxes: [{ ticks: this.defaultOptions }]        
+        yAxes: [{ ticks: this.defaultOptions }]
       },
       tooltips: {
         footerFontFamily: 'Blotus',
@@ -70,11 +73,6 @@ export class BarComponent implements OnInit, AfterViewInit {
         bodyFontStyle: 'bold'
       }
     };
-  }
-  private defaultOptions = {
-    fontFamily: 'Blotus',
-    fontSize: 18,
-    fontStyle: 'bold'
   }
   ngOnInit(): void {
     this.chartOweDate = [];

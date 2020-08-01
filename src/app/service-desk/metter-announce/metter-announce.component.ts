@@ -19,9 +19,9 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   notification: boolean = false;
   // textError from server
   $textError: string;
-  showMessage = false;
+  _showMessage = false;
   // button
-  clickableButton: boolean = true;
+  _clickableButton: boolean = true;
 
   private maxLength = 5;
   private minLength = 1;
@@ -103,7 +103,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
 
   private spinnerCondition = (val: any) => {
     this.spinnerWrapper.loadingStatus$.subscribe(status => {
-      this.clickableButton = status;
+      this._clickableButton = status;
       this.notification = status;
     })
   }
@@ -147,7 +147,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
-        this.showMessage = true;
+        this._showMessage = true;
         if (this.$textError)
           this.spinnerChecker(false);
       }

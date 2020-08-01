@@ -16,15 +16,15 @@ import { CheckRoute } from './../../../shared/check-route';
   styleUrls: ['./view-bill.component.scss']
 })
 export class ViewBillComponent extends CheckRoute implements OnInit, AfterContentInit {
-  spinnerBoolean = true;
-  showMoreButton = false;
+  _spinnerBoolean = true;
+  _showMoreButton = false;
 
   // a bill kardex with details
-  isABillKardex: boolean = false;
-  aBillKardex: any = [];
+  _isABillKardex: boolean = false;
+  $aBillKardex: any = [];
 
   chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
-  testObject: any = [];
+  $testObject: any = [];
   bankIcons: IbankIcons[];
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
@@ -40,17 +40,17 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.bankIcons = banks.getBankIcon();
   }
 
-  private removeLoaderAfterResponse = () => this.spinnerBoolean = false;
+  private removeLoaderAfterResponse = () => this._spinnerBoolean = false;
 
   private insertValToVar = (res: IViewBill, callback: () => void) => {
-    this.testObject = res;
+    this.$testObject = res;
     callback();
   }
   private connectToServer = () => {
     this.interfaceService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) {
         this.insertValToVar(res, this.removeLoaderAfterResponse);
-        this.interactionService.setReceipt(this.testObject);
+        this.interactionService.setReceipt(this.$testObject);
       } else {
         this.errorHandler.handleError(404);
       }
@@ -73,7 +73,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.chooseBank.linkToSite = bankurl;
   }
   showMoreButtonClicked = (): void => {
-    this.showMoreButton = !this.showMoreButton;
+    this._showMoreButton = !this._showMoreButton;
     scroll(0, 700);
   }
 
@@ -81,9 +81,9 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.interactionService.abillKardex$.subscribe(res => {
       if (this.isNull(res))
         return;
-      this.aBillKardex = res;
+      this.$aBillKardex = res;
       this.removeLoaderAfterResponse();
-      this.isABillKardex = true;
+      this._isABillKardex = true;
     })
   }
   ngOnDestroy(): void {

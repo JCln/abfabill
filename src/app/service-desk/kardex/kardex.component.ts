@@ -12,16 +12,13 @@ import { CheckRoute } from './../../shared/check-route';
   styleUrls: ['./kardex.component.scss']
 })
 export class KardexComponent extends CheckRoute implements OnInit {
-  hoveredColor: boolean;
+  _hoveredColor: boolean;
   // bool kardex
   kardex: any;
   ////////
   // usageForChart
-  usage: any[] = [];
-  usageDate: any[] = [];
-  // spinner
-  spinnerBoolean: boolean = false;
-  spinnerParameters: any;
+  $usage: any[] = [];
+  $usageDate: any[] = [];
 
   constructor(
     private interfaceService: InterfaceService,
@@ -38,10 +35,10 @@ export class KardexComponent extends CheckRoute implements OnInit {
         this.kardex = res;
         res.map(usage => {
           if (usage.isBill) {
-            this.usage.push(usage.usage);
-            this.usageDate.push(usage.oweDate);
-            this.interactionService.setChartDate(this.usage);
-            this.interactionService.setChartOweDate(this.usageDate);
+            this.$usage.push(usage.usage);
+            this.$usageDate.push(usage.oweDate);
+            this.interactionService.setChartDate(this.$usage);
+            this.interactionService.setChartOweDate(this.$usageDate);
 
           }
         })
@@ -68,8 +65,8 @@ export class KardexComponent extends CheckRoute implements OnInit {
     })
 
   }
-  changeStyleOnMouseOver = (hoveredColor: boolean) => {
-    this.hoveredColor = hoveredColor;
+  changeStyleOnMouseOver = (_hoveredColor: boolean) => {
+    this._hoveredColor = _hoveredColor;
   }
   getABillKardex = (id: number, zoneId: number) => {
     this.createSpinner(true);

@@ -7,7 +7,7 @@
     <div [ngClass]="{
         'darker_b': !kardex.isBill,
         'dark_gray_b': kardex.isBill,
-        view_hover: kardex.isBill && hoveredColor}" (mouseover)="changeStyleOnMouseOver(true)"
+        view_hover: kardex.isBill && _hoveredColor}" (mouseover)="changeStyleOnMouseOver(true)"
         (mouseleave)="changeStyleOnMouseOver(false)" class="main_border"
         *ngFor="let kardex of kardex ; let index = index"
         (click)="!kardex.isBill ? getPaymentInfoKardex(kardex.id , kardex.zoneId, index) : getABillKardex(kardex.id , kardex.zoneId)">

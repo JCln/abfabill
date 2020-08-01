@@ -10,15 +10,15 @@ import { CheckRoute } from './../../shared/check-route';
   styleUrls: ['./member-info.component.scss']
 })
 export class MemberInfoComponent extends CheckRoute implements OnInit {
-  memberInfo: any = [];
+  $memberInfo: any = [];
 
   connectToServer = () => {
     this.viewBillService.getMemberInfo(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) {
         this.spinnerWrapper.stopLoading();
-        this.memberInfo = res;
-        this.memberInfo.firstName = this.memberInfo.firstName.trim();
-        this.memberInfo.sureName = this.memberInfo.sureName.trim();
+        this.$memberInfo = res;
+        this.$memberInfo.firstName = this.$memberInfo.firstName.trim();
+        this.$memberInfo.sureName = this.$memberInfo.sureName.trim();
       }
     })
   }

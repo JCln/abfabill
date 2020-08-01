@@ -10,11 +10,10 @@ import { CheckRoute } from './../../shared/check-route';
   styleUrls: ['./installment.component.scss']
 })
 export class InstallmentComponent extends CheckRoute implements OnInit {
-  spinnerBoolean = true;
-  showMoreButton = false;
-  sumOfInstallments = 0;
-  billId: string = '';
-  response;
+  _spinnerBoolean = true;
+  _showMoreButton = false;
+  _sumOfInstallments = 0;
+  _response: boolean;
   respnseIsNull = true;
 
   testObject: any = [];
@@ -25,14 +24,14 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
   }
 
   showMoreButtonClicked = (): void => {
-    this.showMoreButton = !this.showMoreButton;
+    this._showMoreButton = !this._showMoreButton;
     scroll(0, 1200);
   }
   calcInstallmentAmount = (val: number, event: any): void => {
     if (event.srcElement.checked) {
-      this.sumOfInstallments += val;
+      this._sumOfInstallments += val;
     } else {
-      this.sumOfInstallments -= val;
+      this._sumOfInstallments -= val;
     }
   }
   insertValToVar = (res: any, callback: () => void) => {
@@ -44,11 +43,11 @@ export class InstallmentComponent extends CheckRoute implements OnInit {
     }
     callback();
   }
-  removeLoaderAfterResponse = () => this.spinnerBoolean = false;
+  removeLoaderAfterResponse = () => this._spinnerBoolean = false;
   connectToServer = () => {
     this.viewBillService.getInstallment(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {
-        this.response = true;
+        this._response = true;
         // when response is null and means no installment exists
         if (this.isNull(res[0])) {
           this.respnseIsNull = false;

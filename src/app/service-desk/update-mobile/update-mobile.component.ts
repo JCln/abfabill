@@ -12,8 +12,8 @@ import { CheckRoute } from './../../shared/check-route';
   styleUrls: ['./update-mobile.component.scss']
 })
 export class UpdateMobileComponent extends CheckRoute {
-  mobileNumber: string = '';
-  mobileLength: number = 11;
+  _mobileNumber: string = '';
+  _mobileLength: number = 11;
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -25,26 +25,26 @@ export class UpdateMobileComponent extends CheckRoute {
   }
   private persianCharacters = () => {
     const promise = new Promise((resolve) => {
-      this.mobileNumber = this.persianToEngNumbers(this.mobileNumber);
-      resolve(this.mobileNumber);
+      this._mobileNumber = this.persianToEngNumbers(this._mobileNumber);
+      resolve(this._mobileNumber);
     });
     return promise;
   }
   private pushOrPopFromMobileNumber = () => {
     // unshift to array just allowed so => string to array and then to string should converted
     const arrayString = [];
-    if (this.mobileNumber.toString().startsWith('09')) {
+    if (this._mobileNumber.toString().startsWith('09')) {
       return true;
-    } else if (this.mobileNumber.toString().startsWith('9')) {
+    } else if (this._mobileNumber.toString().startsWith('9')) {
       arrayString.push(0);
-      arrayString.push(this.mobileNumber);
-      this.mobileNumber = arrayString.join("");
+      arrayString.push(this._mobileNumber);
+      this._mobileNumber = arrayString.join("");
       return true;
     }
     return false;
   }
   mobileValidation = (): boolean => {
-    if (!this.pushOrPopFromMobileNumber() || this.mobileNumber.toString().trim() === null || this.mobileNumber.toString().trim().length > this.mobileLength || this.mobileNumber.toString().trim().length < this.mobileLength) {
+    if (!this.pushOrPopFromMobileNumber() || this._mobileNumber.toString().trim() === null || this._mobileNumber.toString().trim().length > this._mobileLength || this._mobileNumber.toString().trim().length < this._mobileLength) {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
       return false;
     }
@@ -61,7 +61,7 @@ export class UpdateMobileComponent extends CheckRoute {
   private shapeBodyObject = () => {
     const promise = new Promise((resolve) => {
       resolve({
-        "mobile": this.mobileNumber,
+        "mobile": this._mobileNumber,
         "origin": 6,
         "billId": this.getedDataIdFromRoute,
         "api": this.interfaceService.getBase64(this.getedDataIdFromRoute)

@@ -8,7 +8,6 @@ import { IElcServies } from '../../interfaces/I-elc-service';
 import { ErrorHandlerService } from './../../services/error-handler.service';
 import { HelpService } from './../../services/help.service';
 import { CheckRoute } from './../../shared/check-route';
-import { elcs } from './elcs';
 
 @Component({
   selector: 'app-elc-services',
@@ -21,9 +20,8 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
   checkedParameter: any;
   // users Inputs
   notificationMobile: string = '';
-  mobileLength: number = 11;
+  _mobileLength: number = 11;
   selectedServices: number[] = [];
-  address: string = '';
 
   constructor(
     private errorHandler: ErrorHandlerService,
@@ -49,7 +47,7 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     return false;
   }
   mobileValidation = (): boolean => {
-    if (!this.pushOrPopFromMobileNumber() || this.notificationMobile.toString().trim() === null || this.notificationMobile.toString().trim().length > this.mobileLength || this.notificationMobile.toString().trim().length < this.mobileLength)
+    if (!this.pushOrPopFromMobileNumber() || this.notificationMobile.toString().trim() === null || this.notificationMobile.toString().trim().length > this._mobileLength || this.notificationMobile.toString().trim().length < this._mobileLength)
       return false;
     return true;
   }

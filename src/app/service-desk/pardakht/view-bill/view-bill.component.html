@@ -17,8 +17,8 @@
       <div class="form">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input text_align_right" aria-label="first name"
-            value="{{testObject.fullName}}" style="font-size: 1.18rem;">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$testObject.fullName}}" style="font-size: 1.18rem;">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مشترک گرامی</p>
@@ -26,11 +26,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="!isABillKardex">
+      <div class="form" *ngIf="!_isABillKardex">
         <div class="form-item inputcontainer">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{testObject.billId}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$testObject.billId}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه قبض</p>
@@ -38,11 +38,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="isABillKardex">
+      <div class="form" *ngIf="_isABillKardex">
         <div class="form-item inputcontainer">
           <input type="text" readonly name="billId" class="form-input" aria-label="billId"
-            value="{{aBillKardex.billId}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$aBillKardex.billId}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه قبض</p>
@@ -50,11 +50,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="!isABillKardex">
+      <div class="form" *ngIf="!_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{testObject.payId}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$testObject.payId}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه پرداخت</p>
@@ -62,11 +62,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="isABillKardex">
+      <div class="form" *ngIf="_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{aBillKardex.payId}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$aBillKardex.payId}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>شناسه پرداخت</p>
@@ -74,11 +74,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="!isABillKardex">
+      <div class="form" *ngIf="!_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{testObject.payable | perCurrencySplitter}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$testObject.payable | perCurrencySplitter}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مبلغ قابل پرداخت</p>
@@ -86,11 +86,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="isABillKardex">
+      <div class="form" *ngIf="_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            value="{{aBillKardex.payable | perCurrencySplitter}}">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            value="{{$aBillKardex.payable | perCurrencySplitter}}">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مبلغ قابل پرداخت</p>
@@ -98,11 +98,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="!isABillKardex">
+      <div class="form" *ngIf="!_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            [(ngModel)]="testObject.deadLine">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            [(ngModel)]="$testObject.deadLine">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مهلت پرداخت</p>
@@ -110,11 +110,11 @@
           </div>
         </div>
       </div>
-      <div class="form" *ngIf="isABillKardex">
+      <div class="form" *ngIf="_isABillKardex">
         <div class="form-item">
           <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-            [(ngModel)]="aBillKardex.deadLine">
-          <i *ngIf="spinnerBoolean" class="loader"></i>
+            [(ngModel)]="$aBillKardex.deadLine">
+          <i *ngIf="_spinnerBoolean" class="loader"></i>
         </div>
         <div class="div1">
           <p>مهلت پرداخت</p>
@@ -126,22 +126,22 @@
     </div>
 
 
-    <section class="check_moreinfo" *ngIf="!isABillKardex">
-      <button (click)="showMoreButtonClicked()"> {{showMoreButton? 'نمایش کمتر جزئیات': 'مشاهده جزئیات بیشتر قبض'}}
-        <i class="{{showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i></button>
+    <section class="check_moreinfo" *ngIf="!_isABillKardex">
+      <button (click)="showMoreButtonClicked()"> {{_showMoreButton? 'نمایش کمتر جزئیات': 'مشاهده جزئیات بیشتر قبض'}}
+        <i class="{{_showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i></button>
     </section>
 
-    <div class="_detail_content" *ngIf="showMoreButton && !isABillKardex">
+    <div class="_detail_content" *ngIf="_showMoreButton && !_isABillKardex">
 
-      <div class="background purple_background" *ngIf="!isABillKardex">
+      <div class="background purple_background" *ngIf="!_isABillKardex">
         <h3 class="text_align_center">
           <i class="fa fa-user"></i>
           اطلاعات انشعاب</h3>
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input text_align_right"
-              aria-label="first name" [(ngModel)]="testObject.karbariTitle" style="font-size: 1.18rem;">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              aria-label="first name" [(ngModel)]="$testObject.karbariTitle" style="font-size: 1.18rem;">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>کاربری</p>
@@ -153,8 +153,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.ahadMaskooni">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.ahadMaskooni">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آحاد مسکونی</p>
@@ -165,8 +165,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.ahadNonMaskooni">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.ahadNonMaskooni">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آحاد غیر مسکونی</p>
@@ -178,8 +178,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.zarfiatQarardadi">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.zarfiatQarardadi">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>ظرفیت قراردادی</p>
@@ -190,8 +190,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.qotr">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.qotr">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>قطرانشعاب</p>
@@ -202,8 +202,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.qotrSifoon">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.qotrSifoon">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>قطر سیفون</p>
@@ -216,8 +216,8 @@
         <div class="form">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.counterStateId">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.counterStateId">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>وضعیت کنتور</p>
@@ -231,11 +231,11 @@
         <h3 class="text_align_center">
           <i class="fa fa-list-alt"></i>اطلاعات قرائت</h3>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.radif">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.radif">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره ردیف</p>
@@ -244,11 +244,11 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.barge">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.barge">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره برگه</p>
@@ -256,11 +256,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.eshterak">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.eshterak">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره اشتراک</p>
@@ -268,11 +268,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.preCounterReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.preCounterReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت پیشین</p>
@@ -280,11 +280,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.preReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.preReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت پیشین</p>
@@ -293,11 +293,11 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.currentCounterReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.currentCounterReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
@@ -305,11 +305,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.currentReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.currentReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
@@ -317,11 +317,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.days">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.days">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تعداد روز</p>
@@ -329,11 +329,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.duration">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.duration">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تعداد روز</p>
@@ -341,11 +341,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.preCounterNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.preCounterNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p> شماره کنتور پیشین</p>
@@ -353,11 +353,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.preReadingNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.preReadingNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p> شماره کنتور پیشین</p>
@@ -365,11 +365,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.currentCounterNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.currentCounterNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره کنتور کنونی</p>
@@ -377,11 +377,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.currentReadingNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.currentReadingNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره کنتور کنونی</p>
@@ -394,11 +394,11 @@
 
         <h3 class="text_align_center">
           <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masraf">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masraf">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به مترمکعب</p>
@@ -406,11 +406,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.usageM3">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.usageM3">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به مترمکعب</p>
@@ -418,11 +418,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masrafLiter">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masrafLiter">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به لیتر</p>
@@ -430,11 +430,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.usageLiter">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.usageLiter">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به لیتر</p>
@@ -442,11 +442,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masrafAverage">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masrafAverage">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>متوسط مصرف</p>
@@ -454,11 +454,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.rate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.rate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>متوسط مصرف</p>
@@ -474,11 +474,11 @@
           <i class="fa fa-square-root-alt"></i>
           شرح اقلام</h3>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.abBaha| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.abBaha| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بهای آب مصرفی</p>
@@ -486,11 +486,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abBaha| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abBaha| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بهای آب مصرفی</p>
@@ -498,11 +498,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.karmozdFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.karmozdFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای دفع فاضلاب</p>
@@ -510,11 +510,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.karmozdFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.karmozdFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای دفع فاضلاب</p>
@@ -522,11 +522,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.maliat | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.maliat | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مالیات و عوارض</p>
@@ -534,11 +534,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.maliat | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.maliat | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مالیات و عوارض</p>
@@ -546,11 +546,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.budget| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.budget| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تکلیف قانون بودجه</p>
@@ -558,11 +558,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.boodje| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.boodje| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تکلیف قانون بودجه</p>
@@ -570,11 +570,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare2| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare2| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره 2</p>
@@ -582,11 +582,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Ab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Ab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره 3</p>
@@ -594,11 +594,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره فاضلاب</p>
@@ -606,11 +606,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abonmanAb| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abonmanAb| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آبونمان آب</p>
@@ -618,11 +618,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abonmanFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abonmanFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آبونمان فاضلاب</p>
@@ -630,11 +630,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.mazadOlgoo| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.mazadOlgoo| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>مازاد الگو</p>
@@ -642,11 +642,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره فاضلاب</p>
@@ -654,11 +654,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.lavazemKahande">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.lavazemKahande">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>لوازم کاهنده</p>
@@ -666,11 +666,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.jam | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.jam | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>جمع</p>
@@ -678,11 +678,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.jam | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.jam | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>جمع</p>
@@ -690,11 +690,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.taxfif| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.taxfif| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تخفیف</p>
@@ -702,11 +702,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.preBedOrBes | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.preBedOrBes | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بدهی قبلی</p>
@@ -714,11 +714,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.preDebtOrOwe | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.preDebtOrOwe | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بدهی بستانکاری</p>
@@ -730,17 +730,17 @@
       </div>
     </div>
 
-    <div class="_detail_content _detail_content_kardex" *ngIf="isABillKardex">
+    <div class="_detail_content _detail_content_kardex" *ngIf="_isABillKardex">
 
       <div class="background orange_background">
         <h3 class="text_align_center">
           <i class="fa fa-list-alt"></i>اطلاعات قرائت</h3>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.barge">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.barge">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره برگه</p>
@@ -749,11 +749,11 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.preReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.preReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت پیشین</p>
@@ -762,11 +762,11 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.currentCounterReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.currentCounterReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
@@ -774,11 +774,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.currentReadingDate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.currentReadingDate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تاریخ قرائت کنونی</p>
@@ -786,11 +786,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.days">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.days">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>تعداد روز</p>
@@ -798,11 +798,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.duration">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.duration">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تعداد روز</p>
@@ -810,11 +810,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.preCounterNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.preCounterNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p> شماره کنتور پیشین</p>
@@ -822,11 +822,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.preReadingNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.preReadingNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p> شماره کنتور پیشین</p>
@@ -834,11 +834,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.currentCounterNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.currentCounterNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره کنتور کنونی</p>
@@ -846,11 +846,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.currentReadingNumber">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.currentReadingNumber">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>شماره کنتور کنونی</p>
@@ -863,11 +863,11 @@
 
         <h3 class="text_align_center">
           <i class="fa fa-tint"></i>اطلاعات مصرف</h3>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masraf">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masraf">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به مترمکعب</p>
@@ -875,11 +875,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.usageM3">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.usageM3">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به مترمکعب</p>
@@ -887,11 +887,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masrafLiter">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masrafLiter">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به لیتر</p>
@@ -899,11 +899,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.usageLiter">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.usageLiter">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مصرف به لیتر</p>
@@ -911,11 +911,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="testObject.masrafAverage">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$testObject.masrafAverage">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>متوسط مصرف</p>
@@ -923,11 +923,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              [(ngModel)]="aBillKardex.rate">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              [(ngModel)]="$aBillKardex.rate">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>متوسط مصرف</p>
@@ -943,11 +943,11 @@
           <i class="fa fa-square-root-alt"></i>
           شرح اقلام</h3>
 
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.abBaha| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.abBaha| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بهای آب مصرفی</p>
@@ -955,11 +955,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abBaha| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abBaha| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بهای آب مصرفی</p>
@@ -967,11 +967,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.karmozdFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.karmozdFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای دفع فاضلاب</p>
@@ -979,11 +979,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.karmozdFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.karmozdFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>بهای دفع فاضلاب</p>
@@ -991,11 +991,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.maliat | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.maliat | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مالیات و عوارض</p>
@@ -1003,11 +1003,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.maliat | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.maliat | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>مالیات و عوارض</p>
@@ -1015,11 +1015,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="!isABillKardex">
+        <div class="form" *ngIf="!_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{testObject.budget| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$testObject.budget| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تکلیف قانون بودجه</p>
@@ -1027,11 +1027,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.boodje| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.boodje| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تکلیف قانون بودجه</p>
@@ -1039,11 +1039,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare2| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare2| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره 2</p>
@@ -1051,11 +1051,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Ab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Ab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره 3</p>
@@ -1063,11 +1063,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره فاضلاب</p>
@@ -1075,11 +1075,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abonmanAb| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abonmanAb| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آبونمان آب</p>
@@ -1087,11 +1087,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.abonmanFazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.abonmanFazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>آبونمان فاضلاب</p>
@@ -1099,11 +1099,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.mazadOlgoo| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.mazadOlgoo| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>مازاد الگو</p>
@@ -1111,11 +1111,11 @@
             </div>
           </div>
         </div>
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.tabsare3Fazelab| perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>تبصره فاضلاب</p>
@@ -1124,11 +1124,11 @@
           </div>
         </div>
 
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.jam | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.jam | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class=" div1">
             <p>جمع</p>
@@ -1138,11 +1138,11 @@
         </div>
 
 
-        <div class="form" *ngIf="isABillKardex">
+        <div class="form" *ngIf="_isABillKardex">
           <div class="form-item">
             <input type="text" readonly name="viewBill.value" class="form-input" aria-label="first name"
-              value="{{aBillKardex.preDebtOrOwe | perCurrencySplitter}}">
-            <i *ngIf="spinnerBoolean" class="loader"></i>
+              value="{{$aBillKardex.preDebtOrOwe | perCurrencySplitter}}">
+            <i *ngIf="_spinnerBoolean" class="loader"></i>
           </div>
           <div class="div1">
             <p>بدهی بستانکاری</p>
@@ -1158,22 +1158,22 @@
 
 </section>
 
-<section class="barcode" *ngIf="!isABillKardex">
-  <ngx-barcode [bc-value]="testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
+<section class="barcode" *ngIf="!_isABillKardex">
+  <ngx-barcode [bc-value]="$testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
     [bc-height]="barcode.height">
   </ngx-barcode>
 </section>
 
-<section class="pay_section" *ngIf="!isABillKardex">
+<section class="pay_section" *ngIf="!_isABillKardex">
   <div class="pay_button_section justify_center">
 
-    <button class="pay_button" [disabled]="testObject.isPayed === true || spinnerBoolean">
+    <button class="pay_button" [disabled]="$testObject.isPayed === true || _spinnerBoolean">
       <a href="{{chooseBank.linkToSite}}" (click)="sendButtonEventToAnalytics()" target="_blank"
         ref='noopener noreferrer' [ngClass]="{
-        'disabled':testObject.isPayed === true || spinnerBoolean ,
-        'enabled':testObject.isPayed === false
+        'disabled':$testObject.isPayed === true || _spinnerBoolean ,
+        'enabled':$testObject.isPayed === false
       }">
-        {{testObject.isPayed === true || spinnerBoolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
+        {{$testObject.isPayed === true || _spinnerBoolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
       </a>
     </button>
   </div>
