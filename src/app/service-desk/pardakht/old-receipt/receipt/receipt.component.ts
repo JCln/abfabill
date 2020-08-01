@@ -1,4 +1,5 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
@@ -6,17 +7,20 @@ import { InteractionService } from 'src/app/services/interaction.service';
   templateUrl: './receipt.component.html',
   styleUrls: ['./receipt.component.scss']
 })
-export class ReceiptComponent implements OnInit, AfterContentChecked {
+export class ReceiptComponent implements AfterViewInit {
 
-  childEl: any = [];
-  constructor(private receiptService: InteractionService) {
+  $childEl: any = [];
+  constructor(private receiptService: InteractionService, private router: Router) {
   }
-
-  ngAfterContentChecked(): void {
+  ngAfterViewInit(): void {
     this.receiptService.receipt$.subscribe(res => {
       if (res) {
         console.log(res);
-        this.childEl = res;
+        this.$childEl = res;
+      }
+      else {
+        const billid = this.receiptService.billId$;
+        this.router.navigate([billid, '/bill']);
       }
     });
   }
@@ -36,9 +40,6 @@ export class ReceiptComponent implements OnInit, AfterContentChecked {
     _numbers2.style.width = "100%";
     _numbers3.style.width = "100%";
     _numbers4.style.width = "100%";
-  }
-
-  ngOnInit() {
   }
   exportAsPrint(): void {
     window.print();
