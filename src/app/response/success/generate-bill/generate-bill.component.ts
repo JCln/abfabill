@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
-  selector: 'app-success',
-  templateUrl: './success.component.html',
-  styleUrls: ['./success.component.scss']
+  selector: 'app-generate-bill',
+  templateUrl: './generate-bill.component.html',
+  styleUrls: ['./generate-bill.component.scss']
 })
-export class SuccessComponent implements OnInit {
+export class GenerateBillComponent implements OnInit {
+
   timeLeft: number = 10;
   interval;
   billId: string = '';

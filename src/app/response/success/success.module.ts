@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ResponseRoutingModule } from './response-routing.module';
+import { SuccessRoutingModule } from './success-routing.module';
+
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ResponseRoutingModule
+    SuccessRoutingModule
   ]
 })
-export class ResponseModule { }
+export class SuccessModule { }

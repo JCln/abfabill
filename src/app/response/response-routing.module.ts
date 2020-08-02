@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FailedComponent } from './failed/failed.component';
-import { SuccessComponent } from './success/success.component';
-
 const routes: Routes = [
-  { path: '', redirectTo: 'pg', pathMatch: 'full' },
-  { path: 'success', component: SuccessComponent },
-  { path: 'failed', component: FailedComponent }
+  { path: 's', loadChildren: () => import('./success/success.module').then(s => s.SuccessModule) },
+  { path: 'f', loadChildren: () => import('./failed/failed.module').then(s => s.FailedModule) }
 ];
 
 @NgModule({
