@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { InterfaceService } from 'src/app/services/interface.service';
 
-import { IViewBill } from '../../interfaces/iview-bill';
 import { ErrorHandlerService } from './../../services/error-handler.service';
 import { SpinnerWrapperService } from './../../services/spinner-wrapper.service';
 import { CheckRoute } from './../../shared/check-route';
@@ -90,13 +89,12 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
     return new Promise(resolve =>
       resolve(
         this.viewBillService.setMetterAnnounce(this.getedDataIdFromRoute, this.kontorNumber, this.mobileNumber)
-          .subscribe((res: IViewBill) => {
+          .subscribe((res: any) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-              this.errorHandler.timeOutBeforeRoute('r/success');
+              this.errorHandler.timeOutBeforeRoute('r/s/success');
             }
           })
-
       )
     )
   }
