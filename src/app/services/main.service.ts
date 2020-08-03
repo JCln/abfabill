@@ -44,6 +44,10 @@ export class MainService {
     }
   }
 
+  GETAnalytics = (URL: string): any => {
+    return this.http.get<any>(this.mainConfigUrl + '/' + URL).pipe(retry(1));
+  }
+
   SET = (URL: string, body: object): any => {
     return this.http.post<any>(this.mainConfigUrl + '/' + URL, body)
       .pipe(

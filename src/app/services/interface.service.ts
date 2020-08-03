@@ -48,6 +48,9 @@ export class InterfaceService {
     this.idValues(id);
     return this.mainService.GET(id, 'moshtarakinapi/v2/member/getinfo', this.base64);
   }
+  getAnalytic = (): Observable<any> => {
+    return this.mainService.GETAnalytics('MoshtarakinApi/GaManager/GetGaReport');
+  }
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());
@@ -62,7 +65,7 @@ export class InterfaceService {
     return this.mainService.SET('MoshtarakinApi/requestManager/registerNew', form);
   }
   setRegisterAS = (body: object): Observable<any> => {
-    return this.mainService.PUT('MoshtarakinApi/requestManager/registerAS', body);    
+    return this.mainService.PUT('MoshtarakinApi/requestManager/registerAS', body);
   }
   setUpdateMobile = (body: object): Observable<any> => {
     return this.mainService.SET('MoshtarakinApi/v2/member/updateMobile', body);
