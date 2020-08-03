@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { elcs } from '../../service-desk/elc-services/elcs';
+import { elcs } from './elcs';
 
 @Injectable({
   providedIn: 'root'

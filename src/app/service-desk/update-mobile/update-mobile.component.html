@@ -7,8 +7,12 @@
 <main>
     <div class="form">
         <div class="form-item">
-            <input type="text" class="form-input" [(ngModel)]="_mobileNumber" name="mobileNumber"
-                title="شماره همراه خود را وارد کنید" placeholder="تلفن همراه را اینجا وارد کنید" required>
+            <input *ngIf="isMobileScreen()" type="number" class="form-input" [(ngModel)]="_mobileNumber"
+                name="mobileNumber" title="شماره همراه خود را وارد کنید" placeholder="تلفن همراه را اینجا وارد کنید"
+                required>
+            <input *ngIf="!isMobileScreen()" type="text" class="form-input" [(ngModel)]="_mobileNumber"
+                name="mobileNumber" title="شماره همراه خود را وارد کنید" placeholder="تلفن همراه را اینجا وارد کنید"
+                required>
         </div>
     </div>
     <div class="justify_center">

@@ -55,7 +55,7 @@ export class PageNotFoundComponent extends CheckRoute {
 
   }
   checkTrackNumber = () => {
-    this.tracks = this.persianToEngNumbers(this.tracks);
+    this.tracks = this.persianToEngNumbers(this.trimStrings(this.tracks));
     if (this.tracks.toString().trim().substring(0, 1) === '0') {
       this.errorHandler.customToaster(5000, 'لطفا شماره پیگیری بدون صفر اول وارد شود');
       return;
@@ -85,7 +85,7 @@ export class PageNotFoundComponent extends CheckRoute {
     }, 2000);
   }
   isNeighbourBillId = () => {
-    this.neighbourBillId = this.persianToEngNumbers(this.neighbourBillId);
+    this.neighbourBillId = this.persianToEngNumbers(this.trimStrings(this.neighbourBillId));
     if (!this.numbersValidation(this.neighbourBillId)) {
       this.errorHandler.customToaster(5000, 'شناسه قبض همسایه اشتباه است');
       return;
@@ -113,7 +113,8 @@ export class PageNotFoundComponent extends CheckRoute {
     }, 2000);
   }
   checkValidInput = () => {
-    this.billId = this.persianToEngNumbers(this.billId);
+
+    this.billId = this.persianToEngNumbers(this.trimStrings(this.billId));
     if (!this.numbersValidation(this.billId)) {
       this.errorHandler.customToaster(5000, 'شناسه قبض اشتباه است');
       return;

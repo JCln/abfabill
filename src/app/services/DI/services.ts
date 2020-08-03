@@ -2,13 +2,13 @@ import { IServices } from 'src/app/interfaces/iservices';
 
 export const desks: IServices[] = [
     {
+        title: 'آخرین قبض', id: 1, routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
+    },
+    {
         title: 'اعلام کارکرد کنتور', id: 1, routerLink: 'ma', src: 'assets/imgs/serviceDesk/meter.png'
     },
     {
         title: 'صدور قبض میاندوره', id: 1, routerLink: 'ma', src: 'assets/imgs/serviceDesk/annMetter.png'
-    },
-    {
-        title: 'آخرین قبض', id: 1, routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
     },
     {
         title: 'ده قبض آخر', id: 1, routerLink: 'kardex', src: 'assets/imgs/serviceDesk/viewBills.png'
@@ -44,6 +44,6 @@ export const desks: IServices[] = [
         title: 'قطع یا نصب انشعاب', id: 11, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/openclose.png'
     },
     {
-        title: 'سایر خدمات', id: 74, routerLink: 'elcs', src: 'assets/imgs/trackrequest/confirmed.svg'
+        title: 'سایر خدمات', id: 74, routerLink: 'elcs', src: 'assets/imgs/serviceDesk/confirm.png'
     }
 ];
