@@ -1,4 +1,4 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component } from '@angular/core';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
@@ -6,10 +6,15 @@ import { GoogleAnalyticsService } from 'src/app/services/google-analytics.servic
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent implements AfterContentInit, AfterViewInit {
 
   constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.googleAnalyticsService.getpageViews();      
+    }, 1000);
+  }
   ngAfterContentInit() {
     this.googleAnalyticsService.routerView();
   }

@@ -1,35 +1,19 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { InterfaceService } from 'src/app/services/interface.service';
+import { AfterViewChecked, Component } from '@angular/core';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements AfterViewInit {
-  lastMonthAnalytics: number;
+export class FooterComponent implements AfterViewChecked {
+  pageViewAnalytics: number;
 
-  constructor(private interfaceService: InterfaceService) { }
+  constructor(private googleAnalyticsService: GoogleAnalyticsService) { }
 
-  printValues(obj) {
-    for (const key in obj) {
-      if (typeof obj[key] === "object") {
-        this.printValues(obj[key]);
-        if (obj.values > 20000)
-          this.lastMonthAnalytics = obj.values;
-      } else {
-        console.log(obj[key]);
-      }
-    }
-  }
-
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     setTimeout(() => {
-      this.interfaceService.getAnalytic().subscribe(res => {
-        if (res) {
-          this.printValues(res);
-        }
-      });
+      this.pageViewAnalytics = this.googleAnalyticsService.pageViewAnalytics;
     }, 1000);
   }
 
