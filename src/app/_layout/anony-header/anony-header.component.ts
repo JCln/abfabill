@@ -13,6 +13,19 @@ export class AnonyHeaderComponent implements AfterViewChecked {
   showMemberInfo = false;
 
   constructor(private _location: Location, private helpService: HelpService, private cdRef: ChangeDetectorRef) { }
+
+  // invisible menu
+  invisible = () => {
+    const input = document.getElementById('input') as HTMLInputElement;
+    if (input.checked === false) {
+      input.checked = true;
+    }
+    else {
+      input.checked = false;
+    }
+    this.changeBackImg();
+  }
+
   changeBackImg = () => {
     if (screen.width > 549) {
       return;

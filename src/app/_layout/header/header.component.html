@@ -10,29 +10,29 @@
 
 <nav role="navigation">
 	<div id="menuToggle">
-		<input type="checkbox" (change)="changeBackImg()">
+		<input type="checkbox" id="input" (change)="changeBackImg()">
 
 		<span></span>
 		<span></span>
 		<span></span>
 
 		<ul id="menu">
-			<a [routerLink]="['myInfo']">
+			<a [routerLink]="['myInfo']" (click)="invisible()">
 				<li>اطلاعات انشعاب</li>
 			</a>
-			<a [routerLink]="['/'+previousPage]">
+			<a [routerLink]="['/'+previousPage]" (click)="invisible()">
 				<li>بازگشت به صفحه اصلی</li>
 			</a>
-			<a [routerLink]="['/cs']">
+			<a [routerLink]="['/cs']" (click)="invisible()">
 				<li class="__cand justify_center">
 					<i><img src="assets/imgs/header/cands.png" alt="انتقادها و پیشنهادها"></i>
 					انتقادها و پیشنهادها
 				</li>
 			</a>
-			<a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer">
+			<a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer" (click)="invisible()">
 				<li>پرتال شرکت آبفا</li>
 			</a>
-			<a *ngIf="isBillRouteActivated()" routerLink='bill/receipt'>
+			<a *ngIf="isBillRouteActivated()" routerLink='bill/receipt' (click)="invisible()">
 				<li>نمایش قبض کاغذی</li>
 			</a>
 		</ul>

@@ -6,29 +6,6 @@ $silver_color: silver;
 $light_back: #e2e2e2;
 $lighter_back: #eee;
 
-.content:nth-child(odd) {
-  background: $silver_color;
-
-  .top_front {
-    .title {
-      clip-path: polygon(99% 3%, 100% 72%, 88% 80%, 71% 77%, 51% 82%, 28% 76%, 13% 70%, 2% 71%, 0% 35%, 0 0);
-      background: $lighter_back;
-    }
-  }
-}
-
-.content:nth-child(even) {
-  background: $light_back;
-
-  .top_front {
-
-    .title {
-      clip-path: polygon(100% 0, 100% 73%, 87% 97%, 96% 67%, 86% 81%, 93% 54%, 8% 92%, 14% 64%, 0 87%, 0 0);
-      background: $lighter_back;
-    }
-  }
-}
-
 section {
   display: grid;
   margin: auto $mediaum_border $mediaum_border;
@@ -38,6 +15,9 @@ section {
   .content {
     border-radius: 30px;
     transition: all ease-in-out 250ms;
+    cursor: pointer;
+    outline: none;
+    // z-index: 3;
   }
 
   .top_front {
@@ -55,7 +35,6 @@ section {
 
   .bottom_back {
     position: relative;
-    // width: 60%;
     width: 100%;
     height: 6rem;
     max-height: 6rem;
@@ -79,24 +58,37 @@ section {
 
 }
 
+.content:nth-child(odd) {
+  background: $silver_color;
+
+  .top_front {
+    .title {
+      clip-path: polygon(99% 3%, 100% 72%, 88% 80%, 71% 77%, 51% 82%, 28% 76%, 13% 70%, 2% 71%, 0% 35%, 0 0);
+      background: $lighter_back;
+    }
+  }
+}
+
+.content:nth-child(even) {
+  background: $light_back;
+
+  .top_front {
+    .title {
+      clip-path: polygon(100% 0, 100% 73%, 87% 97%, 96% 67%, 86% 81%, 93% 54%, 8% 92%, 14% 64%, 0 87%, 0 0);
+      background: $lighter_back;
+    }
+  }
+}
+
 .content:hover,
 .content:focus,
 .content:active {
   $clr: #00368c;
   --color: rgba(0, 98, 255, 0.40);
-  transform: translateX(.1rem) translateY(.1rem);
   opacity: 99;
-  cursor: pointer;
-  z-index: 3;
   box-shadow: 1px 1px 15px 0px var(--color);
-  outline: none;
-  font-size: 1.6rem;
   color: $clr;
   background: linear-gradient(#00368c47, var(--color));
-
-  img {
-    cursor: pointer;
-  }
 
 }
 
@@ -115,10 +107,11 @@ section {
   }
 }
 
-
 .content:nth-child(odd):hover,
 .content:nth-child(odd):focus,
 .content:nth-child(odd):active {
+  transform: translateX(.1rem) translateY(.1rem);
+
   &::after {
     content: '';
     position: absolute;

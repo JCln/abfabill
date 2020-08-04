@@ -11,6 +11,11 @@ import { CheckRoute } from './../../shared/check-route';
 })
 export class HeaderComponent extends CheckRoute implements OnInit {
   previousPage: string;
+
+  constructor(private _location: Location, private helpService: HelpService) {
+    super();
+  }
+
   changeBackImg = () => {
     if (screen.width > 549) {
       return;
@@ -18,8 +23,16 @@ export class HeaderComponent extends CheckRoute implements OnInit {
     const abfaImg = document.querySelector('.abfa');
     abfaImg.classList.toggle('toggleImg');
   }
-  constructor(private _location: Location, private helpService: HelpService) {
-    super();
+  // toggle menu ul
+  invisible = () => {
+    const input = document.getElementById('input') as HTMLInputElement;
+    if (input.checked === false) {
+      input.checked = true;
+    }
+    else {
+      input.checked = false;
+    }
+    this.changeBackImg();
   }
 
   // back to previous page

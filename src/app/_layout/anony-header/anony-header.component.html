@@ -11,7 +11,7 @@
 </div>
 <nav role="navigation">
     <div id="menuToggle">
-        <input type="checkbox" (change)="changeBackImg()">
+        <input type="checkbox" id="input" (change)="changeBackImg()">
 
         <span></span>
         <span></span>
@@ -19,22 +19,23 @@
 
         <ul id="menu">
 
-            <a *ngIf="showMemberInfo" [routerLink]="['myInfo']">
+            <a *ngIf="showMemberInfo" [routerLink]="['myInfo']" (click)="invisible()">
                 <li>اطلاعات انشعاب</li>
             </a>
-            <a *ngIf="showMemberInfo" [routerLink]="['pg']">
+            <a *ngIf="showMemberInfo" [routerLink]="['pg']" (click)="invisible()">
                 <li>شناسه قبض دیگری وارد کنید</li>
             </a>
-            <a [routerLink]="['/cs']">
+            <a [routerLink]="['/cs']" (click)="invisible()">
                 <li class="__cand justify_center">
                     <i><img src="assets/imgs/header/cands.png" alt="انتقادها و پیشنهادها"></i>
                     انتقادها و پیشنهادها
                 </li>
             </a>
-            <a href="https://cafebazaar.ir/app/com.app.leon.moshtarak" target="_blank" rel="noopener noreferrer">
+            <a href="https://cafebazaar.ir/app/com.app.leon.moshtarak" target="_blank" rel="noopener noreferrer"
+                (click)="invisible()">
                 <li>اپلیکیشن همراه آبفا</li>
             </a>
-            <a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.abfaesfahan.ir/fa" target="_blank" rel="noopener noreferrer" (click)="invisible()">
                 <li>پرتال شرکت آبفا</li>
             </a>
         </ul>

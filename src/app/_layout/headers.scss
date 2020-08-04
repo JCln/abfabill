@@ -131,6 +131,12 @@ section {
   background: $white;
 }
 
+.toggleImg {
+  z-index: 2;
+  width: 3.5rem !important;
+  height: 2.8rem !important;
+}
+
 #menuToggle input:checked~ul {
   visibility: visible;
   opacity: 1;
@@ -138,12 +144,6 @@ section {
   box-shadow: 2px -1px 6px 10px $pale_levender;
   transform: none;
   text-align: left;
-}
-
-.toggleImg {
-  z-index: 2;
-  width: 3.5rem !important;
-  height: 2.8rem !important;
 }
 
 .__cand {
