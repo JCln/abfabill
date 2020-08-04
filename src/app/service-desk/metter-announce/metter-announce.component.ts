@@ -92,7 +92,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
           .subscribe((res: any) => {
             if (res) {
               this.errorHandler.toasterError('قبض آب بها برای شما پیامک خواهد شد', 'با تشکر از اعلام شماره کنتور خود');
-              this.errorHandler.timeOutBeforeRoute('r/s/success');
+              this.errorHandler.timeOutBeforeRoute('r/s/gb');
             }
           })
       )
