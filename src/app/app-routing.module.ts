@@ -13,23 +13,25 @@ const routes: Routes = [
       { path: 'pg', component: PageNotFoundComponent },
       { path: 'rn', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } },
       { path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
-      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule), data: { animation: 'ServiceDesk' } }
+      { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule), data: { animation: 'ServiceDesk' } },
+      { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(abu => abu.AboutUsModule) }     
     ]
   },
-  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },
   {
     path: '', component: NoLayoutComponent, children: [
       {
         path: 'r', loadChildren: () => import('./response/response.module').then(r => r.ResponseModule)
+      },
+      {
+        path: 'android', loadChildren: () => import('./android/android.module').then(and => and.AndroidModule)
       }
     ]
   },
+  { path: ':id', canActivate: [AuthGuard], loadChildren: () => import('./service-desk/service-desk.module').then(s => s.ServiceDeskModule), data: { animation: 'FilterPage' } },
   {
     path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)
   },
-  {
-    path: 'android', loadChildren: () => import('./android/android.module').then(and => and.AndroidModule)
-  },
+
   { path: '**', redirectTo: 'pg', pathMatch: 'full' }
 ];
 

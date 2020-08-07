@@ -44,7 +44,7 @@ export class AnonyHeaderComponent implements AfterViewChecked {
       helpButton.style.top = '2.5rem';
       return 1;
     }
-    if (basePath === 'rn' || basePath === 'tr' || basePath === 'cs') {
+    if (basePath === 'rn' || basePath === 'tr' || basePath === 'cs' || basePath === 'aboutUs') {
       helpButton.style.top = '5.5rem';
       return 2;
     }
