@@ -51,6 +51,9 @@ export class InterfaceService {
   getAnalytic = (): Observable<any> => {
     return this.mainService.GETAnalytics('MoshtarakinApi/GaManager/GetGaReport');
   }
+  getPardakhtToken = (billId: string) => {
+    return this.mainService.GET(billId, '');
+  }
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;
     this.idValues(billId.toString());

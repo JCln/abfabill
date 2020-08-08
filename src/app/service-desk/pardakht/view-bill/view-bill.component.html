@@ -1167,14 +1167,12 @@
 <section class="pay_section" *ngIf="!_isABillKardex">
   <div class="pay_button_section justify_center">
 
-    <button class="pay_button" [disabled]="$testObject.isPayed === true || _spinnerBoolean">
-      <a href="{{chooseBank.linkToSite}}" (click)="sendButtonEventToAnalytics()" target="_blank"
-        ref='noopener noreferrer' [ngClass]="{
+    <button class="pay_button" (click)="getbillIdToken()" [disabled]="$testObject.isPayed === true || _spinnerBoolean"
+      [ngClass]="{
         'disabled':$testObject.isPayed === true || _spinnerBoolean ,
         'enabled':$testObject.isPayed === false
       }">
-        {{$testObject.isPayed === true || _spinnerBoolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
-      </a>
+      {{$testObject.isPayed === true || _spinnerBoolean ? 'مشترک گرامی قبض قبلا پرداخت گردیده':  'پرداخت با ' + chooseBank.name}}
     </button>
   </div>
 

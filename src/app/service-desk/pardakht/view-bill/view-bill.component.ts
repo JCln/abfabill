@@ -7,6 +7,7 @@ import { InterfaceService } from 'src/app/services/interface.service';
 
 import { IbankIcons, IBarcode } from '../../../interfaces/ibank-icons';
 import { ViewbillService } from './../../../services/DI/viewbill.service';
+import { PayService } from './../../../services/pay.service';
 import { CheckRoute } from './../../../shared/check-route';
 
 
@@ -34,6 +35,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     private errorHandler: ErrorHandlerService,
     private interactionService: InteractionService,
     private googleAnalyticsService: GoogleAnalyticsService,
+    private payService: PayService,
     banks: ViewbillService
   ) {
     super();
@@ -60,14 +62,34 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   private nestingLevel = () => {
     this.connectToServer();
   }
-
   sendButtonEventToAnalytics = () => {
     this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
+  }
+  private token = (getedDataIdFromRoute: string): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      try {
+        this.interfaceService.getPardakhtToken(getedDataIdFromRoute).subscribe((res: string) => {
+          if (res) {
+            resolve(res);
+          }
+          else {
+            resolve(false);
+          }
+        });
+      } catch (e) { reject(e) }
+    });
+  }
+
+  protected getbillIdToken = async () => {
+    const tokenId = await this.token(this.getedDataIdFromRoute);
+    if (tokenId)
+      console.log(tokenId);
+    // this.sendButtonEventToAnalytics();
+    // this.payService.redirectByToken(tokenId);
   }
   ngOnInit() {
     this.nestingLevel();
   }
-
   changeBankForPay = (bankName: string, bankurl: string) => {
     this.chooseBank.name = bankName;
     this.chooseBank.linkToSite = bankurl;
@@ -76,7 +98,6 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this._showMoreButton = !this._showMoreButton;
     scroll(0, 700);
   }
-
   ngAfterContentInit() {
     this.interactionService.abillKardex$.subscribe(res => {
       if (this.isNull(res))

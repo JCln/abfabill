@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { IViewBill } from '../interfaces/iview-bill';
 import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable({
@@ -30,9 +29,9 @@ export class MainService {
     this.getEnvironment();
   }
 
-  GET = (ID: string, URL: string, base64?: string): Observable<IViewBill> => {
+  GET = (ID: string, URL: string, base64?: string): Observable<any> => {
     if (base64) {
-      return this.http.get<IViewBill>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID, this.httpOptions).pipe(
+      return this.http.get<any>(this.mainConfigUrl + '/' + URL + '/' + base64 + '/' + ID, this.httpOptions).pipe(
         retry(1), // retry failed request up to 1
         catchError(err => this.errorHandler.errorHandler(err))
       );
