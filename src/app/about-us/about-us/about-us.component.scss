@@ -1,4 +1,4 @@
-// @import '../../../assets/mixins';
+@import '../../../assets/@media.scss';
 
 $c_light_gray: #EEEEEE;
 $b_medium_gray: #9a9a9a;
@@ -10,6 +10,8 @@ $font_medium_size: 1.3rem;
 $font_large_size: 1.5rem;
 
 section {
+  height: 40vh;
+
   ._img_content {
     height: 25vh;
 
@@ -22,9 +24,10 @@ section {
   }
 
   ._img_profile {
-    margin-top: -3rem;
     display: flex;
     justify-content: center;
+    top: -50%;
+    transform: translateY(-50%);
 
     i {
       display: grid;
@@ -44,33 +47,9 @@ h2 {
   color: $b_medium_gray;
   text-align: center;
 }
+
 p {
   margin: auto 0 0;
-}
-
-main {
-  display: grid;
-  place-items: center;
-  padding: 1rem 2rem;
-  background: $darkgray;
-  margin: 1rem 2rem;
-  border-radius: 15px;
-
-  ._content {
-    display: grid;
-    align-items: center;
-    background: $white;
-    width: 100%;
-    border-radius: 13px;
-    margin-bottom: .3rem;
-    height: 3rem;
-  }
-
-  .__desc {
-    text-align: right;
-    padding: 0 .5rem;
-    font-size: $font_medium_size;
-  }
 }
 
 .version {
@@ -78,3 +57,5 @@ main {
   color: $b_medium_gray;
   font-size: $small_font_size;
 }
+
+@include media_wrapper_two_params(723px, '._img_content', width, 50%, margin, auto);

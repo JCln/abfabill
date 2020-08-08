@@ -5,11 +5,6 @@
 @import "../../assets/radio_checkbox.scss";
 @import "../../assets/title_second.scss";
 
-
-$background_border_color: #087CDB;
-$customer_border: #1B6CEE;
-$medium_slate_blue: rgba(125, 131, 255, .5);
-
 section {
   background-color: $dark_b_color;
   min-height: 20rem;
@@ -44,7 +39,7 @@ section {
       text-align: right;
       padding: 1rem;
       margin: 0 .5rem;
-      border: 2px solid $customer_border;
+      border: 2px solid;
       font-family: inherit;
       direction: rtl;
       outline: none;
