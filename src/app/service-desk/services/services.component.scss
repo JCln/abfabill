@@ -11,6 +11,7 @@ section {
   margin: auto $mediaum_border $mediaum_border;
   min-height: 10rem;
   gap: .5rem;
+  direction: rtl;
 
   .content {
     border-radius: 30px;

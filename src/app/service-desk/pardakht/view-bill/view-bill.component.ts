@@ -65,27 +65,10 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   sendButtonEventToAnalytics = () => {
     this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
   }
-  private token = (getedDataIdFromRoute: string): Promise<any> => {
-    return new Promise((resolve, reject) => {
-      try {
-        this.interfaceService.getPardakhtToken(getedDataIdFromRoute).subscribe((res: string) => {
-          if (res) {
-            resolve(res);
-          }
-          else {
-            resolve(false);
-          }
-        });
-      } catch (e) { reject(e) }
-    });
-  }
 
-  protected getbillIdToken = async () => {
-    const tokenId = await this.token(this.getedDataIdFromRoute);
-    if (tokenId)
-      console.log(tokenId);
-    // this.sendButtonEventToAnalytics();
-    // this.payService.redirectByToken(tokenId);
+  protected getbillIdToken = () => {
+    this.payService.tokenIPG(this.getedDataIdFromRoute);
+    this.sendButtonEventToAnalytics();
   }
   ngOnInit() {
     this.nestingLevel();

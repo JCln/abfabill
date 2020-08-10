@@ -2,7 +2,7 @@ import { IServices } from 'src/app/interfaces/iservices';
 
 export const desks: IServices[] = [
     {
-        title: 'آخرین قبض', id: 1, routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
+        title: 'مشاهده و پرداخت قبض', id: 1, routerLink: 'bill', src: 'assets/imgs/serviceDesk/bill2.png'
     },
     {
         title: 'اعلام کارکرد کنتور', id: 1, routerLink: 'ma', src: 'assets/imgs/serviceDesk/meter.png'

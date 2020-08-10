@@ -65,7 +65,8 @@ section {
     // water span color
     .fa-water,
     .fa-tint {
-      color: $background_color_border_radius !important;
+      --background_color_border_radius: #0198f1;
+      color: var(--background_color_border_radius) !important;
     }
 
     .first_background {

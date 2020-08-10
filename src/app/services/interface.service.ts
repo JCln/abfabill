@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { ITokenIpg } from './../interfaces/itoken-ipg';
 import { MainService } from './main.service';
 
 @Injectable({
@@ -51,8 +52,9 @@ export class InterfaceService {
   getAnalytic = (): Observable<any> => {
     return this.mainService.GETAnalytics('MoshtarakinApi/GaManager/GetGaReport');
   }
-  getPardakhtToken = (billId: string) => {
-    return this.mainService.GET(billId, '');
+  getTokenIpg = (billId: string): Observable<ITokenIpg> => {
+    this.idValues(billId);
+    return this.mainService.SET(`moshtarakinapi/V2/Payment/GetTokenAbIpg/${this.base64}/${billId}`);
   }
   setMetterAnnounce = (billId: string, counterclaim: number, notificationMobile?: string): Observable<any> => {
     const requestOrigin = 6;

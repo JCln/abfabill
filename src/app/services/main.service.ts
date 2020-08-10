@@ -47,10 +47,16 @@ export class MainService {
     return this.http.get<any>(this.mainConfigUrl + '/' + URL).pipe(retry(2));
   }
 
-  SET = (URL: string, body: object): any => {
-    return this.http.post<any>(this.mainConfigUrl + '/' + URL, body)
-      .pipe(
-        catchError(err => this.errorHandler.errorHandler(err)));
+  SET = (URL: string, body?: object): any => {
+    if (body) {
+      return this.http.post<any>(this.mainConfigUrl + '/' + URL, body)
+        .pipe(
+          catchError(err => this.errorHandler.errorHandler(err)));
+    } else {
+      return this.http.post<any>(this.mainConfigUrl + '/' + URL, '')
+        .pipe(
+          catchError(err => this.errorHandler.errorHandler(err)));
+    }
   }
 
   PUT = (URL: string, body: object): any => {
