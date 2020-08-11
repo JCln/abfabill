@@ -3,15 +3,24 @@
         <div class="side_view"></div>
     </div>
     <main>
+        <div class="sign">
+            <i class="fa fa-check"></i>
+        </div>
         <div class="message">
-            <div class="sign">
-                <i class="fa fa-check"></i>
-            </div>
             <h1>قبض پرداخت شد</h1>
-            <p>{{a}} , {{b}} , {{c}}</p>
-            
-            <!-- <p>تا &nbsp;{{timeLeft}}&nbsp;ثانیه دیگر قبض خود را مشاهده خواهید کرد</p> -->
+            <div class="__pay_info">
+                <div class="___desc">
+                    <div class="____des_size">{{IpgInfo[0]}}</div>
+                    <div class="____size">شماره پیگیری</div>
+                </div>
+                <div class="___desc">
+                    <div class="____des_size">{{IpgInfo[1]}}</div>
+                    <div class="____size">مبلغ</div>
+                </div>
+            </div>
+
             <div class="back_to_insert_id">
+
                 <button [routerLink]="['/pg']">بازگشت به صفحه نخست</button>
             </div>
         </div>

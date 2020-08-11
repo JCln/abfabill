@@ -33,43 +33,61 @@ section {
     display: flex;
     justify-content: center;
     position: absolute;
+    flex-direction: column;
+    align-items: center;
 
     background-color: $white;
     width: 80%;
-    height: 13rem;
+    min-height: 13rem;
 
     border-top: .5rem solid $bright_torouse;
     border-bottom: .5rem solid $bright_torouse;
     border-radius: $__small_border_radius;
 
+    .sign {
+      background-color: $bright_torouse;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .fa-check {
+        place-items: center;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        font-size: 3rem;
+        color: $white;
+      }
+
+    }
+
     .message {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
+      width: 65%;
 
-      .sign {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .__pay_info {
+        margin: 2rem 0;
 
-        position: absolute;
-        background-color: $bright_torouse;
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        top: -50%;
-        transform: translateY(50%);
+        .___desc {
+          display: flex;
+          justify-content: space-between;
+          padding: .3rem;
 
-        .fa-check {
-          font-size: 3rem;
-          color: $white;
+          .____des_size {
+            font-size: 1.2rem;
+          }
+
+          .____size {
+            font-size: 1.2rem;
+            color: #A9A9A9;
+          }
         }
-
       }
 
       h1 {
-        margin-top: $font_large_size;
+        text-align: center;
+        margin-top: -$font_large_size;
         color: $bright_green;
       }
 
