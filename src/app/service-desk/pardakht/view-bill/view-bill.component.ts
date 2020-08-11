@@ -24,7 +24,6 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   _isABillKardex: boolean = false;
   $aBillKardex: any = [];
 
-  chooseBank: IbankIcons = { name: 'بانک ملت', linkToSite: 'https://bill.bpm.bankmellat.ir/bpgwchannel/' };
   $testObject: any = [];
   bankIcons: IbankIcons[];
 
@@ -72,10 +71,6 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   }
   ngOnInit() {
     this.nestingLevel();
-  }
-  changeBankForPay = (bankName: string, bankurl: string) => {
-    this.chooseBank.name = bankName;
-    this.chooseBank.linkToSite = bankurl;
   }
   showMoreButtonClicked = (): void => {
     this._showMoreButton = !this._showMoreButton;
