@@ -37,7 +37,7 @@ section {
     align-items: center;
 
     background-color: $white;
-    width: 80%;
+    width: 90%;
     min-height: 13rem;
 
     border-top: .5rem solid $bright_torouse;
@@ -51,6 +51,7 @@ section {
       border-radius: 50%;
       top: 50%;
       transform: translateY(-50%);
+      margin: auto;
 
       .fa-check {
         place-items: center;
@@ -64,7 +65,8 @@ section {
     }
 
     .message {
-      width: 65%;
+      width: 80%;
+      padding: 0 1rem;
 
       .__pay_info {
         margin: 2rem 0;
@@ -73,6 +75,7 @@ section {
           display: flex;
           justify-content: space-between;
           padding: .3rem;
+          font-weight: 600;
 
           .____des_size {
             font-size: 1.2rem;
@@ -93,6 +96,7 @@ section {
 
       .back_to_insert_id {
         display: contents;
+        justify-content: center;
 
         button {
           @extend %button_first;
@@ -116,4 +120,4 @@ section {
   }
 }
 
-@include media_wrapper(450px, 'section main .message .back_to_insert_id', display, flex);
+@include media_wrapper_two_params(550px, 'section main .message .back_to_insert_id', display, flex, justify-content, center);
