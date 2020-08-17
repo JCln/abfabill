@@ -20,7 +20,7 @@ export class ReceiptComponent implements AfterViewInit {
       }
       else {
         const billid = this.receiptService.billId$;
-        this.router.navigate([billid, '/bill']);
+        this.router.navigate([billid, '/bill?checked=1']);
       }
     });
   }

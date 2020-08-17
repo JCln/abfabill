@@ -34,7 +34,7 @@ export class LogginsService {
   checkValidation = (insertedBillId: string) => { // have to be private function
     this.setToDefault();
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.interfaceService.getIsValidId(insertedBillId).subscribe((res: any) => {
         if (res) {
           if (res.errorCode === 200) {

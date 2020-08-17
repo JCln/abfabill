@@ -15,6 +15,7 @@ export class MemberInfoComponent extends CheckRoute implements OnInit {
   connectToServer = () => {
     this.viewBillService.getMemberInfo(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (!this.isNull(res)) {
+        console.log(res);
         this.spinnerWrapper.stopLoading();
         this.$memberInfo = res;
         this.$memberInfo.firstName = this.$memberInfo.firstName.trim();

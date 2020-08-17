@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ITokenIpg } from './../interfaces/itoken-ipg';
 import { MainService } from './main.service';
 
 @Injectable({
@@ -15,12 +14,15 @@ export class InterfaceService {
   idValues = (id: string) => {
     this.base64 = btoa(id);
   }
+  idValuesV2 = (id: string): string => {
+    return btoa(id);
+  }
   getBase64 = (id: string): string => {
     this.idValues(id);
     return this.base64;
   }
   getIsValidId = (id: string): Observable<any> => {
-    return this.mainService.GET(id, 'moshtarakinapi/member/isvalid');
+    return this.mainService.GET(id, 'moshtarakinapi/v2/member/isvalid', this.idValuesV2(id));
   }
   getViewBill = (id: string): any => {
     this.idValues(id);
@@ -52,7 +54,7 @@ export class InterfaceService {
   getAnalytic = (): Observable<any> => {
     return this.mainService.GETAnalytics('MoshtarakinApi/GaManager/GetGaReport');
   }
-  getTokenIpg = (billId: string): Observable<ITokenIpg> => {
+  getTokenIpg = (billId: string): Observable<any> => {
     this.idValues(billId);
     return this.mainService.SET(`moshtarakinapi/V2/Payment/GetTokenAbIpg/${this.base64}/${billId}`);
   }
