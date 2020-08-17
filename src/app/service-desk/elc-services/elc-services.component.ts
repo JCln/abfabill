@@ -119,7 +119,7 @@ export class ElcServicesComponent extends CheckRoute implements OnInit, OnDestro
     this.helpService.help();
   }
   private connectToServer = (body: any) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.interfaceService.setRegisterAS(body).subscribe((res: any) => {
         if (res) {
           this.successFullMessage(res.message);

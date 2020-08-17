@@ -6,15 +6,19 @@ import { Injectable } from '@angular/core';
 export class DecodeURIIpgsService {
   IpgInfo: any = [];
 
-  private decodeApiKey = (apiKey: string): string => {
-    return atob(apiKey);
-  }
+  decodedURI = (): Array<[]> => {
+    let a = window.location.pathname.split('/')[5];
+    a = decodeURIComponent(a);
+    a = atob(a);
 
-  decodedURI = (): any => {
-    let i: number = 5;
-    const a = window.location.pathname.split('/');
-    for (i; i <= 6; i++) {
-      this.IpgInfo.push(this.decodeApiKey(decodeURIComponent(a[i])));
+    let b = window.location.pathname.split('/')[6];
+    b = decodeURIComponent(b);
+    b = atob(b);
+    try {
+      this.IpgInfo.push(a);
+      this.IpgInfo.push(b);
+    } catch (e) { // catches a malformed URI
+      console.error(e);
     }
     return this.IpgInfo;
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { URIIpgService } from './../../../services/DI/uriipg.service';
 
@@ -12,10 +12,13 @@ export interface IWoow {
   templateUrl: './pay.component.html',
   styleUrls: ['./pay.component.scss']
 })
-export class PayComponent {
+export class PayComponent implements OnInit {
   IpgInfo: any = [];
 
   constructor(private uriipgService: URIIpgService) {
+
+  }
+  ngOnInit(): void {
     this.IpgInfo = this.uriipgService.decodeURI();
   }
 }

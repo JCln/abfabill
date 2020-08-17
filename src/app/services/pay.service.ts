@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { InterfaceService } from 'src/app/services/interface.service';
 
 import { ITokenIpg } from './../interfaces/itoken-ipg';
@@ -19,7 +20,7 @@ export class PayService {
   private token = (getedDataIdFromRoute: string): Promise<any> => {
     return new Promise((resolve, reject) => {
       try {
-        this.interfaceService.getTokenIpg(getedDataIdFromRoute).subscribe((res: ITokenIpg) => {
+        this.interfaceService.getTokenIpg(getedDataIdFromRoute).subscribe((res: Observable<ITokenIpg>) => {
           if (res) {
             resolve(res);
           }
