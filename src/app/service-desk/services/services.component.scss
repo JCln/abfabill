@@ -86,13 +86,10 @@ section {
 .content:hover,
 .content:focus,
 .content:active {
-  $clr: #00368c;
   --color: rgba(0, 98, 255, 0.40);
   opacity: 99;
   box-shadow: 1px 1px 15px 0px var(--color);
-  color: $clr;
   background: linear-gradient(#00368c47, var(--color));
-
 }
 
 .content:nth-child(even):hover,
