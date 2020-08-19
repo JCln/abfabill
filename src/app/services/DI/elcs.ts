@@ -9,7 +9,7 @@ export const elcs: IElcServies[] = [
     { name: 'تغییر قطر انشعاب', id: 8, checked: false },
     { name: 'نصب سیفون اضافی', id: 9, checked: false },
     { name: 'جابجایی کنتور', id: 10, checked: false },
-    { name: 'قطع یا نصب انشعاب', id: 11, checked: false },
+    { name: 'جمع آوری انشعاب', id: 11, checked: false },
     { name: 'تجمیع و ادغام املاک', id: 12, checked: false },
     { name: 'تغییر قطر سیفون', id: 24, checked: false },
     { name: 'تعویض سیفون', id: 25, checked: false },
