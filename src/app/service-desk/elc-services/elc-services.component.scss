@@ -6,15 +6,10 @@
 @import "../../../assets/second_input.scss";
 @import "../../../assets/title_second.scss";
 
-$background_border_color: #087CDB;
-$customer_border: #1B6CEE;
-$medium_slate_blue: rgba(125, 131, 255, .5);
-$light_gray: lightgray;
-
 $duration: 250ms;
 
 section {
-  background-color: $dark_b_color;
+  background-color: $c_light_gray;
   min-height: 20rem;
   padding: 1rem .5rem;
   border-radius: 30px;
@@ -31,10 +26,12 @@ section {
     main {
       display: grid;
       gap: 0.6rem;
+      direction: rtl;
 
       .form {
         width: 100%;
         margin: 0;
+        direction: ltr;
 
         .form-item {
           width: 100%;
