@@ -1,11 +1,10 @@
-<section>
+<div class="header_title justify_center">
+  <h3 class="title">
+    مشاهده قبض
+  </h3>
+</div>
 
-  <div class="header_title justify_center">
-    <h3 class="title">
-      مشاهده قبض
-    </h3>
-  </div>
-
+<section *ngIf="!_responseIsNull">
 
   <main class="main">
 
@@ -1158,13 +1157,13 @@
 
 </section>
 
-<section class="barcode" *ngIf="!_isABillKardex">
+<section class="barcode" *ngIf="!(_isABillKardex || _responseIsNull)">
   <ngx-barcode [bc-value]="$testObject.barCode" [bc-width]="barcode.width" [bc-display-value]="barcode.displayValue"
     [bc-height]="barcode.height">
   </ngx-barcode>
 </section>
 
-<section class="pay_section" *ngIf="!_isABillKardex">
+<section class="pay_section" *ngIf="!(_isABillKardex || _responseIsNull)">
   <div class="pay_button_section justify_center">
 
     <button class="pay_button" (click)="getbillIdToken()" [disabled]="$testObject.isPayed === true || _spinnerBoolean"
@@ -1181,4 +1180,7 @@
       <img src="{{banks.imgUrl}}">
     </div>
   </div>
+</section>
+<section class="null_response" *ngIf="_responseIsNull">
+  تاکنون قبضی برای شما صادر نشده است.
 </section>

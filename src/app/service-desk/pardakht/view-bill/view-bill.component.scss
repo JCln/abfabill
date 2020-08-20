@@ -4,7 +4,7 @@
 @import "../../../../assets/spinner_loader.scss";
 @import "../../../../assets/@media.scss";
 @import "../../../../assets/title_second.scss";
-
+@import "../../../../assets/null_response.scss";
 
 $orange_background: rgba(255, 191, 128, 0.5);
 $orange_background_border: rgba(125, 73, 8, 1);
@@ -41,7 +41,6 @@ $lightgreen: rgba(179, 179, 179, 0.3);
 h3 {
   color: $gray;
 }
-
 
 section {
 

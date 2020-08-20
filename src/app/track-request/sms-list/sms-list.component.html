@@ -3,5 +3,5 @@
     <div *ngFor="let item of smsList">
         <p>{{item}}</p>
     </div>
-    <p *ngIf="!smsList[0]">شما در این مرحله پیامکی دریافت نکرده اید</p>
+    <p class="null_response" *ngIf="!smsList[0]">شما در این مرحله پیامکی دریافت نکرده اید</p>
 </main>

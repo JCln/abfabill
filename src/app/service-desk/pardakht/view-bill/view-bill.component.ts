@@ -1,4 +1,5 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { IViewBill } from 'src/app/interfaces/iview-bill';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
@@ -19,6 +20,7 @@ import { CheckRoute } from './../../../shared/check-route';
 export class ViewBillComponent extends CheckRoute implements OnInit, AfterContentInit {
   _spinnerBoolean = true;
   _showMoreButton = false;
+  _responseIsNull: boolean = false;
 
   // a bill kardex with details
   _isABillKardex: boolean = false;
@@ -26,6 +28,9 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
 
   $testObject: any = [];
   bankIcons: IbankIcons[];
+
+  //unSubabillKardex
+  unSubabillKardex: Subscription;
 
   barcode: IBarcode = { height: 50, width: 1.5, displayValue: false };
 
@@ -49,6 +54,12 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   }
   private connectToServer = () => {
     this.interfaceService.getViewBill(this.getedDataIdFromRoute).subscribe((res: any) => {
+      if (this.isNull(res)) {
+        this._responseIsNull = true;
+        this.removeLoaderAfterResponse();
+        return;
+      }
+
       if (!this.isNull(res)) {
         this.insertValToVar(res, this.removeLoaderAfterResponse);
         this.interactionService.setReceipt(this.$testObject);
@@ -77,7 +88,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     scroll(0, 700);
   }
   ngAfterContentInit() {
-    this.interactionService.abillKardex$.subscribe(res => {
+    this.unSubabillKardex = this.interactionService.abillKardex$.subscribe(res => {
       if (this.isNull(res))
         return;
       this.$aBillKardex = res;
@@ -86,6 +97,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     })
   }
   ngOnDestroy(): void {
+    this.unSubabillKardex.unsubscribe();
     this.interactionService.setABillKardex([]);
   }
 

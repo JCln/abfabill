@@ -1,5 +1,6 @@
 @import "../../../assets/@media.scss";
 @import "../../../assets/variables.scss";
+@import "../../../assets/null_response.scss";
 
 main {
   display: grid;
@@ -12,18 +13,6 @@ main {
   color: $clr;
   text-align: center;
   padding: 0 1rem;
-}
-
-p {
-  box-shadow: 1px 1px 1px 0.8px;
-  background: $c_light_gray;
-  color: $dark_b_color;
-  border-radius: $__border_radius;
-  font-size: $font_medium_size;
-  font-weight: 600;
-  padding: 1rem;
-  margin: .5rem .2rem;
-  text-align: right;
 }
 
 @include threeColumns(main);
