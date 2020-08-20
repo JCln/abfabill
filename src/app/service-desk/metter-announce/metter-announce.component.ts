@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { InterfaceService } from 'src/app/services/interface.service';
 
@@ -12,7 +13,7 @@ const mobileLength = 11;
   templateUrl: './metter-announce.component.html',
   styleUrls: ['./metter-announce.component.scss']
 })
-export class MetterAnnounceComponent extends CheckRoute implements OnInit {
+export class MetterAnnounceComponent extends CheckRoute implements OnInit, OnDestroy {
   kontorNumber: number;
   mobileNumber = '';
   notification: boolean = false;
@@ -21,6 +22,8 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   _showMessage = false;
   // button
   _clickableButton: boolean = true;
+  // unSubErrorTexts
+  unSubErrorText: Subscription;
 
   private maxLength = 5;
   private minLength = 1;
@@ -142,7 +145,7 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
   }
 
   ngOnInit(): void {
-    this.interactionService.metterAnnounceErrorText$.subscribe(res => {
+    this.unSubErrorText = this.interactionService.metterAnnounceErrorText$.subscribe(res => {
       if (res) {
         this.$textError = res;
         this._showMessage = true;
@@ -150,5 +153,8 @@ export class MetterAnnounceComponent extends CheckRoute implements OnInit {
           this.spinnerChecker(false);
       }
     });
+  }
+  ngOnDestroy() {
+    this.unSubErrorText.unsubscribe();
   }
 }
