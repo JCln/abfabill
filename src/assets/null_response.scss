@@ -1,0 +1,13 @@
+.null_response {
+  box-shadow: 1px 1px 1px 0.8px;
+  background: $c_light_gray;
+  color: $dark_b_color;
+  border-radius: $__border_radius;
+  font-size: $font_medium_size;
+  font-weight: 600;
+  padding: 1rem;
+  margin: .5rem auto;
+  text-align: right;
+  direction: rtl;
+  max-width: 20rem;
+}
