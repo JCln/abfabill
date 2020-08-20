@@ -187,6 +187,23 @@ section article {
   }
 }
 
+@mixin free($element, $value) {
+  #{$element}: $value !important;
+}
+
+.null_response {
+  box-shadow: 1px 1px 1px 0.8px;
+  background: $c_light_gray;
+  color: $dark_b_color;
+  border-radius: $__border_radius;
+  font-size: $font_medium_size;
+  font-weight: 600;
+  padding: 1rem;
+  margin: .5rem .2rem;
+  text-align: right;
+  direction: rtl;
+}
+
 .view_hover:hover,
 .view_hover:focus,
 .view_hover:active {
@@ -196,10 +213,6 @@ section article {
 
 .min-width1 {
   min-width: 60%;
-}
-
-@mixin free($element, $value) {
-  #{$element}: $value !important;
 }
 
 .dark_gray_border {

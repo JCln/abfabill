@@ -1,5 +1,5 @@
 <section>
-    <article>
+    <article *ngIf="!_responseIsNull">
         <button class="chart_button" [routerLink]="['bar']">مشاهده نمودار مصرف
             <i class="far fa-chart-bar"></i>
         </button>
@@ -120,6 +120,9 @@
         </div>
     </div>
 
+</section>
+<section class="null_response" *ngIf="_responseIsNull">
+    موردی یافت نشد.
 </section>
 
 <app-spinner-wrapper></app-spinner-wrapper>

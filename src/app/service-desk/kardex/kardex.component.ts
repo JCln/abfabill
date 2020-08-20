@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { InteractionService } from 'src/app/services/interaction.service';
 import { InterfaceService } from 'src/app/services/interface.service';
 
@@ -11,14 +12,20 @@ import { CheckRoute } from './../../shared/check-route';
   templateUrl: './kardex.component.html',
   styleUrls: ['./kardex.component.scss']
 })
-export class KardexComponent extends CheckRoute implements OnInit {
+export class KardexComponent extends CheckRoute implements OnInit, OnDestroy {
   _hoveredColor: boolean;
+  _responseIsNull: boolean = false;
   // bool kardex
   kardex: any;
   ////////
+
   // usageForChart
   $usage: any[] = [];
   $usageDate: any[] = [];
+  ////////
+
+  // subscription
+  unSubKardex: Subscription;
 
   constructor(
     private interfaceService: InterfaceService,
@@ -32,6 +39,11 @@ export class KardexComponent extends CheckRoute implements OnInit {
   connectToServer = () => {
     this.interfaceService.getKardex(this.getedDataIdFromRoute).subscribe((res: any) => {
       if (res) {
+        if (this.isNull(res[0])) {
+          this.createSpinner(false);
+          this._responseIsNull = true;
+          return;
+        }
         this.kardex = res;
         res.map(usage => {
           if (usage.isBill) {
@@ -53,7 +65,7 @@ export class KardexComponent extends CheckRoute implements OnInit {
   }
 
   ngOnInit(): void {
-    this.interactionService.kardex$.subscribe(res => {
+    this.unSubKardex = this.interactionService.kardex$.subscribe(res => {
       if (this.isNull(res)) {
         this.createSpinner(true);
         this.connectToServer();
@@ -88,4 +100,8 @@ export class KardexComponent extends CheckRoute implements OnInit {
   }
 
   smallSpinnerLoader = (index: number, bol: boolean) => this.kardex[index].spinner = bol;
+
+  ngOnDestroy() {
+    this.unSubKardex.unsubscribe();
+  }
 }
