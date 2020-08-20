@@ -3,6 +3,7 @@ import { ErrorHandler, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { InteractionService } from 'src/app/services/interaction.service';
 
 import { SpinnerWrapperService } from './spinner-wrapper.service';
@@ -55,8 +56,11 @@ export class ErrorHandlerService implements ErrorHandler {
 
   billIdISValid = () => {
     let billId: string;
-    this.interactionService.billId$.subscribe(res => billId = res);
+    let subs: Subscription;
+    // eslint-disable-next-line prefer-const
+    subs = this.interactionService.billId$.subscribe(res => billId = res);
     this.timeOutBeforeRoute(billId);
+    subs.unsubscribe();
   }
 
   public timeOutBeforeRoute = (routeTo: string) => {
