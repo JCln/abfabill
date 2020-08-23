@@ -23,7 +23,7 @@ export class TrackRequestService {
     return this.interfaceService.getTrackingRequest(trackNumber).subscribe((res: any) => {
       if (res) {
         this.setTracks(res);
-        this.router.navigate(['tr']);
+        this.router.navigate(['tr/', trackNumber]);
         return true;
       }
       return false;

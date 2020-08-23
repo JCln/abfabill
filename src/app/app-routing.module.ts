@@ -12,7 +12,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'pg', pathMatch: 'full' },
       { path: 'pg', component: PageNotFoundComponent },
       { path: 'rn', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } },
-      { path: 'tr', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
+      { path: 'tr/:id', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
       { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule), data: { animation: 'ServiceDesk' } },
       { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(abu => abu.AboutUsModule) }     
     ]
