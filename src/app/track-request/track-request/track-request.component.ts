@@ -21,13 +21,15 @@ export class TrackRequestComponent extends CheckRoute implements OnInit {
   ) {
     super();
   }
-
   getTracks() {
-    this.trackRequestService.getTracks().subscribe(res => {
+    const b = this.trackRequestService;
+    b.getTracks().subscribe(res => {
       if (!this.isNull(res[0]))
         this.trackRequests = res;
       else {
-        this.trackRequestService.noInfoExists();
+        const a = b.insertedLocationPath();
+        b.asyncMethod(a);
+        this.getTracks();
       }
     });
   }

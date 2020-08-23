@@ -47,6 +47,7 @@ export class TrackRequestService {
       resolve();
     })
   }
-
-  noInfoExists = () => this.router.navigate(['/pg']);
+  insertedLocationPath = (): string => {
+    return location.pathname.split('/')[2];
+  }
 }
