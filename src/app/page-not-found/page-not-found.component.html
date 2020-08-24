@@ -8,8 +8,8 @@
             <div class="form">
                 <div class="form-item">
                     <input *ngIf="isMobileScreen()" [(ngModel)]="billId" type="number" class="form-input"
-                        formControlName="billId" placeholder="شناسه قبض را اینجا وارد کنید"
-                        title="لطفا  شناسه قبض خود را وارد فرمایید" minlength="3" maxlength="13" required>
+                        placeholder="شناسه قبض را اینجا وارد کنید" title="لطفا  شناسه قبض خود را وارد فرمایید"
+                        minlength="3" maxlength="13" [ngModelOptions]="{standalone: true}" required>
                     <input *ngIf="!isMobileScreen()" [(ngModel)]="billId" type="text" class="form-input"
                         formControlName="billId" placeholder="شناسه قبض را اینجا وارد کنید"
                         title="لطفا  شناسه قبض خود را وارد فرمایید" minlength="3" maxlength="13" required>
@@ -32,8 +32,9 @@
             <div class="form">
                 <div class="form-item">
                     <input *ngIf="isMobileScreen()" [(ngModel)]="neighbourBillId" type="number" class="form-input"
-                        formControlName="neighbourBillId" placeholder="شناسه قبض همسایه را اینجا وارد کنید"
-                        title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13" required>
+                        placeholder="شناسه قبض همسایه را اینجا وارد کنید"
+                        title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13"
+                        [ngModelOptions]="{standalone: true}" required>
                     <input *ngIf="!isMobileScreen()" [(ngModel)]="neighbourBillId" type="text" class="form-input"
                         formControlName="neighbourBillId" placeholder="شناسه قبض همسایه را اینجا وارد کنید"
                         title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13" required>
@@ -56,8 +57,8 @@
             <div class="form">
                 <div class="form-item">
                     <input *ngIf="isMobileScreen()" [(ngModel)]="tracks" type="number" class="form-input"
-                        formControlName="trackNumber" placeholder="شماره پیگیری را اینجا وارد کنید"
-                        title="لطفا شماره پیگیری را وارد فرمایید" minlength="2" maxlength="10" required>
+                        placeholder="شماره پیگیری را اینجا وارد کنید" title="لطفا شماره پیگیری را وارد فرمایید"
+                        minlength="2" maxlength="10" [ngModelOptions]="{standalone: true}" required>
                     <input *ngIf="!isMobileScreen()" [(ngModel)]="tracks" type="text" class="form-input"
                         formControlName="trackNumber" placeholder="شماره پیگیری را اینجا وارد کنید"
                         title="لطفا شماره پیگیری را وارد فرمایید" minlength="2" maxlength="10" required>

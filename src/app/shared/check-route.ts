@@ -9,10 +9,8 @@ export class CheckRoute {
         this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
     }
     persianToEngNumbers = (str) => {
-        if (typeof str === 'string') {
-            for (let i = 0; i < 10; i++) {
-                str = str.replace(this.persianNumbers[i], i);
-            }
+        for (let i = 0; i < 10; i++) {
+            str = str.replace(this.persianNumbers[i], i);
         }
         return str;
     };
