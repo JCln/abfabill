@@ -26,7 +26,7 @@ export class ReceiptComponent implements AfterViewInit, OnDestroy {
         this.receiptService.billId$.subscribe(res => this.billId = res);
         console.log(this.billId);
 
-        this.router.navigate([this.billId, '/bill?checked=1']);
+        this.router.navigate(['/', this.billId, '/bill?checked=1']);
       }
     });
   }
