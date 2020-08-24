@@ -10,6 +10,7 @@
             <h1>پرداخت ناموفق</h1>
             <div class="back_to_insert_id">
                 <button [routerLink]="[ '/pg' ]">آیا میخواهید قبض دیگری پرداخت کنید؟</button>
+                <button [routerLink]="['/'+ IpgInfo[0] + '/bill?checked=1']" class="_special">مشاهده آخرین قبض</button>
             </div>
         </div>
     </main>

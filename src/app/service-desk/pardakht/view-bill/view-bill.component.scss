@@ -234,3 +234,13 @@ section.barcode {
 .kardex_added_class {
   grid-template-columns: repeat(3, 1fr) !important;
 }
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  columns: 2;
+
+  button {
+    @extend %button_first;
+  }
+}
