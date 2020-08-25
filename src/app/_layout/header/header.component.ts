@@ -39,10 +39,7 @@ export class HeaderComponent extends CheckRoute implements OnInit {
   backClicked = () => {
     this._location.back();
   }
-  // different receipt page options
-  isBillRouteActivated(): boolean {
-    return this._location.path().indexOf('/bill?checked=1') > -1;
-  }
+
   ngOnInit() {
     this.goToHome();
   }
