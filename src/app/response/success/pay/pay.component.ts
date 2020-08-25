@@ -19,6 +19,12 @@ export class PayComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.IpgInfo = this.uriipgService.decodeURI();  
+    this.IpgInfo = this.uriipgService.decodeURI();
+  }
+
+  fuckIt = (ass: any) => {
+    console.log(ass);
+    
+    window.location.href = `http://crm.abfaesfahan.ir/${ass}`;
   }
 }

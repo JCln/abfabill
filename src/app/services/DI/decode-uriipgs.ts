@@ -5,19 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class DecodeURIIpgsService {
   IpgInfo: any = [];
+  IpgFailedInfo: any = [];
 
   decodedURI = (): Array<[]> => {
-    let c = window.location.pathname.split('/')[4];
-    c = decodeURIComponent(c);
-    c = atob(c);
+    const c = window.location.pathname.split('/')[4];
 
-    let a = window.location.pathname.split('/')[5];
-    a = decodeURIComponent(a);
-    a = atob(a);
-
-    let b = window.location.pathname.split('/')[6];
-    b = decodeURIComponent(b);
-    b = atob(b);
+    const a = window.location.pathname.split('/')[5];
+    const b = window.location.pathname.split('/')[6];
     try {
       this.IpgInfo.push(c);
       this.IpgInfo.push(a);
@@ -26,5 +20,11 @@ export class DecodeURIIpgsService {
       console.error(e);
     }
     return this.IpgInfo;
+  }
+
+  decodedFirstURI = (): Array<[]> => {
+    const c = window.location.pathname.split('/')[4];
+    this.IpgFailedInfo.push(c);
+    return this.IpgFailedInfo;
   }
 }

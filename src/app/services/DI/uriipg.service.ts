@@ -11,4 +11,7 @@ export class URIIpgService {
   decodeURI = () => {
     return this.decodeuri.decodedURI();
   }
+  decodeFirstURI = () => {
+    return this.decodeuri.decodedFirstURI();
+  }
 }

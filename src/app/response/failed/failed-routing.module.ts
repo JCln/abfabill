@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'pay', loadChildren: () => import('./pay/pay.module').then(sp => sp.PayModule) }
+  { path: 'pay/:billId', loadChildren: () => import('./pay/pay.module').then(sp => sp.PayModule) }
 ];
 
 @NgModule({
