@@ -48,5 +48,5 @@ export class TrackRequestService {
     })
   }
 
-  noInfoExists = () => this.router.navigate(['/pg']);
+  noInfoExists = () => this.router.navigate(['/ph']);
 }

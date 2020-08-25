@@ -1,76 +1,10 @@
-<main>
-    <section class="error_inner">
-        <div class="_job_detail">
-            <h1>خدمات پس از فروش</h1>
-            <hr class="hr_1">
-        </div>
-        <form [formGroup]="serviceDeskForm" (ngSubmit)="checkValidInput()">
-            <div class="form">
-                <div class="form-item">
-                    <input *ngIf="isMobileScreen()" [(ngModel)]="billId" type="number" class="form-input"
-                        placeholder="شناسه قبض را اینجا وارد کنید" title="لطفا  شناسه قبض خود را وارد فرمایید"
-                        minlength="3" maxlength="13" [ngModelOptions]="{standalone: true}" required>
-                    <input *ngIf="!isMobileScreen()" [(ngModel)]="billId" type="text" class="form-input"
-                        formControlName="billId" placeholder="شناسه قبض را اینجا وارد کنید"
-                        title="لطفا  شناسه قبض خود را وارد فرمایید" minlength="3" maxlength="13" required>
-                    <i *ngIf="spinnerBooleanServiceDesk" class="loader"></i>
-                </div>
-            </div>
-            <div class="justify_center">
-                <button>
-                    <div class="enter">ورود</div>
-                </button>
-            </div>
-        </form>
-    </section>
-    <section class="register_new">
-        <div class="_job_detail">
-            <h1>خرید انشعاب جدید</h1>
-            <hr class="hr_1">
-        </div>
-        <form [formGroup]="registerNewForm" (ngSubmit)="isNeighbourBillId()">
-            <div class="form">
-                <div class="form-item">
-                    <input *ngIf="isMobileScreen()" [(ngModel)]="neighbourBillId" type="number" class="form-input"
-                        placeholder="شناسه قبض همسایه را اینجا وارد کنید"
-                        title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13"
-                        [ngModelOptions]="{standalone: true}" required>
-                    <input *ngIf="!isMobileScreen()" [(ngModel)]="neighbourBillId" type="text" class="form-input"
-                        formControlName="neighbourBillId" placeholder="شناسه قبض همسایه را اینجا وارد کنید"
-                        title="لطفا  شناسه قبض  همسایه خود را وارد فرمایید" minlength="3" maxlength="13" required>
-                    <i *ngIf="spinnerBooleanNeighbour" class="loader"></i>
-                </div>
-            </div>
-            <div class="justify_center">
-                <button>
-                    <div class="enter">شروع درخواست</div>
-                </button>
-            </div>
-        </form>
-    </section>
-    <section class="track_request">
-        <div class="_job_detail">
-            <h1>پیگیری درخواست های قبلی</h1>
-            <hr class="hr_1">
-        </div>
-        <form [formGroup]="trackRequestForm" (ngSubmit)="checkTrackNumber()">
-            <div class="form">
-                <div class="form-item">
-                    <input *ngIf="isMobileScreen()" [(ngModel)]="tracks" type="number" class="form-input"
-                        placeholder="شماره پیگیری را اینجا وارد کنید" title="لطفا شماره پیگیری را وارد فرمایید"
-                        minlength="2" maxlength="10" [ngModelOptions]="{standalone: true}" required>
-                    <input *ngIf="!isMobileScreen()" [(ngModel)]="tracks" type="text" class="form-input"
-                        formControlName="trackNumber" placeholder="شماره پیگیری را اینجا وارد کنید"
-                        title="لطفا شماره پیگیری را وارد فرمایید" minlength="2" maxlength="10" required>
-                </div>
-            </div>
-            <div class="justify_center">
-                <button type="submit">
-                    <div class="enter">ورود</div>
-                </button>
-            </div>
-        </form>
-    </section>
-</main>
+<h1>page not found1
 
-<app-spinner-wrapper></app-spinner-wrapper>
+</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, iusto recusandae repudiandae odio modi enim
+    rerum vel commodi necessitatibus, inventore tempore voluptatibus laudantium labore corporis ex fugiat suscipit
+    voluptas voluptate.Repellat sapiente ea, magni nesciunt officiis doloribus, sit, voluptatum ducimus asperiores eum
+    voluptatibus exercitationem blanditiis similique accusamus vero architecto. Sit fugit quibusdam dolores! Voluptatem
+    quidem at cumque, quibusdam reprehenderit nobis.</p>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur perspiciatis id explicabo non reprehenderit aut
+    dolor odit eius natus error.</p>

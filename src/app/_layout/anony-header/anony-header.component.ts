@@ -40,7 +40,7 @@ export class AnonyHeaderComponent implements AfterViewChecked {
     const basePath = window.location.pathname.split('/')[1];
 
     const helpButton = document.querySelector('.help') as HTMLElement;
-    if (basePath === 'pg') {
+    if (basePath === 'ph' || basePath === 'pnf') {
       helpButton.style.top = '2.5rem';
       return 1;
     }

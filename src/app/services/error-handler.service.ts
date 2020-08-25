@@ -73,7 +73,7 @@ export class ErrorHandlerService implements ErrorHandler {
   private setTimeOutBeforeRoute = () => {
     this.spinnerWrapper.stopLoading();
     setTimeout(() => {
-      this.router.navigate(['/pg']);
+      this.router.navigate(['/ph']);
     }, 2000);
   }
 

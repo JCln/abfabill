@@ -3,18 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.component';
 import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PathComponent } from './path/path.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: '', component: AnonyLayoutComponent, children: [
-      { path: '', redirectTo: 'pg', pathMatch: 'full' },
-      { path: 'pg', component: PageNotFoundComponent },
+      { path: '', redirectTo: 'ph', pathMatch: 'full' },
+      { path: 'ph', component: PathComponent },
       { path: 'rn', loadChildren: () => import('./register-new/register-new.module').then(rn => rn.RegisterNewModule), data: { animation: 'FilterPage' } },
       { path: 'tr/:id', loadChildren: () => import('./track-request/track-request.module').then(tr => tr.TrackRequestModule) },
       { path: 'cs', loadChildren: () => import('./cand-s/cand-s.module').then(cs => cs.CAndSModule), data: { animation: 'ServiceDesk' } },
-      { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(abu => abu.AboutUsModule) }
+      { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(abu => abu.AboutUsModule) },
+      { path: 'pnf', loadChildren: () => import('./page-not-found/page-not-found.module').then(pnf => pnf.PageNotFoundModule) }
     ]
   },
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
     path: 'aux', loadChildren: () => import('./auxiliary/auxiliary.module').then(a => a.AuxModule)
   },
 
-  { path: '**', redirectTo: 'pg', pathMatch: 'full' }
+  { path: '**', redirectTo: 'pnf', pathMatch: 'full' }
 ];
 
 @NgModule({

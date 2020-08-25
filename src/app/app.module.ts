@@ -10,7 +10,7 @@ import { AnonyLayoutComponent } from './_layout/anony-layout/anony-layout.compon
 import { NoLayoutComponent } from './_layout/no-layout/no-layout.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PathComponent } from './path/path.component';
 import { SharedFooterModule } from './shared/shared-footer.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -20,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
     NoLayoutComponent,
     AnonyHeaderComponent,
     AnonyLayoutComponent,
-    PageNotFoundComponent
+    PathComponent
   ],
   imports: [
     HttpClientModule,
