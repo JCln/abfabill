@@ -1163,6 +1163,15 @@
   </ngx-barcode>
 </section>
 
+<section class="footer">
+  <button (click)="printPage()">
+    ذخیره
+    <i class="fa fa-file-pdf"></i></button>
+  <button routerLink='receipt'>
+    نمایش قبض کاغذی
+  </button>
+</section>
+
 <section class="pay_section" *ngIf="!(_isABillKardex || _responseIsNull)">
   <div class="pay_button_section justify_center">
 
@@ -1183,12 +1192,4 @@
 </section>
 <section class="null_response" *ngIf="_responseIsNull">
   تاکنون قبضی برای شما صادر نشده است.
-</section>
-<section class="footer">
-  <button>
-    ذخیره
-    <i class="fa fa-file-pdf"></i></button>
-  <button routerLink='receipt'>
-    نمایش قبض کاغذی
-  </button>
 </section>
