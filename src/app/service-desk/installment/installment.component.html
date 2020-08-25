@@ -7,33 +7,6 @@
 <section class="main_content" *ngIf="_response; else spinner">
 
     <div class="_content" *ngIf="respnseIsNull; else noInstallment">
-        <main class="main" *ngFor="let i of testObject | slice: 1:2">
-            <div class="background first_background">
-                <div class="outer_container general_info">
-                    <div class="form">
-                        <div class="form-item">
-                            <input type="text" name="viewBill.value" class="form-input" [(ngModel)]="i.amount" disabled>
-                        </div>
-                        <div class="div1">
-                            <p>مشترک گرامی</p>
-                            <div class="div2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form">
-                        <div class="form-item inputcontainer">
-                            <input type="text" readonly name="viewBill.value" class="form-input" [(ngModel)]="i.billId"
-                                disabled>
-                        </div>
-                        <div class="div1">
-                            <p>شناسه قبض</p>
-                            <div class="div2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
 
         <main class="main" *ngFor="let i of testObject; let indexN = index " data-aos="fade-up">
 

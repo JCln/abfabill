@@ -19,6 +19,6 @@ export class PayComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.IpgInfo = this.uriipgService.decodeURI();
+    this.IpgInfo = this.uriipgService.decodeURI();  
   }
 }

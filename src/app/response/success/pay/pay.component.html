@@ -10,18 +10,18 @@
             <h1>قبض پرداخت شد</h1>
             <div class="__pay_info">
                 <div class="___desc">
-                    <div class="____des_size">{{IpgInfo[0]}}</div>
+                    <div class="____des_size">{{IpgInfo[1]}}</div>
                     <div class="____size">شماره پیگیری</div>
                 </div>
                 <div class="___desc">
-                    <div class="____des_size" style="direction: rtl;">{{IpgInfo[1]}} ریال</div>
+                    <div class="____des_size" style="direction: rtl;">{{IpgInfo[2]}} ریال</div>
                     <div class="____size">مبلغ</div>
                 </div>
             </div>
 
             <div class="back_to_insert_id">
 
-                <button [routerLink]="['/ph']">بازگشت به صفحه نخست</button>
+                <button [routerLink]="['/'+ IpgInfo[0]]">بازگشت به صفحه اصلی</button>
             </div>
         </div>
     </main>
