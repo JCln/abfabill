@@ -12,7 +12,7 @@ import { CheckRoute } from './../../shared/check-route';
   styleUrls: ['./update-mobile.component.scss']
 })
 export class UpdateMobileComponent extends CheckRoute {
-  _mobileNumber: string = '';
+  _mobileNumber: any;
   _mobileLength: number = 11;
 
   constructor(
@@ -25,6 +25,7 @@ export class UpdateMobileComponent extends CheckRoute {
   }
   private persianCharacters = () => {
     const promise = new Promise((resolve) => {
+      this._mobileNumber = this.trimStrings(this._mobileNumber);
       this._mobileNumber = this.persianToEngNumbers(this._mobileNumber);
       resolve(this._mobileNumber);
     });
@@ -44,14 +45,14 @@ export class UpdateMobileComponent extends CheckRoute {
     return false;
   }
   mobileValidation = (): boolean => {
-    if (!this.pushOrPopFromMobileNumber() || this._mobileNumber.toString().trim() === null || this._mobileNumber.toString().trim().length > this._mobileLength || this._mobileNumber.toString().trim().length < this._mobileLength) {
+    if (!this.pushOrPopFromMobileNumber() || this._mobileNumber === null || this._mobileNumber.length > this._mobileLength || this._mobileNumber.length < this._mobileLength) {
       this.errorHandler.customToaster(4000, 'شماره موبایل اشتباه است');
       return false;
     }
     return true;
   }
   private checkValidation = () => {
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve) => {
       if (this.mobileValidation())
         resolve(true)
       resolve(false);
@@ -83,7 +84,7 @@ export class UpdateMobileComponent extends CheckRoute {
     this.helpService.help();
   }
   private connectToServer = (body: any) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.interfaceService.setUpdateMobile(body).subscribe((res: any) => {
         if (res) {
           this.spinnerChecker(false);
