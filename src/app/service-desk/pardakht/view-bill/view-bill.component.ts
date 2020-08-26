@@ -81,15 +81,18 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
   }
   printPage = () => {
-    const doc = new jsPDF();
-    // const doc = new jsPDF('l', 'mm', 'a4');    
-    html2canvas(document.body).then(_canvas => {
-      const img = _canvas.toDataURL("image/png");
+    const doc = new jsPDF("p", "em", 'a4', true);
 
-      doc.addImage(img, 'JPEG', 0, 0, 100, 100);
-      // doc.addImage(img, 'JPEG', 0, 0, 200, 200);
+    const width = doc.internal.pageSize.getWidth();
+    const height = doc.internal.pageSize.getHeight();
 
+    html2canvas(document.body, {
+      scrollX: 10,
+      scrollY: 0
+    }).then(_canvas => {
+      const img = _canvas.toDataURL("image/jpeg");
 
+      doc.addImage(img, 'JPEG', 0, 0, width, height);
       doc.save('fuck.pdf');
     });
   }
