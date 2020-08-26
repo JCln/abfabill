@@ -30,7 +30,7 @@ export class InterfaceService {
   }
   getInstallment = (id: string): any => {
     this.idValues(id);
-    return this.mainService.GET(id, 'moshtarakinapi/Installment/Get');
+    return this.mainService.GET(id, 'moshtarakinapi/v2/Installment/Get', this.base64);
   }
   getKardex = (id: string): any => {
     this.idValues(id);
