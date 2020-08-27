@@ -61,7 +61,7 @@
 
         </main>
 
-        <section class="check_moreinfo justify_center">
+        <section *ngIf="testObject.isPayed" class="check_moreinfo justify_center">
             <button (click)="showMoreButtonClicked()">
                 {{_showMoreButton? 'فقط اقساط پرداخت نشده': 'مشاهده اقساط پرداخت شده'}}
                 <i class="{{_showMoreButton? 'fa fa-chevron-up': 'fa fa-chevron-down'}}"></i>
