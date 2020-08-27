@@ -47,6 +47,12 @@ export class TrackRequestService {
       resolve();
     })
   }
+<<<<<<< HEAD
 
   noInfoExists = () => this.router.navigate(['/ph']);
+=======
+  insertedLocationPath = (): string => {
+    return location.pathname.split('/')[2];
+  }
+>>>>>>> trref
 }

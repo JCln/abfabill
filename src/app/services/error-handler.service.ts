@@ -95,7 +95,7 @@ export class ErrorHandlerService implements ErrorHandler {
         this.billIdISValid();
         return;
       case 404:
-        this.customToaster(8000, 'اطلاعات قبضی پیدا نشد', 'لطفا شناسه را بدقت وارد فرمایید');
+        this.customToaster(8000, 'اطلاعاتی پیدا نشد', 'لطفا داده ورودی را بدقت وارد فرمایید');
         break;
       case 406:
         this.customToaster(8000, '', 'لطفا شناسه را بدقت وارد فرمایید');
@@ -127,7 +127,7 @@ export class ErrorHandlerService implements ErrorHandler {
   }
   errorHandler(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {
-      this.handleError(error.status, error.error.message || 'شناسه قبض را بدرستی وارد کنید');
+      this.handleError(error.status, error.error.message || 'داده ورودی را بدرستی وارد کنید');
     }
     return throwError(error);
   }
