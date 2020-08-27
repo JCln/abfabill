@@ -1,6 +1,4 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { IViewBill } from 'src/app/interfaces/iview-bill';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
@@ -80,21 +78,9 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   sendButtonEventToAnalytics = () => {
     this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
   }
-  printPage = () => {
-    const doc = new jsPDF("p", "em", 'a4', true);
-
-    const width = doc.internal.pageSize.getWidth();
-    const height = doc.internal.pageSize.getHeight();
-
-    html2canvas(document.body, {
-      scrollX: 10,
-      scrollY: 0
-    }).then(_canvas => {
-      const img = _canvas.toDataURL("image/jpeg");
-
-      doc.addImage(img, 'JPEG', 0, 0, width, height);
-      doc.save('fuck.pdf');
-    });
+  exportAsPrint(): void {
+    window.print();
+    window.close();
   }
   protected getbillIdToken = () => {
     this.payService.tokenIPG(this.getedDataIdFromRoute);
@@ -117,8 +103,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     })
   }
   ngOnDestroy(): void {
-    this.unSubabillKardex.unsubscribe();
-    this.interactionService.setABillKardex([]);
+    this.unSubabillKardex.unsubscribe();    
   }
 
 }
