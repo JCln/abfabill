@@ -13,7 +13,7 @@
             <div class="borders">
                 <div class="details">
                     <div class="text_part">شهر</div>
-                    <div class="dynamic_details"> </div>
+                    <div class="dynamic_details">{{$childEl.zoneTitle}} </div>
                 </div>
                 <div class="details">
                     <div class="text_part">مشترک گرامی</div>
@@ -119,27 +119,27 @@
                 <p> شرح اقلام و مبالغ به ریال</p>
                 <div class="details">
                     <div class="text_part">بهای آب مصرفی </div>
-                    <div class="dynamic_details">{{$childEl.abBaha}}</div>
+                    <div class="dynamic_details">{{$childEl.abBaha | perCurrencySplitter }}</div>
                 </div>
                 <div class="details">
                     <div class="text_part">کارمزد دفع فاضلاب </div>
-                    <div class="dynamic_details">{{$childEl.karmozdFazelab}}</div>
+                    <div class="dynamic_details">{{$childEl.karmozdFazelab| perCurrencySplitter}}</div>
                 </div>
                 <div class="details">
                     <div class="text_part">مالیات و عوارض</div>
-                    <div class="dynamic_details">{{$childEl.maliat}}</div>
+                    <div class="dynamic_details">{{$childEl.maliat| perCurrencySplitter}}</div>
                 </div>
                 <div class="details">
                     <div class="text_part">قانون بودجه </div>
-                    <div class="dynamic_details">{{$childEl.budget}}</div>
+                    <div class="dynamic_details">{{$childEl.budget| perCurrencySplitter}}</div>
                 </div>
                 <div class="details">
-                    <div class="text_part">بدهکاری قبلی </div>
-                    <div class="dynamic_details">{{$childEl.preBedOrBes}}</div>
+                    <div class="text_part">بدهکاری یا بستانکاری قبلی</div>
+                    <div class="dynamic_details">{{$childEl.preBedOrBes| perCurrencySplitter}}</div>
                 </div>
                 <div class="details last_child">
                     <div class="text_part">جمع</div>
-                    <div class="dynamic_details">{{$childEl.jam}}</div>
+                    <div class="dynamic_details">{{$childEl.jam| perCurrencySplitter}}</div>
                 </div>
             </div>
 
@@ -147,7 +147,7 @@
                 <div class="borders pay_section">
                     <div class="details">
                         <div class="text_part">مبلغ قابل پرداخت</div>
-                        <div class="dynamic_details">{{$childEl.payable}}</div>
+                        <div class="dynamic_details">{{$childEl.payable| perCurrencySplitter}}</div>
                     </div>
                     <div class="details">
                         <div class="text_part">مهلت پرداخت</div>

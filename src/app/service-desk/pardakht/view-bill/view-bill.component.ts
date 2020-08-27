@@ -9,7 +9,6 @@ import { InterfaceService } from 'src/app/services/interface.service';
 import { IbankIcons, IBarcode } from '../../../interfaces/ibank-icons';
 import { ViewbillService } from './../../../services/DI/viewbill.service';
 import { PayService } from './../../../services/pay.service';
-import { SaveAsWrapperService } from './../../../services/save-as-wrapper.service';
 import { CheckRoute } from './../../../shared/check-route';
 
 
@@ -42,7 +41,6 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     private interactionService: InteractionService,
     private googleAnalyticsService: GoogleAnalyticsService,
     private payService: PayService,
-    private saveAsWrapperService: SaveAsWrapperService,
     banks: ViewbillService
   ) {
     super();
@@ -103,7 +101,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     })
   }
   ngOnDestroy(): void {
-    this.unSubabillKardex.unsubscribe();    
+    this.unSubabillKardex.unsubscribe();
   }
 
 }
