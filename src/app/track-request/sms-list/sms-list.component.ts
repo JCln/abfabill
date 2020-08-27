@@ -15,7 +15,7 @@ export class SmsListComponent implements OnInit {
   ngOnInit() {
     if (!this.smsList) {
       const trackNumber = location.pathname.split('/')[2];
-      this.router.navigate(['tr/', trackNumber]);
+      this.router.navigate(['/' + 'tr/' + trackNumber]);
       return;
     }
   }
