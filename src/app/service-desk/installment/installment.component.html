@@ -30,7 +30,7 @@
                     <div class="form">
                         <div class="form-item">
                             <input type="text" readonly name="viewBill.value" class="form-input"
-                                value="{{i.amount| perCurrencySplitter}}" disabled>
+                                value="{{i.amount| perCurrencySplitter}} ریال" disabled>
                         </div>
                         <div class="div1">
                             <p>مبلغ قابل پرداخت</p>
@@ -124,7 +124,7 @@
 
 <footer *ngIf="_sumOfInstallments != 0">
     <div class="pay justify_center">
-        {{_sumOfInstallments | perCurrencySplitter}}
+        {{_sumOfInstallments | perCurrencySplitter}}  ریال
     </div>
     <div class="text">
         پرداخت مبلغ
