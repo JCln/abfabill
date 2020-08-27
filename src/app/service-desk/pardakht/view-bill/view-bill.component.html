@@ -1163,7 +1163,7 @@
   </ngx-barcode>
 </section>
 
-<section class="footer">
+<section class="footer" *ngIf="!_isABillKardex">
   <button (click)="exportAsPrint()">
     ذخیره
     <i class="fa fa-file-pdf"></i></button>
