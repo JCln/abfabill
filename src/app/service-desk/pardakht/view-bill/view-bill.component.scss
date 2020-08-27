@@ -234,3 +234,24 @@ section.barcode {
 .kardex_added_class {
   grid-template-columns: repeat(3, 1fr) !important;
 }
+
+.footer {
+  $c_blue: #116fff;
+  position: sticky;
+  bottom: 0;
+  columns: 2;
+  column-rule: 3px solid $c_blue;
+
+  button {
+    @extend %button_first;
+    white-space: nowrap;
+    max-width: 20rem;
+    margin: auto;
+    min-width: auto;
+    width: 100%;
+    border: 2px solid;
+    background: $white;
+    color: $c_blue;
+
+  }
+}

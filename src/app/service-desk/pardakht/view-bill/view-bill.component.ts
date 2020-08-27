@@ -1,4 +1,6 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { IViewBill } from 'src/app/interfaces/iview-bill';
 import { ErrorHandlerService } from 'src/app/services/error-handler.service';
@@ -9,7 +11,9 @@ import { InterfaceService } from 'src/app/services/interface.service';
 import { IbankIcons, IBarcode } from '../../../interfaces/ibank-icons';
 import { ViewbillService } from './../../../services/DI/viewbill.service';
 import { PayService } from './../../../services/pay.service';
+import { SaveAsWrapperService } from './../../../services/save-as-wrapper.service';
 import { CheckRoute } from './../../../shared/check-route';
+
 
 
 @Component({
@@ -40,6 +44,7 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
     private interactionService: InteractionService,
     private googleAnalyticsService: GoogleAnalyticsService,
     private payService: PayService,
+    private saveAsWrapperService: SaveAsWrapperService,
     banks: ViewbillService
   ) {
     super();
@@ -75,7 +80,22 @@ export class ViewBillComponent extends CheckRoute implements OnInit, AfterConten
   sendButtonEventToAnalytics = () => {
     this.googleAnalyticsService.eventEmitter("viewBillPage", "payButtonClicked", "userLabel", 3);
   }
+  printPage = () => {
+    const doc = new jsPDF("p", "em", 'a4', true);
 
+    const width = doc.internal.pageSize.getWidth();
+    const height = doc.internal.pageSize.getHeight();
+
+    html2canvas(document.body, {
+      scrollX: 10,
+      scrollY: 0
+    }).then(_canvas => {
+      const img = _canvas.toDataURL("image/jpeg");
+
+      doc.addImage(img, 'JPEG', 0, 0, width, height);
+      doc.save('fuck.pdf');
+    });
+  }
   protected getbillIdToken = () => {
     this.payService.tokenIPG(this.getedDataIdFromRoute);
     this.sendButtonEventToAnalytics();
