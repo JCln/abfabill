@@ -9,6 +9,8 @@ import { InteractionService } from 'src/app/services/interaction.service';
   styleUrls: ['./receipt.component.scss']
 })
 export class ReceiptComponent implements AfterViewInit, OnDestroy {
+  // if page refreshed or there is no bill id back to bill=? page
+  getedDataIdFromRoute: any = [];
   //unSub
   unSubReceipt: Subscription;
 
@@ -23,10 +25,8 @@ export class ReceiptComponent implements AfterViewInit, OnDestroy {
         this.$childEl = res;
       }
       else {
-        this.receiptService.billId$.subscribe(res => this.billId = res);
-        console.log(this.billId);
-
-        this.router.navigate(['/' + this.billId + '/bill?checked=1']);
+        this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
+        this.router.navigate(['/' + this.getedDataIdFromRoute + '/bill?checked=1']);
       }
     });
   }
