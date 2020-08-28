@@ -27,9 +27,7 @@ export class TrackRequestComponent extends CheckRoute implements OnInit {
       if (!this.isNull(res[0]))
         this.trackRequests = res;
       else {
-        const a = b.insertedLocationPath();
-        b.asyncMethod(a);
-        this.getTracks();
+        b.backToFirstPage();
       }
     });
   }

@@ -13,10 +13,13 @@ export class SmsListComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    // if (!this.smsList) {
+    //   const trackNumber = location.pathname.split('/')[2];
+    //   this.router.navigate(['/' + 'tr/' + trackNumber]);
+    //   return;
+    // }
     if (!this.smsList) {
-      const trackNumber = location.pathname.split('/')[2];
-      this.router.navigate(['/' + 'tr/' + trackNumber]);
-      return;
+      this.router.navigateByUrl('/ph');
     }
   }
 }

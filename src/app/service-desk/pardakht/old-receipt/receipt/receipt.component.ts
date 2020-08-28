@@ -18,15 +18,17 @@ export class ReceiptComponent implements AfterViewInit, OnDestroy {
   $childEl: any = [];
   constructor(private receiptService: InteractionService, private router: Router) {
   }
+  isNull = (value: any) => typeof value === 'undefined' || !value || value.length === 0;
+
   ngAfterViewInit(): void {
     this.unSubReceipt = this.receiptService.receipt$.subscribe(res => {
-      if (res) {
+      if (!this.isNull(res[0])) {
         console.log(res);
         this.$childEl = res;
       }
       else {
         this.getedDataIdFromRoute = window.location.pathname.split('/')[1];
-        this.router.navigate(['/' + this.getedDataIdFromRoute + '/bill?checked=1']);
+        this.router.navigateByUrl('/' + this.getedDataIdFromRoute + '/bill?checked=1');
       }
     });
   }

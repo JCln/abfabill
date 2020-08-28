@@ -47,7 +47,7 @@ export class TrackRequestService {
       resolve();
     })
   }
-  insertedLocationPath = (): string => {
-    return location.pathname.split('/')[2];
+  backToFirstPage = (): void => {
+    this.router.navigateByUrl('/ph');
   }
 }
