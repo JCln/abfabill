@@ -22,7 +22,7 @@ export class ReceiptComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.unSubReceipt = this.receiptService.receipt$.subscribe(res => {
-      if (!this.isNull(res[0])) {
+      if (!this.isNull(res)) {
         console.log(res);
         this.$childEl = res;
       }
