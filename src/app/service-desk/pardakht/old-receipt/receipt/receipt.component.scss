@@ -79,15 +79,14 @@ section {
 
 
 ._forth {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  .__content_img {
+    height: 17.6rem;
 
-  img {
-    @include borders();
-    min-height: 15rem;
-    height: 50%;
+    img {
+      @include borders();
+    }
   }
+
 
   h3 {
     text-align: center;
@@ -219,6 +218,7 @@ button {
 
 .info {
   display: flex;
+  overflow: auto;
 
   .advice {
     margin: .2rem;
@@ -227,6 +227,7 @@ button {
     padding: .2rem;
     font-size: 1.2rem;
     width: 50%;
+    min-width: 22rem;
   }
 }
 

@@ -245,12 +245,20 @@ section.barcode {
     @extend %button_first;
     white-space: nowrap;
     max-width: 20rem;
-    margin: auto;
     min-width: auto;
     width: 100%;
     border: 2px solid;
     background: $white;
     color: $c_blue;
+  }
 
+  ._footer_button {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  ._footer_button_2 {
+    margin-left: 0;
+    margin-right: auto;
   }
 }
