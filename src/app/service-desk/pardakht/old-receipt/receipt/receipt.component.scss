@@ -14,14 +14,20 @@ section {
   border-radius: $__border_radius;
   direction: rtl;
   overflow: auto;
+  margin: 1rem 0 2rem;
+
+  background: #fff;
+  border: 1px solid;
 
   .main_section {
     display: flex;
-    width: fit-content;
-    border-radius: 30px;
-    border: 1px solid;
-    background: $white;
     margin: auto auto 2rem;
+    padding: 0 0.1rem;
+
+    @media (min-width: 1024px) {
+      justify-content: center;
+    }
+
   }
 }
 
@@ -38,7 +44,7 @@ section {
 
   .borders {
     @include borders();
-    padding: 0.5rem 0.3rem;
+    // padding: 0.5rem 0.3rem;
     font-weight: 800;
     margin: .2rem;
 
@@ -80,7 +86,11 @@ section {
 
 ._forth {
   .__content_img {
-    height: 17.6rem;
+    height: 15.8rem;
+
+    @media (min-width: 550px) {
+      height: 17.6rem;
+    }
 
     img {
       @include borders();
@@ -162,10 +172,6 @@ section {
 ._third {
   width: 17rem;
 
-  .first_child {
-    height: 32rem;
-  }
-
   .pay_section {
     border-color: #c5a6b8 !important;
     background-color: #fcdbf0;
@@ -176,7 +182,7 @@ section {
     display: block !important;
     text-align: center;
     border-top: .2rem solid;
-    margin-top: 10rem;
+    margin-top: 40%;
   }
 
   p {
