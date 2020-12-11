@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://37.191.92.130',
-  API_URL_auxiliary: 'http://37.191.92.130'
+  API_URL: 'https://37.191.92.157',
+  API_URL_auxiliary: 'https://37.191.92.157'
 };
 
 /*
